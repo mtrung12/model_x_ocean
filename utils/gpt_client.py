@@ -130,8 +130,6 @@ def extract_high_low_probability(
             lp_h = top_norm.get(target_high, fallback_logprob)
             lp_l = top_norm.get(target_low, fallback_logprob)
 
-            # If the chosen token IS one of the targets, its own logprob
-            # is more accurate than the (possibly truncated) top map.
             if chosen == target_high:
                 lp_h = max(lp_h, tok["logprob"])
             if chosen == target_low:
@@ -157,7 +155,6 @@ def gpt_embed(
     cli = get_client()
     for start in range(0, len(texts), batch_size):
         batch = texts[start:start + batch_size]
-        # OpenAI rejects strictly empty strings; replace with a space.
         clean = [t if t and t.strip() else " " for t in batch]
         resp = cli.embeddings.create(model=model, input=clean)
         out.extend([d.embedding for d in resp.data])

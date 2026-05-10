@@ -27,8 +27,6 @@ class ProfileStore:
         self.store_path = store_path
         self.entries: Dict[str, Dict] = {}
 
-    # --------------------------- I/O -----------------------------------
-
     def load(self) -> None:
         self.entries = {}
         if not self.store_path or not os.path.exists(self.store_path):
@@ -55,8 +53,6 @@ class ProfileStore:
             for entry in self.entries.values():
                 f.write(json.dumps(entry, ensure_ascii=False) + "\n")
         os.replace(tmp, self.store_path)
-
-    # --------------------------- API -----------------------------------
 
     def add(
         self,

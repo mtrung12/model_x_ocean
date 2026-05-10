@@ -73,7 +73,6 @@ def _call_profiler(
     profile = parse_profile_output(raw)
 
     if not profile["valid"]:
-        # Retry once with an even more emphatic format reminder appended
         usr_retry = (
             usr_p
             + "\n\nFORMAT REMINDER: emit exactly 30 facet lines, each with a"

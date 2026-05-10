@@ -11,10 +11,6 @@ class FAISSIndex:
         self._index: faiss.Index | None = None
         self._meta: list[dict] = []
 
-    # ------------------------------------------------------------------
-    # Build
-    # ------------------------------------------------------------------
-
     def build(self, embeddings: np.ndarray, meta: list[dict]):
         """Build the index from a (N, D) float32 array and a parallel list of meta dicts."""
         embeddings = np.array(embeddings, dtype="float32")
@@ -23,10 +19,6 @@ class FAISSIndex:
         self._index = faiss.IndexFlatL2(d)
         self._index.add(embeddings)
         self._meta = meta
-
-    # ------------------------------------------------------------------
-    # Persist
-    # ------------------------------------------------------------------
 
     def save(self, index_path: str, meta_path: str):
         if self._index is None:
@@ -46,23 +38,11 @@ class FAISSIndex:
                 if line:
                     self._meta.append(json.loads(line))
 
-    # ------------------------------------------------------------------
-    # Search
-    # ------------------------------------------------------------------
-
     def search(
         self, query: np.ndarray, top_k: int
     ) -> tuple[np.ndarray, list[dict]]:
-        """
-        Search for the top_k nearest neighbours.
+        """Return (distances, results) for the top_k nearest neighbours.
 
-        Parameters
-        ----------
-        query   : 1-D float32 array of length D
-        top_k   : number of results to return
-
-        Returns
-        -------
         distances : 1-D float32 array of shape (top_k,)
         results   : list of meta dicts, each augmented with a "distance" key
         """
@@ -76,8 +56,8 @@ class FAISSIndex:
         k = min(top_k, self._index.ntotal)
         distances, indices = self._index.search(query, k)
 
-        distances = distances[0]   # shape (k,)
-        indices = indices[0]       # shape (k,)
+        distances = distances[0]
+        indices = indices[0]
 
         results = []
         for dist, idx in zip(distances, indices):

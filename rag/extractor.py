@@ -53,7 +53,6 @@ def parse_extractor_output(raw: str) -> dict[str, str]:
                 result[cat] = line[len(cat) + 1:].strip()
                 matched = True
                 break
-        # Continuation lines append to current category
         if not matched and current_cat is not None:
             result[current_cat] = (result[current_cat] + " " + line).strip()
     return result

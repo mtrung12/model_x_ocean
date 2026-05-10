@@ -1,0 +1,221 @@
+================================================================================
+  PIPELINE TỔNG QUAN — Principle Model (Retrieval dùng hệ số Beta)
+  Dự án: Personality Prediction từ Essays (OCEAN / Big Five)
+  Ngày: 2026-05-05
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+PHASE 0  ·  PRINCIPLE DISCOVERY  (offline, chạy 1 lần)
+────────────────────────────────────────────────────────────────────────────────
+
+  train.csv
+      │
+      ├─ sample N_low essays (label=low)
+      └─ sample N_high essays (label=high)
+              │
+              ▼
+      [LLM — 3-turn conversation per trait]
+         Turn 1: phân tích N_low  → low_patterns
+         Turn 2: phân tích N_high → high_patterns
+         Turn 3: tổng hợp         → principles (text)
+              │
+              ▼
+      data/principles/principles_{Trait}.txt   × 5 traits
+
+  Giải thích:
+    principle.py::discover_trait_principles() gọi LLM 3 lần liên tiếp
+    (multi-turn) để rút ra "luật" phân biệt người high vs low cho mỗi
+    trong 5 traits OCEAN. Kết quả là 5 file text, mỗi file chứa các
+    nguyên tắc quan sát (ví dụ: "người high-OPN dùng từ trừu tượng...").
+
+────────────────────────────────────────────────────────────────────────────────
+PHASE 1  ·  BUILD VECTOR INDEX  (offline, chạy 1 lần)
+────────────────────────────────────────────────────────────────────────────────
+
+  train.csv  (mỗi row = 1 essay)
+      │
+      ├─[1] SBERT encode raw text
+      │       SBERT finetuned (nomic-embed-text-v1.5, xem Phase A bên dưới)
+      │       embed_raw = encode("search_document: " + text)   → 768-d
+      │
+      ├─[2] Profiler (gpt-4o-mini)
+      │       → 30-facet profile dict  (signal: high/mod/none/low + evidence)
+      │       → serialize → profile_text (chuỗi flat)
+      │
+      ├─[3] SBERT encode profile text
+      │       embed_profile = encode("search_document: " + profile_text)  → 768-d
+      │
+      ├─[4] Dual embedding (embedder.py)
+      │       dual_emb = ALPHA * embed_raw + (1-ALPHA) * embed_profile
+      │       (ALPHA = 0.5 mặc định, normalize L2)                       → 768-d
+      │
+      └─[5] Facet vector (facet_vector.py)
+              Encode 30 facets thành vector 30-d ordinal:
+                high→+1, mod→+0.5, none→0, low→-1
+              Normalize L2                                                 → 30-d
+      │
+      ▼
+  data/vector_db/essays_dual/
+    ├─ vectors.faiss        (768-d dual embeddings, IndexFlatL2)
+    ├─ vectors_meta.jsonl   (user_id, posts_raw, trait_labels, profile)
+    └─ facet_vectors.npy    (N × 30, ma trận facet song song với FAISS)
+
+────────────────────────────────────────────────────────────────────────────────
+PHASE 2  ·  INFERENCE  (per test essay, chạy lúc predict)
+────────────────────────────────────────────────────────────────────────────────
+
+  INPUT: essay text (1 dòng từ test.csv)
+      │
+      ├─[A] Profiler on-the-fly (gpt-4o-mini)
+      │       → query_profile_dict   (30 facets + linguistic)
+      │       → query_profile_text  (serialized)
+      │
+      ├─[B] Dual Embedding query
+      │       embed_raw     = SBERT(raw_text)
+      │       embed_profile = SBERT(query_profile_text)
+      │       query_emb = ALPHA * embed_raw + (1-ALPHA) * embed_profile  → 768-d
+      │
+      ├─[C] Facet vector query
+      │       q_facet = facet_vector(query_profile_dict)                 → 30-d
+      │
+      └─[D] Hybrid Retrieval  (per trait, × 5)   ← ĐÂY LÀ PHẦN BETA
+              │
+              ├─ [D1] FAISS coarse fetch
+              │         k = top_k × hybrid_fetch_multiplier (mặc định ×8)
+              │         candidate pool = top-K*8 by L2 distance
+              │
+              ├─ [D2] Trait-masked Facet Cosine
+              │         Chỉ lấy 6 trong 30 chiều tương ứng với trait đó
+              │         cand_facet = facet_cosine(q_facet, sub_matrix, trait_code)
+              │
+              ├─ [D3] Rescale dense scores [-1, 1] (min-max trong pool)
+              │
+              └─ [D4] Hybrid Score  ←── CÔNG THỨC BETA
+                        score = beta × dense_sim + gamma × facet_sim
+                        Per-trait defaults:
+                          Openness/Extraversion/Agreeableness: beta=0.4, gamma=0.6
+                          Conscientiousness/Neuroticism:       beta=0.3, gamma=0.7
+                        → sort descending → lấy top_k
+      │
+      ▼
+  [E] Build few-shot context  (predict.py::build_similar_context)
+        Với mỗi retrieved result:
+          - Lấy profile slice của trait đó (6 facets + linguistic cues)
+          - Format: "[Similar Profile i] (label: high/low)\n<profile slice>"
+        Ghép K blocks thành similar_context string
+      │
+      ▼
+  [F] Prompt Assembly  (predict.py::build_prompt)
+        Chọn template theo prompt_mode:
+          rag_def_oneshot     → RAG_DEF_ONESHOT_PROMPT
+                                (trait definition + similar_context)
+          rag_oneshot         → RAG_ONESHOT_USR_PROMPT
+                                (principles + similar_context)
+          reasoned_rag_def    → REASONED_RAG_DEF_ONESHOT_PROMPT
+                                (definition + context + XML tags)
+          ...
+        → (user_prompt, system_prompt)
+      │
+      ▼
+  [G] LLM Call  (gpt-4o-mini hoặc gpt-4o)
+        → raw output text
+      │
+      ▼
+  [H] Parse Output
+        extract_direct()  → "high" / "low"   (direct modes)
+        extract_cot()     → lấy label sau reasoning   (CoT modes)
+        extract_reasoned_full() → parse XML tags:
+                <evidence>, <facet_check>, <example_alignment>,
+                <verdict>, <label>            (reasoned modes)
+      │
+      ▼
+  OUTPUT:
+    result/{model}/{mode}/{run_id}/
+      ├─ predictions.csv          (pred_cOPN, pred_cCON, ... × N essays)
+      ├─ *_classification_report.txt  (per-trait F1/accuracy)
+      ├─ evaluation_summary.csv
+      └─ reasoning_log.jsonl      (chỉ khi dùng reasoned mode)
+
+================================================================================
+GIẢI THÍCH HỆ SỐ BETA
+================================================================================
+
+  Trong retriever.py::_hybrid_rerank() và facet_vector.py::hybrid_score():
+
+      final_score = beta × dense_sim + gamma × facet_sim
+
+  dense_sim : cosine similarity từ FAISS (dùng dual embedding 768-d).
+              Đo mức độ "tương đồng văn phong + nội dung" của essay.
+
+  facet_sim : cosine similarity của facet vector 30-d, được mask xuống
+              còn 6-d cho đúng trait đang xét (trait-aligned by design).
+              Đo mức độ "cùng personality profile" theo NEO-PI-R.
+
+  Lý do facets được weight cao hơn (gamma > beta):
+    Dense embedding dễ cluster theo chủ đề/văn phong (2 essay nói về
+    "đi chơi cuối tuần" nằm gần nhau dù 1 là High-EXT, 1 là Low-EXT).
+    Facet vector không bị nhiễu chủ đề — mỗi chiều là 1 facet tính cách.
+
+  Ý nghĩa thực tế:
+    Retriever sẽ trả về những người "giống nhau về tính cách (facet)"
+    hơn là chỉ "viết về cùng chủ đề". Kết quả: few-shot examples
+    được cung cấp cho LLM thực sự là những người cùng personality.
+
+================================================================================
+GIẢI THÍCH FINETUNE SBERT  (finetune_sbert_essays_kaggle.ipynb)
+================================================================================
+
+  MỤC TIÊU:
+    Fine-tune nomic-embed-text-v1.5 để essay của người có cùng nhãn
+    OCEAN nằm gần nhau trong embedding space → phục vụ retrieval tốt hơn.
+
+  QUY TRÌNH:
+
+  [1] Build Training Pairs  (build_positive_pairs)
+        Với mỗi anchor essay, mỗi trait, lấy PAIRS_PER_ANCHOR=3 essay
+        khác có cùng label (same high/low) làm positive pair.
+        → tạo ra ~6000 cặp (anchor_text, positive_text)
+        Prefix "search_document: " theo convention nomic-embed.
+
+  [2] Build Validation Triplets  (build_eval_triplets)
+        (anchor, positive=cùng label, negative=khác label) × 80 per trait
+        → 400 triplets dùng để evaluate bằng TripletEvaluator.
+
+  [3] Load Base Model
+        SentenceTransformer("nomic-ai/nomic-embed-text-v1.5")
+        max_seq_length = 1024
+        → Đo baseline triplet accuracy trước khi fine-tune.
+
+  [4] Fine-tune  (model.fit)
+        Loss:   MultipleNegativesRankingLoss (MNRL)
+                  Trong mỗi batch, các sample khác tự động trở thành
+                  in-batch negatives → hiệu quả cao không cần mine hard neg.
+        LR:     2e-5
+        Epochs: 4
+        Batch:  8 (fp16, vừa T4 16GB)
+        Warmup: 10% steps
+        Eval:   mỗi len(train_loader)//2 steps, save best model.
+
+  [5] Evaluate & Build FAISS Index
+        → Encode train + val với model đã fine-tune
+        → FAISS IndexFlatIP (inner product = cosine vì normalized)
+        → Kiểm tra retrieval-based label accuracy (top-5 majority vote)
+           proxy metric, không phải downstream LLM accuracy.
+
+  [6] Ablation
+        So sánh Base vs Fine-tuned trên cùng tập val.
+
+  KẾT QUẢ:
+    Model đã fine-tune được lưu tại:
+      models/sbert_essays_finetuned/   (nomic-bert backbone)
+    FAISS index và metadata tại:
+      models/rag_artifacts/train_index.faiss
+      models/rag_artifacts/train_metadata.csv
+
+  LƯU Ý QUAN TRỌNG:
+    - Anti-leakage: test.csv KHÔNG được load trong notebook này.
+    - Model này là base encoder cho dual embedding ở Phase 1 & 2 trên.
+    - Sau fine-tune, `embedder.py` tự load từ FINETUNED_MODEL_DIR.
+      Nếu folder không tồn tại → fallback về nomic-embed-text-v1.5 gốc.
+
+================================================================================

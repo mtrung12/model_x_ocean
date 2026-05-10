@@ -1,0 +1,210 @@
+================================================================================
+  PTD OCEAN TASK — BRIEFING SCRIPT
+  Project: Personality Prediction from Essays (OCEAN / Big Five)
+  Date: 2026-05-07
+================================================================================
+
+Hey, let me walk you through what I'm currently working on and how the
+whole pipeline fits together.
+
+────────────────────────────────────────────────────────────────────────────────
+WHAT IS THIS PROJECT?
+────────────────────────────────────────────────────────────────────────────────
+
+The project is called "PTD OCEAN" — PTD stands for Personality Trait Detection,
+and OCEAN refers to the Big Five personality model:
+
+  O — Openness to Experience
+  C — Conscientiousness
+  E — Extraversion
+  A — Agreeableness
+  N — Neuroticism
+
+The core goal is simple to state: given a person's written essay (a few
+paragraphs of free text), can we automatically predict whether they score
+HIGH or LOW on each of the five personality traits?
+
+This is a real, hard problem in computational psychology. Text alone is noisy,
+people write about many different topics, and personality traits are subtle.
+We're using a combination of embedding models, psychological profiling, and
+large language models (LLMs) to tackle it.
+
+────────────────────────────────────────────────────────────────────────────────
+THE PIPELINE — HIGH LEVEL
+────────────────────────────────────────────────────────────────────────────────
+
+The system has three major phases: Principle Discovery, Building the Vector
+Index, and Inference. Here's what each one does.
+
+PHASE 0 — PRINCIPLE DISCOVERY  (runs once, offline)
+
+  Before we do any prediction, we ask an LLM to "read" a batch of sample
+  essays and figure out what distinguishes a HIGH-scorer from a LOW-scorer
+  for each trait.
+
+  We feed it essays labeled as low, then essays labeled as high, and then ask
+  it to synthesize the patterns into a set of principles — for example:
+  "People who score high on Openness tend to use abstract language and
+  reference diverse intellectual interests."
+
+  These principles are stored as text files (one per trait) and serve as
+  expert knowledge the system can reference during prediction.
+
+
+PHASE 1 — BUILD THE VECTOR INDEX  (runs once, offline)
+
+  This is where we prepare our "memory" — a searchable database of all
+  training essays — so that at prediction time we can find the most
+  relevant examples fast.
+
+  For every essay in the training set, we do four things:
+
+  1. Raw Embedding: We encode the essay text using a fine-tuned sentence
+     embedding model (based on nomic-embed-text-v1.5, fine-tuned specifically
+     on OCEAN essay pairs so that people with similar traits cluster together
+     in the embedding space).
+
+  2. Psychological Profiling: We call GPT-4o-mini to generate a 30-facet
+     personality profile for the essay (following the NEO-PI-R framework —
+     the gold standard in personality psychology). Each facet is rated as
+     high, moderate, none, or low.
+
+  3. Profile Embedding: We also encode that profile as text using the same
+     SBERT model, giving us a semantic representation of the personality
+     snapshot.
+
+  4. Dual Embedding: The final vector is a weighted blend of the raw text
+     embedding and the profile embedding (50/50 by default). This means
+     the index captures both writing style and personality structure.
+
+  We also store a compact 30-dimensional "facet vector" for each essay,
+  where each dimension maps directly to one NEO-PI-R facet. This will be
+  used for trait-aligned retrieval later.
+
+  All of this goes into a FAISS index, which supports fast nearest-neighbor
+  search over hundreds of thousands of vectors.
+
+
+PHASE 2 — INFERENCE  (runs per essay at prediction time)
+
+  When a new test essay comes in, here is exactly what happens:
+
+  Step A — Profile the new essay:
+    GPT-4o-mini generates a 30-facet psychological profile on the fly.
+
+  Step B — Create a dual query embedding:
+    Same process as Phase 1 — blend raw text and profile embeddings.
+
+  Step C — Create a facet query vector:
+    Convert the 30-facet profile dict into a 30-dimensional numeric vector.
+
+  Step D — Hybrid Retrieval (the Beta system, one of the key innovations):
+    For each of the 5 traits, we retrieve the K most similar training essays.
+    This is NOT just a plain FAISS search. It uses a hybrid score:
+
+        final_score = beta × dense_similarity + gamma × facet_similarity
+
+    "dense_similarity" measures overall semantic closeness (style + content).
+    "facet_similarity" uses only the 6 facets relevant to the specific trait
+    being evaluated — so it measures psychological closeness on that trait.
+
+    Why does this matter? Plain semantic search clusters essays by topic
+    (two essays about "weekend trips" end up near each other even if one
+    person is highly extraverted and the other is not). The facet vector
+    cuts through that noise and finds people with truly similar personalities.
+
+    Gamma (facet weight) is set higher than beta (dense weight) for all traits,
+    because personality signal is more important than topical similarity.
+
+  Step E — Build few-shot context:
+    The K retrieved essays are formatted as examples: their personality
+    profile slice (the 6 relevant facets) and their true label. This becomes
+    the "similar context" fed to the LLM.
+
+  Step F — Prompt Assembly:
+    We assemble a prompt using one of several templates. Options include:
+      - RAG + definition mode (provides trait definition + examples)
+      - RAG + principles mode (provides the Phase 0 principles + examples)
+      - Reasoned RAG mode (adds chain-of-thought with XML-structured output)
+
+  Step G — LLM Prediction:
+    GPT-4o-mini (or GPT-4o) reads the prompt and outputs a prediction.
+
+  Step H — Parse the output:
+    Depending on the mode, we extract "high" or "low" directly, or we parse
+    chain-of-thought reasoning and structured XML tags.
+
+  Output is saved per run: predictions, per-trait F1/accuracy reports,
+  evaluation summaries, and reasoning logs.
+
+────────────────────────────────────────────────────────────────────────────────
+WHERE THINGS STAND NOW
+────────────────────────────────────────────────────────────────────────────────
+
+The latest results are from April 28, 2026. Here is an honest summary
+of what's working and what still needs work:
+
+WHAT'S WORKING:
+  - The fine-tuned SBERT model is live and being used for all embeddings.
+  - The hybrid retrieval (Beta system) is fully implemented.
+  - Chain-of-thought prompting is adding real value — the model does NOT
+    blindly follow RAG examples. In an interesting test case (where all 3
+    retrieved examples were LOW but the true label was HIGH), the model
+    correctly predicted HIGH 71.4% of the time by trusting its own reading
+    of the text over the examples.
+  - Overall prediction accuracy: ~55% across 5 traits. Best trait:
+    Extraversion at 62%.
+
+CURRENT CHALLENGES:
+  - RAG sample label match rate is only 51.87% overall — just slightly better
+    than random. This means roughly half the "similar examples" we're
+    retrieving actually have the wrong label for that test case.
+    Conscientiousness is best at 58.67%; Openness and Neuroticism trail at
+    47.33%, below the random baseline.
+
+  - Mixed RAG signals hurt more than clean signals help. When retrieved
+    examples are 2-LOW vs 1-HIGH (confusing the model), accuracy drops to
+    44.6% — worse than baseline. This is the biggest problem to solve.
+
+  - When all 3 examples unanimously agree with the true label, we'd expect
+    very high confidence, but accuracy is only 57.1%. This suggests the
+    retrieved examples, while label-matched, may not be truly semantically
+    similar (they look like the right personality on paper, but the actual
+    text evidence doesn't match).
+
+NEXT STEPS:
+  1. Improve retrieval quality — reduce the 1H-2L confusing-ratio cases by
+     tuning the hybrid beta/gamma weights or by adding a post-retrieval
+     filtering step.
+  2. Investigate per-trait retrieval strategies, especially for Openness and
+     Neuroticism which have below-random label match rates.
+  3. Explore whether unanimous-but-wrong cases (3H-0L with poor accuracy)
+     can be fixed with better semantic filtering of the facet-matched pool.
+  4. Potentially expand the training index with more labeled examples to
+     improve coverage, especially for underperforming traits.
+
+────────────────────────────────────────────────────────────────────────────────
+QUICK GLOSSARY
+────────────────────────────────────────────────────────────────────────────────
+
+  OCEAN / Big Five : Standard personality model in psychology with 5 traits.
+  NEO-PI-R         : 30-facet questionnaire breaking each Big Five trait into
+                     6 sub-dimensions (e.g., Openness = Fantasy, Aesthetics,
+                     Feelings, Actions, Ideas, Values).
+  SBERT            : Sentence-BERT, a transformer model that turns text into
+                     dense embedding vectors for semantic similarity search.
+  FAISS            : Facebook AI Similarity Search — fast library for
+                     nearest-neighbor lookup over large vector databases.
+  RAG              : Retrieval-Augmented Generation — the technique of
+                     fetching relevant examples from a database and feeding
+                     them to an LLM as context, instead of relying on the
+                     LLM's training alone.
+  Beta / Gamma     : The weights in our hybrid retrieval score formula:
+                     score = beta × dense_sim + gamma × facet_sim.
+  GPT-4o-mini      : The OpenAI model used for profiling and prediction.
+                     Chosen for cost efficiency; GPT-4o is available for
+                     higher-stakes inference.
+
+================================================================================
+END OF BRIEFING
+================================================================================
