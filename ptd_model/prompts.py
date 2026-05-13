@@ -42,7 +42,6 @@ Rules:
 """
 
 
-
 SYS_PROMPT_REASONED = """
 You are an expert in personality psychology and psychometrics.
 
@@ -86,7 +85,7 @@ The final <label> tag MUST contain exactly one word: high or low. Nothing else.
 """
 
 
-RAG_DEF_ZEROSHOT_PROMPT = """
+DEF_ZEROSHOT_PROMPT = """
 Trait: {trait_name}
 
 HIGH {trait_name}: {definition_high}
@@ -94,9 +93,8 @@ LOW  {trait_name}: {definition_low}
 
 ---
 
-The following are the {top_k} most similar texts from the training set,
-with their known labels and extracted psychological evidence.
-Use them as additional reference to calibrate your judgment:
+The following are the {top_k} most similar texts from the training set
+with their known labels for {trait_name}:
 
 {similar_context}
 
@@ -105,8 +103,8 @@ Use them as additional reference to calibrate your judgment:
 Text to classify:
 <text>
 
-Based on the definitions above and the similar examples, determine
-whether the user's {trait_name} is high or low.
+Based on the definitions and similar examples above, determine whether
+the user's {trait_name} is high or low.
 
 Answer with exactly one word:
 
@@ -116,7 +114,7 @@ low
 """
 
 
-RAG_DEF_ONESHOT_PROMPT = """
+DEF_ONESHOT_PROMPT = """
 Trait: {trait_name}
 
 HIGH {trait_name}: {definition_high}
@@ -124,9 +122,9 @@ LOW  {trait_name}: {definition_low}
 
 ---
 
-The following are the {top_k} most similar texts from the training set,
-with their known labels and extracted psychological evidence.
-Use them as examples to calibrate your judgment:
+The following are the {top_k} most similar profiles from the training set,
+with their known labels and extracted psychological evidence for {trait_name}.
+Use them as calibration anchors:
 
 {similar_context}
 
@@ -135,8 +133,8 @@ Use them as examples to calibrate your judgment:
 Text to classify:
 <text>
 
-Based on the definitions above and the similar examples, determine
-whether the user's {trait_name} is high or low.
+Based on the definitions and similar examples above, determine whether
+the user's {trait_name} is high or low.
 
 Answer with exactly one word:
 

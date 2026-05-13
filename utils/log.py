@@ -35,6 +35,7 @@ def write_classification_report(
     prompt_mode: str,
     vector_db_dir: str,
     time: float,
+    dataset: str = "N/A",
 ):
     os.makedirs(os.path.dirname(report_path), exist_ok=True)
     if isinstance(save_df, dict):
@@ -46,6 +47,7 @@ def write_classification_report(
         f.write(f"{'=' * 70}\n\n")
         f.write(f"Model            : {model_name}\n")
         f.write(f"Test file        : {test_csv}\n")
+        f.write(f"Dataset          : {dataset}\n")
         f.write(f"# Records        : {n_records}\n")
         f.write(f"# Failed         : {fail_count}\n")
         f.write(f"Prompt mode      : {prompt_mode}\n")

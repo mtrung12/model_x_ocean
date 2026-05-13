@@ -71,3 +71,19 @@ def get_dual_embedding(raw_text: str, profile_text: str, alpha: float = ALPHA) -
     norm = np.linalg.norm(fused)
     fused = fused / norm if norm > 0 else fused
     return fused.tolist()
+
+
+def get_sliced_dual_embedding(
+    raw_text: str, profile: dict, trait_code: str, alpha: float = ALPHA
+) -> list[float]:
+    """Dual embedding using only the facets relevant to `trait_code`.
+
+    Uses slice_profile_for_trait to build a compact trait-focused profile text,
+    then fuses it with the raw-post embedding. Falls back to raw-only when the
+    sliced profile text is empty (missing facets for that trait).
+    """
+    from rag.profiler.prompts import slice_profile_for_trait
+    profile_text = slice_profile_for_trait(profile or {}, trait_code)
+    if not profile_text.strip():
+        return _embed_single(raw_text).tolist()
+    return get_dual_embedding(raw_text, profile_text, alpha=alpha)

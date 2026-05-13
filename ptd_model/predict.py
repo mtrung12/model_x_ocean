@@ -12,8 +12,8 @@ LEGACY_VECTOR_DB_DIR    = os.path.join(_PROJECT_ROOT, "data", "vector_db", "essa
 from ptd_model.prompts import (
     SYS_PROMPT,
     SYS_PROMPT_REASONED,
-    RAG_DEF_ZEROSHOT_PROMPT,
-    RAG_DEF_ONESHOT_PROMPT,
+    DEF_ZEROSHOT_PROMPT,
+    DEF_ONESHOT_PROMPT,
     REASONED_RAG_DEF_ONESHOT_PROMPT,
     TRAITS,
 )
@@ -56,7 +56,7 @@ RAG_NAME_TO_TRAIT_CODE = {
 }
 
 RAG_PROMPT_MODES = {
-    "rag_def_zeroshot", "rag_def_oneshot",
+    "def_zeroshot", "def_oneshot",
     "reasoned_rag_def_oneshot",
 }
 
@@ -107,6 +107,20 @@ def build_similar_context(retrieved, trait_code, top_k):
     return "\n\n".join(blocks)
 
 
+def _build_label_only_context(shared_results, trait_rag_name, top_k):
+    """Build label-only context for def_zeroshot: same retrieved results for all traits."""
+    blocks, seen = [], 0
+    for r in shared_results:
+        label = r.get("trait_labels", {}).get(trait_rag_name)
+        if label is None:
+            continue
+        blocks.append(f"[Similar Profile {seen + 1}] (label: {label})")
+        seen += 1
+        if seen >= top_k:
+            break
+    return "\n\n".join(blocks)
+
+
 def _llm_call(model_name, system_prompt, user_prompt, max_new_tokens, temperature):
     if model_name.startswith("gpt"):
         return gpt_call(user_prompt, system_prompt, model_name, max_new_tokens, temperature)
@@ -131,6 +145,7 @@ def build_prompt(
     query_profile_text=None,
     query_profile_dict=None,
     top_k=3,
+    pre_built_context=None,
 ):
     rag_trait  = TRAIT_TO_RAG_NAME[trait_name]
     trait_code = RAG_NAME_TO_TRAIT_CODE[rag_trait]
@@ -148,11 +163,22 @@ def build_prompt(
         )
         return build_similar_context(retrieved, trait_code, top_k)
 
-    if prompt_mode in ("rag_def_zeroshot", "rag_def_oneshot"):
-        similar_context = _get_similar_context()
-        template = RAG_DEF_ZEROSHOT_PROMPT if prompt_mode == "rag_def_zeroshot" else RAG_DEF_ONESHOT_PROMPT
+    if prompt_mode == "def_zeroshot":
         return (
-            template.format(
+            DEF_ZEROSHOT_PROMPT.format(
+                trait_name=trait_name,
+                definition_high=trait_defs.get("high", ""),
+                definition_low=trait_defs.get("low", ""),
+                top_k=top_k,
+                similar_context=pre_built_context or "",
+            ),
+            SYS_PROMPT,
+        )
+
+    if prompt_mode == "def_oneshot":
+        similar_context = _get_similar_context()
+        return (
+            DEF_ONESHOT_PROMPT.format(
                 trait_name=trait_name,
                 definition_high=trait_defs.get("high", ""),
                 definition_low=trait_defs.get("low", ""),
@@ -229,7 +255,7 @@ def predict(
 
         query_profile_text = None
         query_profile_dict = None
-        if prompt_mode in RAG_PROMPT_MODES:
+        if prompt_mode in RAG_PROMPT_MODES and prompt_mode != "def_zeroshot":
             try:
                 profile = _call_profiler_for_text(text, model_name=profiler_model)
                 if profile.get("valid"):
@@ -240,7 +266,19 @@ def predict(
             except Exception as exc:
                 print(f"  [predict] Profiler error for record {idx}: {exc}. Using raw-text fallback.")
 
+        # def_zeroshot: retrieve once per essay (trait-agnostic), reuse for all 5 traits
+        shared_results = None
+        if prompt_mode == "def_zeroshot":
+            query_emb = retriever._embed_query(text)
+            shared_results = retriever._search(query_emb, top_k * 4)
+
         for trait_name, pred_col in TRAIT_TO_COLUMN.items():
+            rag_trait = TRAIT_TO_RAG_NAME[trait_name]
+            pre_context = (
+                _build_label_only_context(shared_results, rag_trait, top_k)
+                if prompt_mode == "def_zeroshot"
+                else None
+            )
             usr_prompt, sys_prompt = build_prompt(
                 prompt_mode=prompt_mode,
                 trait_name=trait_name,
@@ -249,6 +287,7 @@ def predict(
                 query_profile_text=query_profile_text,
                 query_profile_dict=query_profile_dict,
                 top_k=top_k,
+                pre_built_context=pre_context,
             )
             output = predict_text(
                 text=text,

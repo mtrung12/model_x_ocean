@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -u -c \"import json; nb=json.load\\(open\\('f:/std/GR/code/model_x_ocean/notebook/gpt/build_hybrid_index.ipynb',encoding='utf-8'\\)\\); cells={c['id']:c for c in nb['cells']}; print\\(''.join\\(cells['cell-2']['source']\\)\\); print\\('---'\\); print\\(''.join\\(cells['cell-6']['source']\\)\\)\")",
+      "Bash(python -u -c ' *)",
+      "Bash(python -c \"import numpy as np; m=np.load\\('f:/std/GR/code/model_x_ocean/data/vector_db/essays_dual/facet_vectors.npy'\\); print\\('facet_mat shape:', m.shape\\)\")"
+    ]
+  }
+}

@@ -74,6 +74,7 @@ def build_index(
     output_dir="data/vector_db/essays_dual",
     alpha=None,
     force_rebuild=False,
+    rawpost_index_dir=None,
 ):
     """Build (or skip if already built) a dual-embedding FAISS index.
 
@@ -89,8 +90,12 @@ def build_index(
         Fusion weight for raw text (0-1). None uses embedder.ALPHA default.
     force_rebuild : bool
         Rebuild even if the index already exists.
+    rawpost_index_dir : str or None
+        Path to an existing raw-post FAISS index directory (vectors.faiss +
+        vectors_meta.jsonl). When provided, raw embeddings are loaded from
+        there instead of being re-encoded — saves ~half the compute time.
     """
-    from rag.embedder import get_dual_embedding, ALPHA as DEFAULT_ALPHA
+    from rag.embedder import get_dual_embedding, _embed_single, ALPHA as DEFAULT_ALPHA
     _alpha = DEFAULT_ALPHA if alpha is None else alpha
 
     index_path = os.path.join(output_dir, "vectors.faiss")
@@ -105,6 +110,21 @@ def build_index(
     store = ProfileStore(profile_store_path)
     store.load()
     print(f"[build_index] Loaded {len(store)} profiles from {profile_store_path!r}")
+
+    # Load pre-computed raw embeddings when a rawpost index is provided.
+    _raw_embs = None
+    if rawpost_index_dir is not None:
+        import faiss as _faiss
+        import json as _json
+        _rp_index = _faiss.read_index(os.path.join(rawpost_index_dir, "vectors.faiss"))
+        _rp_meta  = []
+        with open(os.path.join(rawpost_index_dir, "vectors_meta.jsonl"), encoding="utf-8") as _f:
+            for _line in _f:
+                _rp_meta.append(_json.loads(_line))
+        _uid_to_pos = {m["user_id"]: pos for pos, m in enumerate(_rp_meta)}
+        _raw_embs   = {uid: _rp_index.reconstruct(pos) for uid, pos in _uid_to_pos.items()}
+        print(f"[build_index] Loaded {len(_raw_embs)} pre-computed raw embeddings "
+              f"from {rawpost_index_dir!r}  (skipping raw re-encoding)")
 
     n = len(data)
     print(f"[build_index] Embedding {n} essays (alpha={_alpha}) ...")
@@ -126,7 +146,14 @@ def build_index(
             profile_text = raw_text
             no_profile  += 1
 
-        vec = get_dual_embedding(raw_text, profile_text, alpha=_alpha)
+        if _raw_embs is not None and user_id in _raw_embs:
+            emb_raw  = np.array(_raw_embs[user_id], dtype="float32")
+            emb_prof = np.array(_embed_single(profile_text), dtype="float32")
+            fused    = _alpha * emb_raw + (1.0 - _alpha) * emb_prof
+            norm     = np.linalg.norm(fused)
+            vec      = (fused / norm if norm > 0 else fused).tolist()
+        else:
+            vec = get_dual_embedding(raw_text, profile_text, alpha=_alpha)
         embeddings.append(vec)
 
         trait_labels = _extract_trait_labels(row)

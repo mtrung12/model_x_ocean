@@ -34,6 +34,7 @@ def evaluate(
     res_dir: str,
     run_id: str,
     vector_db_dir: str = None,
+    dataset: str = "N/A",
 ) -> Dict[str, object]:
     df = pd.read_csv(prediction_csv)
 
@@ -123,6 +124,7 @@ def evaluate(
             prompt_mode=prompt_mode,
             vector_db_dir=vector_db_dir or "N/A",
             time=run_time,
+            dataset=dataset,
         )
 
         report_paths[trait_name] = report_path
