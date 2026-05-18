@@ -58,18 +58,29 @@ Rules:
 - Use only evidence from the provided text. Do NOT invent details.
 - Quote or paraphrase concrete cues; abstract trait words alone are not
   evidence.
+- CRITICAL — distinguish transient states from stable traits:
+    * Situational stress, fatigue, homesickness, exam pressure, or adjustment
+      to new environments (e.g. starting university) are normal context-driven
+      reactions that virtually anyone experiences. They are NOT reliable
+      evidence of high Neuroticism on their own.
+    * Trait-level evidence requires recurring, cross-situational patterns of
+      emotional instability that persist independent of an obvious external cause.
+    * Tag every evidence cue as [state] (temporary/situational) or
+      [trait] (recurring/cross-situational). Weight [trait] cues heavily;
+      treat [state] cues as weak or neutral unless they are extreme or
+      accompanied by explicit statements of habitual emotional difficulty.
 - Output MUST follow the XML tag structure below, in this exact order,
   with no extra text outside the tags.
 
 Output format (replicate verbatim, fill in the contents):
 
 <evidence>
-- one concrete cue from the text
-- another concrete cue
+- [state|trait] one concrete cue from the text
+- [state|trait] another concrete cue
 - ...
 </evidence>
 <facet_check>
-- facet name -> high|low|mixed -> brief reason
+- facet name -> high|low|mixed -> brief reason (dominant evidence type: state|trait)
 - ...
 </facet_check>
 <example_alignment>
@@ -77,7 +88,9 @@ The test text most closely matches Similar Profile <i> (label: <label>) because 
 The test text diverges from Similar Profile <j> on <axis>.
 </example_alignment>
 <verdict>
-1-2 sentence synthesis of why the overall pattern points high or low.
+1-2 sentence synthesis of why the overall pattern points high or low,
+explicitly noting whether the supporting evidence is trait-level or
+situational/state-level.
 </verdict>
 <label>high</label>
 
