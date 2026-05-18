@@ -174,3 +174,182 @@ specified in the system message:
 
 Do not output any text outside these tags.
 """
+
+
+# ---------------------------------------------------------------------------
+# Multi-LLM debate prompts (all-traits prediction + adversarial verification)
+# ---------------------------------------------------------------------------
+
+SYS_PROMPT_ALL_TRAITS = """\
+You are an expert in personality psychology and psychometrics.
+Predict ALL FIVE Big Five personality traits from the essay below.
+
+CRITICAL OUTPUT RULE — do NOT write anything before or after these 5 lines:
+<Openness>high</Openness>
+<Conscientiousness>low</Conscientiousness>
+<Extraversion>high</Extraversion>
+<Agreeableness>low</Agreeableness>
+<Neuroticism>high</Neuroticism>
+
+Replace each value with your actual prediction for that trait.
+The only legal values are the exact words:  high  or  low
+Do not write "high or low", do not add punctuation, do not add prose.
+"""
+
+ALL_TRAITS_PROMPT = """\
+BIG FIVE TRAIT DEFINITIONS:
+
+Openness to Experience:
+  HIGH: {openness_high}
+  LOW:  {openness_low}
+
+Conscientiousness:
+  HIGH: {conscientiousness_high}
+  LOW:  {conscientiousness_low}
+
+Extraversion:
+  HIGH: {extraversion_high}
+  LOW:  {extraversion_low}
+
+Agreeableness:
+  HIGH: {agreeableness_high}
+  LOW:  {agreeableness_low}
+
+Neuroticism:
+  HIGH: {neuroticism_high}
+  LOW:  {neuroticism_low}
+
+---
+SIMILAR PROFILES ({top_k} from training set — calibration anchors):
+
+{similar_context}
+
+---
+ESSAY TO CLASSIFY:
+<text>
+
+---
+Output ONLY these 5 XML lines — replace each value with high or low:
+<Openness>high</Openness>
+<Conscientiousness>low</Conscientiousness>
+<Extraversion>high</Extraversion>
+<Agreeableness>low</Agreeableness>
+<Neuroticism>high</Neuroticism>
+"""
+
+SYS_PROMPT_DEBATE = """\
+You are an expert in personality psychology and psychometrics.
+
+You previously made predictions about a text. Another model disagrees
+with you on some traits. Reflect critically on your own reasoning.
+Be specific: cite concrete evidence from the text, not abstract labels.
+
+For every disputed trait answer exactly:
+  1. Assumption:  the hidden premise behind your prediction
+  2. Evidence:    a paraphrase (12-20 words) of a concrete cue in the text
+  3. Falsifier:   what text evidence would force you to switch your answer
+
+Use the section format shown below — one block per disputed trait.
+Write nothing outside those blocks.
+"""
+
+DEBATE_PROBE_PROMPT = """\
+Your predictions for this text:
+{your_predictions}
+
+The other model disagrees on these traits:
+{disagreements}
+
+For each disagreed trait, fill in the template below.
+Do not write anything outside the === blocks.
+
+{debate_template}
+
+Text:
+<text>
+"""
+
+# Built dynamically per call so each trait gets its own === block
+_DEBATE_BLOCK_TEMPLATE = """\
+=== {trait} ===
+1. Assumption: [your hidden premise]
+2. Evidence:   [12-20 word paraphrase from the text]
+3. Falsifier:  [what would change your answer]"""
+
+
+def _build_debate_template(disagreed_traits):
+    """Return the === block template string for the given list of trait names."""
+    return "\n\n".join(_DEBATE_BLOCK_TEMPLATE.format(trait=t) for t in disagreed_traits)
+
+
+SYS_PROMPT_VERIFIER = """\
+You are a senior personality psychology verification expert.
+
+Two independent models predicted Big Five personality traits for a text
+and disagreed on some traits. You receive:
+  - The original text
+  - Both models' full predictions
+  - Each model's debate (assumption / evidence / falsifier per disputed trait)
+
+Your job:
+1. Critically evaluate each model's evidence and assumptions against the text.
+2. Resolve every disputed trait with a clear reason.
+3. Emit a final verdict for ALL FIVE traits.
+
+Output format — follow this structure exactly:
+<reasoning>
+[Address every disputed trait: which model's evidence is stronger and why.]
+</reasoning>
+<predictions>
+<Openness>high</Openness>
+<Conscientiousness>low</Conscientiousness>
+<Extraversion>high</Extraversion>
+<Agreeableness>low</Agreeableness>
+<Neuroticism>high</Neuroticism>
+</predictions>
+
+Rules:
+- Replace each value in <predictions> with your actual verdict: high or low.
+- Write nothing outside <reasoning>...</reasoning> and <predictions>...</predictions>.
+- Do not repeat the models' XML tags inside <reasoning> — use plain text there.
+"""
+
+VERIFIER_PROMPT = """\
+ORIGINAL TEXT:
+\"\"\"
+<text>
+\"\"\"
+
+---
+MODEL A ({model_a_name}):
+{model_a_predictions}
+
+MODEL B ({model_b_name}):
+{model_b_predictions}
+
+---
+AGREE:    {agreements}
+DISAGREE: {disagreements}
+
+---
+MODEL A debate:
+{model_a_debate}
+
+---
+MODEL B debate:
+{model_b_debate}
+
+---
+Produce your output now.  Follow the format in the system message exactly:
+
+<reasoning>
+...
+</reasoning>
+<predictions>
+<Openness>high</Openness>
+<Conscientiousness>low</Conscientiousness>
+<Extraversion>high</Extraversion>
+<Agreeableness>low</Agreeableness>
+<Neuroticism>high</Neuroticism>
+</predictions>
+"""
