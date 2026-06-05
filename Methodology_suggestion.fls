@@ -1,0 +1,8 @@
+PWD f:\std\GR\code\model_x_ocean
+INPUT C:\Users\ASUS\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
+INPUT f:\std\GR\code\model_x_ocean\Methodology_suggestion.tex
+OUTPUT Methodology_suggestion.log
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\subfiles\subfiles.cls
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\subfiles\subfiles.cls
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\import\import.sty
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\import\import.sty

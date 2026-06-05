@@ -5,22 +5,19 @@ import pandas as pd
 
 _PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-FINETUNED_MODEL_DIR     = os.path.join(_PROJECT_ROOT, "models", "sbert_essays_finetuned")
-FINETUNED_ARTIFACTS_DIR = os.path.join(_PROJECT_ROOT, "models", "rag_artifacts")
-LEGACY_VECTOR_DB_DIR    = os.path.join(_PROJECT_ROOT, "data", "vector_db", "essays")
+FINETUNED_MODEL_DIR = os.path.join(_PROJECT_ROOT, "models", "sbert_essays_finetuned")
 
 from ptd_model.prompts import (
-    SYS_PROMPT,
     SYS_PROMPT_REASONED,
-    DEF_ZEROSHOT_PROMPT,
-    DEF_ONESHOT_PROMPT,
     REASONED_RAG_DEF_ONESHOT_PROMPT,
     TRAITS,
+    TRAIT_NOTES,
 )
 from utils.gpt_client import gpt_call
 from utils.hf_client import hf_call
+from utils.ollama_client import ollama_call
 from utils.log import log_to_file
-from utils.parser import extract_direct, extract_reasoned_full
+from utils.parser import extract_reasoned_full
 
 
 TRAIT_TO_COLUMN = {
@@ -31,13 +28,6 @@ TRAIT_TO_COLUMN = {
     "Neuroticism":       "pred_cNEU",
 }
 
-TRAIT_TO_LABEL_COLUMN = {
-    "Openness":          "cOPN",
-    "Conscientiousness": "cCON",
-    "Extraversion":      "cEXT",
-    "Agreeableness":     "cAGR",
-    "Neuroticism":       "cNEU",
-}
 
 TRAIT_TO_RAG_NAME = {
     "Openness":          "Openness to Experience",
@@ -47,21 +37,9 @@ TRAIT_TO_RAG_NAME = {
     "Neuroticism":       "Neuroticism",
 }
 
-RAG_NAME_TO_TRAIT_CODE = {
-    "Openness to Experience": "cOPN",
-    "Conscientiousness":      "cCON",
-    "Extraversion":           "cEXT",
-    "Agreeableness":          "cAGR",
-    "Neuroticism":            "cNEU",
-}
 
-RAG_PROMPT_MODES = {
-    "def_zeroshot", "def_oneshot",
-    "reasoned_rag_def_oneshot",
-}
-
-REASONED_PROMPT_MODES = {
-    "reasoned_rag_def_oneshot",
+PROMPT_MODES = {
+    "reasoned_rag_def_oneshot_30f",
 }
 
 
@@ -88,8 +66,8 @@ def _profile_to_full_text(profile):
     return "\n".join(lines)
 
 
-def build_similar_context(retrieved, trait_code, top_k):
-    from rag.profiler.prompts import slice_profile_for_trait
+def build_similar_context_full_30(retrieved, top_k):
+    from rag.profiler.prompts import slice_profile_full_30, parse_profile_output
     blocks = []
     for i, r in enumerate(retrieved[:top_k]):
         label = r.get("label", "?")
@@ -98,8 +76,15 @@ def build_similar_context(retrieved, trait_code, top_k):
         if not profile_dict.get("facets"):
             profile_dict = (r.get("features") or {}).get("profile") or {}
 
+        if not profile_dict.get("facets"):
+            raw_text = r.get("posts_raw", "")
+            if raw_text.strip().startswith("[FACETS]"):
+                parsed = parse_profile_output(raw_text)
+                if parsed.get("valid"):
+                    profile_dict = parsed
+
         if profile_dict.get("facets"):
-            evidence = slice_profile_for_trait(profile_dict, trait_code)
+            evidence = slice_profile_full_30(profile_dict)
         else:
             evidence = r.get("posts_raw", "").strip()
 
@@ -107,23 +92,11 @@ def build_similar_context(retrieved, trait_code, top_k):
     return "\n\n".join(blocks)
 
 
-def _build_label_only_context(shared_results, trait_rag_name, top_k):
-    """Build label-only context for def_zeroshot: same retrieved results for all traits."""
-    blocks, seen = [], 0
-    for r in shared_results:
-        label = r.get("trait_labels", {}).get(trait_rag_name)
-        if label is None:
-            continue
-        blocks.append(f"[Similar Profile {seen + 1}] (label: {label})")
-        seen += 1
-        if seen >= top_k:
-            break
-    return "\n\n".join(blocks)
-
-
 def _llm_call(model_name, system_prompt, user_prompt, max_new_tokens, temperature):
     if model_name.startswith("gpt"):
         return gpt_call(user_prompt, system_prompt, model_name, max_new_tokens, temperature)
+    if model_name.startswith("ollama:"):
+        return ollama_call(user_prompt, system_prompt, model_name[len("ollama:"):], max_new_tokens, temperature)
     return hf_call(user_prompt, system_prompt, model_name, max_new_tokens, temperature)
 
 
@@ -145,13 +118,11 @@ def build_prompt(
     query_profile_text=None,
     query_profile_dict=None,
     top_k=3,
-    pre_built_context=None,
 ):
     rag_trait  = TRAIT_TO_RAG_NAME[trait_name]
-    trait_code = RAG_NAME_TO_TRAIT_CODE[rag_trait]
     trait_defs = TRAITS.get(trait_name, {})
 
-    def _get_similar_context():
+    if prompt_mode == "reasoned_rag_def_oneshot_30f":
         if retriever is None:
             raise ValueError(f"prompt_mode={prompt_mode!r} requires a retriever")
         retrieved = retriever.retrieve(
@@ -161,35 +132,8 @@ def build_prompt(
             profile_text=query_profile_text,
             query_profile_dict=query_profile_dict,
         )
-        return build_similar_context(retrieved, trait_code, top_k)
-
-    if prompt_mode == "def_zeroshot":
-        return (
-            DEF_ZEROSHOT_PROMPT.format(
-                trait_name=trait_name,
-                definition_high=trait_defs.get("high", ""),
-                definition_low=trait_defs.get("low", ""),
-                top_k=top_k,
-                similar_context=pre_built_context or "",
-            ),
-            SYS_PROMPT,
-        )
-
-    if prompt_mode == "def_oneshot":
-        similar_context = _get_similar_context()
-        return (
-            DEF_ONESHOT_PROMPT.format(
-                trait_name=trait_name,
-                definition_high=trait_defs.get("high", ""),
-                definition_low=trait_defs.get("low", ""),
-                top_k=top_k,
-                similar_context=similar_context,
-            ),
-            SYS_PROMPT,
-        )
-
-    if prompt_mode == "reasoned_rag_def_oneshot":
-        similar_context = _get_similar_context()
+        similar_context = build_similar_context_full_30(retrieved, top_k)
+        trait_note = TRAIT_NOTES.get(trait_name, "")
         return (
             REASONED_RAG_DEF_ONESHOT_PROMPT.format(
                 trait_name=trait_name,
@@ -197,6 +141,7 @@ def build_prompt(
                 definition_low=trait_defs.get("low", ""),
                 top_k=top_k,
                 similar_context=similar_context,
+                trait_note=trait_note,
             ),
             SYS_PROMPT_REASONED,
         )
@@ -218,23 +163,19 @@ def predict(
     profiler_model="gpt-4o-mini",
 ):
     run_id       = time.strftime("%Y%m%d-%H%M%S")
-    log_filepath = os.path.join(log_dir, model_name, prompt_mode, f"{run_id}_log.txt")
-    output_dir   = os.path.join(res_dir, model_name, prompt_mode, run_id)
+    safe_model   = model_name.replace(":", "_")
+    log_filepath = os.path.join(log_dir, safe_model, prompt_mode, f"{run_id}_log.txt")
+    output_dir   = os.path.join(res_dir, safe_model, prompt_mode, run_id)
     os.makedirs(output_dir, exist_ok=True)
-
-    if prompt_mode in REASONED_PROMPT_MODES:
-        extractor = lambda r: (extract_reasoned_full(r).get("label"))
-    else:
-        extractor = extract_direct
 
     reasoning_log_path = (
         os.path.join(output_dir, "reasoning_log.jsonl")
-        if prompt_mode in REASONED_PROMPT_MODES
+        if prompt_mode in PROMPT_MODES
         else None
     )
 
     retriever = None
-    if prompt_mode in RAG_PROMPT_MODES:
+    if prompt_mode in PROMPT_MODES:
         import rag.embedder as _embedder
         _embedder.FINETUNED_MODEL_DIR = FINETUNED_MODEL_DIR
 
@@ -255,7 +196,7 @@ def predict(
 
         query_profile_text = None
         query_profile_dict = None
-        if prompt_mode in RAG_PROMPT_MODES and prompt_mode != "def_zeroshot":
+        if prompt_mode in PROMPT_MODES:
             try:
                 profile = _call_profiler_for_text(text, model_name=profiler_model)
                 if profile.get("valid"):
@@ -266,19 +207,7 @@ def predict(
             except Exception as exc:
                 print(f"  [predict] Profiler error for record {idx}: {exc}. Using raw-text fallback.")
 
-        # def_zeroshot: retrieve once per essay (trait-agnostic), reuse for all 5 traits
-        shared_results = None
-        if prompt_mode == "def_zeroshot":
-            query_emb = retriever._embed_query(text)
-            shared_results = retriever._search(query_emb, top_k * 4)
-
         for trait_name, pred_col in TRAIT_TO_COLUMN.items():
-            rag_trait = TRAIT_TO_RAG_NAME[trait_name]
-            pre_context = (
-                _build_label_only_context(shared_results, rag_trait, top_k)
-                if prompt_mode == "def_zeroshot"
-                else None
-            )
             usr_prompt, sys_prompt = build_prompt(
                 prompt_mode=prompt_mode,
                 trait_name=trait_name,
@@ -287,7 +216,6 @@ def predict(
                 query_profile_text=query_profile_text,
                 query_profile_dict=query_profile_dict,
                 top_k=top_k,
-                pre_built_context=pre_context,
             )
             output = predict_text(
                 text=text,
@@ -302,24 +230,21 @@ def predict(
             )
             stripped = output.strip()
 
-            if reasoning_log_path is not None:
-                parsed = extract_reasoned_full(stripped)
-                df.at[idx, pred_col] = parsed.get("label")
-                import json as _json
-                rec = {
-                    "record_idx":        int(idx),
-                    "trait":             trait_name,
-                    "label":             parsed.get("label"),
-                    "evidence":          parsed.get("evidence"),
-                    "facet_check":       parsed.get("facet_check"),
-                    "example_alignment": parsed.get("example_alignment"),
-                    "verdict":           parsed.get("verdict"),
-                }
-                os.makedirs(os.path.dirname(reasoning_log_path), exist_ok=True)
-                with open(reasoning_log_path, "a", encoding="utf-8") as f:
-                    f.write(_json.dumps(rec, ensure_ascii=False) + "\n")
-            else:
-                df.at[idx, pred_col] = extractor(stripped)
+            import json as _json
+            parsed = extract_reasoned_full(stripped)
+            df.at[idx, pred_col] = parsed.get("label")
+            rec = {
+                "record_idx":        int(idx),
+                "trait":             trait_name,
+                "label":             parsed.get("label"),
+                "evidence":          parsed.get("evidence"),
+                "facet_check":       parsed.get("facet_check"),
+                "example_alignment": parsed.get("example_alignment"),
+                "verdict":           parsed.get("verdict"),
+            }
+            os.makedirs(os.path.dirname(reasoning_log_path), exist_ok=True)
+            with open(reasoning_log_path, "a", encoding="utf-8") as f:
+                f.write(_json.dumps(rec, ensure_ascii=False) + "\n")
 
         if (idx + 1) % 10 == 0:
             print(f"  [predict] {idx + 1}/{n} done.")

@@ -389,20 +389,21 @@ def parse_profile_output(raw: str) -> Dict:
 # Per-trait facet selection for the inference-time slice. Drops facets that
 # are typically n/e or weakly-observable in journal text.
 TRAIT_FACETS_FOR_INFERENCE: Dict[str, List[str]] = {
-    "cOPN": ["O3", "O4", "O5", "O6", "O1", "O2"],
+    "cOPN": ["O1", "O2", "O3", "O4", "O5", "O6"],
     "cCON": ["C1", "C2", "C3", "C4", "C5", "C6"],
-    "cEXT": ["E3", "E4", "E5", "E6"],
-    "cAGR": ["A2", "A4", "A5", "A6"],
-    "cNEU": ["N1", "N3", "N5", "N6"],
+    "cEXT": ["E1", "E2", "E3", "E4", "E5", "E6"],
+    "cAGR": ["A1", "A2", "A3", "A4", "A5", "A6"],
+    "cNEU": ["N1", "N2", "N3", "N4", "N5", "N6"],
 }
 
 # Per-trait linguistic-block keys to keep in the inference slice.
+_ALL_LING = ["pronouns", "emotion", "tense", "cognitive", "social", "length"]
 TRAIT_LING_FOR_INFERENCE: Dict[str, List[str]] = {
-    "cOPN": ["cognitive", "register", "tense"],
-    "cCON": ["tense", "register", "cognitive"],
-    "cEXT": ["social", "emotion", "pronouns"],
-    "cAGR": ["social", "emotion"],
-    "cNEU": ["pronouns", "emotion", "tense"],
+    "cOPN": _ALL_LING,
+    "cCON": _ALL_LING,
+    "cEXT": _ALL_LING,
+    "cAGR": _ALL_LING,
+    "cNEU": _ALL_LING,
 }
 
 
@@ -433,4 +434,34 @@ def slice_profile_for_trait(profile: Dict, trait_code: str) -> str:
             ling_kept.append(f"{key}: {v}")
     if ling_kept:
         out_lines.append("Linguistic: " + " | ".join(ling_kept))
+    return "\n".join(out_lines)
+
+
+def slice_profile_full_30(profile: Dict) -> str:
+    """Render all 30 facets from a parsed profile (trait-agnostic view).
+
+    Output is plain text (~350-450 tokens) for use in the full-30-facet
+    inference mode, where retrieved exemplars expose the complete NEO-PI-R
+    profile rather than a single trait slice.
+    """
+    facets = profile.get("facets", {})
+    ling = profile.get("linguistic", {})
+    out_lines = []
+    current_trait = None
+    for code, name, trait, _ in FACETS:
+        if trait != current_trait:
+            current_trait = trait
+            out_lines.append(f"[{TRAIT_FULL_NAME[trait]}]")
+        f = facets.get(code)
+        if not f or not f["signal"]:
+            continue
+        sig = f["signal"]
+        ev = f["evidence"]
+        if ev:
+            out_lines.append(f"  {code} {name:<18}| {sig:<4}| {ev}")
+        else:
+            out_lines.append(f"  {code} {name:<18}| {sig:<4}|")
+    ling_parts = [f"{k}: {v}" for k, v in ling.items() if v]
+    if ling_parts:
+        out_lines.append("[Linguistic] " + " | ".join(ling_parts))
     return "\n".join(out_lines)

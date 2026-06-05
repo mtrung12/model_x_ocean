@@ -23,23 +23,29 @@ TRAITS = {
 }
 
 
-SYS_PROMPT = """
-You are an expert in personality psychology and psychometrics.
+TRAIT_NOTES = {
+    "Neuroticism": """\
+Scoring note — Neuroticism:
+- Situational stress, fatigue, homesickness, exam pressure, or adjustment to
+  new environments are universal reactions. Tag them [state]; they are NOT
+  reliable evidence of high Neuroticism on their own.
+- Tag as [trait] only recurring, cross-situational patterns of emotional
+  instability that persist independent of an obvious external cause (e.g.
+  habitual anxiety, chronic emotional dysregulation stated explicitly).
+- Treat [state] cues as weak or neutral unless extreme or accompanied by
+  explicit statements of habitual emotional difficulty.""",
 
-Your task is to infer a single Big Five personality trait from a user's text.
-
-You will be given:
-- The target personality trait.
-- HIGH and LOW definitions of the trait.
-
-Your job is to determine whether the user exhibits a HIGH or LOW level of that trait.
-
-Rules:
-- Use only evidence from the provided text.
-- Do not infer unsupported characteristics.
-- Output exactly one word: high or low.
-- Do not provide explanations unless explicitly requested.
-"""
+    "Extraversion": """\
+Scoring note — Extraversion:
+- Expressive writing, enthusiastic tone, humor, strong opinions, excitement
+  about activities, or vivid descriptions are stylistic features. Tag them
+  [state]; they do NOT constitute evidence of Extraversion. A person can
+  write expressively while being deeply introverted.
+- Tag as [trait] only cues about social energy and orientation: actively
+  seeking groups or parties, gaining energy from social interaction,
+  discomfort with solitude, preferring large gatherings, or explicit
+  statements about enjoying socialising.""",
+}
 
 
 SYS_PROMPT_REASONED = """
@@ -58,17 +64,15 @@ Rules:
 - Use only evidence from the provided text. Do NOT invent details.
 - Quote or paraphrase concrete cues; abstract trait words alone are not
   evidence.
-- CRITICAL — distinguish transient states from stable traits:
-    * Situational stress, fatigue, homesickness, exam pressure, or adjustment
-      to new environments (e.g. starting university) are normal context-driven
-      reactions that virtually anyone experiences. They are NOT reliable
-      evidence of high Neuroticism on their own.
-    * Trait-level evidence requires recurring, cross-situational patterns of
-      emotional instability that persist independent of an obvious external cause.
+ — distinguish transient states from stable traits:
     * Tag every evidence cue as [state] (temporary/situational) or
       [trait] (recurring/cross-situational). Weight [trait] cues heavily;
-      treat [state] cues as weak or neutral unless they are extreme or
-      accompanied by explicit statements of habitual emotional difficulty.
+      treat [state] cues as weak or neutral.
+    * Refer to the trait-specific scoring note in the user message for
+      what counts as [state] vs [trait] for the current trait.
+- HIGH requires positive trait-level evidence. If you have ZERO [trait] cues
+  across all facets, your <label> MUST be low. Do not accumulate [state] cues
+  to reach high — state-only evidence is insufficient for a high verdict.
 - Output MUST follow the XML tag structure below, in this exact order,
   with no extra text outside the tags.
 
@@ -83,77 +87,22 @@ Output format (replicate verbatim, fill in the contents):
 - facet name -> high|low|mixed -> brief reason (dominant evidence type: state|trait)
 - ...
 </facet_check>
+<cue_tally>
+[trait] cues: N  |  [state] cues: M
+Presumption: HIGH (N > 0) or LOW (N = 0)
+</cue_tally>
 <example_alignment>
 The test text most closely matches Similar Profile <i> (label: <label>) because <reason>.
 The test text diverges from Similar Profile <j> on <axis>.
 </example_alignment>
 <verdict>
-1-2 sentence synthesis of why the overall pattern points high or low,
-explicitly noting whether the supporting evidence is trait-level or
-situational/state-level.
+1-2 sentence synthesis. MUST be consistent with your <cue_tally>: if
+[trait] count = 0, you MUST conclude low. Do NOT describe [state] cues
+as "trait-level evidence" here.
 </verdict>
 <label>high</label>
 
 The final <label> tag MUST contain exactly one word: high or low. Nothing else.
-"""
-
-
-DEF_ZEROSHOT_PROMPT = """
-Trait: {trait_name}
-
-HIGH {trait_name}: {definition_high}
-LOW  {trait_name}: {definition_low}
-
----
-
-The following are the {top_k} most similar texts from the training set
-with their known labels for {trait_name}:
-
-{similar_context}
-
----
-
-Text to classify:
-<text>
-
-Based on the definitions and similar examples above, determine whether
-the user's {trait_name} is high or low.
-
-Answer with exactly one word:
-
-high
-or
-low
-"""
-
-
-DEF_ONESHOT_PROMPT = """
-Trait: {trait_name}
-
-HIGH {trait_name}: {definition_high}
-LOW  {trait_name}: {definition_low}
-
----
-
-The following are the {top_k} most similar profiles from the training set,
-with their known labels and extracted psychological evidence for {trait_name}.
-Use them as calibration anchors:
-
-{similar_context}
-
----
-
-Text to classify:
-<text>
-
-Based on the definitions and similar examples above, determine whether
-the user's {trait_name} is high or low.
-
-Answer with exactly one word:
-
-high
-or
-low
 """
 
 
@@ -163,6 +112,7 @@ Trait: {trait_name}
 HIGH {trait_name}: {definition_high}
 LOW  {trait_name}: {definition_low}
 
+{trait_note}
 ---
 
 The following are the {top_k} most similar texts from the training set,
@@ -181,6 +131,7 @@ specified in the system message:
 
 <evidence> ... </evidence>
 <facet_check> ... </facet_check>
+<cue_tally> ... </cue_tally>
 <example_alignment> ... </example_alignment>
 <verdict> ... </verdict>
 <label>high</label>   (or <label>low</label>)

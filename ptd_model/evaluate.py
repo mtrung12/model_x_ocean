@@ -70,7 +70,7 @@ def evaluate(
 
     output_dir = os.path.join(
         res_dir,
-        model_name,
+        model_name.replace(":", "_"),
         prompt_mode,
         run_id,
     )

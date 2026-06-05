@@ -26,6 +26,7 @@ def extract_cot(response: str) -> str | None:
 _REASONED_SECTIONS = (
     "evidence",
     "facet_check",
+    "cue_tally",
     "example_alignment",
     "verdict",
     "label",
@@ -42,8 +43,9 @@ def _extract_tag(response: str, tag: str) -> Optional[str]:
 def extract_reasoned_full(response: str) -> Dict[str, Optional[str]]:
     """Parse a reasoned (XML-tagged) response into its component sections.
 
-    Returns a dict with keys: evidence, facet_check, example_alignment,
-    verdict, label, raw. `label` is normalised to "high"/"low"/None.
+    Returns a dict with keys: evidence, facet_check, cue_tally,
+    example_alignment, verdict, label, raw.
+    `label` is normalised to "high"/"low"/None.
     Falls back to extract_cot if <label> is missing or malformed.
     """
     out: Dict[str, Optional[str]] = {key: None for key in _REASONED_SECTIONS}
