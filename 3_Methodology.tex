@@ -268,15 +268,39 @@ alongside its known label.
 % =============================================================================
 
 \subsection{Structured Reasoning Format}
+\label{subsec:reasoning-format}
 
 The language model is required to emit its output as six XML blocks in a fixed
 order: \texttt{<evidence>}, \texttt{<facet\_check>}, \texttt{<cue\_tally>},
 \texttt{<ex\-am\-ple\_a\-lign\-ment>}, \texttt{<verdict>}, and \texttt{<label>}.
 No text is permitted outside these tags.
 
-The \texttt{<verdict>} must be consistent with the \texttt{<cue\_tally>},
-coupling the final answer to the audited evidence count rather than to the
-tone of retrieved exemplars.
+Each evidence cue must be tagged as \texttt{[state]} (temporary or situational)
+or \texttt{[trait]} (recurring or cross-situational). The \texttt{<cue\_tally>}
+block audits these tags and applies an explicit decision rule: the presumption
+is \textit{high} if at least one clear \texttt{[trait]} cue is present \emph{or}
+two or more facets are rated \textit{high} in \texttt{<facet\_check>}; otherwise
+the presumption is \textit{low}. State cues are treated as weaker evidence than
+trait cues but are not discarded entirely --- multiple state cues pointing in the
+same direction, or a single extreme cue, are allowed to contribute toward the
+high pole.
+
+The \texttt{<verdict>} must be consistent with the \texttt{<cue\_tally>} and
+may not conclude \textit{low} solely because supporting cues are state-level
+when the facet stage has already rated two or more facets \textit{high}. This
+rule couples the final answer to the structured facet evidence rather than to
+the model's prior about trait recurrence.
+
+Two trait-specific scoring notes are injected into the user prompt for
+Neuroticism and Extraversion, the two traits most susceptible to
+surface-vocabulary confounds. For Neuroticism the note instructs the model to
+tag situational stressors (exam pressure, fatigue, homesickness) as
+\texttt{[state]} and reserve \texttt{[trait]} for explicitly habitual or
+chronic emotional patterns. For Extraversion it instructs the model to tag
+expressive or enthusiastic writing style as \texttt{[state]} and restrict
+\texttt{[trait]} to cues about social energy and orientation. The empirical
+effect of these rules on the per-trait bias is examined in
+Chapter~\ref{chap:experiments}.
 
 \subsection{Prompt Structure}
 
@@ -328,10 +352,11 @@ embedding and a 30-dimensional ordinal facet vector, and retrieves the
 $k=5$ most psychologically similar training exemplars via a per-trait
 weighted combination of dense and structured similarity. The structured
 reasoning stage presents those exemplars as calibration anchors and
-enforces a six-block XML output format that separates stable trait cues
-from transient state cues before issuing the final verdict. The
-experimental evaluation of this pipeline is presented in
-Chapter~\ref{chap:experiments}.
+enforces a six-block XML output format that tags each evidence cue as
+\texttt{[state]} or \texttt{[trait]}, audits them in a structured cue tally,
+and requires the verdict to be consistent with the facet-check evidence
+before issuing the final label. The experimental evaluation of this pipeline
+is presented in Chapter~\ref{chap:experiments}.
 
 
 \end{document}

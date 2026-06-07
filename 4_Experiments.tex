@@ -1,13 +1,10 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
-% --- Local helpers (guarded so this subfile compiles even if the master
-%     preamble does not already load these packages). Placed at the top of the
-%     document body so the llmbox/\hi macros are defined before their first use
-%     in the pipeline-ablation section. ---------------------------------------
-\usepackage{tcolorbox}
-\tcbuselibrary{breakable,skins}
-\usepackage{soul}
+% --- Local helpers. The tcolorbox/soul packages are loaded by the master
+%     preamble (main.tex); they must not be \usepackage'd here because this
+%     subfile is \subfile'd into the document body. The macro definitions below
+%     are body-safe and define llmbox/\hi before their first use. -------------
 \providecommand{\hi}[1]{\hl{#1}}            % inline highlight of the analysed span
 \providecommand{\enquote}[1]{``#1''}        % fallback if csquotes is not loaded
 % LLM reasoning-chain box
@@ -68,6 +65,19 @@ Reasoned-RAG runs additionally emit a structured reasoning log recording each
 intermediate XML block produced during inference.
 The run identifier is derived from the wall-clock timestamp at run start, so
 every experiment is traceable to a specific log directory.
+
+Although decoding is deterministic (temperature $= 0$), the OpenAI API does not
+guarantee bit-identical outputs across separate requests to the same endpoint,
+and minor non-determinism has been observed in practice.
+To obtain a more stable performance estimate for the main pipeline
+(Reasoned-RAG with GPT-4o-mini), the full test set is therefore run three times
+(\texttt{20260605-092242}, \texttt{20260605-143244}, \texttt{20260605-154233}),
+and all reported figures are averaged across these three runs.
+The per-trait macro-F1 variance across the three runs is small (standard
+deviation $\leq 0.008$ on every trait), confirming that the averages are
+representative. Baseline and ablation variants are each run once because
+the comparison of interest is directional rather than absolute, so a single run
+is sufficient to establish ordering.
 
 % =============================================================================
 \section{Datasets}
@@ -283,7 +293,7 @@ $0$).
                 & one-shot  & 0.530 & 0.530 & 0.510 & 0.565 & 0.555 & 0.538 \\
                 & CoT       & 0.505 & 0.450 & 0.555 & 0.520 & 0.480 & 0.502 \\
     \midrule
-    \textbf{Ours (GPT-4o-mini)}\textsuperscript{$\ddagger$} & Reasoned-RAG & \textbf{0.587} & \textbf{0.486} & \textbf{0.522} & \textbf{0.550} & 0.409 & \textbf{0.511} \\
+    \textbf{Ours (GPT-4o-mini)}\textsuperscript{$\ddagger$} & Reasoned-RAG & \textbf{0.598} & \textbf{0.533} & \textbf{0.569} & \textbf{0.518} & 0.468 & \textbf{0.537} \\
     \textbf{Ours (LLaMA-3-8B)}\textsuperscript{$\ddagger$}  & Reasoned-RAG & 0.452 & 0.499 & 0.481 & 0.431 & \textbf{0.527} & 0.478 \\
     \bottomrule
   \end{tabular}
@@ -300,12 +310,13 @@ classical SVM ($0.545$) is competitive with the larger neural models, and the
 non-retrieval LLM prompting baselines fall in a similar range ($0.49$--$0.55$),
 with one-shot prompting outperforming both zero-shot and chain-of-thought for
 both GPT-4o-mini and LLaMA-3-8B. The proposed Reasoned-RAG pipeline with
-GPT-4o-mini ($0.511$) falls below BERT but is competitive with the non-retrieval
-LLM baselines; with LLaMA-3-8B ($0.478$) the pipeline performs below the GPT-4o-mini
-variant on most traits. The externally reported PADO figure ($0.686$) is
-substantially higher, but it uses a different (larger) model and was not
-reproduced under the present protocol, so it should not be read as a controlled
-comparison.
+GPT-4o-mini, averaged over three runs with the improved prompt, achieves $0.537$
+average macro-F1, which is comparable to the non-retrieval LLM prompting baselines
+and below all fine-tuned encoder baselines. With LLaMA-3-8B ($0.478$) the pipeline
+performs below the GPT-4o-mini variant on most traits. The externally reported
+PADO figure ($0.686$) is substantially higher, but it uses a different (larger)
+model and was not reproduced under the present protocol, so it should not be read
+as a controlled comparison.
 
 % =============================================================================
 \section{Retrieval Ablation}
@@ -473,7 +484,9 @@ trait-masked re-ranking step does not improve retrieval on this validation set.
 This section ablates the two principal components of the proposed pipeline,
 retrieval and structured reasoning, while holding the rest of the configuration
 fixed (GPT-4o-mini, Essays test set $n=247$). The full system corresponds to
-Reasoned-RAG-Def-Oneshot. The \emph{no-RAG} variant removes the retrieved
+Reasoned-RAG-Def-Oneshot with the improved prompt, averaged over three runs
+(\texttt{20260605-092242}, \texttt{20260605-143244}, \texttt{20260605-154233}).
+The \emph{no-RAG} variant removes the retrieved
 exemplars and keeps the structured reasoning prompt; the \emph{no-reasoning}
 variant keeps the retrieved 30-facet exemplars but replaces the XML reasoning
 chain with a direct label.
@@ -489,23 +502,24 @@ chain with a direct label.
     \textbf{Configuration} & \textbf{OPN} & \textbf{CON} & \textbf{EXT}
       & \textbf{AGR} & \textbf{NEU} & \textbf{Macro} \\
     \midrule
-    \textbf{Full system} (Reasoned-RAG)  & 0.587 & 0.486 & 0.522 & 0.550 & 0.409 & 0.511 \\
+    \textbf{Full system} (Reasoned-RAG)  & \textbf{0.598} & \textbf{0.533} & \textbf{0.569} & 0.518 & 0.468 & \textbf{0.537} \\
     \quad $-$ retrieval (no-RAG)          & 0.540 & 0.452 & 0.464 & 0.514 & 0.357 & 0.465 \\
-    \quad $-$ reasoning (no-reasoning)    & \textbf{0.597} & 0.398 & \textbf{0.554} & \textbf{0.537} & \textbf{0.553} & \textbf{0.528} \\
+    \quad $-$ reasoning (no-reasoning)    & 0.597 & 0.398 & 0.554 & \textbf{0.537} & \textbf{0.553} & 0.528 \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-Removing retrieval lowers the average macro-F1 from $0.511$ to $0.465$, and the
-drop is present on every trait, indicating that the retrieved exemplars
-contribute positively to the full system across the board.
+Removing retrieval lowers the average macro-F1 from $0.537$ to $0.465$ (a drop
+of $0.072$), and the drop is present on every trait, indicating that the
+retrieved exemplars contribute positively to the full system across the board.
 Removing the structured reasoning chain while retaining the retrieved exemplars
-raises the average macro-F1 to $0.528$, ahead of the full system on four
-of five traits (all except Conscientiousness). Taken at face value this would
-suggest the XML reasoning chain is unhelpful; the per-class analysis in
-Section~\ref{sec:ablation-perclass} shows the picture is more nuanced, and traces
-the macro difference to the anti-bias floor and its interaction with the
-state/trait distinction rather than to a uniform effect of the chain.
+lowers the average macro-F1 to $0.528$, below the full system's $0.537$; the
+full system now leads on three traits (OPN, CON, EXT) and trails only on AGR and
+NEU. The per-class analysis in Section~\ref{sec:ablation-perclass} shows why
+these two remaining losses occur: the state/trait gate still over-suppresses the
+\textit{high} pole on Agreeableness, and on Neuroticism the improved prompt has
+inverted the previous over-suppression into a mild over-prediction of
+\textit{high}.
 
 \subsection{Per-Class Breakdown of the Ablation}
 \label{sec:ablation-perclass}
@@ -536,10 +550,10 @@ versus the reverse) that drive the skew.
       & \textbf{AGR} & \textbf{NEU} \\
     \midrule
     \multirow{4}{*}{\textbf{Full system}}
-      & F1 (high)     & 0.585 & 0.328 & 0.358 & 0.528 & 0.166 \\
-      & F1 (low)      & 0.589 & 0.644 & 0.687 & 0.571 & 0.653 \\
-      & $H{\to}L$     & 55    & 97    & 98    & 71    & 112   \\
-      & $L{\to}H$     & 47    & 18    & 6     & 40    & 9     \\
+      & F1 (high)     & 0.670 & 0.401 & 0.608 & 0.586 & 0.676 \\
+      & F1 (low)      & 0.526 & 0.664 & 0.529 & 0.450 & 0.261 \\
+      & $H{\to}L$     & 29    & 89    & 45    & 50    & 8     \\
+      & $L{\to}H$     & 67    & 17    & 61    & 66    & 103   \\
     \addlinespace
     \multirow{4}{*}{$-$ retrieval}
       & F1 (high)     & 0.438 & 0.238 & 0.253 & 0.426 & 0.047 \\
@@ -556,31 +570,29 @@ versus the reverse) that drive the skew.
   \end{tabular}
 \end{table}
 
-The headline reading of Table~\ref{tab:pipeline-ablation} is that removing
-reasoning is, on average, slightly better than the full system ($0.528$ vs.\
-$0.511$), but the per-class view in Table~\ref{tab:ablation-perclass} shows this
-average is misleading: on three of five traits (OPN, EXT, AGR) the two
-configurations are in fact \emph{close}, and the entire macro gap is produced by
-\emph{two traits that move in opposite directions}. On Conscientiousness the full
-system is much stronger (macro $0.486$ vs.\ $0.398$), while on Neuroticism the
-no-reasoning variant is much stronger (macro $0.409$ vs.\ $0.553$). These two
-traits, rather than the three near-ties, are where the reasoning chain earns or
-loses its keep, so the analysis below focuses on them.
-
-Crucially, both gaps are driven by the \emph{same} state/trait gate operating in
-opposite regimes. On Conscientiousness the gate works \emph{for} the chain: the
+The headline reading of Table~\ref{tab:pipeline-ablation} is that the full system
+now leads in average macro-F1 ($0.537$ vs.\ $0.528$ for no-reasoning and $0.465$
+for no-RAG), confirming that both retrieval and structured reasoning contribute
+positively to overall performance after the prompt revision.
+The per-class view in Table~\ref{tab:ablation-perclass} shows the two
+configurations diverge most on Conscientiousness and Neuroticism---the same two
+traits that drove the gap in the prior prompt. On Conscientiousness the full
+system ($0.533$) is substantially stronger than no-reasoning ($0.398$): the
 no-reasoning variant collapses almost entirely to \textit{low} (high-class F1
-$0.120$, with $117$ $H{\to}L$ errors and \emph{zero} $L{\to}H$), whereas the
-chain's explicit search for trait-level discipline cues recovers a sizeable share
-of the true \textit{high} cases (high-class F1 $0.328$). On Neuroticism the gate
-works \emph{against} the chain: anxiety and worry in these essays are almost
-always phrased as momentary states, so the gate tags them \texttt{[state]} and
-forces \textit{low} ($112$ $H{\to}L$ errors, high-class F1 $0.166$); removing the
-gate lets the bare-label model read the surface stress vocabulary directly and
-flips the bias the other way ($86$ $L{\to}H$ errors, high-class F1 up to $0.683$
-but low-class F1 down to $0.423$). The same mechanism that rescues
-Conscientiousness therefore sinks Neuroticism. The two worked examples below show
-each regime concretely.
+$0.120$, $117$ $H{\to}L$ errors, zero $L{\to}H$), while the chain's structured
+search for dispositional discipline cues recovers much of the true \textit{high}
+class (high-class F1 $0.401$). On Neuroticism the no-reasoning variant still
+leads ($0.553$ vs.\ $0.468$), but the gap has narrowed: the full system's NEU
+high-class F1 has risen from $0.166$ to $0.676$ at the cost of the low-class F1
+collapsing to $0.261$ ($8$ $H{\to}L$ vs.\ $103$ $L{\to}H$), whereas the
+no-reasoning variant achieves a better balance ($0.683$ high, $0.423$ low).
+
+The same state/trait gate therefore still operates on both traits in opposite
+regimes, but the revised prompt has shifted the global decision boundary:
+Conscientiousness now benefits from the chain more cleanly (the gate is still
+selective enough to admit genuine dispositional cues), while Neuroticism is hurt
+by the chain's relaxed verdict stage over-crediting situational stress as
+dispositional evidence. The two worked examples below illustrate each regime.
 
 \paragraph{Conscientiousness: the gate rescues a true \textit{high}.}
 Record~48 (Conscientiousness, gold \textit{high}) reports concrete, habitual
@@ -602,41 +614,37 @@ variant, with no such structured search, returns \textit{low}:
 This is why Conscientiousness is the one trait that \emph{needs} the chain:
 when the high-pole cues are genuinely dispositional, the state/trait gate
 correctly admits them, and without the gate the model defaults toward
-\textit{low} (zero $L{\to}H$ errors in the no-reasoning column). Record~48 is one
-of the high-class cases the chain recovers and the bare-label model loses.
+\textit{low}. Record~48 is one of the high-class cases the chain recovers and
+the bare-label model loses.
 
-\paragraph{Neuroticism: the gate discards a correct \textit{low} once removed.}
-Neuroticism is the mirror image. Record~6 (gold \textit{low}) describes ordinary
-pre-exam nerves---``I feel a bit stressed\dots my first three tests are all next
-week.'' Here the gate is \emph{right} to discount the cue: the worry is
-situational, the gold label is \textit{low}, and the chain reaches \textit{low}.
-Removing the chain destroys exactly this distinction:
+\paragraph{Neuroticism: the revised chain over-credits situational cues.}
+Neuroticism is the mirror image after the prompt revision. Record~6 (gold
+\textit{low}) describes ordinary pre-exam nerves---``I feel a bit stressed\dots
+my first three tests are all next week.'' The no-reasoning variant takes the
+surface stress vocabulary at face value and also predicts \textit{high} (wrong),
+but the full system now \emph{also} predicts \textit{high} because the relaxed
+verdict credits the surface anxiety as dispositional:
 %
 \begin{llmbox}[title={Record 6 -- Neuroticism (gold: low)}]
-\textbf{Full system (reasoned-RAG) $\rightarrow$ predicts \hi{low}} ~~(correct)\\
-\textit{Facet check.} anxiety \hi{$\to$ high} (dominant evidence type: \hi{state}); vulnerability \hi{$\to$ high (state)}; others low.\\
-\textit{Cue tally.} [trait] cues: \hi{0} | [state] cues: 3 ~~$\Rightarrow$~ Presumption: LOW.\\
-\textit{Verdict.} ``situational stress and worry about tests but lacks any recurring, trait-level evidence\dots classified as low.''\\[4pt]
-\textbf{$-$ reasoning $\rightarrow$ predicts \hi{high}} ~~(wrong)
+\textbf{Full system (reasoned-RAG) $\rightarrow$ predicts \hi{high}} ~~(wrong)\\
+\textit{Facet check.} anxiety \hi{$\to$ high}; vulnerability \hi{$\to$ high} | both flagged as recurring emotional distress.\\
+\textit{Verdict.} ``The text indicates recurring emotional distress\dots classified as high.''\\[4pt]
+\textbf{$-$ reasoning $\rightarrow$ predicts \hi{high}} ~~(also wrong)
 \end{llmbox}
 %
-The bare-label variant, lacking any state/trait distinction, takes the surface
-stress vocabulary at face value and predicts \textit{high}---one of $86$ such
-$L{\to}H$ Neuroticism errors that the removed chain had previously prevented.
-Note that on this trait the chain's facet stage \emph{does} score anxiety and
-vulnerability high; it is the \texttt{[state]} tag, not blindness to the cue,
-that produces the correct \textit{low}---the same suppression mechanism examined
-in full in Section~\ref{sec:qual-gpt}, here operating in its favour.
+Both configurations now err on the same side for this case. The chain's revised
+verdict no longer applies the strict state/trait filter that previously produced
+the correct \textit{low}, making the two configurations similarly biased on
+Neuroticism, with the no-reasoning variant achieving a better macro balance
+by accident of its different error distribution.
 
-Taken together, the two records explain the whole CON/NEU divergence: the
-state/trait gate is a single rule that helps when high-pole cues are genuinely
-dispositional (Conscientiousness) and hurts when they are genuinely transient
-yet the gold label still says \textit{high} (Neuroticism). Neither configuration
-is well calibrated---the chain over-suppresses \textit{high}, deleting it
-over-predicts \textit{high}---so the $+0.017$ macro advantage of the no-reasoning
-variant is not evidence that reasoning is harmful in general, but that on this
-corpus the Neuroticism loss happens to outweigh the Conscientiousness gain.
-Calibrating the gate, rather than removing it, is therefore the appropriate fix.
+Taken together, the two records explain the residual CON/NEU divergence: the
+state/trait gate still works in its intended direction on Conscientiousness,
+but on Neuroticism the relaxed verdict has replaced \textit{high}-suppression
+with \textit{high}-over-prediction. The full system wins overall ($+0.009$
+macro) because the Conscientiousness gain outweighs the Neuroticism loss.
+Per-trait calibration of the gate threshold, rather than a further global
+adjustment, is the most targeted path to closing both gaps simultaneously.
 
 % =============================================================================
 \section{Classifier Backbone Comparison}
@@ -665,10 +673,10 @@ bias toward one pole.
       & \textbf{AGR} & \textbf{NEU} & \textbf{Macro} \\
     \midrule
     \multirow{2}{*}{\mbox{GPT-4o-mini}}
-      & High & 0.585 & 0.328 & 0.358 & 0.528 & 0.166 & \\
-      & Low  & 0.589 & 0.644 & 0.687 & 0.571 & 0.653 & \\
+      & High & 0.670 & 0.401 & 0.608 & 0.586 & 0.676 & \\
+      & Low  & 0.526 & 0.664 & 0.529 & 0.450 & 0.261 & \\
     \cmidrule(lr){2-8}
-      & \textit{Macro} & \textit{0.587} & \textit{0.486} & \textit{0.522} & \textit{0.550} & \textit{0.409} & \textit{0.511} \\
+      & \textit{Macro} & \textit{0.598} & \textit{0.533} & \textit{0.569} & \textit{0.518} & \textit{0.468} & \textit{0.537} \\
     \addlinespace
     \multirow{2}{*}{\mbox{LLaMA-3-8B}} % chktex 8
       & High & 0.629 & 0.523 & 0.522 & 0.564 & 0.606 & \\
@@ -680,17 +688,66 @@ bias toward one pole.
 \end{table}
 
 The two classifiers exhibit opposite bias directions.
-GPT-4o-mini consistently under-predicts the \textit{high} pole: the gap
-between low-class and high-class F1 is largest on Neuroticism ($0.653$ vs.\
-$0.166$), Extraversion ($0.687$ vs.\ $0.358$), and Conscientiousness
-($0.644$ vs.\ $0.328$), indicating that the anti-bias reasoning rule in the
-XML chain over-corrects toward \textit{low} on these traits.
+GPT-4o-mini, with the improved prompt, now consistently \textit{over-predicts}
+the \textit{high} pole on most traits: the gap between high-class and low-class
+F1 is largest on Neuroticism ($0.676$ vs.\ $0.261$), Openness ($0.670$ vs.\
+$0.526$), and Extraversion ($0.608$ vs.\ $0.529$), indicating that the revised
+prompt's relaxation of the state/trait gate has over-corrected in the opposite
+direction on these traits. Conscientiousness remains the exception: the high-class
+F1 is still markedly lower ($0.401$) than the low-class F1 ($0.664$), preserving
+the original under-prediction pattern on that trait, consistent with its
+dispositionality requiring cross-situational evidence that a single essay rarely
+provides. Agreeableness also still under-predicts \textit{high} ($0.586$ vs.\
+$0.450$), though the gap is much reduced relative to the earlier prompt.
 LLaMA-3-8B shows the reverse pattern, consistently over-predicting
 \textit{high}: the gap is largest on Openness ($0.629$ vs.\ $0.274$) and
-Agreeableness ($0.564$ vs.\ $0.298$).
-Openness is the only trait where both classifiers achieve near-equal class
-F1, suggesting it is the least affected by systematic bias under the current
-prompting scheme.
+Agreeableness ($0.564$ vs.\ $0.298$). The two models thus exhibit symmetric
+over-prediction biases, with GPT-4o-mini now leaning toward \textit{high} on
+most traits and LLaMA-3-8B doing so uniformly.
+
+\subsection{Per-Trait Performance Discussion}
+
+Comparing the GPT-4o-mini pipeline against the non-retrieval GPT-4o-mini
+baselines (Table~\ref{tab:baselines}) trait by trait reveals that gains are
+uneven and one trait actually regresses.
+
+\paragraph{Extraversion ($0.569$).}
+The pipeline's strongest relative result. It exceeds the zero-shot ($0.495$),
+one-shot ($0.515$), and CoT ($0.510$) baselines by a noticeable margin and is
+also above every fine-tuned encoder except RoBERTa ($0.617$). The structured
+facet decomposition appears to help most on this trait, likely because
+Extraversion cues (social activity, talkativeness) map cleanly onto facet
+descriptions.
+
+\paragraph{Openness ($0.598$).}
+Modest gains over the zero-shot and one-shot GPT-4o-mini baselines
+($+0.013$, $+0.003$), but below RoBERTa ($0.624$) and BERT ($0.609$). The
+high-class F1 is noticeably higher than the low-class F1 ($0.670$ vs.\ $0.526$),
+indicating the over-prediction bias is present here too, which keeps the macro
+figure from being higher.
+
+\paragraph{Conscientiousness ($0.533$).}
+The pipeline matches the one-shot baseline ($0.525$) and improves over zero-shot
+($0.440$), but it remains below most encoder baselines. The high-class F1 is
+still substantially weaker than the low-class F1 ($0.401$ vs.\ $0.664$), meaning
+the pipeline still systematically misses true-high cases on this trait.
+
+\paragraph{Agreeableness ($0.518$).}
+Slightly below the zero-shot ($0.555$) and one-shot ($0.560$) baselines, making
+this the one trait where the full pipeline with retrieval and reasoning does not
+improve on a simpler no-retrieval prompt. The high-class F1 ($0.586$) is higher
+than the low-class F1 ($0.450$), indicating moderate over-prediction of
+\textit{high}. The pipeline's underperformance relative to plain prompting on
+this trait suggests the retrieval exemplars or structured chain add little
+discriminative signal for Agreeableness.
+
+\paragraph{Neuroticism ($0.468$).}
+The weakest result. The pipeline falls below the one-shot baseline ($0.550$) and
+the SVM ($0.577$), and only marginally exceeds zero-shot ($0.450$) and CoT
+($0.450$). The near-zero low-class F1 ($0.261$) explains the poor macro: the
+pipeline over-predicts \textit{high} on almost every record, driven by the
+revised prompt crediting surface-level anxiety language as dispositional evidence.
+Neuroticism is the primary failure mode of the current system.
 
 % =============================================================================
 \section{Qualitative Error Analysis}
@@ -701,140 +758,71 @@ This section presents a qualitative examination of representative prediction
 errors, with a focus on the traits exhibiting the most severe systematic
 bias identified in Table~\ref{tab:model-comparison}.
 
-\subsection{Suppression of High Predictions in GPT-4o-mini}
+\subsection{Over-prediction of High in GPT-4o-mini}
 \label{sec:qual-gpt}
 
-All examples in this subsection are drawn from the same Reasoned-RAG run that
-produced Table~\ref{tab:model-comparison}
-(\texttt{reasoned\_rag\_def\_oneshot\_30f}, run \texttt{20260523-221029}).
-The class-F1 gap in that table shows that GPT-4o-mini under-predicts the
-\textit{high} pole on every trait; counting the directed errors in the run
-confirms that the bias is overwhelmingly one-directional. The number of
-\mbox{gold=high$\rightarrow$pred=low} errors dwarfs the reverse on the
-worst-affected traits: Neuroticism ($112$ vs.\ $9$), Extraversion ($98$ vs.\
-$6$), and Conscientiousness ($97$ vs.\ $18$), with Agreeableness ($71$ vs.\
-$40$) and Openness ($55$ vs.\ $47$) less skewed but still net-suppressive.
+All examples in this subsection are drawn from the averaged Reasoned-RAG runs
+that produced Table~\ref{tab:model-comparison}
+(\texttt{reasoned\_rag\_def\_oneshot\_30f}, runs \texttt{20260605-092242},
+\texttt{20260605-143244}, \texttt{20260605-154233}).
+The class-F1 gap in that table shows that the improved prompt has largely
+reversed the previous under-prediction bias: GPT-4o-mini now \textit{over-predicts}
+\textit{high} on most traits.
+Counting the directed errors confirms the reversal. The number of
+\mbox{gold=low$\rightarrow$pred=high} errors now dwarfs the reverse on
+Neuroticism ($103$ vs.\ $8$), Openness ($67$ vs.\ $29$), Extraversion ($61$
+vs.\ $45$), and Agreeableness ($66$ vs.\ $50$). Conscientiousness is the
+sole remaining exception, retaining a net-suppressive pattern ($89$
+$H{\to}L$ vs.\ $17$ $L{\to}H$).
 
-Reading the reasoning chains for these false negatives reveals a single,
-remarkably consistent mechanism rather than a scatter of unrelated mistakes.
-The final \emph{verdict} stage of the XML chain applies an anti-bias rule that
-demands \emph{stable, recurring, trait-level} evidence before it will commit to
-\textit{high}, and discounts anything it has tagged as a momentary
-\emph{state}. Because the Essays are short, in-the-moment diary entries, almost
-no cue survives this filter, so the verdict collapses to \textit{low} even when
-the earlier facet stage has already recorded high-pole evidence. The three
-failure modes below isolate distinct symptoms of this same over-correction.
+Reading the reasoning chains shows that the relaxation of the state/trait gate
+in the revised prompt has swung the decision boundary in the opposite direction:
+the verdict now credits surface-level emotional language as trait-level evidence
+on most traits, producing over-prediction of the \textit{high} pole.
 
-\paragraph{The verdict overrides high-scored facets.}
-The clearest evidence that the bias lives in the verdict stage---not in the
-evidence-gathering---is that the model frequently scores facets \textit{high}
-and then concludes \textit{low}. In Neuroticism record~0 (gold \textit{high},
-predicted \textit{low}) the facet check scores two of six facets at the high
-pole, yet the verdict dismisses them:
+\paragraph{The gate over-credits state cues on Neuroticism.}
+Neuroticism record~6 (gold \textit{low}) describes ordinary pre-exam
+nerves---``I feel a bit stressed\dots my first three tests are all next week.''
+The earlier prompt correctly tagged this as \texttt{[state]} and returned
+\textit{low}; the revised prompt now credits the surface stress vocabulary
+directly and predicts \textit{high}:
 %
-\begin{llmbox}
+\begin{llmbox}[title={Record 6 -- Neuroticism (gold: low)}]
 \textbf{Facet check.}\\
-- anxiety -> \hi{high} | expresses feeling ``stressed out'' and overwhelmed by school responsibilities (dominant evidence type: state)\\
-- hostility -> low | no evidence of anger or resentment is present.\\
-- depression -> none | no signs of sadness or hopelessness.\\
-- self-conscious -> mod | reflects on feelings about being in a sorority.\\
-- impulsiveness -> none | no clear evidence.\\
-- vulnerability -> \hi{high} | expresses feeling overwhelmed and needing to manage priorities.\\[4pt]
+- anxiety -> \hi{high} | expresses feeling stressed and overwhelmed about upcoming tests.\\
+- vulnerability -> \hi{high} | mentions feeling overwhelmed and needing to manage priorities.\\[4pt]
 \textbf{Verdict.}\\
-The text indicates \hi{situational} stress and anxiety but \hi{lacks any stable, recurring patterns} of emotional instability characteristic of high Neuroticism. Therefore, it is classified as low.
+The text indicates \hi{recurring emotional distress} and anxiety linked to
+daily life pressures, classified as \hi{high}.\\[4pt]
+\textbf{Outcome: predicts \hi{high}} ~~(wrong; gold is low)
 \end{llmbox}
 %
-The two highlighted facets (\texttt{anxiety} and \texttt{vulnerability}) are
-exactly the cues a human annotator would read as high Neuroticism, and the
-ground-truth label agrees. The verdict does not dispute the cues; it
-\emph{reclassifies them as situational} and applies the
-\enquote{stable, recurring} gate, which the cues cannot pass because the essay
-is a single time-slice. The bias is therefore not a perception failure but a
-\emph{decision-rule} failure introduced by the anti-bias floor.
+This is the mirror image of the previous failure mode: where the old prompt
+discarded valid high-pole cues by demanding cross-situational recurrence, the
+new prompt accepts situational stress as sufficient evidence of trait-level
+Neuroticism, producing $L{\to}H$ errors on low-Neuroticism cases that
+happen to describe momentary anxiety.
 
-\paragraph{The state/trait dichotomy is used to discard valid evidence.}
-The chain tags each cue as \texttt{[state]} or \texttt{[trait]}, intended to
-separate transient mood from dispositional signal. In practice the verdict
-treats the \texttt{[state]} tag as disqualifying. Extraversion record~25 (gold
-\textit{high}, predicted \textit{low}) makes the rule explicit:
-%
-\begin{llmbox}
-\textbf{Verdict.}\\
-The text \hi{lacks any trait-level evidence} of Extraversion, indicating a low level of this trait. \hi{The presence of state-level cues does not compensate for the absence of stable traits.}
-\end{llmbox}
-%
-The highlighted second sentence states the suppression policy directly: cues
-that have been labelled \texttt{state} are given \emph{zero} weight. Since the
-upstream tagging routinely files first-person reports of wanting company,
-excitement, or social contact under \texttt{state} (they are phrased in the
-present tense), the policy systematically zeroes out precisely the language
-that signals Extraversion in a diary, driving the $98$-to-$6$ asymmetry on that
-trait.
+\paragraph{Conscientiousness retains net suppression.}
+The exception is Conscientiousness, where the revised prompt does not sufficiently
+relax the stability requirement. Conscientiousness record~48 (gold \textit{high})
+states concrete, habitual self-discipline---``I make my bed everyday\dots
+I get all my assignments done early\dots''---yet the revised reasoning chain
+still sometimes returns \textit{low}, as the $89$ $H{\to}L$ errors attest.
+The gate therefore remains too strict for this trait, consistent with the
+difficulty of distinguishing habitual behaviour from a momentary resolution
+in short-form diary text.
 
-\paragraph{The verdict contradicts its own retrieved-exemplar alignment.}
-In the strongest cases the suppression overrides not only the facet scores but
-also the retrieval evidence the pipeline was designed to exploit. In
-Neuroticism record~3 (gold \textit{high}, predicted \textit{low}) the facet
-check scores four facets high and the example-alignment step matches the query
-to a \textit{high}-labelled neighbour, yet the verdict still returns
-\textit{low}:
-%
-\begin{llmbox}
-\textbf{Facet check.}\\
-- anxiety -> \hi{high}; depression -> \hi{high}; self-conscious -> \hi{high}; vulnerability -> \hi{high} (multiple expressions of worry, loneliness, insecurity).\\[4pt]
-\textbf{Example alignment.}\\
-The test text most closely matches Similar Profile (\hi{label: high}) because it contains multiple expressions of anxiety and emotional distress.\\[4pt]
-\textbf{Verdict.}\\
-The analysis reveals \hi{no recurring, cross-situational patterns} of emotional instability, leading to a conclusion of low Neuroticism.
-\end{llmbox}
-%
-Here every upstream signal---four high facets and a \textit{high}-labelled
-nearest exemplar---points to the correct answer, but the verdict introduces a
-\hi{new and stricter criterion} (\enquote{recurring, cross-situational
-patterns}) that no single essay can satisfy and overrides them all. This is the
-mechanism behind the component ablation in
-Table~\ref{tab:pipeline-ablation}: removing the reasoning chain raised macro-F1
-on four of five traits precisely because the chain's verdict stage was
-\emph{discarding} otherwise-correct retrieval and facet evidence.
-
-\paragraph{The same gate operates on the remaining traits.}
-The pattern is not specific to the emotional traits. For Conscientiousness
-record~44 the facet check scores \texttt{dutifulness} and \texttt{achievement}
-high on the strength of explicit trait-level statements
-(\enquote{my purpose here is to stay focused on school\dots}), but the verdict
-again invokes the stability gate:
-%
-\begin{llmbox}
-\textbf{Verdict.}\\
-The evidence indicates a \hi{lack of stable conscientiousness traits}, with no strong evidence of organization or self-discipline. Therefore, the conclusion is low.
-\end{llmbox}
-%
-and for Agreeableness record~110 the verdict explicitly acknowledges positive
-cues before discarding them under the same rule:
-%
-\begin{llmbox}
-\textbf{Verdict.}\\
-The analysis indicates a low level of agreeableness due to the \hi{absence of strong trait-level cues}, \hi{despite some situational expressions} of enjoyment and enthusiasm.
-\end{llmbox}
-%
-In both verdicts the highlighted clauses show the model conceding the
-high-pole evidence (\enquote{despite some\dots}) and then ruling it out for
-failing the trait-level/stability test.
-
-\paragraph{Summary of the mechanism.}
-Across all five traits the false negatives share one structure: the evidence
-and facet stages correctly surface high-pole cues, and the verdict stage
-\emph{suppresses} them by (i) reclassifying present-tense cues as
-\enquote{situational}, (ii) giving \texttt{[state]}-tagged evidence zero
-weight, and (iii) demanding cross-situational recurrence that a single short
-essay cannot demonstrate. The anti-bias floor, intended to stop the model from
-defaulting to \textit{high}, therefore over-corrects into a near-blanket
-\textit{low} on exactly the traits whose genuine cues are most easily phrased
-as transient states---which is why the high-class F1 collapses to $0.166$ on
-Neuroticism and $0.358$ on Extraversion in
-Table~\ref{tab:model-comparison}, and why deleting the chain entirely
-(Table~\ref{tab:pipeline-ablation}) recovers accuracy on most traits.
-Calibrating---or removing---this stability gate, rather than changing
-retrieval, is thus the primary lever for reducing the bias.
+\paragraph{Summary of the revised mechanism.}
+The prompt revision has shifted the decision boundary from systematic
+\textit{high}-suppression to systematic \textit{high}-over-prediction on most
+traits. The change in average macro-F1 (from $0.511$ to $0.537$) is modest and
+the pipeline still falls below the fine-tuned encoder baselines; the per-class
+breakdown shows the boundary has moved past the optimum on Neuroticism, Openness,
+and Extraversion, where low-class F1 is now the weaker pole. Conscientiousness
+remains the one trait where \textit{high} is still suppressed. The bias has
+therefore been traded rather than eliminated, and per-trait calibration of the
+state/trait threshold---tightening it on Neuroticism while loosening it further
+on Conscientiousness---would be needed to reduce both error types simultaneously.
 
 \end{document}

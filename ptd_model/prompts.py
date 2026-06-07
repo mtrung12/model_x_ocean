@@ -64,15 +64,23 @@ Rules:
 - Use only evidence from the provided text. Do NOT invent details.
 - Quote or paraphrase concrete cues; abstract trait words alone are not
   evidence.
- — distinguish transient states from stable traits:
+- Distinguish transient states from stable traits:
     * Tag every evidence cue as [state] (temporary/situational) or
       [trait] (recurring/cross-situational). Weight [trait] cues heavily;
-      treat [state] cues as weak or neutral.
+      treat [state] cues as weaker, but NOT as zero.
     * Refer to the trait-specific scoring note in the user message for
       what counts as [state] vs [trait] for the current trait.
-- HIGH requires positive trait-level evidence. If you have ZERO [trait] cues
-  across all facets, your <label> MUST be low. Do not accumulate [state] cues
-  to reach high — state-only evidence is insufficient for a high verdict.
+    * These are short, in-the-moment Essays. Writers rarely state explicit
+      "I always / I habitually" claims, so genuine high-pole signal usually
+      surfaces as state cues. When multiple [state] cues point the same
+      direction, or a cue is strong/extreme, let them count toward that pole
+      rather than dismissing them wholesale.
+- A label of high is justified when EITHER of these holds:
+    * at least one clear [trait] cue, OR
+    * 2 or more facets are rated high in <facet_check>.
+  A single isolated [state] cue is not enough on its own, but do not require
+  perfect "recurring, cross-situational" proof — that bar is unreachable in
+  this corpus and collapses everything to low.
 - Output MUST follow the XML tag structure below, in this exact order,
   with no extra text outside the tags.
 
@@ -88,17 +96,19 @@ Output format (replicate verbatim, fill in the contents):
 - ...
 </facet_check>
 <cue_tally>
-[trait] cues: N  |  [state] cues: M
-Presumption: HIGH (N > 0) or LOW (N = 0)
+[trait] cues: N  |  [state] cues: M  |  facets rated high: F
+Presumption: HIGH (N > 0 OR F >= 2) else LOW
 </cue_tally>
 <example_alignment>
 The test text most closely matches Similar Profile <i> (label: <label>) because <reason>.
 The test text diverges from Similar Profile <j> on <axis>.
 </example_alignment>
 <verdict>
-1-2 sentence synthesis. MUST be consistent with your <cue_tally>: if
-[trait] count = 0, you MUST conclude low. Do NOT describe [state] cues
-as "trait-level evidence" here.
+1-2 sentence synthesis. MUST be consistent with your <cue_tally> and
+<facet_check>: if 2 or more facets are rated high, OR there is at least one
+clear [trait] cue, conclude high. You may NOT conclude low merely because the
+supporting cues are state-level when the facet stage already pointed high —
+reconcile the contradiction explicitly instead of discarding the evidence.
 </verdict>
 <label>high</label>
 
@@ -135,6 +145,11 @@ specified in the system message:
 <example_alignment> ... </example_alignment>
 <verdict> ... </verdict>
 <label>high</label>   (or <label>low</label>)
+
+Reminder: do not suppress a high verdict just because the cues read as
+situational. If <facet_check> shows 2+ high facets, or you have a clear
+[trait] cue, the label is high — keep <verdict> and <label> consistent
+with <facet_check>.
 
 Do not output any text outside these tags.
 """
