@@ -155,14 +155,34 @@ deliberately collapsed to the same numerical value of zero, to avoid treating
 \label{subsec:linguistic}
 
 In addition to the thirty facet lines, the profiler emits a short
-\emph{linguistic fingerprint}: seven fixed keys --- \emph{pronouns},
-\emph{emotion}, \emph{tense}, \emph{cognitive}, \emph{social}, \emph{register}
-and \emph{length} --- each with a one-line free-text value. These keys follow
-the strongest meta-analytic predictors of personality in the LIWC and
-open-vocabulary literature~\cite{Pennebaker2007TheDA}.
-They capture genre-level and stylistic information that the facet schema
-deliberately suppresses, and they are carried into the embedded profile text
-where they contribute to retrieval similarity.
+\emph{linguistic fingerprint}: seven fixed keys, each summarised in a single
+free-text line. These keys follow the strongest meta-analytic predictors of
+personality in the LIWC and open-vocabulary
+literature~\cite{Pennebaker2007TheDA}. They capture genre-level and stylistic
+information that the facet schema deliberately suppresses, and they are carried
+into the embedded profile text where they contribute to retrieval similarity.
+Table~\ref{tab:linguistic-keys} lists the seven keys and what each one records.
+
+\begin{table}[htbp]
+  \centering
+  \caption{The seven linguistic-fingerprint keys emitted by the profiler,
+    with the stylistic property each one summarises.}
+  \label{tab:linguistic-keys}
+  \small
+  \begin{tabular}{ll}
+    \toprule
+    \textbf{Key} & \textbf{What it records} \\
+    \midrule
+    \emph{pronouns}  & I/we/you/they density and dominance pattern \\
+    \emph{emotion}   & Positive/negative balance and dominant affect \\
+    \emph{tense}     & Past/present/future emphasis \\
+    \emph{cognitive} & Insight/causal/tentative word density (low/mod/high) \\
+    \emph{social}    & Social-process word density (low/mod/high) \\
+    \emph{register}  & Informal/mixed/formal and exploratory/focused style \\
+    \emph{length}    & Approximate word count, sentence style, lexical diversity \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 % =============================================================================
 \section{Profile Embedding and Trait-Aligned Retrieval}

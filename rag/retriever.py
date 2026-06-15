@@ -23,12 +23,15 @@ _PROJECT_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 DUAL_INDEX_DIR = _os.path.join(_PROJECT_ROOT, "data", "vector_db", "essays_dual")
 FINETUNED_ARTIFACTS_DIR = _os.path.join(_PROJECT_ROOT, "models", "rag_artifacts")
 
+# (beta, gamma) per trait, beta = 1 - gamma. gamma is the facet-channel weight.
+# Best gamma per trait from notebook/ablation/gamma_sweep.ipynb, selected as the
+# gamma maximising per-trait macro-F1 over the {0.1, 0.3, 0.5, 0.7, 0.9} sweep.
 DEFAULT_TRAIT_WEIGHTS = {
-    "Openness to Experience": (0.4, 0.6),
-    "Conscientiousness":      (0.3, 0.7),
-    "Extraversion":           (0.4, 0.6),
-    "Agreeableness":          (0.4, 0.6),
-    "Neuroticism":            (0.3, 0.7),
+    "Openness to Experience": (0.9, 0.1),  # best gamma=0.1  (macro-F1 0.632)
+    "Conscientiousness":      (0.1, 0.9),  # best gamma=0.9  (macro-F1 0.635)
+    "Extraversion":           (0.9, 0.1),  # best gamma=0.1  (macro-F1 0.667)
+    "Agreeableness":          (0.1, 0.9),  # best gamma=0.9  (macro-F1 0.538)
+    "Neuroticism":            (0.1, 0.9),  # best gamma=0.9  (macro-F1 0.494)
 }
 
 
