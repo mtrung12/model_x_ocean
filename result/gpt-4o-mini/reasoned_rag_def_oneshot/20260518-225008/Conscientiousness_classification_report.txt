@@ -1,0 +1,23 @@
+======================================================================
+Personality Trait Detection - Classification Report
+======================================================================
+
+Model            : gpt-4o-mini
+Test file        : F:\std\GR\code\model_x_ocean\result\gpt-4o-mini\reasoned_rag_def_oneshot\20260518-225008\predictions.csv
+Dataset          : N/A
+# Records        : 50
+# Failed         : 0
+Prompt mode      : reasoned_rag_def_oneshot
+Vector DB        : N/A
+Prediction Time (sec) : 3242.24
+----------------------------------------------------------------------
+
+             precision  recall f1-score support
+high            0.6923  0.3462   0.4615      26
+low             0.5405  0.8333   0.6557      24
+accuracy        0.5800  0.5800   0.5800       1
+macro avg       0.6164  0.5897   0.5586      50
+weighted avg    0.6195  0.5800   0.5548      50
+
+======================================================================
+End of Report

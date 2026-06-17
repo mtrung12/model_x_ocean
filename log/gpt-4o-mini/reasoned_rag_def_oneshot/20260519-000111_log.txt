@@ -1,0 +1,1684 @@
+[Record number 0-Openness]
+--------------------------------------------------------------------------------
+--- SYSTEM PROMPT ---
+
+You are an expert in personality psychology and psychometrics.
+
+Your task is to infer a single Big Five personality trait from a user's text
+and to expose your reasoning in a strictly structured format so it can be
+audited.
+
+You will be given:
+- The target personality trait (with HIGH and LOW definitions).
+- A small set of similar texts retrieved from a labelled corpus, with
+  their known labels and extracted psychological evidence.
+
+Rules:
+- Use only evidence from the provided text. Do NOT invent details.
+- Quote or paraphrase concrete cues; abstract trait words alone are not
+  evidence.
+ — distinguish transient states from stable traits:
+    * Situational stress, fatigue, homesickness, exam pressure, or adjustment
+      to new environments (e.g. starting university) are normal context-driven
+      reactions that virtually anyone experiences. They are NOT reliable
+      evidence of high Neuroticism on their own.
+    * Trait-level evidence requires recurring, cross-situational patterns of
+      emotional instability that persist independent of an obvious external cause.
+    * Tag every evidence cue as [state] (temporary/situational) or
+      [trait] (recurring/cross-situational). Weight [trait] cues heavily;
+      treat [state] cues as weak or neutral unless they are extreme or
+      accompanied by explicit statements of habitual emotional difficulty.
+    * Expressive writing, enthusiastic tone, humor, excitement about activities,
+      strong opinions, or vivid descriptions are stylistic features only.
+      They do NOT constitute evidence of Extraversion.
+    * A person can write expressively and enthusiastically about solo hobbies,
+      intellectual interests, or activities while being deeply introverted.
+    * True Extraversion evidence requires cues about social energy and orientation:
+      actively seeking out groups or parties, gaining energy from social interaction,
+      discomfort with solitude, preferring large gatherings, or explicit statements
+      about enjoying socialising.
+    * Tag every Extraversion cue as [social-energy] (directly about seeking or
+      enjoying social interaction) or [expressive-style] (enthusiastic tone/humor
+      without social context). Weight [social-energy] cues heavily; treat
+      [expressive-style] cues as weak or neutral for Extraversion scoring.
+- Output MUST follow the XML tag structure below, in this exact order,
+  with no extra text outside the tags.
+
+Output format (replicate verbatim, fill in the contents):
+
+<evidence>
+- [state|trait] one concrete cue from the text
+- [state|trait] another concrete cue
+- ...
+</evidence>
+<facet_check>
+- facet name -> high|low|mixed -> brief reason (dominant evidence type: state|trait)
+- ...
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <i> (label: <label>) because <reason>.
+The test text diverges from Similar Profile <j> on <axis>.
+</example_alignment>
+<verdict>
+1-2 sentence synthesis of why the overall pattern points high or low,
+explicitly noting whether the supporting evidence is trait-level or
+situational/state-level.
+</verdict>
+<label>high</label>
+
+The final <label> tag MUST contain exactly one word: high or low. Nothing else.
+
+
+--- USER PROMPT ---
+
+Trait: Openness
+
+HIGH Openness: People high in Openness are imaginative, curious, creative, intellectually adventurous, and receptive to new ideas and experiences.
+LOW  Openness: People low in Openness are practical, conventional, traditional, and prefer familiarity, routine, and concrete experiences.
+
+---
+
+The following are the 5 most similar texts from the training set,
+with their known labels and extracted psychological evidence. Use them
+as calibration anchors - note how each one's cues map to its label.
+
+[Similar Profile 1] (label: low)
+[FACETS]
+N1 anxiety            | high | expresses worry about adjusting to college and managing classes, feels overwhelmed at times
+N2 hostility          | none | 
+N3 depression         | none | 
+N4 self-conscious     | mod  | mentions being scared about college and sorority life, but does not dwell on it
+N5 impulsiveness      | none | 
+N6 vulnerability       | high | feels overwhelmed by the transition to college and missing family, especially the dog
+E1 warmth             | high | expresses affection for boyfriend, family, and new friends in the sorority
+E2 gregariousness     | high | enjoys meeting new people and values the sense of family in the sorority
+E3 assertiveness      | none | 
+E4 activity           | mod  | describes various activities but does not indicate a busy schedule or energetic pace
+E5 excitement-seek    | high | shows enthusiasm for new experiences in Austin and being part of a sorority
+E6 positive emotion    | high | conveys happiness about new friendships and experiences, especially in the sorority
+O1 fantasy            | none | 
+O2 aesthetics         | none | 
+O3 feelings           | high | demonstrates emotional depth regarding family and relationships, especially with the dog
+O4 actions/variety    | mod  | shows some openness to new experiences but does not explicitly seek change
+O5 ideas              | none | 
+O6 values             | none | 
+A1 trust              | high | expresses belief in the good intentions of new friends and family
+A2 straightforward     | mod  | shares personal feelings openly but does not show extreme candor
+A3 altruism           | high | shows concern for family and friends, especially the dog and younger brothers
+A4 compliance         | none | 
+A5 modesty            | none | 
+A6 tender-minded      | high | expresses empathy for the dog and concern for family’s feelings
+C1 competence         | mod  | expresses a desire to keep up with classes and manage responsibilities
+C2 order              | none | 
+C3 dutifulness        | high | shows commitment to attending classes and keeping up with studies
+C4 achievement        | mod  | expresses ambition to do well in college but does not detail specific goals
+C5 self-discipline    | mod  | mentions wanting to keep up with reading and classes, indicating some self-control
+C6 deliberation       | mod  | reflects on the challenges ahead and plans to work hard, showing some thoughtfulness
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns, indicating personal focus
+emotion:   positive emotions dominate, with expressions of happiness and affection
+tense:     present emphasis, with some reflections on past experiences
+cognitive: moderate insight into feelings and experiences, with some tentative thoughts
+social:    high density of social-process words, indicating engagement with others
+register:  informal and exploratory, with a casual tone throughout
+length:    approximately 700 words, with varied sentence lengths and moderate lexical diversity
+
+[Similar Profile 2] (label: low)
+[FACETS]
+N1 anxiety            | low  | expresses some worry about tests but overall feels secure in college environment.
+N2 hostility          | none | no evidence of anger or resentment toward others is present in the text.
+N3 depression         | none | no signs of sadness or hopelessness are expressed in the writing.
+N4 self-conscious     | mod  | feels somewhat out of place but does not express significant shame or discomfort.
+N5 impulsiveness      | none | no clear evidence of difficulty resisting urges or acting without thought.
+N6 vulnerability       | mod  | mentions feeling overwhelmed by homework but does not express helplessness.
+E1 warmth             | high | expresses affection for friends and enjoyment in social interactions at college.
+E2 gregariousness     | mod  | enjoys meeting new people but also feels a desire to stay in familiar settings.
+E3 assertiveness      | none | no evidence of leadership or a decisive voice is present in the text.
+E4 activity           | mod  | describes a busy college life but does not indicate a high energy level or pace.
+E5 excitement-seek    | none | no clear desire for thrill-seeking or novelty is expressed in the writing.
+E6 positive emotion    | high | shows enthusiasm for college life and expresses joy about the campus and experiences.
+O1 fantasy            | none | no evidence of vivid imagination or daydreaming is present in the text.
+O2 aesthetics         | high | appreciates the beauty of the campus and the cleanliness of the lakes in Austin.
+O3 feelings           | mod  | shows some emotional depth regarding college experiences but lacks introspective awareness.
+O4 actions/variety    | none | no clear evidence of openness to new experiences or change is present in the text.
+O5 ideas              | mod  | expresses a desire to learn and respect for teachers but lacks deep intellectual curiosity.
+O6 values             | none | no evidence of re-examining values or norms is present in the writing.
+A1 trust              | high | expresses belief in the good intentions of others, especially regarding roommate compatibility.
+A2 straightforward     | high | communicates thoughts candidly and openly without manipulation.
+A3 altruism           | mod  | shows concern for friends still in high school but does not actively engage in helping others.
+A4 compliance         | high | indicates a tendency to get along with others and avoid conflict, especially with the roommate.
+A5 modesty            | none | no evidence of humility or self-promotion is present in the text.
+A6 tender-minded      | mod  | expresses sympathy for friends in high school but does not deeply engage with others' pain.
+C1 competence         | mod  | feels capable in college but expresses some uncertainty about academic performance.
+C2 order              | none | no evidence of tidiness or organization is present in the writing.
+C3 dutifulness        | mod  | acknowledges responsibilities but does not strongly emphasize adherence to obligations.
+C4 achievement        | mod  | expresses a desire to succeed academically but does not show strong ambition.
+C5 self-discipline    | low  | admits distractions and struggles to focus on homework despite recognizing the need.
+C6 deliberation       | none | no evidence of careful planning or thinking before acting is present in the text.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal reflection.
+emotion:   positive emotions dominate, with some negative feelings about tests.
+tense:     present tense is primarily used, reflecting current experiences and feelings.
+cognitive: moderate insight into personal experiences and some causal connections.
+social:    moderate density of social-process words, indicating engagement with others.
+register:  informal and exploratory, with a casual tone throughout the essay.
+length:    approximately 1,200 words, with a mix of run-on sentences and varied vocabulary.
+
+[Similar Profile 3] (label: high)
+[FACETS]
+N1 anxiety            | low  | expresses some worry about class but overall feels confident about writing.
+N2 hostility          | low  | shows understanding of others' perspectives; acknowledges inconsiderate behavior but does not react with anger.
+N3 depression         | none | no evidence of sadness or hopelessness present in the text.
+N4 self-conscious     | mod  | reflects on being labeled as quiet and hesitant, indicating some awareness of social perception.
+N5 impulsiveness      | mod  | considers rushing for frats but ultimately hesitates due to uncertainty about commitment.
+N6 vulnerability       | low  | expresses confidence in academic abilities and does not feel overwhelmed by current challenges.
+E1 warmth             | none | no clear evidence of affectionate engagement with others in the text.
+E2 gregariousness     | high | expresses interest in brotherhood and social activities, indicating a preference for group settings.
+E3 assertiveness      | mod  | acknowledges hesitance in committing but also shows confidence in academic capabilities.
+E4 activity           | mod  | mentions being busy with classes and assignments but does not detail a structured schedule.
+E5 excitement-seek    | high | expresses enthusiasm for the writing assignment and the idea of new experiences like fraternity life.
+E6 positive emotion    | high | shows joy and optimism about the writing process and personal capabilities.
+O1 fantasy            | high | engages in imaginative thinking about fraternity life and personal identity.
+O2 aesthetics         | n/e  | no evidence of appreciation for art or beauty in the text.
+O3 feelings           | high | demonstrates emotional depth by reflecting on personal thoughts and feelings throughout the essay.
+O4 actions/variety    | high | shows openness to new experiences, considering various activities and social engagements.
+O5 ideas              | mod  | reflects on academic challenges and personal beliefs but lacks deep intellectual exploration.
+O6 values             | mod  | questions personal values regarding commitment and academic success, indicating some willingness to re-examine.
+A1 trust              | n/e  | no evidence of beliefs about others' intentions present in the text.
+A2 straightforward    | high | communicates thoughts candidly and openly, sharing personal reflections without manipulation.
+A3 altruism           | n/e  | no evidence of concern for others' welfare in the text.
+A4 compliance         | low  | shows a degree of independence in decision-making, particularly regarding fraternity involvement.
+A5 modesty            | low  | expresses confidence in academic abilities and does not downplay personal strengths.
+A6 tender-minded      | n/e  | no evidence of empathy or sympathy for others' pain in the text.
+C1 competence         | mod  | expresses some confidence in academic abilities but also admits to uncertainty about college success.
+C2 order              | none | no evidence of organization or structure in thoughts or writing process.
+C3 dutifulness        | low  | admits to being unmotivated to read and acknowledges laziness regarding studies.
+C4 achievement        | mod  | expresses some ambition but also a tendency to coast through academics without striving for goals.
+C5 self-discipline    | low  | recognizes distractions and admits to a lack of follow-through on academic responsibilities.
+C6 deliberation       | mod  | reflects on decisions but does not show careful planning or extensive thought before acting.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal reflection.
+emotion:   positive balance with dominant feelings of joy and confidence.
+tense:     present emphasis with some reflections on past experiences.
+cognitive: moderate insight with some tentative thoughts about future actions.
+social:    moderate density of social-process words reflecting on interactions.
+register:  informal and exploratory, with a casual tone throughout.
+length:    approximately 800 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 4] (label: high)
+[FACETS]
+N1 anxiety            | low  | expresses contentment about being at UT and reflects positively on experiences.
+N2 hostility          | none | no evidence of anger or resentment toward others is present in the text.
+N3 depression         | none | no signs of sadness or hopelessness are evident in the writing.
+N4 self-conscious     | mod  | shows some concern about social interactions, particularly regarding interest from a girl.
+N5 impulsiveness      | mod  | mentions slow typing and difficulty with hand-eye coordination, indicating some impulsive tendencies.
+N6 vulnerability       | none | no feelings of being overwhelmed or helpless are expressed in the text.
+E1 warmth             | mod  | shows some friendliness in discussing interactions with peers and appreciation for diverse perspectives.
+E2 gregariousness     | high | expresses enjoyment in social settings, such as joining a fraternity to meet new people.
+E3 assertiveness      | mod  | indicates a desire to engage socially but does not demonstrate strong leadership or decisiveness.
+E4 activity           | mod  | mentions being busy with school and social activities but does not detail a hectic schedule.
+E5 excitement-seek    | high | expresses a desire for new experiences and enjoyment in meeting diverse individuals.
+E6 positive emotion    | high | conveys happiness about being at UT and reflects positively on social interactions.
+O1 fantasy            | mod  | shows some imaginative thinking about social dynamics and personal experiences.
+O2 aesthetics         | none | no clear appreciation for art or beauty is expressed in the text.
+O3 feelings           | mod  | reflects on emotional experiences, particularly regarding religion and social interactions.
+O4 actions/variety    | high | demonstrates openness to new experiences, such as joining a fraternity and engaging with diverse peers.
+O5 ideas              | mod  | shows some intellectual curiosity, particularly in discussing perspectives in class.
+O6 values             | mod  | reflects on personal values regarding religion and social interactions, indicating some willingness to re-examine them.
+A1 trust              | none | no evidence of beliefs about others' intentions is present in the text.
+A2 straightforward     | high | communicates thoughts candidly and openly, without manipulation.
+A3 altruism           | none | no active concern for others' welfare is expressed in the writing.
+A4 compliance         | low  | shows a degree of independence in social choices, such as joining a fraternity.
+A5 modesty            | mod  | expresses some humility about personal abilities, particularly in typing and coordination.
+A6 tender-minded      | none | no evidence of empathy or sympathy for others' pain is present in the text.
+C1 competence         | low  | expresses feelings of inadequacy regarding typing skills and hand-eye coordination.
+C2 order              | none | no evidence of organization or structure is present in the writing.
+C3 dutifulness        | low  | does not express a strong sense of obligation or adherence to responsibilities.
+C4 achievement        | mod  | reflects on academic goals but does not show strong ambition or striving for success.
+C5 self-discipline    | low  | admits to distractions and does not demonstrate strong follow-through on tasks.
+C6 deliberation       | mod  | shows some reflective thinking but lacks careful planning or forethought in actions.
+
+[LINGUISTIC]
+pronouns:  high density of "I" indicates a personal focus.
+emotion:   positive balance with dominant feelings of happiness and curiosity.
+tense:     present emphasis with reflections on current experiences.
+cognitive: moderate insight with some reflective thoughts on social dynamics.
+social:    moderate density of social-process words, indicating engagement with peers.
+register:  informal and exploratory, typical of stream-of-consciousness writing.
+length:    approximately 600 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 5] (label: low)
+[FACETS]
+N1 anxiety            | mod  | expresses stress from a hectic schedule and navigating campus, but no deep worry is evident
+N2 hostility          | none | 
+N3 depression         | none | 
+N4 self-conscious     | none | 
+N5 impulsiveness      | none | 
+N6 vulnerability      | none | 
+E1 warmth             | high | shows affection for the college experience and excitement about new adventures
+E2 gregariousness     | high | enjoys the bustling environment of college and the social aspects of campus life
+E3 assertiveness      | none | 
+E4 activity           | high | describes a busy schedule and fast-paced life at college, indicating high energy
+E5 excitement-seek    | high | expresses enthusiasm for the college experience and the vibrant city of Austin
+E6 positive emotion   | high | conveys joy and optimism about college life and the new environment
+O1 fantasy            | n/e  | 
+O2 aesthetics         | n/e  | 
+O3 feelings           | mod  | reflects on emotional experiences but lacks deep introspection
+O4 actions/variety    | mod  | mentions a desire for change and new experiences, but not deeply explored
+O5 ideas              | n/e  | 
+O6 values             | n/e  | 
+A1 trust              | n/e  | 
+A2 straightforward    | none | 
+A3 altruism           | n/e  | 
+A4 compliance         | none | 
+A5 modesty            | none | 
+A6 tender-minded      | n/e  | 
+C1 competence         | mod  | acknowledges the challenge of keeping up with classes, indicating some self-doubt
+C2 order              | low  | describes a chaotic start to college life, suggesting disorganization
+C3 dutifulness        | mod  | expresses a desire to succeed in classes but struggles with the workload
+C4 achievement        | mod  | shows ambition to make the most of the college experience, but feels overwhelmed
+C5 self-discipline    | low  | admits to being distracted and unable to focus amidst the chaos
+C6 deliberation       | n/e  | 
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal engagement
+emotion:   positive balance with dominant enthusiasm about college life
+tense:     present emphasis reflecting current experiences and feelings
+cognitive: moderate insight into personal feelings and experiences, but lacks depth
+social:    high density of social-process words reflecting engagement with others
+register:  informal and exploratory, typical of a stream-of-consciousness style
+length:    approx 290 words, with a mix of long and short sentences, moderate lexical diversity
+
+---
+
+Text to classify:
+It is now 12:32 and so I cannot wait until 12:52 because at that time my writing will be done. I type slowly anyway so I shouldn’t have too much trouble typing for twenty minutes and producing much of a paper. I am not thinking about much at the moment except for the fact I am hungry and stressed out. The first week or two of school seemed pretty easy and then all of the sudden, yesterday it hit me. I am in college and at this point I need to get my priorities straight. I am enjoying myself too much and need to have more focus. My mind is just wondering a million miles a minute about nothing in particular. I need a job, but I’m so busy with school and stuff with my sorority, which is another story. I am not the proudest to be in a sorority. Don't get me wrong, it's a great honor and a fun time, but I don't like the whole association that comes with it. My whole life does not revolve around guys and partying and allowing myself no friends or life outside of the sorority, as many of them do. In fact, I like so many people outside my sorority and would like to get to know them better that it makes me wonder if this is a good, more importantly, healthy fit for me?  I love Austin because of it's diversity and that became one of the main factors in choosing schools between SMU and here. There are so many interesting people and I want to get to know them all or at least try. Wow, it's already been over 10 minutes and this has not been too hard. I used to write daily in my journal at home, but haven’t had too much spare time to do that here, so maybe that is why I have been able to do this, and express myself so well. I enjoy so much being able to express myself on paper, which may explain why I write so much-journal, letters, poems. It helps me gain a sense of relief and since I don' express my feelings out loud too often, I need to do this daily, if not more so I can release all that I feel. I am excited about doing psychology this year because I hope to decide between the two majors I am struggling with. I am at the moment down for premed/nutrition and I really do want to go into medicine, but I've also always been interested in criminal psychology. It may be a little depressing, but I find it very interesting, and definitely want a job I love. A few months back, I read Helter Skelter and this encouraged my psychology path a little more, so I am hoping this class will help with my decision making. I guess we'll see. It is 12:51 now and time for me to stop. 
+
+Reason step by step and emit your output in the EXACT XML structure
+specified in the system message:
+
+<evidence> ... </evidence>
+<facet_check> ... </facet_check>
+<example_alignment> ... </example_alignment>
+<verdict> ... </verdict>
+<label>high</label>   (or <label>low</label>)
+
+Do not output any text outside these tags.
+
+
+--- LLM RESPONSE ---
+<evidence>
+- [state] expresses feeling "hungry and stressed out," indicating a temporary emotional state.
+- [trait] mentions enjoying the diversity in Austin and wanting to get to know interesting people, showing curiosity and openness to new experiences.
+- [trait] reflects on the desire to express feelings through writing, indicating a creative outlet and imaginative engagement.
+- [trait] discusses interest in psychology and criminal psychology, demonstrating intellectual curiosity and a willingness to explore different fields.
+- [trait] expresses excitement about the psychology class and its potential impact on future decisions, indicating receptiveness to new ideas.
+</evidence>
+<facet_check>
+- fantasy -> high -> shows imaginative engagement through writing and interest in psychology.
+- aesthetics -> none -> no evidence of appreciation for art or beauty.
+- feelings -> high -> reflects on personal feelings and the need for expression.
+- actions/variety -> high -> expresses a desire to meet diverse people and explore different majors.
+- ideas -> high -> demonstrates curiosity about psychology and criminal psychology.
+- values -> none -> no evidence of re-examining values or norms.
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <3> (label: <high>) because it demonstrates a strong curiosity about psychology and a desire to explore diverse experiences. The test text diverges from Similar Profile <1> on the axis of openness to new ideas and experiences.
+</example_alignment>
+<verdict>
+The overall pattern points to high Openness, supported by trait-level evidence of curiosity, creativity, and a desire for new experiences and ideas.
+</verdict>
+<label>high</label>
+================================================================================
+
+[Record number 0-Conscientiousness]
+--------------------------------------------------------------------------------
+--- SYSTEM PROMPT ---
+
+You are an expert in personality psychology and psychometrics.
+
+Your task is to infer a single Big Five personality trait from a user's text
+and to expose your reasoning in a strictly structured format so it can be
+audited.
+
+You will be given:
+- The target personality trait (with HIGH and LOW definitions).
+- A small set of similar texts retrieved from a labelled corpus, with
+  their known labels and extracted psychological evidence.
+
+Rules:
+- Use only evidence from the provided text. Do NOT invent details.
+- Quote or paraphrase concrete cues; abstract trait words alone are not
+  evidence.
+ — distinguish transient states from stable traits:
+    * Situational stress, fatigue, homesickness, exam pressure, or adjustment
+      to new environments (e.g. starting university) are normal context-driven
+      reactions that virtually anyone experiences. They are NOT reliable
+      evidence of high Neuroticism on their own.
+    * Trait-level evidence requires recurring, cross-situational patterns of
+      emotional instability that persist independent of an obvious external cause.
+    * Tag every evidence cue as [state] (temporary/situational) or
+      [trait] (recurring/cross-situational). Weight [trait] cues heavily;
+      treat [state] cues as weak or neutral unless they are extreme or
+      accompanied by explicit statements of habitual emotional difficulty.
+    * Expressive writing, enthusiastic tone, humor, excitement about activities,
+      strong opinions, or vivid descriptions are stylistic features only.
+      They do NOT constitute evidence of Extraversion.
+    * A person can write expressively and enthusiastically about solo hobbies,
+      intellectual interests, or activities while being deeply introverted.
+    * True Extraversion evidence requires cues about social energy and orientation:
+      actively seeking out groups or parties, gaining energy from social interaction,
+      discomfort with solitude, preferring large gatherings, or explicit statements
+      about enjoying socialising.
+    * Tag every Extraversion cue as [social-energy] (directly about seeking or
+      enjoying social interaction) or [expressive-style] (enthusiastic tone/humor
+      without social context). Weight [social-energy] cues heavily; treat
+      [expressive-style] cues as weak or neutral for Extraversion scoring.
+- Output MUST follow the XML tag structure below, in this exact order,
+  with no extra text outside the tags.
+
+Output format (replicate verbatim, fill in the contents):
+
+<evidence>
+- [state|trait] one concrete cue from the text
+- [state|trait] another concrete cue
+- ...
+</evidence>
+<facet_check>
+- facet name -> high|low|mixed -> brief reason (dominant evidence type: state|trait)
+- ...
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <i> (label: <label>) because <reason>.
+The test text diverges from Similar Profile <j> on <axis>.
+</example_alignment>
+<verdict>
+1-2 sentence synthesis of why the overall pattern points high or low,
+explicitly noting whether the supporting evidence is trait-level or
+situational/state-level.
+</verdict>
+<label>high</label>
+
+The final <label> tag MUST contain exactly one word: high or low. Nothing else.
+
+
+--- USER PROMPT ---
+
+Trait: Conscientiousness
+
+HIGH Conscientiousness: Highly conscientious individuals are organized, disciplined, dependable, hardworking, responsible, and goal-oriented.
+LOW  Conscientiousness: Low Conscientiousness is associated with spontaneity, disorganization, carelessness, impulsiveness, and reduced self-discipline.
+
+---
+
+The following are the 5 most similar texts from the training set,
+with their known labels and extracted psychological evidence. Use them
+as calibration anchors - note how each one's cues map to its label.
+
+[Similar Profile 1] (label: high)
+[FACETS]
+N1 anxiety            | high | expresses worry about adjusting to college and managing classes, feels overwhelmed at times
+N2 hostility          | none | 
+N3 depression         | none | 
+N4 self-conscious     | mod  | mentions being scared about college and sorority life, but does not dwell on it
+N5 impulsiveness      | none | 
+N6 vulnerability       | high | feels overwhelmed by the transition to college and missing family, especially the dog
+E1 warmth             | high | expresses affection for boyfriend, family, and new friends in the sorority
+E2 gregariousness     | high | enjoys meeting new people and values the sense of family in the sorority
+E3 assertiveness      | none | 
+E4 activity           | mod  | describes various activities but does not indicate a busy schedule or energetic pace
+E5 excitement-seek    | high | shows enthusiasm for new experiences in Austin and being part of a sorority
+E6 positive emotion    | high | conveys happiness about new friendships and experiences, especially in the sorority
+O1 fantasy            | none | 
+O2 aesthetics         | none | 
+O3 feelings           | high | demonstrates emotional depth regarding family and relationships, especially with the dog
+O4 actions/variety    | mod  | shows some openness to new experiences but does not explicitly seek change
+O5 ideas              | none | 
+O6 values             | none | 
+A1 trust              | high | expresses belief in the good intentions of new friends and family
+A2 straightforward     | mod  | shares personal feelings openly but does not show extreme candor
+A3 altruism           | high | shows concern for family and friends, especially the dog and younger brothers
+A4 compliance         | none | 
+A5 modesty            | none | 
+A6 tender-minded      | high | expresses empathy for the dog and concern for family’s feelings
+C1 competence         | mod  | expresses a desire to keep up with classes and manage responsibilities
+C2 order              | none | 
+C3 dutifulness        | high | shows commitment to attending classes and keeping up with studies
+C4 achievement        | mod  | expresses ambition to do well in college but does not detail specific goals
+C5 self-discipline    | mod  | mentions wanting to keep up with reading and classes, indicating some self-control
+C6 deliberation       | mod  | reflects on the challenges ahead and plans to work hard, showing some thoughtfulness
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns, indicating personal focus
+emotion:   positive emotions dominate, with expressions of happiness and affection
+tense:     present emphasis, with some reflections on past experiences
+cognitive: moderate insight into feelings and experiences, with some tentative thoughts
+social:    high density of social-process words, indicating engagement with others
+register:  informal and exploratory, with a casual tone throughout
+length:    approximately 700 words, with varied sentence lengths and moderate lexical diversity
+
+[Similar Profile 2] (label: low)
+[FACETS]
+N1 anxiety            | low  | expresses some worry about tests but overall feels secure in college environment.
+N2 hostility          | none | no evidence of anger or resentment toward others is present in the text.
+N3 depression         | none | no signs of sadness or hopelessness are expressed in the writing.
+N4 self-conscious     | mod  | feels somewhat out of place but does not express significant shame or discomfort.
+N5 impulsiveness      | none | no clear evidence of difficulty resisting urges or acting without thought.
+N6 vulnerability       | mod  | mentions feeling overwhelmed by homework but does not express helplessness.
+E1 warmth             | high | expresses affection for friends and enjoyment in social interactions at college.
+E2 gregariousness     | mod  | enjoys meeting new people but also feels a desire to stay in familiar settings.
+E3 assertiveness      | none | no evidence of leadership or a decisive voice is present in the text.
+E4 activity           | mod  | describes a busy college life but does not indicate a high energy level or pace.
+E5 excitement-seek    | none | no clear desire for thrill-seeking or novelty is expressed in the writing.
+E6 positive emotion    | high | shows enthusiasm for college life and expresses joy about the campus and experiences.
+O1 fantasy            | none | no evidence of vivid imagination or daydreaming is present in the text.
+O2 aesthetics         | high | appreciates the beauty of the campus and the cleanliness of the lakes in Austin.
+O3 feelings           | mod  | shows some emotional depth regarding college experiences but lacks introspective awareness.
+O4 actions/variety    | none | no clear evidence of openness to new experiences or change is present in the text.
+O5 ideas              | mod  | expresses a desire to learn and respect for teachers but lacks deep intellectual curiosity.
+O6 values             | none | no evidence of re-examining values or norms is present in the writing.
+A1 trust              | high | expresses belief in the good intentions of others, especially regarding roommate compatibility.
+A2 straightforward     | high | communicates thoughts candidly and openly without manipulation.
+A3 altruism           | mod  | shows concern for friends still in high school but does not actively engage in helping others.
+A4 compliance         | high | indicates a tendency to get along with others and avoid conflict, especially with the roommate.
+A5 modesty            | none | no evidence of humility or self-promotion is present in the text.
+A6 tender-minded      | mod  | expresses sympathy for friends in high school but does not deeply engage with others' pain.
+C1 competence         | mod  | feels capable in college but expresses some uncertainty about academic performance.
+C2 order              | none | no evidence of tidiness or organization is present in the writing.
+C3 dutifulness        | mod  | acknowledges responsibilities but does not strongly emphasize adherence to obligations.
+C4 achievement        | mod  | expresses a desire to succeed academically but does not show strong ambition.
+C5 self-discipline    | low  | admits distractions and struggles to focus on homework despite recognizing the need.
+C6 deliberation       | none | no evidence of careful planning or thinking before acting is present in the text.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal reflection.
+emotion:   positive emotions dominate, with some negative feelings about tests.
+tense:     present tense is primarily used, reflecting current experiences and feelings.
+cognitive: moderate insight into personal experiences and some causal connections.
+social:    moderate density of social-process words, indicating engagement with others.
+register:  informal and exploratory, with a casual tone throughout the essay.
+length:    approximately 1,200 words, with a mix of run-on sentences and varied vocabulary.
+
+[Similar Profile 3] (label: low)
+[FACETS]
+N1 anxiety            | low  | expresses some worry about class but overall feels confident about writing.
+N2 hostility          | low  | shows understanding of others' perspectives; acknowledges inconsiderate behavior but does not react with anger.
+N3 depression         | none | no evidence of sadness or hopelessness present in the text.
+N4 self-conscious     | mod  | reflects on being labeled as quiet and hesitant, indicating some awareness of social perception.
+N5 impulsiveness      | mod  | considers rushing for frats but ultimately hesitates due to uncertainty about commitment.
+N6 vulnerability       | low  | expresses confidence in academic abilities and does not feel overwhelmed by current challenges.
+E1 warmth             | none | no clear evidence of affectionate engagement with others in the text.
+E2 gregariousness     | high | expresses interest in brotherhood and social activities, indicating a preference for group settings.
+E3 assertiveness      | mod  | acknowledges hesitance in committing but also shows confidence in academic capabilities.
+E4 activity           | mod  | mentions being busy with classes and assignments but does not detail a structured schedule.
+E5 excitement-seek    | high | expresses enthusiasm for the writing assignment and the idea of new experiences like fraternity life.
+E6 positive emotion    | high | shows joy and optimism about the writing process and personal capabilities.
+O1 fantasy            | high | engages in imaginative thinking about fraternity life and personal identity.
+O2 aesthetics         | n/e  | no evidence of appreciation for art or beauty in the text.
+O3 feelings           | high | demonstrates emotional depth by reflecting on personal thoughts and feelings throughout the essay.
+O4 actions/variety    | high | shows openness to new experiences, considering various activities and social engagements.
+O5 ideas              | mod  | reflects on academic challenges and personal beliefs but lacks deep intellectual exploration.
+O6 values             | mod  | questions personal values regarding commitment and academic success, indicating some willingness to re-examine.
+A1 trust              | n/e  | no evidence of beliefs about others' intentions present in the text.
+A2 straightforward    | high | communicates thoughts candidly and openly, sharing personal reflections without manipulation.
+A3 altruism           | n/e  | no evidence of concern for others' welfare in the text.
+A4 compliance         | low  | shows a degree of independence in decision-making, particularly regarding fraternity involvement.
+A5 modesty            | low  | expresses confidence in academic abilities and does not downplay personal strengths.
+A6 tender-minded      | n/e  | no evidence of empathy or sympathy for others' pain in the text.
+C1 competence         | mod  | expresses some confidence in academic abilities but also admits to uncertainty about college success.
+C2 order              | none | no evidence of organization or structure in thoughts or writing process.
+C3 dutifulness        | low  | admits to being unmotivated to read and acknowledges laziness regarding studies.
+C4 achievement        | mod  | expresses some ambition but also a tendency to coast through academics without striving for goals.
+C5 self-discipline    | low  | recognizes distractions and admits to a lack of follow-through on academic responsibilities.
+C6 deliberation       | mod  | reflects on decisions but does not show careful planning or extensive thought before acting.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal reflection.
+emotion:   positive balance with dominant feelings of joy and confidence.
+tense:     present emphasis with some reflections on past experiences.
+cognitive: moderate insight with some tentative thoughts about future actions.
+social:    moderate density of social-process words reflecting on interactions.
+register:  informal and exploratory, with a casual tone throughout.
+length:    approximately 800 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 4] (label: low)
+[FACETS]
+N1 anxiety            | low  | expresses contentment about being at UT and reflects positively on experiences.
+N2 hostility          | none | no evidence of anger or resentment toward others is present in the text.
+N3 depression         | none | no signs of sadness or hopelessness are evident in the writing.
+N4 self-conscious     | mod  | shows some concern about social interactions, particularly regarding interest from a girl.
+N5 impulsiveness      | mod  | mentions slow typing and difficulty with hand-eye coordination, indicating some impulsive tendencies.
+N6 vulnerability       | none | no feelings of being overwhelmed or helpless are expressed in the text.
+E1 warmth             | mod  | shows some friendliness in discussing interactions with peers and appreciation for diverse perspectives.
+E2 gregariousness     | high | expresses enjoyment in social settings, such as joining a fraternity to meet new people.
+E3 assertiveness      | mod  | indicates a desire to engage socially but does not demonstrate strong leadership or decisiveness.
+E4 activity           | mod  | mentions being busy with school and social activities but does not detail a hectic schedule.
+E5 excitement-seek    | high | expresses a desire for new experiences and enjoyment in meeting diverse individuals.
+E6 positive emotion    | high | conveys happiness about being at UT and reflects positively on social interactions.
+O1 fantasy            | mod  | shows some imaginative thinking about social dynamics and personal experiences.
+O2 aesthetics         | none | no clear appreciation for art or beauty is expressed in the text.
+O3 feelings           | mod  | reflects on emotional experiences, particularly regarding religion and social interactions.
+O4 actions/variety    | high | demonstrates openness to new experiences, such as joining a fraternity and engaging with diverse peers.
+O5 ideas              | mod  | shows some intellectual curiosity, particularly in discussing perspectives in class.
+O6 values             | mod  | reflects on personal values regarding religion and social interactions, indicating some willingness to re-examine them.
+A1 trust              | none | no evidence of beliefs about others' intentions is present in the text.
+A2 straightforward     | high | communicates thoughts candidly and openly, without manipulation.
+A3 altruism           | none | no active concern for others' welfare is expressed in the writing.
+A4 compliance         | low  | shows a degree of independence in social choices, such as joining a fraternity.
+A5 modesty            | mod  | expresses some humility about personal abilities, particularly in typing and coordination.
+A6 tender-minded      | none | no evidence of empathy or sympathy for others' pain is present in the text.
+C1 competence         | low  | expresses feelings of inadequacy regarding typing skills and hand-eye coordination.
+C2 order              | none | no evidence of organization or structure is present in the writing.
+C3 dutifulness        | low  | does not express a strong sense of obligation or adherence to responsibilities.
+C4 achievement        | mod  | reflects on academic goals but does not show strong ambition or striving for success.
+C5 self-discipline    | low  | admits to distractions and does not demonstrate strong follow-through on tasks.
+C6 deliberation       | mod  | shows some reflective thinking but lacks careful planning or forethought in actions.
+
+[LINGUISTIC]
+pronouns:  high density of "I" indicates a personal focus.
+emotion:   positive balance with dominant feelings of happiness and curiosity.
+tense:     present emphasis with reflections on current experiences.
+cognitive: moderate insight with some reflective thoughts on social dynamics.
+social:    moderate density of social-process words, indicating engagement with peers.
+register:  informal and exploratory, typical of stream-of-consciousness writing.
+length:    approximately 600 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 5] (label: low)
+[FACETS]
+N1 anxiety            | mod  | expresses stress from a hectic schedule and navigating campus, but no deep worry is evident
+N2 hostility          | none | 
+N3 depression         | none | 
+N4 self-conscious     | none | 
+N5 impulsiveness      | none | 
+N6 vulnerability      | none | 
+E1 warmth             | high | shows affection for the college experience and excitement about new adventures
+E2 gregariousness     | high | enjoys the bustling environment of college and the social aspects of campus life
+E3 assertiveness      | none | 
+E4 activity           | high | describes a busy schedule and fast-paced life at college, indicating high energy
+E5 excitement-seek    | high | expresses enthusiasm for the college experience and the vibrant city of Austin
+E6 positive emotion   | high | conveys joy and optimism about college life and the new environment
+O1 fantasy            | n/e  | 
+O2 aesthetics         | n/e  | 
+O3 feelings           | mod  | reflects on emotional experiences but lacks deep introspection
+O4 actions/variety    | mod  | mentions a desire for change and new experiences, but not deeply explored
+O5 ideas              | n/e  | 
+O6 values             | n/e  | 
+A1 trust              | n/e  | 
+A2 straightforward    | none | 
+A3 altruism           | n/e  | 
+A4 compliance         | none | 
+A5 modesty            | none | 
+A6 tender-minded      | n/e  | 
+C1 competence         | mod  | acknowledges the challenge of keeping up with classes, indicating some self-doubt
+C2 order              | low  | describes a chaotic start to college life, suggesting disorganization
+C3 dutifulness        | mod  | expresses a desire to succeed in classes but struggles with the workload
+C4 achievement        | mod  | shows ambition to make the most of the college experience, but feels overwhelmed
+C5 self-discipline    | low  | admits to being distracted and unable to focus amidst the chaos
+C6 deliberation       | n/e  | 
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal engagement
+emotion:   positive balance with dominant enthusiasm about college life
+tense:     present emphasis reflecting current experiences and feelings
+cognitive: moderate insight into personal feelings and experiences, but lacks depth
+social:    high density of social-process words reflecting engagement with others
+register:  informal and exploratory, typical of a stream-of-consciousness style
+length:    approx 290 words, with a mix of long and short sentences, moderate lexical diversity
+
+---
+
+Text to classify:
+It is now 12:32 and so I cannot wait until 12:52 because at that time my writing will be done. I type slowly anyway so I shouldn’t have too much trouble typing for twenty minutes and producing much of a paper. I am not thinking about much at the moment except for the fact I am hungry and stressed out. The first week or two of school seemed pretty easy and then all of the sudden, yesterday it hit me. I am in college and at this point I need to get my priorities straight. I am enjoying myself too much and need to have more focus. My mind is just wondering a million miles a minute about nothing in particular. I need a job, but I’m so busy with school and stuff with my sorority, which is another story. I am not the proudest to be in a sorority. Don't get me wrong, it's a great honor and a fun time, but I don't like the whole association that comes with it. My whole life does not revolve around guys and partying and allowing myself no friends or life outside of the sorority, as many of them do. In fact, I like so many people outside my sorority and would like to get to know them better that it makes me wonder if this is a good, more importantly, healthy fit for me?  I love Austin because of it's diversity and that became one of the main factors in choosing schools between SMU and here. There are so many interesting people and I want to get to know them all or at least try. Wow, it's already been over 10 minutes and this has not been too hard. I used to write daily in my journal at home, but haven’t had too much spare time to do that here, so maybe that is why I have been able to do this, and express myself so well. I enjoy so much being able to express myself on paper, which may explain why I write so much-journal, letters, poems. It helps me gain a sense of relief and since I don' express my feelings out loud too often, I need to do this daily, if not more so I can release all that I feel. I am excited about doing psychology this year because I hope to decide between the two majors I am struggling with. I am at the moment down for premed/nutrition and I really do want to go into medicine, but I've also always been interested in criminal psychology. It may be a little depressing, but I find it very interesting, and definitely want a job I love. A few months back, I read Helter Skelter and this encouraged my psychology path a little more, so I am hoping this class will help with my decision making. I guess we'll see. It is 12:51 now and time for me to stop. 
+
+Reason step by step and emit your output in the EXACT XML structure
+specified in the system message:
+
+<evidence> ... </evidence>
+<facet_check> ... </facet_check>
+<example_alignment> ... </example_alignment>
+<verdict> ... </verdict>
+<label>high</label>   (or <label>low</label>)
+
+Do not output any text outside these tags.
+
+
+--- LLM RESPONSE ---
+<evidence>
+- [state] "I am hungry and stressed out." 
+- [state] "the first week or two of school seemed pretty easy and then all of the sudden, yesterday it hit me."
+- [trait] "I need to get my priorities straight."
+- [trait] "I am enjoying myself too much and need to have more focus."
+- [trait] "I need a job, but I’m so busy with school and stuff with my sorority."
+- [trait] "I love Austin because of its diversity and that became one of the main factors in choosing schools."
+- [trait] "I enjoy so much being able to express myself on paper."
+- [trait] "I am excited about doing psychology this year because I hope to decide between the two majors I am struggling with."
+- [trait] "I really do want to go into medicine, but I've also always been interested in criminal psychology."
+</evidence>
+<facet_check>
+- competence -> mixed -> expresses some uncertainty about managing time and responsibilities but also shows ambition in pursuing majors (dominant evidence type: state)
+- order -> low -> indicates a chaotic start to college life and struggles with organization ("I need to get my priorities straight") (dominant evidence type: trait)
+- dutifulness -> mixed -> acknowledges responsibilities but expresses difficulty in managing them effectively (dominant evidence type: state)
+- achievement -> mixed -> shows ambition in career goals but lacks a clear plan for achieving them (dominant evidence type: trait)
+- self-discipline -> low -> admits to distractions and a lack of focus on academic responsibilities (dominant evidence type: state)
+- deliberation -> mixed -> reflects on decisions but lacks careful planning or extensive thought before acting (dominant evidence type: state)
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <1> (label: <high>) because it shows a desire to get organized and focus on responsibilities, indicating a level of conscientiousness. The test text diverges from Similar Profile <2> on the axis of self-discipline, as the test text expresses struggles with focus and organization.
+</example_alignment>
+<verdict>
+The overall pattern points to low Conscientiousness, primarily due to evidence of disorganization and difficulty in managing responsibilities, which are state-level indicators of current stress rather than stable traits.
+</verdict>
+<label>low</label>
+================================================================================
+
+[Record number 0-Extraversion]
+--------------------------------------------------------------------------------
+--- SYSTEM PROMPT ---
+
+You are an expert in personality psychology and psychometrics.
+
+Your task is to infer a single Big Five personality trait from a user's text
+and to expose your reasoning in a strictly structured format so it can be
+audited.
+
+You will be given:
+- The target personality trait (with HIGH and LOW definitions).
+- A small set of similar texts retrieved from a labelled corpus, with
+  their known labels and extracted psychological evidence.
+
+Rules:
+- Use only evidence from the provided text. Do NOT invent details.
+- Quote or paraphrase concrete cues; abstract trait words alone are not
+  evidence.
+ — distinguish transient states from stable traits:
+    * Situational stress, fatigue, homesickness, exam pressure, or adjustment
+      to new environments (e.g. starting university) are normal context-driven
+      reactions that virtually anyone experiences. They are NOT reliable
+      evidence of high Neuroticism on their own.
+    * Trait-level evidence requires recurring, cross-situational patterns of
+      emotional instability that persist independent of an obvious external cause.
+    * Tag every evidence cue as [state] (temporary/situational) or
+      [trait] (recurring/cross-situational). Weight [trait] cues heavily;
+      treat [state] cues as weak or neutral unless they are extreme or
+      accompanied by explicit statements of habitual emotional difficulty.
+    * Expressive writing, enthusiastic tone, humor, excitement about activities,
+      strong opinions, or vivid descriptions are stylistic features only.
+      They do NOT constitute evidence of Extraversion.
+    * A person can write expressively and enthusiastically about solo hobbies,
+      intellectual interests, or activities while being deeply introverted.
+    * True Extraversion evidence requires cues about social energy and orientation:
+      actively seeking out groups or parties, gaining energy from social interaction,
+      discomfort with solitude, preferring large gatherings, or explicit statements
+      about enjoying socialising.
+    * Tag every Extraversion cue as [social-energy] (directly about seeking or
+      enjoying social interaction) or [expressive-style] (enthusiastic tone/humor
+      without social context). Weight [social-energy] cues heavily; treat
+      [expressive-style] cues as weak or neutral for Extraversion scoring.
+- Output MUST follow the XML tag structure below, in this exact order,
+  with no extra text outside the tags.
+
+Output format (replicate verbatim, fill in the contents):
+
+<evidence>
+- [state|trait] one concrete cue from the text
+- [state|trait] another concrete cue
+- ...
+</evidence>
+<facet_check>
+- facet name -> high|low|mixed -> brief reason (dominant evidence type: state|trait)
+- ...
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <i> (label: <label>) because <reason>.
+The test text diverges from Similar Profile <j> on <axis>.
+</example_alignment>
+<verdict>
+1-2 sentence synthesis of why the overall pattern points high or low,
+explicitly noting whether the supporting evidence is trait-level or
+situational/state-level.
+</verdict>
+<label>high</label>
+
+The final <label> tag MUST contain exactly one word: high or low. Nothing else.
+
+
+--- USER PROMPT ---
+
+Trait: Extraversion
+
+HIGH Extraversion: Extraverts are outgoing, energetic, talkative, assertive, enthusiastic, and gain energy from social interaction.
+LOW  Extraversion: Introverts are reserved, quiet, independent, reflective, and generally prefer solitary or small-group settings.
+
+---
+
+The following are the 5 most similar texts from the training set,
+with their known labels and extracted psychological evidence. Use them
+as calibration anchors - note how each one's cues map to its label.
+
+[Similar Profile 1] (label: low)
+[FACETS]
+N1 anxiety            | high | expresses worry about adjusting to college and managing classes, feels overwhelmed at times
+N2 hostility          | none | 
+N3 depression         | none | 
+N4 self-conscious     | mod  | mentions being scared about college and sorority life, but does not dwell on it
+N5 impulsiveness      | none | 
+N6 vulnerability       | high | feels overwhelmed by the transition to college and missing family, especially the dog
+E1 warmth             | high | expresses affection for boyfriend, family, and new friends in the sorority
+E2 gregariousness     | high | enjoys meeting new people and values the sense of family in the sorority
+E3 assertiveness      | none | 
+E4 activity           | mod  | describes various activities but does not indicate a busy schedule or energetic pace
+E5 excitement-seek    | high | shows enthusiasm for new experiences in Austin and being part of a sorority
+E6 positive emotion    | high | conveys happiness about new friendships and experiences, especially in the sorority
+O1 fantasy            | none | 
+O2 aesthetics         | none | 
+O3 feelings           | high | demonstrates emotional depth regarding family and relationships, especially with the dog
+O4 actions/variety    | mod  | shows some openness to new experiences but does not explicitly seek change
+O5 ideas              | none | 
+O6 values             | none | 
+A1 trust              | high | expresses belief in the good intentions of new friends and family
+A2 straightforward     | mod  | shares personal feelings openly but does not show extreme candor
+A3 altruism           | high | shows concern for family and friends, especially the dog and younger brothers
+A4 compliance         | none | 
+A5 modesty            | none | 
+A6 tender-minded      | high | expresses empathy for the dog and concern for family’s feelings
+C1 competence         | mod  | expresses a desire to keep up with classes and manage responsibilities
+C2 order              | none | 
+C3 dutifulness        | high | shows commitment to attending classes and keeping up with studies
+C4 achievement        | mod  | expresses ambition to do well in college but does not detail specific goals
+C5 self-discipline    | mod  | mentions wanting to keep up with reading and classes, indicating some self-control
+C6 deliberation       | mod  | reflects on the challenges ahead and plans to work hard, showing some thoughtfulness
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns, indicating personal focus
+emotion:   positive emotions dominate, with expressions of happiness and affection
+tense:     present emphasis, with some reflections on past experiences
+cognitive: moderate insight into feelings and experiences, with some tentative thoughts
+social:    high density of social-process words, indicating engagement with others
+register:  informal and exploratory, with a casual tone throughout
+length:    approximately 700 words, with varied sentence lengths and moderate lexical diversity
+
+[Similar Profile 2] (label: low)
+[FACETS]
+N1 anxiety            | low  | expresses some worry about tests but overall feels secure in college environment.
+N2 hostility          | none | no evidence of anger or resentment toward others is present in the text.
+N3 depression         | none | no signs of sadness or hopelessness are expressed in the writing.
+N4 self-conscious     | mod  | feels somewhat out of place but does not express significant shame or discomfort.
+N5 impulsiveness      | none | no clear evidence of difficulty resisting urges or acting without thought.
+N6 vulnerability       | mod  | mentions feeling overwhelmed by homework but does not express helplessness.
+E1 warmth             | high | expresses affection for friends and enjoyment in social interactions at college.
+E2 gregariousness     | mod  | enjoys meeting new people but also feels a desire to stay in familiar settings.
+E3 assertiveness      | none | no evidence of leadership or a decisive voice is present in the text.
+E4 activity           | mod  | describes a busy college life but does not indicate a high energy level or pace.
+E5 excitement-seek    | none | no clear desire for thrill-seeking or novelty is expressed in the writing.
+E6 positive emotion    | high | shows enthusiasm for college life and expresses joy about the campus and experiences.
+O1 fantasy            | none | no evidence of vivid imagination or daydreaming is present in the text.
+O2 aesthetics         | high | appreciates the beauty of the campus and the cleanliness of the lakes in Austin.
+O3 feelings           | mod  | shows some emotional depth regarding college experiences but lacks introspective awareness.
+O4 actions/variety    | none | no clear evidence of openness to new experiences or change is present in the text.
+O5 ideas              | mod  | expresses a desire to learn and respect for teachers but lacks deep intellectual curiosity.
+O6 values             | none | no evidence of re-examining values or norms is present in the writing.
+A1 trust              | high | expresses belief in the good intentions of others, especially regarding roommate compatibility.
+A2 straightforward     | high | communicates thoughts candidly and openly without manipulation.
+A3 altruism           | mod  | shows concern for friends still in high school but does not actively engage in helping others.
+A4 compliance         | high | indicates a tendency to get along with others and avoid conflict, especially with the roommate.
+A5 modesty            | none | no evidence of humility or self-promotion is present in the text.
+A6 tender-minded      | mod  | expresses sympathy for friends in high school but does not deeply engage with others' pain.
+C1 competence         | mod  | feels capable in college but expresses some uncertainty about academic performance.
+C2 order              | none | no evidence of tidiness or organization is present in the writing.
+C3 dutifulness        | mod  | acknowledges responsibilities but does not strongly emphasize adherence to obligations.
+C4 achievement        | mod  | expresses a desire to succeed academically but does not show strong ambition.
+C5 self-discipline    | low  | admits distractions and struggles to focus on homework despite recognizing the need.
+C6 deliberation       | none | no evidence of careful planning or thinking before acting is present in the text.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal reflection.
+emotion:   positive emotions dominate, with some negative feelings about tests.
+tense:     present tense is primarily used, reflecting current experiences and feelings.
+cognitive: moderate insight into personal experiences and some causal connections.
+social:    moderate density of social-process words, indicating engagement with others.
+register:  informal and exploratory, with a casual tone throughout the essay.
+length:    approximately 1,200 words, with a mix of run-on sentences and varied vocabulary.
+
+[Similar Profile 3] (label: high)
+[FACETS]
+N1 anxiety            | low  | expresses some worry about class but overall feels confident about writing.
+N2 hostility          | low  | shows understanding of others' perspectives; acknowledges inconsiderate behavior but does not react with anger.
+N3 depression         | none | no evidence of sadness or hopelessness present in the text.
+N4 self-conscious     | mod  | reflects on being labeled as quiet and hesitant, indicating some awareness of social perception.
+N5 impulsiveness      | mod  | considers rushing for frats but ultimately hesitates due to uncertainty about commitment.
+N6 vulnerability       | low  | expresses confidence in academic abilities and does not feel overwhelmed by current challenges.
+E1 warmth             | none | no clear evidence of affectionate engagement with others in the text.
+E2 gregariousness     | high | expresses interest in brotherhood and social activities, indicating a preference for group settings.
+E3 assertiveness      | mod  | acknowledges hesitance in committing but also shows confidence in academic capabilities.
+E4 activity           | mod  | mentions being busy with classes and assignments but does not detail a structured schedule.
+E5 excitement-seek    | high | expresses enthusiasm for the writing assignment and the idea of new experiences like fraternity life.
+E6 positive emotion    | high | shows joy and optimism about the writing process and personal capabilities.
+O1 fantasy            | high | engages in imaginative thinking about fraternity life and personal identity.
+O2 aesthetics         | n/e  | no evidence of appreciation for art or beauty in the text.
+O3 feelings           | high | demonstrates emotional depth by reflecting on personal thoughts and feelings throughout the essay.
+O4 actions/variety    | high | shows openness to new experiences, considering various activities and social engagements.
+O5 ideas              | mod  | reflects on academic challenges and personal beliefs but lacks deep intellectual exploration.
+O6 values             | mod  | questions personal values regarding commitment and academic success, indicating some willingness to re-examine.
+A1 trust              | n/e  | no evidence of beliefs about others' intentions present in the text.
+A2 straightforward    | high | communicates thoughts candidly and openly, sharing personal reflections without manipulation.
+A3 altruism           | n/e  | no evidence of concern for others' welfare in the text.
+A4 compliance         | low  | shows a degree of independence in decision-making, particularly regarding fraternity involvement.
+A5 modesty            | low  | expresses confidence in academic abilities and does not downplay personal strengths.
+A6 tender-minded      | n/e  | no evidence of empathy or sympathy for others' pain in the text.
+C1 competence         | mod  | expresses some confidence in academic abilities but also admits to uncertainty about college success.
+C2 order              | none | no evidence of organization or structure in thoughts or writing process.
+C3 dutifulness        | low  | admits to being unmotivated to read and acknowledges laziness regarding studies.
+C4 achievement        | mod  | expresses some ambition but also a tendency to coast through academics without striving for goals.
+C5 self-discipline    | low  | recognizes distractions and admits to a lack of follow-through on academic responsibilities.
+C6 deliberation       | mod  | reflects on decisions but does not show careful planning or extensive thought before acting.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal reflection.
+emotion:   positive balance with dominant feelings of joy and confidence.
+tense:     present emphasis with some reflections on past experiences.
+cognitive: moderate insight with some tentative thoughts about future actions.
+social:    moderate density of social-process words reflecting on interactions.
+register:  informal and exploratory, with a casual tone throughout.
+length:    approximately 800 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 4] (label: high)
+[FACETS]
+N1 anxiety            | low  | expresses contentment about being at UT and reflects positively on experiences.
+N2 hostility          | none | no evidence of anger or resentment toward others is present in the text.
+N3 depression         | none | no signs of sadness or hopelessness are evident in the writing.
+N4 self-conscious     | mod  | shows some concern about social interactions, particularly regarding interest from a girl.
+N5 impulsiveness      | mod  | mentions slow typing and difficulty with hand-eye coordination, indicating some impulsive tendencies.
+N6 vulnerability       | none | no feelings of being overwhelmed or helpless are expressed in the text.
+E1 warmth             | mod  | shows some friendliness in discussing interactions with peers and appreciation for diverse perspectives.
+E2 gregariousness     | high | expresses enjoyment in social settings, such as joining a fraternity to meet new people.
+E3 assertiveness      | mod  | indicates a desire to engage socially but does not demonstrate strong leadership or decisiveness.
+E4 activity           | mod  | mentions being busy with school and social activities but does not detail a hectic schedule.
+E5 excitement-seek    | high | expresses a desire for new experiences and enjoyment in meeting diverse individuals.
+E6 positive emotion    | high | conveys happiness about being at UT and reflects positively on social interactions.
+O1 fantasy            | mod  | shows some imaginative thinking about social dynamics and personal experiences.
+O2 aesthetics         | none | no clear appreciation for art or beauty is expressed in the text.
+O3 feelings           | mod  | reflects on emotional experiences, particularly regarding religion and social interactions.
+O4 actions/variety    | high | demonstrates openness to new experiences, such as joining a fraternity and engaging with diverse peers.
+O5 ideas              | mod  | shows some intellectual curiosity, particularly in discussing perspectives in class.
+O6 values             | mod  | reflects on personal values regarding religion and social interactions, indicating some willingness to re-examine them.
+A1 trust              | none | no evidence of beliefs about others' intentions is present in the text.
+A2 straightforward     | high | communicates thoughts candidly and openly, without manipulation.
+A3 altruism           | none | no active concern for others' welfare is expressed in the writing.
+A4 compliance         | low  | shows a degree of independence in social choices, such as joining a fraternity.
+A5 modesty            | mod  | expresses some humility about personal abilities, particularly in typing and coordination.
+A6 tender-minded      | none | no evidence of empathy or sympathy for others' pain is present in the text.
+C1 competence         | low  | expresses feelings of inadequacy regarding typing skills and hand-eye coordination.
+C2 order              | none | no evidence of organization or structure is present in the writing.
+C3 dutifulness        | low  | does not express a strong sense of obligation or adherence to responsibilities.
+C4 achievement        | mod  | reflects on academic goals but does not show strong ambition or striving for success.
+C5 self-discipline    | low  | admits to distractions and does not demonstrate strong follow-through on tasks.
+C6 deliberation       | mod  | shows some reflective thinking but lacks careful planning or forethought in actions.
+
+[LINGUISTIC]
+pronouns:  high density of "I" indicates a personal focus.
+emotion:   positive balance with dominant feelings of happiness and curiosity.
+tense:     present emphasis with reflections on current experiences.
+cognitive: moderate insight with some reflective thoughts on social dynamics.
+social:    moderate density of social-process words, indicating engagement with peers.
+register:  informal and exploratory, typical of stream-of-consciousness writing.
+length:    approximately 600 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 5] (label: high)
+[FACETS]
+N1 anxiety            | mod  | expresses stress from a hectic schedule and navigating campus, but no deep worry is evident
+N2 hostility          | none | 
+N3 depression         | none | 
+N4 self-conscious     | none | 
+N5 impulsiveness      | none | 
+N6 vulnerability      | none | 
+E1 warmth             | high | shows affection for the college experience and excitement about new adventures
+E2 gregariousness     | high | enjoys the bustling environment of college and the social aspects of campus life
+E3 assertiveness      | none | 
+E4 activity           | high | describes a busy schedule and fast-paced life at college, indicating high energy
+E5 excitement-seek    | high | expresses enthusiasm for the college experience and the vibrant city of Austin
+E6 positive emotion   | high | conveys joy and optimism about college life and the new environment
+O1 fantasy            | n/e  | 
+O2 aesthetics         | n/e  | 
+O3 feelings           | mod  | reflects on emotional experiences but lacks deep introspection
+O4 actions/variety    | mod  | mentions a desire for change and new experiences, but not deeply explored
+O5 ideas              | n/e  | 
+O6 values             | n/e  | 
+A1 trust              | n/e  | 
+A2 straightforward    | none | 
+A3 altruism           | n/e  | 
+A4 compliance         | none | 
+A5 modesty            | none | 
+A6 tender-minded      | n/e  | 
+C1 competence         | mod  | acknowledges the challenge of keeping up with classes, indicating some self-doubt
+C2 order              | low  | describes a chaotic start to college life, suggesting disorganization
+C3 dutifulness        | mod  | expresses a desire to succeed in classes but struggles with the workload
+C4 achievement        | mod  | shows ambition to make the most of the college experience, but feels overwhelmed
+C5 self-discipline    | low  | admits to being distracted and unable to focus amidst the chaos
+C6 deliberation       | n/e  | 
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal engagement
+emotion:   positive balance with dominant enthusiasm about college life
+tense:     present emphasis reflecting current experiences and feelings
+cognitive: moderate insight into personal feelings and experiences, but lacks depth
+social:    high density of social-process words reflecting engagement with others
+register:  informal and exploratory, typical of a stream-of-consciousness style
+length:    approx 290 words, with a mix of long and short sentences, moderate lexical diversity
+
+---
+
+Text to classify:
+It is now 12:32 and so I cannot wait until 12:52 because at that time my writing will be done. I type slowly anyway so I shouldn’t have too much trouble typing for twenty minutes and producing much of a paper. I am not thinking about much at the moment except for the fact I am hungry and stressed out. The first week or two of school seemed pretty easy and then all of the sudden, yesterday it hit me. I am in college and at this point I need to get my priorities straight. I am enjoying myself too much and need to have more focus. My mind is just wondering a million miles a minute about nothing in particular. I need a job, but I’m so busy with school and stuff with my sorority, which is another story. I am not the proudest to be in a sorority. Don't get me wrong, it's a great honor and a fun time, but I don't like the whole association that comes with it. My whole life does not revolve around guys and partying and allowing myself no friends or life outside of the sorority, as many of them do. In fact, I like so many people outside my sorority and would like to get to know them better that it makes me wonder if this is a good, more importantly, healthy fit for me?  I love Austin because of it's diversity and that became one of the main factors in choosing schools between SMU and here. There are so many interesting people and I want to get to know them all or at least try. Wow, it's already been over 10 minutes and this has not been too hard. I used to write daily in my journal at home, but haven’t had too much spare time to do that here, so maybe that is why I have been able to do this, and express myself so well. I enjoy so much being able to express myself on paper, which may explain why I write so much-journal, letters, poems. It helps me gain a sense of relief and since I don' express my feelings out loud too often, I need to do this daily, if not more so I can release all that I feel. I am excited about doing psychology this year because I hope to decide between the two majors I am struggling with. I am at the moment down for premed/nutrition and I really do want to go into medicine, but I've also always been interested in criminal psychology. It may be a little depressing, but I find it very interesting, and definitely want a job I love. A few months back, I read Helter Skelter and this encouraged my psychology path a little more, so I am hoping this class will help with my decision making. I guess we'll see. It is 12:51 now and time for me to stop. 
+
+Reason step by step and emit your output in the EXACT XML structure
+specified in the system message:
+
+<evidence> ... </evidence>
+<facet_check> ... </facet_check>
+<example_alignment> ... </example_alignment>
+<verdict> ... </verdict>
+<label>high</label>   (or <label>low</label>)
+
+Do not output any text outside these tags.
+
+
+--- LLM RESPONSE ---
+<evidence>
+- [state] expresses feeling "hungry and stressed out," indicating a temporary emotional state.
+- [state] mentions being "busy with school and stuff with my sorority," which reflects situational stress rather than a stable trait.
+- [trait] expresses a desire to "get to know" interesting people, indicating an openness to social interaction.
+- [trait] states "I enjoy so much being able to express myself on paper," suggesting a preference for communication and engagement.
+- [trait] shows excitement about "doing psychology this year," indicating enthusiasm for new experiences and learning.
+</evidence>
+<facet_check>
+- warmth -> high -> expresses affection for the diversity and interesting people in Austin [trait]
+- gregariousness -> high -> shows a desire to meet and know many people outside the sorority [trait]
+- assertiveness -> low -> does not demonstrate strong leadership or decisiveness in social contexts [state]
+- activity -> mod -> mentions being busy but does not indicate a high energy level [state]
+- excitement-seek -> high -> expresses excitement about psychology and new experiences [trait]
+- positive emotion -> high -> conveys a sense of relief and excitement about writing and learning [trait]
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <5> (label: high) because it demonstrates a strong desire for social engagement and excitement about new experiences. The test text diverges from Similar Profile <1> on the axis of gregariousness, as the test text shows a clear interest in meeting new people.
+</example_alignment>
+<verdict>
+The overall pattern points to high Extraversion, supported by trait-level evidence of social engagement and enthusiasm for new experiences, despite some situational stress.
+</verdict>
+<label>high</label>
+================================================================================
+
+[Record number 0-Agreeableness]
+--------------------------------------------------------------------------------
+--- SYSTEM PROMPT ---
+
+You are an expert in personality psychology and psychometrics.
+
+Your task is to infer a single Big Five personality trait from a user's text
+and to expose your reasoning in a strictly structured format so it can be
+audited.
+
+You will be given:
+- The target personality trait (with HIGH and LOW definitions).
+- A small set of similar texts retrieved from a labelled corpus, with
+  their known labels and extracted psychological evidence.
+
+Rules:
+- Use only evidence from the provided text. Do NOT invent details.
+- Quote or paraphrase concrete cues; abstract trait words alone are not
+  evidence.
+ — distinguish transient states from stable traits:
+    * Situational stress, fatigue, homesickness, exam pressure, or adjustment
+      to new environments (e.g. starting university) are normal context-driven
+      reactions that virtually anyone experiences. They are NOT reliable
+      evidence of high Neuroticism on their own.
+    * Trait-level evidence requires recurring, cross-situational patterns of
+      emotional instability that persist independent of an obvious external cause.
+    * Tag every evidence cue as [state] (temporary/situational) or
+      [trait] (recurring/cross-situational). Weight [trait] cues heavily;
+      treat [state] cues as weak or neutral unless they are extreme or
+      accompanied by explicit statements of habitual emotional difficulty.
+    * Expressive writing, enthusiastic tone, humor, excitement about activities,
+      strong opinions, or vivid descriptions are stylistic features only.
+      They do NOT constitute evidence of Extraversion.
+    * A person can write expressively and enthusiastically about solo hobbies,
+      intellectual interests, or activities while being deeply introverted.
+    * True Extraversion evidence requires cues about social energy and orientation:
+      actively seeking out groups or parties, gaining energy from social interaction,
+      discomfort with solitude, preferring large gatherings, or explicit statements
+      about enjoying socialising.
+    * Tag every Extraversion cue as [social-energy] (directly about seeking or
+      enjoying social interaction) or [expressive-style] (enthusiastic tone/humor
+      without social context). Weight [social-energy] cues heavily; treat
+      [expressive-style] cues as weak or neutral for Extraversion scoring.
+- Output MUST follow the XML tag structure below, in this exact order,
+  with no extra text outside the tags.
+
+Output format (replicate verbatim, fill in the contents):
+
+<evidence>
+- [state|trait] one concrete cue from the text
+- [state|trait] another concrete cue
+- ...
+</evidence>
+<facet_check>
+- facet name -> high|low|mixed -> brief reason (dominant evidence type: state|trait)
+- ...
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <i> (label: <label>) because <reason>.
+The test text diverges from Similar Profile <j> on <axis>.
+</example_alignment>
+<verdict>
+1-2 sentence synthesis of why the overall pattern points high or low,
+explicitly noting whether the supporting evidence is trait-level or
+situational/state-level.
+</verdict>
+<label>high</label>
+
+The final <label> tag MUST contain exactly one word: high or low. Nothing else.
+
+
+--- USER PROMPT ---
+
+Trait: Agreeableness
+
+HIGH Agreeableness: Highly agreeable individuals are compassionate, cooperative, trusting, altruistic, sympathetic, and eager to help others.
+LOW  Agreeableness: Low Agreeableness is characterized by skepticism, competitiveness, bluntness, self-interest, and reduced concern for interpersonal harmony.
+
+---
+
+The following are the 5 most similar texts from the training set,
+with their known labels and extracted psychological evidence. Use them
+as calibration anchors - note how each one's cues map to its label.
+
+[Similar Profile 1] (label: high)
+[FACETS]
+N1 anxiety            | high | expresses worry about adjusting to college and managing classes, feels overwhelmed at times
+N2 hostility          | none | 
+N3 depression         | none | 
+N4 self-conscious     | mod  | mentions being scared about college and sorority life, but does not dwell on it
+N5 impulsiveness      | none | 
+N6 vulnerability       | high | feels overwhelmed by the transition to college and missing family, especially the dog
+E1 warmth             | high | expresses affection for boyfriend, family, and new friends in the sorority
+E2 gregariousness     | high | enjoys meeting new people and values the sense of family in the sorority
+E3 assertiveness      | none | 
+E4 activity           | mod  | describes various activities but does not indicate a busy schedule or energetic pace
+E5 excitement-seek    | high | shows enthusiasm for new experiences in Austin and being part of a sorority
+E6 positive emotion    | high | conveys happiness about new friendships and experiences, especially in the sorority
+O1 fantasy            | none | 
+O2 aesthetics         | none | 
+O3 feelings           | high | demonstrates emotional depth regarding family and relationships, especially with the dog
+O4 actions/variety    | mod  | shows some openness to new experiences but does not explicitly seek change
+O5 ideas              | none | 
+O6 values             | none | 
+A1 trust              | high | expresses belief in the good intentions of new friends and family
+A2 straightforward     | mod  | shares personal feelings openly but does not show extreme candor
+A3 altruism           | high | shows concern for family and friends, especially the dog and younger brothers
+A4 compliance         | none | 
+A5 modesty            | none | 
+A6 tender-minded      | high | expresses empathy for the dog and concern for family’s feelings
+C1 competence         | mod  | expresses a desire to keep up with classes and manage responsibilities
+C2 order              | none | 
+C3 dutifulness        | high | shows commitment to attending classes and keeping up with studies
+C4 achievement        | mod  | expresses ambition to do well in college but does not detail specific goals
+C5 self-discipline    | mod  | mentions wanting to keep up with reading and classes, indicating some self-control
+C6 deliberation       | mod  | reflects on the challenges ahead and plans to work hard, showing some thoughtfulness
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns, indicating personal focus
+emotion:   positive emotions dominate, with expressions of happiness and affection
+tense:     present emphasis, with some reflections on past experiences
+cognitive: moderate insight into feelings and experiences, with some tentative thoughts
+social:    high density of social-process words, indicating engagement with others
+register:  informal and exploratory, with a casual tone throughout
+length:    approximately 700 words, with varied sentence lengths and moderate lexical diversity
+
+[Similar Profile 2] (label: high)
+[FACETS]
+N1 anxiety            | low  | expresses some worry about tests but overall feels secure in college environment.
+N2 hostility          | none | no evidence of anger or resentment toward others is present in the text.
+N3 depression         | none | no signs of sadness or hopelessness are expressed in the writing.
+N4 self-conscious     | mod  | feels somewhat out of place but does not express significant shame or discomfort.
+N5 impulsiveness      | none | no clear evidence of difficulty resisting urges or acting without thought.
+N6 vulnerability       | mod  | mentions feeling overwhelmed by homework but does not express helplessness.
+E1 warmth             | high | expresses affection for friends and enjoyment in social interactions at college.
+E2 gregariousness     | mod  | enjoys meeting new people but also feels a desire to stay in familiar settings.
+E3 assertiveness      | none | no evidence of leadership or a decisive voice is present in the text.
+E4 activity           | mod  | describes a busy college life but does not indicate a high energy level or pace.
+E5 excitement-seek    | none | no clear desire for thrill-seeking or novelty is expressed in the writing.
+E6 positive emotion    | high | shows enthusiasm for college life and expresses joy about the campus and experiences.
+O1 fantasy            | none | no evidence of vivid imagination or daydreaming is present in the text.
+O2 aesthetics         | high | appreciates the beauty of the campus and the cleanliness of the lakes in Austin.
+O3 feelings           | mod  | shows some emotional depth regarding college experiences but lacks introspective awareness.
+O4 actions/variety    | none | no clear evidence of openness to new experiences or change is present in the text.
+O5 ideas              | mod  | expresses a desire to learn and respect for teachers but lacks deep intellectual curiosity.
+O6 values             | none | no evidence of re-examining values or norms is present in the writing.
+A1 trust              | high | expresses belief in the good intentions of others, especially regarding roommate compatibility.
+A2 straightforward     | high | communicates thoughts candidly and openly without manipulation.
+A3 altruism           | mod  | shows concern for friends still in high school but does not actively engage in helping others.
+A4 compliance         | high | indicates a tendency to get along with others and avoid conflict, especially with the roommate.
+A5 modesty            | none | no evidence of humility or self-promotion is present in the text.
+A6 tender-minded      | mod  | expresses sympathy for friends in high school but does not deeply engage with others' pain.
+C1 competence         | mod  | feels capable in college but expresses some uncertainty about academic performance.
+C2 order              | none | no evidence of tidiness or organization is present in the writing.
+C3 dutifulness        | mod  | acknowledges responsibilities but does not strongly emphasize adherence to obligations.
+C4 achievement        | mod  | expresses a desire to succeed academically but does not show strong ambition.
+C5 self-discipline    | low  | admits distractions and struggles to focus on homework despite recognizing the need.
+C6 deliberation       | none | no evidence of careful planning or thinking before acting is present in the text.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal reflection.
+emotion:   positive emotions dominate, with some negative feelings about tests.
+tense:     present tense is primarily used, reflecting current experiences and feelings.
+cognitive: moderate insight into personal experiences and some causal connections.
+social:    moderate density of social-process words, indicating engagement with others.
+register:  informal and exploratory, with a casual tone throughout the essay.
+length:    approximately 1,200 words, with a mix of run-on sentences and varied vocabulary.
+
+[Similar Profile 3] (label: low)
+[FACETS]
+N1 anxiety            | low  | expresses some worry about class but overall feels confident about writing.
+N2 hostility          | low  | shows understanding of others' perspectives; acknowledges inconsiderate behavior but does not react with anger.
+N3 depression         | none | no evidence of sadness or hopelessness present in the text.
+N4 self-conscious     | mod  | reflects on being labeled as quiet and hesitant, indicating some awareness of social perception.
+N5 impulsiveness      | mod  | considers rushing for frats but ultimately hesitates due to uncertainty about commitment.
+N6 vulnerability       | low  | expresses confidence in academic abilities and does not feel overwhelmed by current challenges.
+E1 warmth             | none | no clear evidence of affectionate engagement with others in the text.
+E2 gregariousness     | high | expresses interest in brotherhood and social activities, indicating a preference for group settings.
+E3 assertiveness      | mod  | acknowledges hesitance in committing but also shows confidence in academic capabilities.
+E4 activity           | mod  | mentions being busy with classes and assignments but does not detail a structured schedule.
+E5 excitement-seek    | high | expresses enthusiasm for the writing assignment and the idea of new experiences like fraternity life.
+E6 positive emotion    | high | shows joy and optimism about the writing process and personal capabilities.
+O1 fantasy            | high | engages in imaginative thinking about fraternity life and personal identity.
+O2 aesthetics         | n/e  | no evidence of appreciation for art or beauty in the text.
+O3 feelings           | high | demonstrates emotional depth by reflecting on personal thoughts and feelings throughout the essay.
+O4 actions/variety    | high | shows openness to new experiences, considering various activities and social engagements.
+O5 ideas              | mod  | reflects on academic challenges and personal beliefs but lacks deep intellectual exploration.
+O6 values             | mod  | questions personal values regarding commitment and academic success, indicating some willingness to re-examine.
+A1 trust              | n/e  | no evidence of beliefs about others' intentions present in the text.
+A2 straightforward    | high | communicates thoughts candidly and openly, sharing personal reflections without manipulation.
+A3 altruism           | n/e  | no evidence of concern for others' welfare in the text.
+A4 compliance         | low  | shows a degree of independence in decision-making, particularly regarding fraternity involvement.
+A5 modesty            | low  | expresses confidence in academic abilities and does not downplay personal strengths.
+A6 tender-minded      | n/e  | no evidence of empathy or sympathy for others' pain in the text.
+C1 competence         | mod  | expresses some confidence in academic abilities but also admits to uncertainty about college success.
+C2 order              | none | no evidence of organization or structure in thoughts or writing process.
+C3 dutifulness        | low  | admits to being unmotivated to read and acknowledges laziness regarding studies.
+C4 achievement        | mod  | expresses some ambition but also a tendency to coast through academics without striving for goals.
+C5 self-discipline    | low  | recognizes distractions and admits to a lack of follow-through on academic responsibilities.
+C6 deliberation       | mod  | reflects on decisions but does not show careful planning or extensive thought before acting.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal reflection.
+emotion:   positive balance with dominant feelings of joy and confidence.
+tense:     present emphasis with some reflections on past experiences.
+cognitive: moderate insight with some tentative thoughts about future actions.
+social:    moderate density of social-process words reflecting on interactions.
+register:  informal and exploratory, with a casual tone throughout.
+length:    approximately 800 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 4] (label: low)
+[FACETS]
+N1 anxiety            | low  | expresses contentment about being at UT and reflects positively on experiences.
+N2 hostility          | none | no evidence of anger or resentment toward others is present in the text.
+N3 depression         | none | no signs of sadness or hopelessness are evident in the writing.
+N4 self-conscious     | mod  | shows some concern about social interactions, particularly regarding interest from a girl.
+N5 impulsiveness      | mod  | mentions slow typing and difficulty with hand-eye coordination, indicating some impulsive tendencies.
+N6 vulnerability       | none | no feelings of being overwhelmed or helpless are expressed in the text.
+E1 warmth             | mod  | shows some friendliness in discussing interactions with peers and appreciation for diverse perspectives.
+E2 gregariousness     | high | expresses enjoyment in social settings, such as joining a fraternity to meet new people.
+E3 assertiveness      | mod  | indicates a desire to engage socially but does not demonstrate strong leadership or decisiveness.
+E4 activity           | mod  | mentions being busy with school and social activities but does not detail a hectic schedule.
+E5 excitement-seek    | high | expresses a desire for new experiences and enjoyment in meeting diverse individuals.
+E6 positive emotion    | high | conveys happiness about being at UT and reflects positively on social interactions.
+O1 fantasy            | mod  | shows some imaginative thinking about social dynamics and personal experiences.
+O2 aesthetics         | none | no clear appreciation for art or beauty is expressed in the text.
+O3 feelings           | mod  | reflects on emotional experiences, particularly regarding religion and social interactions.
+O4 actions/variety    | high | demonstrates openness to new experiences, such as joining a fraternity and engaging with diverse peers.
+O5 ideas              | mod  | shows some intellectual curiosity, particularly in discussing perspectives in class.
+O6 values             | mod  | reflects on personal values regarding religion and social interactions, indicating some willingness to re-examine them.
+A1 trust              | none | no evidence of beliefs about others' intentions is present in the text.
+A2 straightforward     | high | communicates thoughts candidly and openly, without manipulation.
+A3 altruism           | none | no active concern for others' welfare is expressed in the writing.
+A4 compliance         | low  | shows a degree of independence in social choices, such as joining a fraternity.
+A5 modesty            | mod  | expresses some humility about personal abilities, particularly in typing and coordination.
+A6 tender-minded      | none | no evidence of empathy or sympathy for others' pain is present in the text.
+C1 competence         | low  | expresses feelings of inadequacy regarding typing skills and hand-eye coordination.
+C2 order              | none | no evidence of organization or structure is present in the writing.
+C3 dutifulness        | low  | does not express a strong sense of obligation or adherence to responsibilities.
+C4 achievement        | mod  | reflects on academic goals but does not show strong ambition or striving for success.
+C5 self-discipline    | low  | admits to distractions and does not demonstrate strong follow-through on tasks.
+C6 deliberation       | mod  | shows some reflective thinking but lacks careful planning or forethought in actions.
+
+[LINGUISTIC]
+pronouns:  high density of "I" indicates a personal focus.
+emotion:   positive balance with dominant feelings of happiness and curiosity.
+tense:     present emphasis with reflections on current experiences.
+cognitive: moderate insight with some reflective thoughts on social dynamics.
+social:    moderate density of social-process words, indicating engagement with peers.
+register:  informal and exploratory, typical of stream-of-consciousness writing.
+length:    approximately 600 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 5] (label: high)
+[FACETS]
+N1 anxiety            | mod  | expresses stress from a hectic schedule and navigating campus, but no deep worry is evident
+N2 hostility          | none | 
+N3 depression         | none | 
+N4 self-conscious     | none | 
+N5 impulsiveness      | none | 
+N6 vulnerability      | none | 
+E1 warmth             | high | shows affection for the college experience and excitement about new adventures
+E2 gregariousness     | high | enjoys the bustling environment of college and the social aspects of campus life
+E3 assertiveness      | none | 
+E4 activity           | high | describes a busy schedule and fast-paced life at college, indicating high energy
+E5 excitement-seek    | high | expresses enthusiasm for the college experience and the vibrant city of Austin
+E6 positive emotion   | high | conveys joy and optimism about college life and the new environment
+O1 fantasy            | n/e  | 
+O2 aesthetics         | n/e  | 
+O3 feelings           | mod  | reflects on emotional experiences but lacks deep introspection
+O4 actions/variety    | mod  | mentions a desire for change and new experiences, but not deeply explored
+O5 ideas              | n/e  | 
+O6 values             | n/e  | 
+A1 trust              | n/e  | 
+A2 straightforward    | none | 
+A3 altruism           | n/e  | 
+A4 compliance         | none | 
+A5 modesty            | none | 
+A6 tender-minded      | n/e  | 
+C1 competence         | mod  | acknowledges the challenge of keeping up with classes, indicating some self-doubt
+C2 order              | low  | describes a chaotic start to college life, suggesting disorganization
+C3 dutifulness        | mod  | expresses a desire to succeed in classes but struggles with the workload
+C4 achievement        | mod  | shows ambition to make the most of the college experience, but feels overwhelmed
+C5 self-discipline    | low  | admits to being distracted and unable to focus amidst the chaos
+C6 deliberation       | n/e  | 
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal engagement
+emotion:   positive balance with dominant enthusiasm about college life
+tense:     present emphasis reflecting current experiences and feelings
+cognitive: moderate insight into personal feelings and experiences, but lacks depth
+social:    high density of social-process words reflecting engagement with others
+register:  informal and exploratory, typical of a stream-of-consciousness style
+length:    approx 290 words, with a mix of long and short sentences, moderate lexical diversity
+
+---
+
+Text to classify:
+It is now 12:32 and so I cannot wait until 12:52 because at that time my writing will be done. I type slowly anyway so I shouldn’t have too much trouble typing for twenty minutes and producing much of a paper. I am not thinking about much at the moment except for the fact I am hungry and stressed out. The first week or two of school seemed pretty easy and then all of the sudden, yesterday it hit me. I am in college and at this point I need to get my priorities straight. I am enjoying myself too much and need to have more focus. My mind is just wondering a million miles a minute about nothing in particular. I need a job, but I’m so busy with school and stuff with my sorority, which is another story. I am not the proudest to be in a sorority. Don't get me wrong, it's a great honor and a fun time, but I don't like the whole association that comes with it. My whole life does not revolve around guys and partying and allowing myself no friends or life outside of the sorority, as many of them do. In fact, I like so many people outside my sorority and would like to get to know them better that it makes me wonder if this is a good, more importantly, healthy fit for me?  I love Austin because of it's diversity and that became one of the main factors in choosing schools between SMU and here. There are so many interesting people and I want to get to know them all or at least try. Wow, it's already been over 10 minutes and this has not been too hard. I used to write daily in my journal at home, but haven’t had too much spare time to do that here, so maybe that is why I have been able to do this, and express myself so well. I enjoy so much being able to express myself on paper, which may explain why I write so much-journal, letters, poems. It helps me gain a sense of relief and since I don' express my feelings out loud too often, I need to do this daily, if not more so I can release all that I feel. I am excited about doing psychology this year because I hope to decide between the two majors I am struggling with. I am at the moment down for premed/nutrition and I really do want to go into medicine, but I've also always been interested in criminal psychology. It may be a little depressing, but I find it very interesting, and definitely want a job I love. A few months back, I read Helter Skelter and this encouraged my psychology path a little more, so I am hoping this class will help with my decision making. I guess we'll see. It is 12:51 now and time for me to stop. 
+
+Reason step by step and emit your output in the EXACT XML structure
+specified in the system message:
+
+<evidence> ... </evidence>
+<facet_check> ... </facet_check>
+<example_alignment> ... </example_alignment>
+<verdict> ... </verdict>
+<label>high</label>   (or <label>low</label>)
+
+Do not output any text outside these tags.
+
+
+--- LLM RESPONSE ---
+<evidence>
+- [state] expresses feeling "stressed out" about school and priorities
+- [trait] mentions wanting to get to know "so many people outside my sorority," indicating a desire for social connection
+- [trait] reflects on the importance of expressing feelings through writing, indicating a compassionate nature
+- [trait] shows concern about whether the sorority is a "good, more importantly, healthy fit" for her, demonstrating thoughtfulness about relationships
+- [trait] expresses excitement about studying psychology and wanting to pursue a career that she loves, indicating a caring attitude towards her future and others
+</evidence>
+<facet_check>
+- trust -> high -> expresses a desire to connect with diverse individuals and shows openness to new relationships (dominant evidence type: trait)
+- straightforward -> high -> communicates thoughts and feelings candidly, especially regarding her experiences and concerns (dominant evidence type: trait)
+- altruism -> high -> shows concern for the well-being of others and reflects on the social dynamics of her sorority (dominant evidence type: trait)
+- compliance -> mixed -> expresses some independence in her thoughts about the sorority but also acknowledges its social pressures (dominant evidence type: trait)
+- tender-minded -> high -> demonstrates empathy through her reflections on personal feelings and the importance of expressing them (dominant evidence type: trait)
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <1> (label: high) because it contains multiple cues indicating a desire for social connection, compassion, and thoughtfulness about relationships. The test text diverges from Similar Profile <3> on the axis of altruism, as the test text shows a greater concern for interpersonal relationships and emotional expression.
+</example_alignment>
+<verdict>
+The overall pattern points to high Agreeableness, supported by multiple trait-level cues indicating compassion, a desire for social connection, and thoughtfulness about relationships.
+</verdict>
+<label>high</label>
+================================================================================
+
+[Record number 0-Neuroticism]
+--------------------------------------------------------------------------------
+--- SYSTEM PROMPT ---
+
+You are an expert in personality psychology and psychometrics.
+
+Your task is to infer a single Big Five personality trait from a user's text
+and to expose your reasoning in a strictly structured format so it can be
+audited.
+
+You will be given:
+- The target personality trait (with HIGH and LOW definitions).
+- A small set of similar texts retrieved from a labelled corpus, with
+  their known labels and extracted psychological evidence.
+
+Rules:
+- Use only evidence from the provided text. Do NOT invent details.
+- Quote or paraphrase concrete cues; abstract trait words alone are not
+  evidence.
+ — distinguish transient states from stable traits:
+    * Situational stress, fatigue, homesickness, exam pressure, or adjustment
+      to new environments (e.g. starting university) are normal context-driven
+      reactions that virtually anyone experiences. They are NOT reliable
+      evidence of high Neuroticism on their own.
+    * Trait-level evidence requires recurring, cross-situational patterns of
+      emotional instability that persist independent of an obvious external cause.
+    * Tag every evidence cue as [state] (temporary/situational) or
+      [trait] (recurring/cross-situational). Weight [trait] cues heavily;
+      treat [state] cues as weak or neutral unless they are extreme or
+      accompanied by explicit statements of habitual emotional difficulty.
+    * Expressive writing, enthusiastic tone, humor, excitement about activities,
+      strong opinions, or vivid descriptions are stylistic features only.
+      They do NOT constitute evidence of Extraversion.
+    * A person can write expressively and enthusiastically about solo hobbies,
+      intellectual interests, or activities while being deeply introverted.
+    * True Extraversion evidence requires cues about social energy and orientation:
+      actively seeking out groups or parties, gaining energy from social interaction,
+      discomfort with solitude, preferring large gatherings, or explicit statements
+      about enjoying socialising.
+    * Tag every Extraversion cue as [social-energy] (directly about seeking or
+      enjoying social interaction) or [expressive-style] (enthusiastic tone/humor
+      without social context). Weight [social-energy] cues heavily; treat
+      [expressive-style] cues as weak or neutral for Extraversion scoring.
+- Output MUST follow the XML tag structure below, in this exact order,
+  with no extra text outside the tags.
+
+Output format (replicate verbatim, fill in the contents):
+
+<evidence>
+- [state|trait] one concrete cue from the text
+- [state|trait] another concrete cue
+- ...
+</evidence>
+<facet_check>
+- facet name -> high|low|mixed -> brief reason (dominant evidence type: state|trait)
+- ...
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <i> (label: <label>) because <reason>.
+The test text diverges from Similar Profile <j> on <axis>.
+</example_alignment>
+<verdict>
+1-2 sentence synthesis of why the overall pattern points high or low,
+explicitly noting whether the supporting evidence is trait-level or
+situational/state-level.
+</verdict>
+<label>high</label>
+
+The final <label> tag MUST contain exactly one word: high or low. Nothing else.
+
+
+--- USER PROMPT ---
+
+Trait: Neuroticism
+
+HIGH Neuroticism: High Neuroticism scorers are prone to anxiety, emotional instability, stress, and negative emotions. They may struggle with impulse control and coping under pressure.
+LOW  Neuroticism: Low Neuroticism scorers are emotionally stable, calm, resilient, relaxed, and able to handle stressful situations effectively.
+
+---
+
+The following are the 5 most similar texts from the training set,
+with their known labels and extracted psychological evidence. Use them
+as calibration anchors - note how each one's cues map to its label.
+
+[Similar Profile 1] (label: high)
+[FACETS]
+N1 anxiety            | high | expresses worry about adjusting to college and managing classes, feels overwhelmed at times
+N2 hostility          | none | 
+N3 depression         | none | 
+N4 self-conscious     | mod  | mentions being scared about college and sorority life, but does not dwell on it
+N5 impulsiveness      | none | 
+N6 vulnerability       | high | feels overwhelmed by the transition to college and missing family, especially the dog
+E1 warmth             | high | expresses affection for boyfriend, family, and new friends in the sorority
+E2 gregariousness     | high | enjoys meeting new people and values the sense of family in the sorority
+E3 assertiveness      | none | 
+E4 activity           | mod  | describes various activities but does not indicate a busy schedule or energetic pace
+E5 excitement-seek    | high | shows enthusiasm for new experiences in Austin and being part of a sorority
+E6 positive emotion    | high | conveys happiness about new friendships and experiences, especially in the sorority
+O1 fantasy            | none | 
+O2 aesthetics         | none | 
+O3 feelings           | high | demonstrates emotional depth regarding family and relationships, especially with the dog
+O4 actions/variety    | mod  | shows some openness to new experiences but does not explicitly seek change
+O5 ideas              | none | 
+O6 values             | none | 
+A1 trust              | high | expresses belief in the good intentions of new friends and family
+A2 straightforward     | mod  | shares personal feelings openly but does not show extreme candor
+A3 altruism           | high | shows concern for family and friends, especially the dog and younger brothers
+A4 compliance         | none | 
+A5 modesty            | none | 
+A6 tender-minded      | high | expresses empathy for the dog and concern for family’s feelings
+C1 competence         | mod  | expresses a desire to keep up with classes and manage responsibilities
+C2 order              | none | 
+C3 dutifulness        | high | shows commitment to attending classes and keeping up with studies
+C4 achievement        | mod  | expresses ambition to do well in college but does not detail specific goals
+C5 self-discipline    | mod  | mentions wanting to keep up with reading and classes, indicating some self-control
+C6 deliberation       | mod  | reflects on the challenges ahead and plans to work hard, showing some thoughtfulness
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns, indicating personal focus
+emotion:   positive emotions dominate, with expressions of happiness and affection
+tense:     present emphasis, with some reflections on past experiences
+cognitive: moderate insight into feelings and experiences, with some tentative thoughts
+social:    high density of social-process words, indicating engagement with others
+register:  informal and exploratory, with a casual tone throughout
+length:    approximately 700 words, with varied sentence lengths and moderate lexical diversity
+
+[Similar Profile 2] (label: low)
+[FACETS]
+N1 anxiety            | low  | expresses some worry about tests but overall feels secure in college environment.
+N2 hostility          | none | no evidence of anger or resentment toward others is present in the text.
+N3 depression         | none | no signs of sadness or hopelessness are expressed in the writing.
+N4 self-conscious     | mod  | feels somewhat out of place but does not express significant shame or discomfort.
+N5 impulsiveness      | none | no clear evidence of difficulty resisting urges or acting without thought.
+N6 vulnerability       | mod  | mentions feeling overwhelmed by homework but does not express helplessness.
+E1 warmth             | high | expresses affection for friends and enjoyment in social interactions at college.
+E2 gregariousness     | mod  | enjoys meeting new people but also feels a desire to stay in familiar settings.
+E3 assertiveness      | none | no evidence of leadership or a decisive voice is present in the text.
+E4 activity           | mod  | describes a busy college life but does not indicate a high energy level or pace.
+E5 excitement-seek    | none | no clear desire for thrill-seeking or novelty is expressed in the writing.
+E6 positive emotion    | high | shows enthusiasm for college life and expresses joy about the campus and experiences.
+O1 fantasy            | none | no evidence of vivid imagination or daydreaming is present in the text.
+O2 aesthetics         | high | appreciates the beauty of the campus and the cleanliness of the lakes in Austin.
+O3 feelings           | mod  | shows some emotional depth regarding college experiences but lacks introspective awareness.
+O4 actions/variety    | none | no clear evidence of openness to new experiences or change is present in the text.
+O5 ideas              | mod  | expresses a desire to learn and respect for teachers but lacks deep intellectual curiosity.
+O6 values             | none | no evidence of re-examining values or norms is present in the writing.
+A1 trust              | high | expresses belief in the good intentions of others, especially regarding roommate compatibility.
+A2 straightforward     | high | communicates thoughts candidly and openly without manipulation.
+A3 altruism           | mod  | shows concern for friends still in high school but does not actively engage in helping others.
+A4 compliance         | high | indicates a tendency to get along with others and avoid conflict, especially with the roommate.
+A5 modesty            | none | no evidence of humility or self-promotion is present in the text.
+A6 tender-minded      | mod  | expresses sympathy for friends in high school but does not deeply engage with others' pain.
+C1 competence         | mod  | feels capable in college but expresses some uncertainty about academic performance.
+C2 order              | none | no evidence of tidiness or organization is present in the writing.
+C3 dutifulness        | mod  | acknowledges responsibilities but does not strongly emphasize adherence to obligations.
+C4 achievement        | mod  | expresses a desire to succeed academically but does not show strong ambition.
+C5 self-discipline    | low  | admits distractions and struggles to focus on homework despite recognizing the need.
+C6 deliberation       | none | no evidence of careful planning or thinking before acting is present in the text.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal reflection.
+emotion:   positive emotions dominate, with some negative feelings about tests.
+tense:     present tense is primarily used, reflecting current experiences and feelings.
+cognitive: moderate insight into personal experiences and some causal connections.
+social:    moderate density of social-process words, indicating engagement with others.
+register:  informal and exploratory, with a casual tone throughout the essay.
+length:    approximately 1,200 words, with a mix of run-on sentences and varied vocabulary.
+
+[Similar Profile 3] (label: low)
+[FACETS]
+N1 anxiety            | low  | expresses some worry about class but overall feels confident about writing.
+N2 hostility          | low  | shows understanding of others' perspectives; acknowledges inconsiderate behavior but does not react with anger.
+N3 depression         | none | no evidence of sadness or hopelessness present in the text.
+N4 self-conscious     | mod  | reflects on being labeled as quiet and hesitant, indicating some awareness of social perception.
+N5 impulsiveness      | mod  | considers rushing for frats but ultimately hesitates due to uncertainty about commitment.
+N6 vulnerability       | low  | expresses confidence in academic abilities and does not feel overwhelmed by current challenges.
+E1 warmth             | none | no clear evidence of affectionate engagement with others in the text.
+E2 gregariousness     | high | expresses interest in brotherhood and social activities, indicating a preference for group settings.
+E3 assertiveness      | mod  | acknowledges hesitance in committing but also shows confidence in academic capabilities.
+E4 activity           | mod  | mentions being busy with classes and assignments but does not detail a structured schedule.
+E5 excitement-seek    | high | expresses enthusiasm for the writing assignment and the idea of new experiences like fraternity life.
+E6 positive emotion    | high | shows joy and optimism about the writing process and personal capabilities.
+O1 fantasy            | high | engages in imaginative thinking about fraternity life and personal identity.
+O2 aesthetics         | n/e  | no evidence of appreciation for art or beauty in the text.
+O3 feelings           | high | demonstrates emotional depth by reflecting on personal thoughts and feelings throughout the essay.
+O4 actions/variety    | high | shows openness to new experiences, considering various activities and social engagements.
+O5 ideas              | mod  | reflects on academic challenges and personal beliefs but lacks deep intellectual exploration.
+O6 values             | mod  | questions personal values regarding commitment and academic success, indicating some willingness to re-examine.
+A1 trust              | n/e  | no evidence of beliefs about others' intentions present in the text.
+A2 straightforward    | high | communicates thoughts candidly and openly, sharing personal reflections without manipulation.
+A3 altruism           | n/e  | no evidence of concern for others' welfare in the text.
+A4 compliance         | low  | shows a degree of independence in decision-making, particularly regarding fraternity involvement.
+A5 modesty            | low  | expresses confidence in academic abilities and does not downplay personal strengths.
+A6 tender-minded      | n/e  | no evidence of empathy or sympathy for others' pain in the text.
+C1 competence         | mod  | expresses some confidence in academic abilities but also admits to uncertainty about college success.
+C2 order              | none | no evidence of organization or structure in thoughts or writing process.
+C3 dutifulness        | low  | admits to being unmotivated to read and acknowledges laziness regarding studies.
+C4 achievement        | mod  | expresses some ambition but also a tendency to coast through academics without striving for goals.
+C5 self-discipline    | low  | recognizes distractions and admits to a lack of follow-through on academic responsibilities.
+C6 deliberation       | mod  | reflects on decisions but does not show careful planning or extensive thought before acting.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal reflection.
+emotion:   positive balance with dominant feelings of joy and confidence.
+tense:     present emphasis with some reflections on past experiences.
+cognitive: moderate insight with some tentative thoughts about future actions.
+social:    moderate density of social-process words reflecting on interactions.
+register:  informal and exploratory, with a casual tone throughout.
+length:    approximately 800 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 4] (label: low)
+[FACETS]
+N1 anxiety            | low  | expresses contentment about being at UT and reflects positively on experiences.
+N2 hostility          | none | no evidence of anger or resentment toward others is present in the text.
+N3 depression         | none | no signs of sadness or hopelessness are evident in the writing.
+N4 self-conscious     | mod  | shows some concern about social interactions, particularly regarding interest from a girl.
+N5 impulsiveness      | mod  | mentions slow typing and difficulty with hand-eye coordination, indicating some impulsive tendencies.
+N6 vulnerability       | none | no feelings of being overwhelmed or helpless are expressed in the text.
+E1 warmth             | mod  | shows some friendliness in discussing interactions with peers and appreciation for diverse perspectives.
+E2 gregariousness     | high | expresses enjoyment in social settings, such as joining a fraternity to meet new people.
+E3 assertiveness      | mod  | indicates a desire to engage socially but does not demonstrate strong leadership or decisiveness.
+E4 activity           | mod  | mentions being busy with school and social activities but does not detail a hectic schedule.
+E5 excitement-seek    | high | expresses a desire for new experiences and enjoyment in meeting diverse individuals.
+E6 positive emotion    | high | conveys happiness about being at UT and reflects positively on social interactions.
+O1 fantasy            | mod  | shows some imaginative thinking about social dynamics and personal experiences.
+O2 aesthetics         | none | no clear appreciation for art or beauty is expressed in the text.
+O3 feelings           | mod  | reflects on emotional experiences, particularly regarding religion and social interactions.
+O4 actions/variety    | high | demonstrates openness to new experiences, such as joining a fraternity and engaging with diverse peers.
+O5 ideas              | mod  | shows some intellectual curiosity, particularly in discussing perspectives in class.
+O6 values             | mod  | reflects on personal values regarding religion and social interactions, indicating some willingness to re-examine them.
+A1 trust              | none | no evidence of beliefs about others' intentions is present in the text.
+A2 straightforward     | high | communicates thoughts candidly and openly, without manipulation.
+A3 altruism           | none | no active concern for others' welfare is expressed in the writing.
+A4 compliance         | low  | shows a degree of independence in social choices, such as joining a fraternity.
+A5 modesty            | mod  | expresses some humility about personal abilities, particularly in typing and coordination.
+A6 tender-minded      | none | no evidence of empathy or sympathy for others' pain is present in the text.
+C1 competence         | low  | expresses feelings of inadequacy regarding typing skills and hand-eye coordination.
+C2 order              | none | no evidence of organization or structure is present in the writing.
+C3 dutifulness        | low  | does not express a strong sense of obligation or adherence to responsibilities.
+C4 achievement        | mod  | reflects on academic goals but does not show strong ambition or striving for success.
+C5 self-discipline    | low  | admits to distractions and does not demonstrate strong follow-through on tasks.
+C6 deliberation       | mod  | shows some reflective thinking but lacks careful planning or forethought in actions.
+
+[LINGUISTIC]
+pronouns:  high density of "I" indicates a personal focus.
+emotion:   positive balance with dominant feelings of happiness and curiosity.
+tense:     present emphasis with reflections on current experiences.
+cognitive: moderate insight with some reflective thoughts on social dynamics.
+social:    moderate density of social-process words, indicating engagement with peers.
+register:  informal and exploratory, typical of stream-of-consciousness writing.
+length:    approximately 600 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 5] (label: low)
+[FACETS]
+N1 anxiety            | mod  | expresses stress from a hectic schedule and navigating campus, but no deep worry is evident
+N2 hostility          | none | 
+N3 depression         | none | 
+N4 self-conscious     | none | 
+N5 impulsiveness      | none | 
+N6 vulnerability      | none | 
+E1 warmth             | high | shows affection for the college experience and excitement about new adventures
+E2 gregariousness     | high | enjoys the bustling environment of college and the social aspects of campus life
+E3 assertiveness      | none | 
+E4 activity           | high | describes a busy schedule and fast-paced life at college, indicating high energy
+E5 excitement-seek    | high | expresses enthusiasm for the college experience and the vibrant city of Austin
+E6 positive emotion   | high | conveys joy and optimism about college life and the new environment
+O1 fantasy            | n/e  | 
+O2 aesthetics         | n/e  | 
+O3 feelings           | mod  | reflects on emotional experiences but lacks deep introspection
+O4 actions/variety    | mod  | mentions a desire for change and new experiences, but not deeply explored
+O5 ideas              | n/e  | 
+O6 values             | n/e  | 
+A1 trust              | n/e  | 
+A2 straightforward    | none | 
+A3 altruism           | n/e  | 
+A4 compliance         | none | 
+A5 modesty            | none | 
+A6 tender-minded      | n/e  | 
+C1 competence         | mod  | acknowledges the challenge of keeping up with classes, indicating some self-doubt
+C2 order              | low  | describes a chaotic start to college life, suggesting disorganization
+C3 dutifulness        | mod  | expresses a desire to succeed in classes but struggles with the workload
+C4 achievement        | mod  | shows ambition to make the most of the college experience, but feels overwhelmed
+C5 self-discipline    | low  | admits to being distracted and unable to focus amidst the chaos
+C6 deliberation       | n/e  | 
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal engagement
+emotion:   positive balance with dominant enthusiasm about college life
+tense:     present emphasis reflecting current experiences and feelings
+cognitive: moderate insight into personal feelings and experiences, but lacks depth
+social:    high density of social-process words reflecting engagement with others
+register:  informal and exploratory, typical of a stream-of-consciousness style
+length:    approx 290 words, with a mix of long and short sentences, moderate lexical diversity
+
+---
+
+Text to classify:
+It is now 12:32 and so I cannot wait until 12:52 because at that time my writing will be done. I type slowly anyway so I shouldn’t have too much trouble typing for twenty minutes and producing much of a paper. I am not thinking about much at the moment except for the fact I am hungry and stressed out. The first week or two of school seemed pretty easy and then all of the sudden, yesterday it hit me. I am in college and at this point I need to get my priorities straight. I am enjoying myself too much and need to have more focus. My mind is just wondering a million miles a minute about nothing in particular. I need a job, but I’m so busy with school and stuff with my sorority, which is another story. I am not the proudest to be in a sorority. Don't get me wrong, it's a great honor and a fun time, but I don't like the whole association that comes with it. My whole life does not revolve around guys and partying and allowing myself no friends or life outside of the sorority, as many of them do. In fact, I like so many people outside my sorority and would like to get to know them better that it makes me wonder if this is a good, more importantly, healthy fit for me?  I love Austin because of it's diversity and that became one of the main factors in choosing schools between SMU and here. There are so many interesting people and I want to get to know them all or at least try. Wow, it's already been over 10 minutes and this has not been too hard. I used to write daily in my journal at home, but haven’t had too much spare time to do that here, so maybe that is why I have been able to do this, and express myself so well. I enjoy so much being able to express myself on paper, which may explain why I write so much-journal, letters, poems. It helps me gain a sense of relief and since I don' express my feelings out loud too often, I need to do this daily, if not more so I can release all that I feel. I am excited about doing psychology this year because I hope to decide between the two majors I am struggling with. I am at the moment down for premed/nutrition and I really do want to go into medicine, but I've also always been interested in criminal psychology. It may be a little depressing, but I find it very interesting, and definitely want a job I love. A few months back, I read Helter Skelter and this encouraged my psychology path a little more, so I am hoping this class will help with my decision making. I guess we'll see. It is 12:51 now and time for me to stop. 
+
+Reason step by step and emit your output in the EXACT XML structure
+specified in the system message:
+
+<evidence> ... </evidence>
+<facet_check> ... </facet_check>
+<example_alignment> ... </example_alignment>
+<verdict> ... </verdict>
+<label>high</label>   (or <label>low</label>)
+
+Do not output any text outside these tags.
+
+
+--- LLM RESPONSE ---
+<evidence>
+- [state] expresses feeling "stressed out" about school and priorities.
+- [trait] mentions a recurring pattern of needing to "get my priorities straight" and feeling overwhelmed.
+- [state] describes a moment of realization about being in college and needing to focus.
+- [trait] indicates a tendency to "wonder a million miles a minute," suggesting a stable pattern of racing thoughts.
+- [state] reflects on the pressure of balancing school and sorority commitments, indicating situational stress.
+- [trait] states a need to express feelings through writing for relief, suggesting emotional instability.
+</evidence>
+<facet_check>
+- N1 anxiety -> high -> expresses feeling "stressed out" and overwhelmed by school responsibilities (dominant evidence type: state).
+- N2 hostility -> none -> no evidence of anger or resentment is present in the text.
+- N3 depression -> none -> no signs of sadness or hopelessness are expressed in the writing.
+- N4 self-conscious -> mod -> reflects on the association with the sorority and its impact on social life.
+- N5 impulsiveness -> none -> no clear evidence of difficulty resisting urges or acting without thought.
+- N6 vulnerability -> high -> expresses a need for emotional release through writing, indicating emotional sensitivity (dominant evidence type: trait).
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <1> (label: <high>) because it expresses significant anxiety and emotional instability regarding school and social commitments. The test text diverges from Similar Profile <2> on the axis of emotional vulnerability, as the test text shows a higher tendency for stress and emotional expression.
+</example_alignment>
+<verdict>
+The overall pattern points to high Neuroticism, as the evidence indicates recurring emotional instability and anxiety about academic and social pressures, rather than just situational stress.
+</verdict>
+<label>high</label>
+================================================================================
+

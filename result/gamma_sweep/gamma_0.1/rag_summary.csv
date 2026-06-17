@@ -1,0 +1,6 @@
+gamma,trait,k,n_queries,mean_match_rate,std_match_rate,hit_rate
+0.1,Openness to Experience,5,50,0.54,0.2272,0.98
+0.1,Conscientiousness,5,50,0.52,0.2298,0.96
+0.1,Extraversion,5,50,0.556,0.2539,0.98
+0.1,Agreeableness,5,50,0.452,0.2766,0.88
+0.1,Neuroticism,5,50,0.52,0.2592,0.98

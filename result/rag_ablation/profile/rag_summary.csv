@@ -1,0 +1,11 @@
+rag_mode,trait,k,n_queries,mean_match_rate,std_match_rate,hit_rate
+profile,Openness to Experience,3,247,0.5142,0.2979,0.8785
+profile,Conscientiousness,3,247,0.5263,0.2831,0.9028
+profile,Extraversion,3,247,0.5263,0.3046,0.8785
+profile,Agreeableness,3,247,0.5182,0.3427,0.8259
+profile,Neuroticism,3,247,0.5601,0.3457,0.8462
+profile,Openness to Experience,5,247,0.5198,0.2446,0.9595
+profile,Conscientiousness,5,247,0.5109,0.2364,0.9595
+profile,Extraversion,5,247,0.5093,0.253,0.9433
+profile,Agreeableness,5,247,0.5336,0.2954,0.9271
+profile,Neuroticism,5,247,0.5538,0.2885,0.9393

@@ -210,5 +210,3 @@ marimo/_lsp/
 __marimo__/
 
 models
-log
-result

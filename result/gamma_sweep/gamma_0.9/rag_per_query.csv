@@ -1,0 +1,251 @@
+gamma,query_idx,trait,k,true_label,n_retrieved,match_count,match_rate,hit
+0.9,0,Openness to Experience,5,high,5,5,1.0,1
+0.9,1,Openness to Experience,5,low,5,0,0.0,0
+0.9,2,Openness to Experience,5,high,5,2,0.4,1
+0.9,3,Openness to Experience,5,high,5,5,1.0,1
+0.9,4,Openness to Experience,5,low,5,1,0.2,1
+0.9,5,Openness to Experience,5,low,5,0,0.0,0
+0.9,6,Openness to Experience,5,low,5,4,0.8,1
+0.9,7,Openness to Experience,5,low,5,0,0.0,0
+0.9,8,Openness to Experience,5,high,5,5,1.0,1
+0.9,9,Openness to Experience,5,high,5,0,0.0,0
+0.9,10,Openness to Experience,5,high,5,5,1.0,1
+0.9,11,Openness to Experience,5,high,5,5,1.0,1
+0.9,12,Openness to Experience,5,high,5,5,1.0,1
+0.9,13,Openness to Experience,5,high,5,4,0.8,1
+0.9,14,Openness to Experience,5,high,5,5,1.0,1
+0.9,15,Openness to Experience,5,high,5,5,1.0,1
+0.9,16,Openness to Experience,5,high,5,5,1.0,1
+0.9,17,Openness to Experience,5,high,5,3,0.6,1
+0.9,18,Openness to Experience,5,high,5,5,1.0,1
+0.9,19,Openness to Experience,5,high,5,4,0.8,1
+0.9,20,Openness to Experience,5,high,5,3,0.6,1
+0.9,21,Openness to Experience,5,high,5,5,1.0,1
+0.9,22,Openness to Experience,5,low,5,0,0.0,0
+0.9,23,Openness to Experience,5,low,5,0,0.0,0
+0.9,24,Openness to Experience,5,low,5,0,0.0,0
+0.9,25,Openness to Experience,5,high,5,5,1.0,1
+0.9,26,Openness to Experience,5,high,5,2,0.4,1
+0.9,27,Openness to Experience,5,high,5,4,0.8,1
+0.9,28,Openness to Experience,5,high,5,3,0.6,1
+0.9,29,Openness to Experience,5,low,5,2,0.4,1
+0.9,30,Openness to Experience,5,low,5,5,1.0,1
+0.9,31,Openness to Experience,5,low,5,1,0.2,1
+0.9,32,Openness to Experience,5,low,5,0,0.0,0
+0.9,33,Openness to Experience,5,high,5,5,1.0,1
+0.9,34,Openness to Experience,5,high,5,4,0.8,1
+0.9,35,Openness to Experience,5,high,5,5,1.0,1
+0.9,36,Openness to Experience,5,high,5,5,1.0,1
+0.9,37,Openness to Experience,5,low,5,0,0.0,0
+0.9,38,Openness to Experience,5,low,5,1,0.2,1
+0.9,39,Openness to Experience,5,high,5,5,1.0,1
+0.9,40,Openness to Experience,5,low,5,0,0.0,0
+0.9,41,Openness to Experience,5,high,5,5,1.0,1
+0.9,42,Openness to Experience,5,high,5,0,0.0,0
+0.9,43,Openness to Experience,5,low,5,0,0.0,0
+0.9,44,Openness to Experience,5,low,5,1,0.2,1
+0.9,45,Openness to Experience,5,high,5,5,1.0,1
+0.9,46,Openness to Experience,5,high,5,5,1.0,1
+0.9,47,Openness to Experience,5,high,5,5,1.0,1
+0.9,48,Openness to Experience,5,high,5,5,1.0,1
+0.9,49,Openness to Experience,5,low,5,2,0.4,1
+0.9,0,Conscientiousness,5,high,5,2,0.4,1
+0.9,1,Conscientiousness,5,high,5,0,0.0,0
+0.9,2,Conscientiousness,5,high,5,3,0.6,1
+0.9,3,Conscientiousness,5,low,5,5,1.0,1
+0.9,4,Conscientiousness,5,high,5,4,0.8,1
+0.9,5,Conscientiousness,5,high,5,1,0.2,1
+0.9,6,Conscientiousness,5,high,5,5,1.0,1
+0.9,7,Conscientiousness,5,high,5,4,0.8,1
+0.9,8,Conscientiousness,5,low,5,0,0.0,0
+0.9,9,Conscientiousness,5,high,5,5,1.0,1
+0.9,10,Conscientiousness,5,low,5,0,0.0,0
+0.9,11,Conscientiousness,5,high,5,0,0.0,0
+0.9,12,Conscientiousness,5,low,5,1,0.2,1
+0.9,13,Conscientiousness,5,low,5,3,0.6,1
+0.9,14,Conscientiousness,5,high,5,2,0.4,1
+0.9,15,Conscientiousness,5,low,5,2,0.4,1
+0.9,16,Conscientiousness,5,low,5,0,0.0,0
+0.9,17,Conscientiousness,5,high,5,0,0.0,0
+0.9,18,Conscientiousness,5,high,5,5,1.0,1
+0.9,19,Conscientiousness,5,high,5,3,0.6,1
+0.9,20,Conscientiousness,5,low,5,2,0.4,1
+0.9,21,Conscientiousness,5,high,5,3,0.6,1
+0.9,22,Conscientiousness,5,low,5,3,0.6,1
+0.9,23,Conscientiousness,5,low,5,5,1.0,1
+0.9,24,Conscientiousness,5,low,5,1,0.2,1
+0.9,25,Conscientiousness,5,low,5,3,0.6,1
+0.9,26,Conscientiousness,5,low,5,4,0.8,1
+0.9,27,Conscientiousness,5,low,5,4,0.8,1
+0.9,28,Conscientiousness,5,high,5,3,0.6,1
+0.9,29,Conscientiousness,5,low,5,1,0.2,1
+0.9,30,Conscientiousness,5,low,5,1,0.2,1
+0.9,31,Conscientiousness,5,high,5,2,0.4,1
+0.9,32,Conscientiousness,5,low,5,4,0.8,1
+0.9,33,Conscientiousness,5,high,5,0,0.0,0
+0.9,34,Conscientiousness,5,high,5,2,0.4,1
+0.9,35,Conscientiousness,5,low,5,0,0.0,0
+0.9,36,Conscientiousness,5,high,5,5,1.0,1
+0.9,37,Conscientiousness,5,high,5,2,0.4,1
+0.9,38,Conscientiousness,5,low,5,0,0.0,0
+0.9,39,Conscientiousness,5,low,5,0,0.0,0
+0.9,40,Conscientiousness,5,high,5,3,0.6,1
+0.9,41,Conscientiousness,5,high,5,5,1.0,1
+0.9,42,Conscientiousness,5,high,5,2,0.4,1
+0.9,43,Conscientiousness,5,low,5,4,0.8,1
+0.9,44,Conscientiousness,5,high,5,5,1.0,1
+0.9,45,Conscientiousness,5,low,5,0,0.0,0
+0.9,46,Conscientiousness,5,high,5,3,0.6,1
+0.9,47,Conscientiousness,5,low,5,1,0.2,1
+0.9,48,Conscientiousness,5,high,5,5,1.0,1
+0.9,49,Conscientiousness,5,low,5,0,0.0,0
+0.9,0,Extraversion,5,high,5,4,0.8,1
+0.9,1,Extraversion,5,low,5,1,0.2,1
+0.9,2,Extraversion,5,high,5,4,0.8,1
+0.9,3,Extraversion,5,low,5,4,0.8,1
+0.9,4,Extraversion,5,high,5,3,0.6,1
+0.9,5,Extraversion,5,high,5,3,0.6,1
+0.9,6,Extraversion,5,high,5,4,0.8,1
+0.9,7,Extraversion,5,low,5,4,0.8,1
+0.9,8,Extraversion,5,low,5,2,0.4,1
+0.9,9,Extraversion,5,high,5,4,0.8,1
+0.9,10,Extraversion,5,high,5,0,0.0,0
+0.9,11,Extraversion,5,high,5,0,0.0,0
+0.9,12,Extraversion,5,low,5,4,0.8,1
+0.9,13,Extraversion,5,high,5,0,0.0,0
+0.9,14,Extraversion,5,low,5,4,0.8,1
+0.9,15,Extraversion,5,low,5,0,0.0,0
+0.9,16,Extraversion,5,low,5,1,0.2,1
+0.9,17,Extraversion,5,high,5,4,0.8,1
+0.9,18,Extraversion,5,high,5,4,0.8,1
+0.9,19,Extraversion,5,high,5,2,0.4,1
+0.9,20,Extraversion,5,low,5,5,1.0,1
+0.9,21,Extraversion,5,low,5,4,0.8,1
+0.9,22,Extraversion,5,high,5,2,0.4,1
+0.9,23,Extraversion,5,high,5,0,0.0,0
+0.9,24,Extraversion,5,high,5,5,1.0,1
+0.9,25,Extraversion,5,high,5,0,0.0,0
+0.9,26,Extraversion,5,high,5,5,1.0,1
+0.9,27,Extraversion,5,low,5,3,0.6,1
+0.9,28,Extraversion,5,high,5,2,0.4,1
+0.9,29,Extraversion,5,low,5,0,0.0,0
+0.9,30,Extraversion,5,low,5,4,0.8,1
+0.9,31,Extraversion,5,high,5,1,0.2,1
+0.9,32,Extraversion,5,high,5,5,1.0,1
+0.9,33,Extraversion,5,high,5,5,1.0,1
+0.9,34,Extraversion,5,low,5,5,1.0,1
+0.9,35,Extraversion,5,high,5,0,0.0,0
+0.9,36,Extraversion,5,low,5,1,0.2,1
+0.9,37,Extraversion,5,low,5,3,0.6,1
+0.9,38,Extraversion,5,low,5,2,0.4,1
+0.9,39,Extraversion,5,low,5,1,0.2,1
+0.9,40,Extraversion,5,high,5,0,0.0,0
+0.9,41,Extraversion,5,high,5,5,1.0,1
+0.9,42,Extraversion,5,high,5,1,0.2,1
+0.9,43,Extraversion,5,low,5,5,1.0,1
+0.9,44,Extraversion,5,high,5,5,1.0,1
+0.9,45,Extraversion,5,low,5,5,1.0,1
+0.9,46,Extraversion,5,high,5,5,1.0,1
+0.9,47,Extraversion,5,high,5,4,0.8,1
+0.9,48,Extraversion,5,high,5,5,1.0,1
+0.9,49,Extraversion,5,high,5,4,0.8,1
+0.9,0,Agreeableness,5,low,5,0,0.0,0
+0.9,1,Agreeableness,5,low,5,0,0.0,0
+0.9,2,Agreeableness,5,low,5,0,0.0,0
+0.9,3,Agreeableness,5,high,5,3,0.6,1
+0.9,4,Agreeableness,5,high,5,0,0.0,0
+0.9,5,Agreeableness,5,high,5,5,1.0,1
+0.9,6,Agreeableness,5,high,5,4,0.8,1
+0.9,7,Agreeableness,5,high,5,0,0.0,0
+0.9,8,Agreeableness,5,low,5,0,0.0,0
+0.9,9,Agreeableness,5,high,5,5,1.0,1
+0.9,10,Agreeableness,5,low,5,2,0.4,1
+0.9,11,Agreeableness,5,high,5,5,1.0,1
+0.9,12,Agreeableness,5,high,5,1,0.2,1
+0.9,13,Agreeableness,5,high,5,4,0.8,1
+0.9,14,Agreeableness,5,high,5,5,1.0,1
+0.9,15,Agreeableness,5,low,5,4,0.8,1
+0.9,16,Agreeableness,5,high,5,4,0.8,1
+0.9,17,Agreeableness,5,high,5,5,1.0,1
+0.9,18,Agreeableness,5,high,5,3,0.6,1
+0.9,19,Agreeableness,5,high,5,2,0.4,1
+0.9,20,Agreeableness,5,low,5,0,0.0,0
+0.9,21,Agreeableness,5,high,5,4,0.8,1
+0.9,22,Agreeableness,5,high,5,1,0.2,1
+0.9,23,Agreeableness,5,low,5,4,0.8,1
+0.9,24,Agreeableness,5,low,5,0,0.0,0
+0.9,25,Agreeableness,5,high,5,1,0.2,1
+0.9,26,Agreeableness,5,high,5,5,1.0,1
+0.9,27,Agreeableness,5,low,5,1,0.2,1
+0.9,28,Agreeableness,5,low,5,5,1.0,1
+0.9,29,Agreeableness,5,low,5,0,0.0,0
+0.9,30,Agreeableness,5,low,5,1,0.2,1
+0.9,31,Agreeableness,5,low,5,4,0.8,1
+0.9,32,Agreeableness,5,high,5,0,0.0,0
+0.9,33,Agreeableness,5,low,5,1,0.2,1
+0.9,34,Agreeableness,5,low,5,5,1.0,1
+0.9,35,Agreeableness,5,low,5,3,0.6,1
+0.9,36,Agreeableness,5,high,5,4,0.8,1
+0.9,37,Agreeableness,5,low,5,1,0.2,1
+0.9,38,Agreeableness,5,high,5,2,0.4,1
+0.9,39,Agreeableness,5,low,5,3,0.6,1
+0.9,40,Agreeableness,5,low,5,1,0.2,1
+0.9,41,Agreeableness,5,high,5,2,0.4,1
+0.9,42,Agreeableness,5,high,5,5,1.0,1
+0.9,43,Agreeableness,5,low,5,1,0.2,1
+0.9,44,Agreeableness,5,high,5,4,0.8,1
+0.9,45,Agreeableness,5,low,5,5,1.0,1
+0.9,46,Agreeableness,5,high,5,4,0.8,1
+0.9,47,Agreeableness,5,high,5,5,1.0,1
+0.9,48,Agreeableness,5,low,5,1,0.2,1
+0.9,49,Agreeableness,5,low,5,0,0.0,0
+0.9,0,Neuroticism,5,high,5,3,0.6,1
+0.9,1,Neuroticism,5,high,5,5,1.0,1
+0.9,2,Neuroticism,5,high,5,4,0.8,1
+0.9,3,Neuroticism,5,high,5,4,0.8,1
+0.9,4,Neuroticism,5,high,5,5,1.0,1
+0.9,5,Neuroticism,5,low,5,0,0.0,0
+0.9,6,Neuroticism,5,low,5,1,0.2,1
+0.9,7,Neuroticism,5,low,5,5,1.0,1
+0.9,8,Neuroticism,5,low,5,2,0.4,1
+0.9,9,Neuroticism,5,low,5,1,0.2,1
+0.9,10,Neuroticism,5,low,5,0,0.0,0
+0.9,11,Neuroticism,5,high,5,4,0.8,1
+0.9,12,Neuroticism,5,low,5,2,0.4,1
+0.9,13,Neuroticism,5,high,5,3,0.6,1
+0.9,14,Neuroticism,5,high,5,5,1.0,1
+0.9,15,Neuroticism,5,high,5,1,0.2,1
+0.9,16,Neuroticism,5,low,5,1,0.2,1
+0.9,17,Neuroticism,5,high,5,2,0.4,1
+0.9,18,Neuroticism,5,low,5,0,0.0,0
+0.9,19,Neuroticism,5,high,5,5,1.0,1
+0.9,20,Neuroticism,5,low,5,0,0.0,0
+0.9,21,Neuroticism,5,high,5,5,1.0,1
+0.9,22,Neuroticism,5,low,5,0,0.0,0
+0.9,23,Neuroticism,5,high,5,0,0.0,0
+0.9,24,Neuroticism,5,low,5,5,1.0,1
+0.9,25,Neuroticism,5,low,5,1,0.2,1
+0.9,26,Neuroticism,5,high,5,5,1.0,1
+0.9,27,Neuroticism,5,high,5,4,0.8,1
+0.9,28,Neuroticism,5,high,5,5,1.0,1
+0.9,29,Neuroticism,5,high,5,0,0.0,0
+0.9,30,Neuroticism,5,high,5,4,0.8,1
+0.9,31,Neuroticism,5,low,5,2,0.4,1
+0.9,32,Neuroticism,5,low,5,1,0.2,1
+0.9,33,Neuroticism,5,high,5,5,1.0,1
+0.9,34,Neuroticism,5,high,5,5,1.0,1
+0.9,35,Neuroticism,5,low,5,5,1.0,1
+0.9,36,Neuroticism,5,low,5,4,0.8,1
+0.9,37,Neuroticism,5,low,5,0,0.0,0
+0.9,38,Neuroticism,5,low,5,2,0.4,1
+0.9,39,Neuroticism,5,low,5,0,0.0,0
+0.9,40,Neuroticism,5,low,5,1,0.2,1
+0.9,41,Neuroticism,5,low,5,0,0.0,0
+0.9,42,Neuroticism,5,high,5,5,1.0,1
+0.9,43,Neuroticism,5,high,5,4,0.8,1
+0.9,44,Neuroticism,5,high,5,5,1.0,1
+0.9,45,Neuroticism,5,high,5,5,1.0,1
+0.9,46,Neuroticism,5,low,5,4,0.8,1
+0.9,47,Neuroticism,5,low,5,0,0.0,0
+0.9,48,Neuroticism,5,low,5,1,0.2,1
+0.9,49,Neuroticism,5,low,5,4,0.8,1

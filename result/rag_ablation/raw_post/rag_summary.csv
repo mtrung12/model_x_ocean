@@ -1,0 +1,11 @@
+rag_mode,trait,k,n_queries,mean_match_rate,std_match_rate,hit_rate
+rawpost,Openness to Experience,3,247,0.4939,0.2906,0.8704
+rawpost,Conscientiousness,3,247,0.5007,0.2747,0.8907
+rawpost,Extraversion,3,247,0.4912,0.2858,0.8704
+rawpost,Agreeableness,3,247,0.5074,0.3157,0.8381
+rawpost,Neuroticism,3,247,0.5479,0.3019,0.8866
+rawpost,Openness to Experience,5,247,0.5045,0.2393,0.9514
+rawpost,Conscientiousness,5,247,0.5036,0.2051,0.9838
+rawpost,Extraversion,5,247,0.5036,0.2203,0.9717
+rawpost,Agreeableness,5,247,0.5117,0.2397,0.9595
+rawpost,Neuroticism,5,247,0.5385,0.2286,0.9676

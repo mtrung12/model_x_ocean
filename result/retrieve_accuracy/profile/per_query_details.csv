@@ -1,0 +1,2471 @@
+query_idx,trait,k,true_label,n_retrieved,match_count,match_rate,hit,used_profile
+0,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+1,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+2,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+3,Openness to Experience,3,high,3,0,0.0,0,True
+4,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+5,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+6,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+7,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+8,Openness to Experience,3,low,3,0,0.0,0,True
+9,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+10,Openness to Experience,3,low,3,0,0.0,0,True
+11,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+12,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+13,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+14,Openness to Experience,3,high,3,3,1.0,1,True
+15,Openness to Experience,3,high,3,0,0.0,0,True
+16,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+17,Openness to Experience,3,low,3,0,0.0,0,True
+18,Openness to Experience,3,low,3,3,1.0,1,True
+19,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+20,Openness to Experience,3,low,3,3,1.0,1,True
+21,Openness to Experience,3,high,3,3,1.0,1,True
+22,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+23,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+24,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+25,Openness to Experience,3,low,3,3,1.0,1,True
+26,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+27,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+28,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+29,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+30,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+31,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+32,Openness to Experience,3,high,3,3,1.0,1,True
+33,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+34,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+35,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+36,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+37,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+38,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+39,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+40,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+41,Openness to Experience,3,low,3,3,1.0,1,True
+42,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+43,Openness to Experience,3,low,3,3,1.0,1,True
+44,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+45,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+46,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+47,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+48,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+49,Openness to Experience,3,low,3,0,0.0,0,True
+50,Openness to Experience,3,low,3,0,0.0,0,True
+51,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+52,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+53,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+54,Openness to Experience,3,high,3,0,0.0,0,True
+55,Openness to Experience,3,high,3,3,1.0,1,True
+56,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+57,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+58,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+59,Openness to Experience,3,low,3,3,1.0,1,True
+60,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+61,Openness to Experience,3,low,3,3,1.0,1,True
+62,Openness to Experience,3,high,3,3,1.0,1,True
+63,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+64,Openness to Experience,3,low,3,0,0.0,0,True
+65,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+66,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+67,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+68,Openness to Experience,3,low,3,0,0.0,0,True
+69,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+70,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+71,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+72,Openness to Experience,3,low,3,3,1.0,1,True
+73,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+74,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+75,Openness to Experience,3,low,3,0,0.0,0,True
+76,Openness to Experience,3,high,3,3,1.0,1,True
+77,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+78,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+79,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+80,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+81,Openness to Experience,3,high,3,3,1.0,1,True
+82,Openness to Experience,3,high,3,0,0.0,0,True
+83,Openness to Experience,3,high,3,3,1.0,1,True
+84,Openness to Experience,3,low,3,3,1.0,1,True
+85,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+86,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+87,Openness to Experience,3,high,3,3,1.0,1,True
+88,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+89,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+90,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+91,Openness to Experience,3,low,3,0,0.0,0,True
+92,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+93,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+94,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+95,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+96,Openness to Experience,3,high,3,0,0.0,0,True
+97,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+98,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+99,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+100,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+101,Openness to Experience,3,high,3,3,1.0,1,True
+102,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+103,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+104,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+105,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+106,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+107,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+108,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+109,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+110,Openness to Experience,3,low,3,0,0.0,0,True
+111,Openness to Experience,3,high,3,0,0.0,0,True
+112,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+113,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+114,Openness to Experience,3,low,3,0,0.0,0,True
+115,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+116,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+117,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+118,Openness to Experience,3,high,3,3,1.0,1,True
+119,Openness to Experience,3,low,3,3,1.0,1,True
+120,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+121,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+122,Openness to Experience,3,low,3,0,0.0,0,True
+123,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+124,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+125,Openness to Experience,3,high,3,0,0.0,0,True
+126,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+127,Openness to Experience,3,high,3,0,0.0,0,True
+128,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+129,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+130,Openness to Experience,3,low,3,3,1.0,1,True
+131,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+132,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+133,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+134,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+135,Openness to Experience,3,high,3,0,0.0,0,True
+136,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+137,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+138,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+139,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+140,Openness to Experience,3,low,3,0,0.0,0,True
+141,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+142,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+143,Openness to Experience,3,low,3,0,0.0,0,True
+144,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+145,Openness to Experience,3,high,3,3,1.0,1,True
+146,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+147,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+148,Openness to Experience,3,low,3,0,0.0,0,True
+149,Openness to Experience,3,low,3,0,0.0,0,True
+150,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+151,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+152,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+153,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+154,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+155,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+156,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+157,Openness to Experience,3,low,3,3,1.0,1,True
+158,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+159,Openness to Experience,3,low,3,3,1.0,1,True
+160,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+161,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+162,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+163,Openness to Experience,3,low,3,0,0.0,0,True
+164,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+165,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+166,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+167,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+168,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+169,Openness to Experience,3,low,3,3,1.0,1,True
+170,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+171,Openness to Experience,3,high,3,3,1.0,1,True
+172,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+173,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+174,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+175,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+176,Openness to Experience,3,high,3,3,1.0,1,True
+177,Openness to Experience,3,high,3,3,1.0,1,True
+178,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+179,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+180,Openness to Experience,3,high,3,3,1.0,1,True
+181,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+182,Openness to Experience,3,high,3,3,1.0,1,True
+183,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+184,Openness to Experience,3,low,3,0,0.0,0,True
+185,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+186,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+187,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+188,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+189,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+190,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+191,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+192,Openness to Experience,3,high,3,0,0.0,0,True
+193,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+194,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+195,Openness to Experience,3,high,3,3,1.0,1,True
+196,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+197,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+198,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+199,Openness to Experience,3,high,3,0,0.0,0,True
+200,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+201,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+202,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+203,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+204,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+205,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+206,Openness to Experience,3,low,3,3,1.0,1,True
+207,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+208,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+209,Openness to Experience,3,high,3,3,1.0,1,True
+210,Openness to Experience,3,high,3,3,1.0,1,True
+211,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+212,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+213,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+214,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+215,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+216,Openness to Experience,3,high,3,3,1.0,1,True
+217,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+218,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+219,Openness to Experience,3,high,3,3,1.0,1,True
+220,Openness to Experience,3,low,3,0,0.0,0,True
+221,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+222,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+223,Openness to Experience,3,high,3,3,1.0,1,True
+224,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+225,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+226,Openness to Experience,3,low,3,0,0.0,0,True
+227,Openness to Experience,3,low,3,0,0.0,0,True
+228,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+229,Openness to Experience,3,high,3,0,0.0,0,True
+230,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+231,Openness to Experience,3,high,3,3,1.0,1,True
+232,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+233,Openness to Experience,3,low,3,3,1.0,1,True
+234,Openness to Experience,3,high,3,2,0.6666666666666666,1,True
+235,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+236,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+237,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+238,Openness to Experience,3,low,3,2,0.6666666666666666,1,True
+239,Openness to Experience,3,low,3,0,0.0,0,True
+240,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+241,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+242,Openness to Experience,3,low,3,1,0.3333333333333333,1,True
+243,Openness to Experience,3,high,3,3,1.0,1,True
+244,Openness to Experience,3,low,3,0,0.0,0,True
+245,Openness to Experience,3,high,3,1,0.3333333333333333,1,True
+246,Openness to Experience,3,low,3,3,1.0,1,True
+0,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+1,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+2,Conscientiousness,3,high,3,3,1.0,1,True
+3,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+4,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+5,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+6,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+7,Conscientiousness,3,low,3,0,0.0,0,True
+8,Conscientiousness,3,high,3,3,1.0,1,True
+9,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+10,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+11,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+12,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+13,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+14,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+15,Conscientiousness,3,high,3,3,1.0,1,True
+16,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+17,Conscientiousness,3,high,3,0,0.0,0,True
+18,Conscientiousness,3,high,3,0,0.0,0,True
+19,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+20,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+21,Conscientiousness,3,high,3,0,0.0,0,True
+22,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+23,Conscientiousness,3,high,3,3,1.0,1,True
+24,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+25,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+26,Conscientiousness,3,high,3,0,0.0,0,True
+27,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+28,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+29,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+30,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+31,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+32,Conscientiousness,3,high,3,3,1.0,1,True
+33,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+34,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+35,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+36,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+37,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+38,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+39,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+40,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+41,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+42,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+43,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+44,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+45,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+46,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+47,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+48,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+49,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+50,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+51,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+52,Conscientiousness,3,low,3,3,1.0,1,True
+53,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+54,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+55,Conscientiousness,3,low,3,0,0.0,0,True
+56,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+57,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+58,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+59,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+60,Conscientiousness,3,high,3,0,0.0,0,True
+61,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+62,Conscientiousness,3,low,3,3,1.0,1,True
+63,Conscientiousness,3,high,3,3,1.0,1,True
+64,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+65,Conscientiousness,3,high,3,3,1.0,1,True
+66,Conscientiousness,3,low,3,3,1.0,1,True
+67,Conscientiousness,3,low,3,0,0.0,0,True
+68,Conscientiousness,3,low,3,0,0.0,0,True
+69,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+70,Conscientiousness,3,low,3,3,1.0,1,True
+71,Conscientiousness,3,high,3,3,1.0,1,True
+72,Conscientiousness,3,high,3,0,0.0,0,True
+73,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+74,Conscientiousness,3,low,3,3,1.0,1,True
+75,Conscientiousness,3,high,3,3,1.0,1,True
+76,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+77,Conscientiousness,3,low,3,3,1.0,1,True
+78,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+79,Conscientiousness,3,low,3,0,0.0,0,True
+80,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+81,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+82,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+83,Conscientiousness,3,low,3,3,1.0,1,True
+84,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+85,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+86,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+87,Conscientiousness,3,low,3,3,1.0,1,True
+88,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+89,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+90,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+91,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+92,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+93,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+94,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+95,Conscientiousness,3,low,3,3,1.0,1,True
+96,Conscientiousness,3,high,3,3,1.0,1,True
+97,Conscientiousness,3,low,3,0,0.0,0,True
+98,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+99,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+100,Conscientiousness,3,low,3,0,0.0,0,True
+101,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+102,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+103,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+104,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+105,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+106,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+107,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+108,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+109,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+110,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+111,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+112,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+113,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+114,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+115,Conscientiousness,3,low,3,0,0.0,0,True
+116,Conscientiousness,3,high,3,3,1.0,1,True
+117,Conscientiousness,3,high,3,3,1.0,1,True
+118,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+119,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+120,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+121,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+122,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+123,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+124,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+125,Conscientiousness,3,low,3,3,1.0,1,True
+126,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+127,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+128,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+129,Conscientiousness,3,high,3,0,0.0,0,True
+130,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+131,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+132,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+133,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+134,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+135,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+136,Conscientiousness,3,high,3,3,1.0,1,True
+137,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+138,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+139,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+140,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+141,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+142,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+143,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+144,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+145,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+146,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+147,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+148,Conscientiousness,3,high,3,0,0.0,0,True
+149,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+150,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+151,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+152,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+153,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+154,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+155,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+156,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+157,Conscientiousness,3,low,3,0,0.0,0,True
+158,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+159,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+160,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+161,Conscientiousness,3,low,3,0,0.0,0,True
+162,Conscientiousness,3,low,3,0,0.0,0,True
+163,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+164,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+165,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+166,Conscientiousness,3,high,3,3,1.0,1,True
+167,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+168,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+169,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+170,Conscientiousness,3,low,3,3,1.0,1,True
+171,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+172,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+173,Conscientiousness,3,high,3,3,1.0,1,True
+174,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+175,Conscientiousness,3,high,3,0,0.0,0,True
+176,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+177,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+178,Conscientiousness,3,high,3,3,1.0,1,True
+179,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+180,Conscientiousness,3,low,3,0,0.0,0,True
+181,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+182,Conscientiousness,3,low,3,0,0.0,0,True
+183,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+184,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+185,Conscientiousness,3,low,3,0,0.0,0,True
+186,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+187,Conscientiousness,3,low,3,0,0.0,0,True
+188,Conscientiousness,3,high,3,3,1.0,1,True
+189,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+190,Conscientiousness,3,high,3,3,1.0,1,True
+191,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+192,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+193,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+194,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+195,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+196,Conscientiousness,3,low,3,0,0.0,0,True
+197,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+198,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+199,Conscientiousness,3,high,3,3,1.0,1,True
+200,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+201,Conscientiousness,3,high,3,3,1.0,1,True
+202,Conscientiousness,3,low,3,0,0.0,0,True
+203,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+204,Conscientiousness,3,high,3,0,0.0,0,True
+205,Conscientiousness,3,low,3,0,0.0,0,True
+206,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+207,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+208,Conscientiousness,3,high,3,3,1.0,1,True
+209,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+210,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+211,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+212,Conscientiousness,3,high,3,3,1.0,1,True
+213,Conscientiousness,3,high,3,0,0.0,0,True
+214,Conscientiousness,3,high,3,3,1.0,1,True
+215,Conscientiousness,3,low,3,3,1.0,1,True
+216,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+217,Conscientiousness,3,high,3,3,1.0,1,True
+218,Conscientiousness,3,low,3,0,0.0,0,True
+219,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+220,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+221,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+222,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+223,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+224,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+225,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+226,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+227,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+228,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+229,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+230,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+231,Conscientiousness,3,high,3,3,1.0,1,True
+232,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+233,Conscientiousness,3,low,3,3,1.0,1,True
+234,Conscientiousness,3,low,3,3,1.0,1,True
+235,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+236,Conscientiousness,3,high,3,3,1.0,1,True
+237,Conscientiousness,3,high,3,3,1.0,1,True
+238,Conscientiousness,3,low,3,2,0.6666666666666666,1,True
+239,Conscientiousness,3,high,3,2,0.6666666666666666,1,True
+240,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+241,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+242,Conscientiousness,3,low,3,0,0.0,0,True
+243,Conscientiousness,3,high,3,1,0.3333333333333333,1,True
+244,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+245,Conscientiousness,3,low,3,1,0.3333333333333333,1,True
+246,Conscientiousness,3,low,3,0,0.0,0,True
+0,Extraversion,3,low,3,0,0.0,0,True
+1,Extraversion,3,low,3,0,0.0,0,True
+2,Extraversion,3,low,3,0,0.0,0,True
+3,Extraversion,3,high,3,1,0.3333333333333333,1,True
+4,Extraversion,3,high,3,3,1.0,1,True
+5,Extraversion,3,low,3,2,0.6666666666666666,1,True
+6,Extraversion,3,low,3,2,0.6666666666666666,1,True
+7,Extraversion,3,low,3,2,0.6666666666666666,1,True
+8,Extraversion,3,high,3,2,0.6666666666666666,1,True
+9,Extraversion,3,low,3,2,0.6666666666666666,1,True
+10,Extraversion,3,low,3,1,0.3333333333333333,1,True
+11,Extraversion,3,low,3,1,0.3333333333333333,1,True
+12,Extraversion,3,low,3,2,0.6666666666666666,1,True
+13,Extraversion,3,high,3,3,1.0,1,True
+14,Extraversion,3,high,3,2,0.6666666666666666,1,True
+15,Extraversion,3,low,3,1,0.3333333333333333,1,True
+16,Extraversion,3,low,3,2,0.6666666666666666,1,True
+17,Extraversion,3,low,3,2,0.6666666666666666,1,True
+18,Extraversion,3,low,3,0,0.0,0,True
+19,Extraversion,3,high,3,1,0.3333333333333333,1,True
+20,Extraversion,3,low,3,2,0.6666666666666666,1,True
+21,Extraversion,3,low,3,2,0.6666666666666666,1,True
+22,Extraversion,3,high,3,3,1.0,1,True
+23,Extraversion,3,high,3,2,0.6666666666666666,1,True
+24,Extraversion,3,high,3,1,0.3333333333333333,1,True
+25,Extraversion,3,high,3,2,0.6666666666666666,1,True
+26,Extraversion,3,low,3,2,0.6666666666666666,1,True
+27,Extraversion,3,low,3,0,0.0,0,True
+28,Extraversion,3,high,3,1,0.3333333333333333,1,True
+29,Extraversion,3,high,3,1,0.3333333333333333,1,True
+30,Extraversion,3,high,3,0,0.0,0,True
+31,Extraversion,3,low,3,3,1.0,1,True
+32,Extraversion,3,low,3,0,0.0,0,True
+33,Extraversion,3,high,3,1,0.3333333333333333,1,True
+34,Extraversion,3,high,3,2,0.6666666666666666,1,True
+35,Extraversion,3,high,3,1,0.3333333333333333,1,True
+36,Extraversion,3,high,3,2,0.6666666666666666,1,True
+37,Extraversion,3,low,3,1,0.3333333333333333,1,True
+38,Extraversion,3,high,3,1,0.3333333333333333,1,True
+39,Extraversion,3,low,3,2,0.6666666666666666,1,True
+40,Extraversion,3,high,3,2,0.6666666666666666,1,True
+41,Extraversion,3,low,3,0,0.0,0,True
+42,Extraversion,3,high,3,2,0.6666666666666666,1,True
+43,Extraversion,3,high,3,1,0.3333333333333333,1,True
+44,Extraversion,3,low,3,0,0.0,0,True
+45,Extraversion,3,low,3,2,0.6666666666666666,1,True
+46,Extraversion,3,high,3,0,0.0,0,True
+47,Extraversion,3,high,3,2,0.6666666666666666,1,True
+48,Extraversion,3,low,3,2,0.6666666666666666,1,True
+49,Extraversion,3,low,3,1,0.3333333333333333,1,True
+50,Extraversion,3,high,3,3,1.0,1,True
+51,Extraversion,3,low,3,1,0.3333333333333333,1,True
+52,Extraversion,3,high,3,2,0.6666666666666666,1,True
+53,Extraversion,3,high,3,0,0.0,0,True
+54,Extraversion,3,high,3,1,0.3333333333333333,1,True
+55,Extraversion,3,low,3,0,0.0,0,True
+56,Extraversion,3,high,3,3,1.0,1,True
+57,Extraversion,3,high,3,1,0.3333333333333333,1,True
+58,Extraversion,3,low,3,1,0.3333333333333333,1,True
+59,Extraversion,3,high,3,1,0.3333333333333333,1,True
+60,Extraversion,3,low,3,1,0.3333333333333333,1,True
+61,Extraversion,3,low,3,2,0.6666666666666666,1,True
+62,Extraversion,3,low,3,2,0.6666666666666666,1,True
+63,Extraversion,3,low,3,0,0.0,0,True
+64,Extraversion,3,low,3,0,0.0,0,True
+65,Extraversion,3,high,3,1,0.3333333333333333,1,True
+66,Extraversion,3,low,3,1,0.3333333333333333,1,True
+67,Extraversion,3,low,3,0,0.0,0,True
+68,Extraversion,3,high,3,3,1.0,1,True
+69,Extraversion,3,high,3,3,1.0,1,True
+70,Extraversion,3,high,3,1,0.3333333333333333,1,True
+71,Extraversion,3,low,3,1,0.3333333333333333,1,True
+72,Extraversion,3,high,3,2,0.6666666666666666,1,True
+73,Extraversion,3,high,3,2,0.6666666666666666,1,True
+74,Extraversion,3,low,3,1,0.3333333333333333,1,True
+75,Extraversion,3,high,3,3,1.0,1,True
+76,Extraversion,3,high,3,3,1.0,1,True
+77,Extraversion,3,high,3,2,0.6666666666666666,1,True
+78,Extraversion,3,high,3,1,0.3333333333333333,1,True
+79,Extraversion,3,high,3,2,0.6666666666666666,1,True
+80,Extraversion,3,high,3,2,0.6666666666666666,1,True
+81,Extraversion,3,low,3,1,0.3333333333333333,1,True
+82,Extraversion,3,low,3,1,0.3333333333333333,1,True
+83,Extraversion,3,low,3,3,1.0,1,True
+84,Extraversion,3,high,3,2,0.6666666666666666,1,True
+85,Extraversion,3,low,3,1,0.3333333333333333,1,True
+86,Extraversion,3,low,3,2,0.6666666666666666,1,True
+87,Extraversion,3,high,3,1,0.3333333333333333,1,True
+88,Extraversion,3,low,3,1,0.3333333333333333,1,True
+89,Extraversion,3,low,3,1,0.3333333333333333,1,True
+90,Extraversion,3,low,3,0,0.0,0,True
+91,Extraversion,3,low,3,2,0.6666666666666666,1,True
+92,Extraversion,3,high,3,3,1.0,1,True
+93,Extraversion,3,high,3,2,0.6666666666666666,1,True
+94,Extraversion,3,high,3,2,0.6666666666666666,1,True
+95,Extraversion,3,low,3,2,0.6666666666666666,1,True
+96,Extraversion,3,high,3,2,0.6666666666666666,1,True
+97,Extraversion,3,high,3,2,0.6666666666666666,1,True
+98,Extraversion,3,low,3,3,1.0,1,True
+99,Extraversion,3,low,3,1,0.3333333333333333,1,True
+100,Extraversion,3,high,3,0,0.0,0,True
+101,Extraversion,3,high,3,3,1.0,1,True
+102,Extraversion,3,low,3,2,0.6666666666666666,1,True
+103,Extraversion,3,low,3,0,0.0,0,True
+104,Extraversion,3,low,3,3,1.0,1,True
+105,Extraversion,3,low,3,2,0.6666666666666666,1,True
+106,Extraversion,3,low,3,0,0.0,0,True
+107,Extraversion,3,high,3,2,0.6666666666666666,1,True
+108,Extraversion,3,high,3,2,0.6666666666666666,1,True
+109,Extraversion,3,high,3,2,0.6666666666666666,1,True
+110,Extraversion,3,low,3,1,0.3333333333333333,1,True
+111,Extraversion,3,high,3,2,0.6666666666666666,1,True
+112,Extraversion,3,low,3,3,1.0,1,True
+113,Extraversion,3,high,3,2,0.6666666666666666,1,True
+114,Extraversion,3,low,3,2,0.6666666666666666,1,True
+115,Extraversion,3,high,3,3,1.0,1,True
+116,Extraversion,3,high,3,3,1.0,1,True
+117,Extraversion,3,low,3,1,0.3333333333333333,1,True
+118,Extraversion,3,low,3,1,0.3333333333333333,1,True
+119,Extraversion,3,low,3,2,0.6666666666666666,1,True
+120,Extraversion,3,high,3,1,0.3333333333333333,1,True
+121,Extraversion,3,low,3,1,0.3333333333333333,1,True
+122,Extraversion,3,low,3,0,0.0,0,True
+123,Extraversion,3,low,3,1,0.3333333333333333,1,True
+124,Extraversion,3,low,3,1,0.3333333333333333,1,True
+125,Extraversion,3,high,3,1,0.3333333333333333,1,True
+126,Extraversion,3,high,3,2,0.6666666666666666,1,True
+127,Extraversion,3,low,3,2,0.6666666666666666,1,True
+128,Extraversion,3,low,3,1,0.3333333333333333,1,True
+129,Extraversion,3,high,3,2,0.6666666666666666,1,True
+130,Extraversion,3,low,3,1,0.3333333333333333,1,True
+131,Extraversion,3,low,3,1,0.3333333333333333,1,True
+132,Extraversion,3,low,3,3,1.0,1,True
+133,Extraversion,3,high,3,0,0.0,0,True
+134,Extraversion,3,high,3,2,0.6666666666666666,1,True
+135,Extraversion,3,low,3,2,0.6666666666666666,1,True
+136,Extraversion,3,low,3,0,0.0,0,True
+137,Extraversion,3,low,3,2,0.6666666666666666,1,True
+138,Extraversion,3,high,3,2,0.6666666666666666,1,True
+139,Extraversion,3,high,3,3,1.0,1,True
+140,Extraversion,3,low,3,1,0.3333333333333333,1,True
+141,Extraversion,3,high,3,3,1.0,1,True
+142,Extraversion,3,low,3,0,0.0,0,True
+143,Extraversion,3,high,3,1,0.3333333333333333,1,True
+144,Extraversion,3,low,3,2,0.6666666666666666,1,True
+145,Extraversion,3,low,3,1,0.3333333333333333,1,True
+146,Extraversion,3,low,3,3,1.0,1,True
+147,Extraversion,3,low,3,0,0.0,0,True
+148,Extraversion,3,low,3,0,0.0,0,True
+149,Extraversion,3,high,3,3,1.0,1,True
+150,Extraversion,3,high,3,2,0.6666666666666666,1,True
+151,Extraversion,3,low,3,2,0.6666666666666666,1,True
+152,Extraversion,3,high,3,1,0.3333333333333333,1,True
+153,Extraversion,3,high,3,2,0.6666666666666666,1,True
+154,Extraversion,3,low,3,1,0.3333333333333333,1,True
+155,Extraversion,3,high,3,2,0.6666666666666666,1,True
+156,Extraversion,3,high,3,1,0.3333333333333333,1,True
+157,Extraversion,3,high,3,1,0.3333333333333333,1,True
+158,Extraversion,3,low,3,2,0.6666666666666666,1,True
+159,Extraversion,3,high,3,1,0.3333333333333333,1,True
+160,Extraversion,3,low,3,3,1.0,1,True
+161,Extraversion,3,high,3,2,0.6666666666666666,1,True
+162,Extraversion,3,low,3,2,0.6666666666666666,1,True
+163,Extraversion,3,high,3,3,1.0,1,True
+164,Extraversion,3,low,3,1,0.3333333333333333,1,True
+165,Extraversion,3,low,3,2,0.6666666666666666,1,True
+166,Extraversion,3,high,3,3,1.0,1,True
+167,Extraversion,3,high,3,1,0.3333333333333333,1,True
+168,Extraversion,3,high,3,3,1.0,1,True
+169,Extraversion,3,low,3,3,1.0,1,True
+170,Extraversion,3,high,3,2,0.6666666666666666,1,True
+171,Extraversion,3,high,3,1,0.3333333333333333,1,True
+172,Extraversion,3,high,3,3,1.0,1,True
+173,Extraversion,3,high,3,2,0.6666666666666666,1,True
+174,Extraversion,3,low,3,2,0.6666666666666666,1,True
+175,Extraversion,3,high,3,1,0.3333333333333333,1,True
+176,Extraversion,3,low,3,0,0.0,0,True
+177,Extraversion,3,high,3,2,0.6666666666666666,1,True
+178,Extraversion,3,high,3,1,0.3333333333333333,1,True
+179,Extraversion,3,low,3,2,0.6666666666666666,1,True
+180,Extraversion,3,high,3,3,1.0,1,True
+181,Extraversion,3,high,3,3,1.0,1,True
+182,Extraversion,3,low,3,2,0.6666666666666666,1,True
+183,Extraversion,3,high,3,2,0.6666666666666666,1,True
+184,Extraversion,3,low,3,2,0.6666666666666666,1,True
+185,Extraversion,3,low,3,1,0.3333333333333333,1,True
+186,Extraversion,3,high,3,1,0.3333333333333333,1,True
+187,Extraversion,3,low,3,0,0.0,0,True
+188,Extraversion,3,high,3,1,0.3333333333333333,1,True
+189,Extraversion,3,low,3,3,1.0,1,True
+190,Extraversion,3,high,3,3,1.0,1,True
+191,Extraversion,3,low,3,2,0.6666666666666666,1,True
+192,Extraversion,3,high,3,3,1.0,1,True
+193,Extraversion,3,high,3,3,1.0,1,True
+194,Extraversion,3,high,3,1,0.3333333333333333,1,True
+195,Extraversion,3,low,3,3,1.0,1,True
+196,Extraversion,3,high,3,0,0.0,0,True
+197,Extraversion,3,low,3,2,0.6666666666666666,1,True
+198,Extraversion,3,high,3,1,0.3333333333333333,1,True
+199,Extraversion,3,high,3,1,0.3333333333333333,1,True
+200,Extraversion,3,high,3,1,0.3333333333333333,1,True
+201,Extraversion,3,high,3,1,0.3333333333333333,1,True
+202,Extraversion,3,high,3,2,0.6666666666666666,1,True
+203,Extraversion,3,low,3,2,0.6666666666666666,1,True
+204,Extraversion,3,high,3,2,0.6666666666666666,1,True
+205,Extraversion,3,low,3,0,0.0,0,True
+206,Extraversion,3,high,3,1,0.3333333333333333,1,True
+207,Extraversion,3,high,3,2,0.6666666666666666,1,True
+208,Extraversion,3,low,3,0,0.0,0,True
+209,Extraversion,3,low,3,1,0.3333333333333333,1,True
+210,Extraversion,3,high,3,2,0.6666666666666666,1,True
+211,Extraversion,3,high,3,1,0.3333333333333333,1,True
+212,Extraversion,3,low,3,1,0.3333333333333333,1,True
+213,Extraversion,3,high,3,1,0.3333333333333333,1,True
+214,Extraversion,3,high,3,1,0.3333333333333333,1,True
+215,Extraversion,3,low,3,1,0.3333333333333333,1,True
+216,Extraversion,3,high,3,3,1.0,1,True
+217,Extraversion,3,high,3,1,0.3333333333333333,1,True
+218,Extraversion,3,high,3,3,1.0,1,True
+219,Extraversion,3,low,3,1,0.3333333333333333,1,True
+220,Extraversion,3,low,3,1,0.3333333333333333,1,True
+221,Extraversion,3,high,3,2,0.6666666666666666,1,True
+222,Extraversion,3,low,3,2,0.6666666666666666,1,True
+223,Extraversion,3,low,3,0,0.0,0,True
+224,Extraversion,3,low,3,2,0.6666666666666666,1,True
+225,Extraversion,3,high,3,1,0.3333333333333333,1,True
+226,Extraversion,3,high,3,1,0.3333333333333333,1,True
+227,Extraversion,3,low,3,0,0.0,0,True
+228,Extraversion,3,high,3,2,0.6666666666666666,1,True
+229,Extraversion,3,high,3,1,0.3333333333333333,1,True
+230,Extraversion,3,high,3,3,1.0,1,True
+231,Extraversion,3,high,3,3,1.0,1,True
+232,Extraversion,3,high,3,0,0.0,0,True
+233,Extraversion,3,low,3,3,1.0,1,True
+234,Extraversion,3,high,3,3,1.0,1,True
+235,Extraversion,3,high,3,2,0.6666666666666666,1,True
+236,Extraversion,3,high,3,1,0.3333333333333333,1,True
+237,Extraversion,3,low,3,2,0.6666666666666666,1,True
+238,Extraversion,3,low,3,1,0.3333333333333333,1,True
+239,Extraversion,3,high,3,3,1.0,1,True
+240,Extraversion,3,high,3,2,0.6666666666666666,1,True
+241,Extraversion,3,high,3,3,1.0,1,True
+242,Extraversion,3,low,3,0,0.0,0,True
+243,Extraversion,3,low,3,1,0.3333333333333333,1,True
+244,Extraversion,3,low,3,2,0.6666666666666666,1,True
+245,Extraversion,3,low,3,1,0.3333333333333333,1,True
+246,Extraversion,3,high,3,0,0.0,0,True
+0,Agreeableness,3,high,3,3,1.0,1,True
+1,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+2,Agreeableness,3,low,3,0,0.0,0,True
+3,Agreeableness,3,low,3,3,1.0,1,True
+4,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+5,Agreeableness,3,low,3,3,1.0,1,True
+6,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+7,Agreeableness,3,high,3,3,1.0,1,True
+8,Agreeableness,3,high,3,3,1.0,1,True
+9,Agreeableness,3,low,3,0,0.0,0,True
+10,Agreeableness,3,low,3,0,0.0,0,True
+11,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+12,Agreeableness,3,high,3,3,1.0,1,True
+13,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+14,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+15,Agreeableness,3,high,3,3,1.0,1,True
+16,Agreeableness,3,low,3,3,1.0,1,True
+17,Agreeableness,3,high,3,3,1.0,1,True
+18,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+19,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+20,Agreeableness,3,low,3,3,1.0,1,True
+21,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+22,Agreeableness,3,high,3,3,1.0,1,True
+23,Agreeableness,3,high,3,3,1.0,1,True
+24,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+25,Agreeableness,3,low,3,0,0.0,0,True
+26,Agreeableness,3,low,3,3,1.0,1,True
+27,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+28,Agreeableness,3,low,3,0,0.0,0,True
+29,Agreeableness,3,low,3,3,1.0,1,True
+30,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+31,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+32,Agreeableness,3,high,3,3,1.0,1,True
+33,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+34,Agreeableness,3,low,3,3,1.0,1,True
+35,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+36,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+37,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+38,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+39,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+40,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+41,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+42,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+43,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+44,Agreeableness,3,high,3,3,1.0,1,True
+45,Agreeableness,3,low,3,0,0.0,0,True
+46,Agreeableness,3,low,3,0,0.0,0,True
+47,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+48,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+49,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+50,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+51,Agreeableness,3,low,3,3,1.0,1,True
+52,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+53,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+54,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+55,Agreeableness,3,high,3,3,1.0,1,True
+56,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+57,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+58,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+59,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+60,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+61,Agreeableness,3,low,3,0,0.0,0,True
+62,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+63,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+64,Agreeableness,3,high,3,3,1.0,1,True
+65,Agreeableness,3,low,3,3,1.0,1,True
+66,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+67,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+68,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+69,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+70,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+71,Agreeableness,3,high,3,0,0.0,0,True
+72,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+73,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+74,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+75,Agreeableness,3,high,3,3,1.0,1,True
+76,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+77,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+78,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+79,Agreeableness,3,high,3,3,1.0,1,True
+80,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+81,Agreeableness,3,low,3,0,0.0,0,True
+82,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+83,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+84,Agreeableness,3,high,3,3,1.0,1,True
+85,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+86,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+87,Agreeableness,3,low,3,3,1.0,1,True
+88,Agreeableness,3,high,3,3,1.0,1,True
+89,Agreeableness,3,high,3,3,1.0,1,True
+90,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+91,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+92,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+93,Agreeableness,3,low,3,0,0.0,0,True
+94,Agreeableness,3,high,3,3,1.0,1,True
+95,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+96,Agreeableness,3,low,3,0,0.0,0,True
+97,Agreeableness,3,high,3,3,1.0,1,True
+98,Agreeableness,3,high,3,0,0.0,0,True
+99,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+100,Agreeableness,3,high,3,3,1.0,1,True
+101,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+102,Agreeableness,3,high,3,3,1.0,1,True
+103,Agreeableness,3,high,3,3,1.0,1,True
+104,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+105,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+106,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+107,Agreeableness,3,low,3,0,0.0,0,True
+108,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+109,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+110,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+111,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+112,Agreeableness,3,low,3,0,0.0,0,True
+113,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+114,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+115,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+116,Agreeableness,3,high,3,3,1.0,1,True
+117,Agreeableness,3,low,3,0,0.0,0,True
+118,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+119,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+120,Agreeableness,3,high,3,0,0.0,0,True
+121,Agreeableness,3,low,3,3,1.0,1,True
+122,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+123,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+124,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+125,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+126,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+127,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+128,Agreeableness,3,high,3,3,1.0,1,True
+129,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+130,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+131,Agreeableness,3,low,3,0,0.0,0,True
+132,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+133,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+134,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+135,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+136,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+137,Agreeableness,3,low,3,0,0.0,0,True
+138,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+139,Agreeableness,3,high,3,3,1.0,1,True
+140,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+141,Agreeableness,3,high,3,3,1.0,1,True
+142,Agreeableness,3,high,3,3,1.0,1,True
+143,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+144,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+145,Agreeableness,3,low,3,0,0.0,0,True
+146,Agreeableness,3,low,3,0,0.0,0,True
+147,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+148,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+149,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+150,Agreeableness,3,high,3,3,1.0,1,True
+151,Agreeableness,3,low,3,3,1.0,1,True
+152,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+153,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+154,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+155,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+156,Agreeableness,3,high,3,0,0.0,0,True
+157,Agreeableness,3,low,3,0,0.0,0,True
+158,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+159,Agreeableness,3,low,3,0,0.0,0,True
+160,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+161,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+162,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+163,Agreeableness,3,high,3,3,1.0,1,True
+164,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+165,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+166,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+167,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+168,Agreeableness,3,high,3,3,1.0,1,True
+169,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+170,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+171,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+172,Agreeableness,3,low,3,0,0.0,0,True
+173,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+174,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+175,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+176,Agreeableness,3,high,3,3,1.0,1,True
+177,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+178,Agreeableness,3,high,3,3,1.0,1,True
+179,Agreeableness,3,low,3,0,0.0,0,True
+180,Agreeableness,3,high,3,3,1.0,1,True
+181,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+182,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+183,Agreeableness,3,low,3,3,1.0,1,True
+184,Agreeableness,3,high,3,3,1.0,1,True
+185,Agreeableness,3,high,3,3,1.0,1,True
+186,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+187,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+188,Agreeableness,3,low,3,0,0.0,0,True
+189,Agreeableness,3,low,3,0,0.0,0,True
+190,Agreeableness,3,high,3,3,1.0,1,True
+191,Agreeableness,3,low,3,0,0.0,0,True
+192,Agreeableness,3,low,3,0,0.0,0,True
+193,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+194,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+195,Agreeableness,3,low,3,3,1.0,1,True
+196,Agreeableness,3,low,3,0,0.0,0,True
+197,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+198,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+199,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+200,Agreeableness,3,low,3,0,0.0,0,True
+201,Agreeableness,3,high,3,0,0.0,0,True
+202,Agreeableness,3,low,3,0,0.0,0,True
+203,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+204,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+205,Agreeableness,3,high,3,3,1.0,1,True
+206,Agreeableness,3,high,3,0,0.0,0,True
+207,Agreeableness,3,high,3,0,0.0,0,True
+208,Agreeableness,3,high,3,3,1.0,1,True
+209,Agreeableness,3,high,3,3,1.0,1,True
+210,Agreeableness,3,high,3,3,1.0,1,True
+211,Agreeableness,3,low,3,0,0.0,0,True
+212,Agreeableness,3,low,3,0,0.0,0,True
+213,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+214,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+215,Agreeableness,3,high,3,0,0.0,0,True
+216,Agreeableness,3,high,3,3,1.0,1,True
+217,Agreeableness,3,low,3,0,0.0,0,True
+218,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+219,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+220,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+221,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+222,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+223,Agreeableness,3,high,3,3,1.0,1,True
+224,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+225,Agreeableness,3,low,3,3,1.0,1,True
+226,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+227,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+228,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+229,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+230,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+231,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+232,Agreeableness,3,low,3,0,0.0,0,True
+233,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+234,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+235,Agreeableness,3,high,3,0,0.0,0,True
+236,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+237,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+238,Agreeableness,3,high,3,0,0.0,0,True
+239,Agreeableness,3,high,3,3,1.0,1,True
+240,Agreeableness,3,low,3,1,0.3333333333333333,1,True
+241,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+242,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+243,Agreeableness,3,high,3,1,0.3333333333333333,1,True
+244,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+245,Agreeableness,3,low,3,2,0.6666666666666666,1,True
+246,Agreeableness,3,high,3,2,0.6666666666666666,1,True
+0,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+1,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+2,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+3,Neuroticism,3,high,3,3,1.0,1,True
+4,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+5,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+6,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+7,Neuroticism,3,low,3,3,1.0,1,True
+8,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+9,Neuroticism,3,high,3,0,0.0,0,True
+10,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+11,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+12,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+13,Neuroticism,3,high,3,3,1.0,1,True
+14,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+15,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+16,Neuroticism,3,high,3,3,1.0,1,True
+17,Neuroticism,3,low,3,0,0.0,0,True
+18,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+19,Neuroticism,3,low,3,0,0.0,0,True
+20,Neuroticism,3,high,3,3,1.0,1,True
+21,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+22,Neuroticism,3,low,3,3,1.0,1,True
+23,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+24,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+25,Neuroticism,3,low,3,3,1.0,1,True
+26,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+27,Neuroticism,3,high,3,0,0.0,0,True
+28,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+29,Neuroticism,3,low,3,0,0.0,0,True
+30,Neuroticism,3,low,3,0,0.0,0,True
+31,Neuroticism,3,high,3,3,1.0,1,True
+32,Neuroticism,3,low,3,3,1.0,1,True
+33,Neuroticism,3,high,3,3,1.0,1,True
+34,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+35,Neuroticism,3,low,3,0,0.0,0,True
+36,Neuroticism,3,high,3,0,0.0,0,True
+37,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+38,Neuroticism,3,high,3,3,1.0,1,True
+39,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+40,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+41,Neuroticism,3,high,3,3,1.0,1,True
+42,Neuroticism,3,low,3,0,0.0,0,True
+43,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+44,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+45,Neuroticism,3,high,3,3,1.0,1,True
+46,Neuroticism,3,high,3,3,1.0,1,True
+47,Neuroticism,3,high,3,3,1.0,1,True
+48,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+49,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+50,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+51,Neuroticism,3,low,3,0,0.0,0,True
+52,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+53,Neuroticism,3,high,3,3,1.0,1,True
+54,Neuroticism,3,low,3,0,0.0,0,True
+55,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+56,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+57,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+58,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+59,Neuroticism,3,high,3,3,1.0,1,True
+60,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+61,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+62,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+63,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+64,Neuroticism,3,high,3,0,0.0,0,True
+65,Neuroticism,3,high,3,3,1.0,1,True
+66,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+67,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+68,Neuroticism,3,low,3,0,0.0,0,True
+69,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+70,Neuroticism,3,low,3,3,1.0,1,True
+71,Neuroticism,3,low,3,3,1.0,1,True
+72,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+73,Neuroticism,3,high,3,0,0.0,0,True
+74,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+75,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+76,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+77,Neuroticism,3,low,3,0,0.0,0,True
+78,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+79,Neuroticism,3,high,3,0,0.0,0,True
+80,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+81,Neuroticism,3,high,3,0,0.0,0,True
+82,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+83,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+84,Neuroticism,3,high,3,3,1.0,1,True
+85,Neuroticism,3,high,3,0,0.0,0,True
+86,Neuroticism,3,high,3,3,1.0,1,True
+87,Neuroticism,3,high,3,3,1.0,1,True
+88,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+89,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+90,Neuroticism,3,low,3,3,1.0,1,True
+91,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+92,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+93,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+94,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+95,Neuroticism,3,high,3,0,0.0,0,True
+96,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+97,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+98,Neuroticism,3,high,3,3,1.0,1,True
+99,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+100,Neuroticism,3,high,3,0,0.0,0,True
+101,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+102,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+103,Neuroticism,3,high,3,3,1.0,1,True
+104,Neuroticism,3,high,3,3,1.0,1,True
+105,Neuroticism,3,low,3,0,0.0,0,True
+106,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+107,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+108,Neuroticism,3,low,3,3,1.0,1,True
+109,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+110,Neuroticism,3,high,3,3,1.0,1,True
+111,Neuroticism,3,low,3,3,1.0,1,True
+112,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+113,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+114,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+115,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+116,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+117,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+118,Neuroticism,3,low,3,0,0.0,0,True
+119,Neuroticism,3,low,3,0,0.0,0,True
+120,Neuroticism,3,high,3,3,1.0,1,True
+121,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+122,Neuroticism,3,high,3,3,1.0,1,True
+123,Neuroticism,3,high,3,3,1.0,1,True
+124,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+125,Neuroticism,3,high,3,3,1.0,1,True
+126,Neuroticism,3,low,3,3,1.0,1,True
+127,Neuroticism,3,high,3,3,1.0,1,True
+128,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+129,Neuroticism,3,low,3,0,0.0,0,True
+130,Neuroticism,3,low,3,0,0.0,0,True
+131,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+132,Neuroticism,3,high,3,3,1.0,1,True
+133,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+134,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+135,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+136,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+137,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+138,Neuroticism,3,high,3,0,0.0,0,True
+139,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+140,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+141,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+142,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+143,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+144,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+145,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+146,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+147,Neuroticism,3,low,3,3,1.0,1,True
+148,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+149,Neuroticism,3,high,3,3,1.0,1,True
+150,Neuroticism,3,high,3,0,0.0,0,True
+151,Neuroticism,3,high,3,3,1.0,1,True
+152,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+153,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+154,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+155,Neuroticism,3,low,3,3,1.0,1,True
+156,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+157,Neuroticism,3,low,3,3,1.0,1,True
+158,Neuroticism,3,low,3,3,1.0,1,True
+159,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+160,Neuroticism,3,low,3,0,0.0,0,True
+161,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+162,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+163,Neuroticism,3,low,3,0,0.0,0,True
+164,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+165,Neuroticism,3,high,3,3,1.0,1,True
+166,Neuroticism,3,low,3,0,0.0,0,True
+167,Neuroticism,3,low,3,0,0.0,0,True
+168,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+169,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+170,Neuroticism,3,low,3,0,0.0,0,True
+171,Neuroticism,3,high,3,3,1.0,1,True
+172,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+173,Neuroticism,3,low,3,0,0.0,0,True
+174,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+175,Neuroticism,3,high,3,3,1.0,1,True
+176,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+177,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+178,Neuroticism,3,low,3,0,0.0,0,True
+179,Neuroticism,3,low,3,3,1.0,1,True
+180,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+181,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+182,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+183,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+184,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+185,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+186,Neuroticism,3,low,3,0,0.0,0,True
+187,Neuroticism,3,low,3,3,1.0,1,True
+188,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+189,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+190,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+191,Neuroticism,3,low,3,3,1.0,1,True
+192,Neuroticism,3,high,3,3,1.0,1,True
+193,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+194,Neuroticism,3,high,3,3,1.0,1,True
+195,Neuroticism,3,low,3,0,0.0,0,True
+196,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+197,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+198,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+199,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+200,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+201,Neuroticism,3,low,3,0,0.0,0,True
+202,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+203,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+204,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+205,Neuroticism,3,low,3,3,1.0,1,True
+206,Neuroticism,3,low,3,3,1.0,1,True
+207,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+208,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+209,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+210,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+211,Neuroticism,3,high,3,3,1.0,1,True
+212,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+213,Neuroticism,3,low,3,0,0.0,0,True
+214,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+215,Neuroticism,3,high,3,3,1.0,1,True
+216,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+217,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+218,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+219,Neuroticism,3,low,3,0,0.0,0,True
+220,Neuroticism,3,low,3,3,1.0,1,True
+221,Neuroticism,3,high,3,0,0.0,0,True
+222,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+223,Neuroticism,3,low,3,3,1.0,1,True
+224,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+225,Neuroticism,3,low,3,0,0.0,0,True
+226,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+227,Neuroticism,3,high,3,3,1.0,1,True
+228,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+229,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+230,Neuroticism,3,low,3,3,1.0,1,True
+231,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+232,Neuroticism,3,low,3,0,0.0,0,True
+233,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+234,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+235,Neuroticism,3,high,3,3,1.0,1,True
+236,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+237,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+238,Neuroticism,3,high,3,1,0.3333333333333333,1,True
+239,Neuroticism,3,high,3,2,0.6666666666666666,1,True
+240,Neuroticism,3,low,3,2,0.6666666666666666,1,True
+241,Neuroticism,3,low,3,3,1.0,1,True
+242,Neuroticism,3,low,3,3,1.0,1,True
+243,Neuroticism,3,high,3,3,1.0,1,True
+244,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+245,Neuroticism,3,low,3,1,0.3333333333333333,1,True
+246,Neuroticism,3,high,3,3,1.0,1,True
+0,Openness to Experience,5,low,5,2,0.4,1,True
+1,Openness to Experience,5,low,5,2,0.4,1,True
+2,Openness to Experience,5,high,5,4,0.8,1,True
+3,Openness to Experience,5,high,5,2,0.4,1,True
+4,Openness to Experience,5,low,5,3,0.6,1,True
+5,Openness to Experience,5,high,5,3,0.6,1,True
+6,Openness to Experience,5,high,5,3,0.6,1,True
+7,Openness to Experience,5,high,5,4,0.8,1,True
+8,Openness to Experience,5,low,5,0,0.0,0,True
+9,Openness to Experience,5,high,5,3,0.6,1,True
+10,Openness to Experience,5,low,5,0,0.0,0,True
+11,Openness to Experience,5,low,5,2,0.4,1,True
+12,Openness to Experience,5,high,5,3,0.6,1,True
+13,Openness to Experience,5,low,5,4,0.8,1,True
+14,Openness to Experience,5,high,5,5,1.0,1,True
+15,Openness to Experience,5,high,5,1,0.2,1,True
+16,Openness to Experience,5,high,5,4,0.8,1,True
+17,Openness to Experience,5,low,5,0,0.0,0,True
+18,Openness to Experience,5,low,5,3,0.6,1,True
+19,Openness to Experience,5,high,5,2,0.4,1,True
+20,Openness to Experience,5,low,5,3,0.6,1,True
+21,Openness to Experience,5,high,5,5,1.0,1,True
+22,Openness to Experience,5,high,5,4,0.8,1,True
+23,Openness to Experience,5,low,5,3,0.6,1,True
+24,Openness to Experience,5,high,5,3,0.6,1,True
+25,Openness to Experience,5,low,5,5,1.0,1,True
+26,Openness to Experience,5,low,5,2,0.4,1,True
+27,Openness to Experience,5,low,5,3,0.6,1,True
+28,Openness to Experience,5,low,5,3,0.6,1,True
+29,Openness to Experience,5,low,5,4,0.8,1,True
+30,Openness to Experience,5,high,5,3,0.6,1,True
+31,Openness to Experience,5,low,5,2,0.4,1,True
+32,Openness to Experience,5,high,5,5,1.0,1,True
+33,Openness to Experience,5,low,5,4,0.8,1,True
+34,Openness to Experience,5,high,5,3,0.6,1,True
+35,Openness to Experience,5,high,5,3,0.6,1,True
+36,Openness to Experience,5,low,5,3,0.6,1,True
+37,Openness to Experience,5,high,5,2,0.4,1,True
+38,Openness to Experience,5,high,5,1,0.2,1,True
+39,Openness to Experience,5,low,5,3,0.6,1,True
+40,Openness to Experience,5,high,5,1,0.2,1,True
+41,Openness to Experience,5,low,5,5,1.0,1,True
+42,Openness to Experience,5,low,5,4,0.8,1,True
+43,Openness to Experience,5,low,5,5,1.0,1,True
+44,Openness to Experience,5,high,5,3,0.6,1,True
+45,Openness to Experience,5,low,5,1,0.2,1,True
+46,Openness to Experience,5,high,5,4,0.8,1,True
+47,Openness to Experience,5,low,5,4,0.8,1,True
+48,Openness to Experience,5,high,5,3,0.6,1,True
+49,Openness to Experience,5,low,5,2,0.4,1,True
+50,Openness to Experience,5,low,5,2,0.4,1,True
+51,Openness to Experience,5,high,5,3,0.6,1,True
+52,Openness to Experience,5,low,5,3,0.6,1,True
+53,Openness to Experience,5,high,5,2,0.4,1,True
+54,Openness to Experience,5,high,5,2,0.4,1,True
+55,Openness to Experience,5,high,5,5,1.0,1,True
+56,Openness to Experience,5,low,5,3,0.6,1,True
+57,Openness to Experience,5,high,5,2,0.4,1,True
+58,Openness to Experience,5,high,5,3,0.6,1,True
+59,Openness to Experience,5,low,5,3,0.6,1,True
+60,Openness to Experience,5,low,5,1,0.2,1,True
+61,Openness to Experience,5,low,5,4,0.8,1,True
+62,Openness to Experience,5,high,5,4,0.8,1,True
+63,Openness to Experience,5,high,5,2,0.4,1,True
+64,Openness to Experience,5,low,5,1,0.2,1,True
+65,Openness to Experience,5,low,5,4,0.8,1,True
+66,Openness to Experience,5,high,5,1,0.2,1,True
+67,Openness to Experience,5,high,5,3,0.6,1,True
+68,Openness to Experience,5,low,5,0,0.0,0,True
+69,Openness to Experience,5,high,5,3,0.6,1,True
+70,Openness to Experience,5,high,5,2,0.4,1,True
+71,Openness to Experience,5,low,5,2,0.4,1,True
+72,Openness to Experience,5,low,5,4,0.8,1,True
+73,Openness to Experience,5,low,5,2,0.4,1,True
+74,Openness to Experience,5,low,5,4,0.8,1,True
+75,Openness to Experience,5,low,5,0,0.0,0,True
+76,Openness to Experience,5,high,5,4,0.8,1,True
+77,Openness to Experience,5,low,5,3,0.6,1,True
+78,Openness to Experience,5,high,5,4,0.8,1,True
+79,Openness to Experience,5,high,5,1,0.2,1,True
+80,Openness to Experience,5,low,5,2,0.4,1,True
+81,Openness to Experience,5,high,5,5,1.0,1,True
+82,Openness to Experience,5,high,5,1,0.2,1,True
+83,Openness to Experience,5,high,5,5,1.0,1,True
+84,Openness to Experience,5,low,5,4,0.8,1,True
+85,Openness to Experience,5,high,5,2,0.4,1,True
+86,Openness to Experience,5,low,5,3,0.6,1,True
+87,Openness to Experience,5,high,5,5,1.0,1,True
+88,Openness to Experience,5,low,5,1,0.2,1,True
+89,Openness to Experience,5,high,5,2,0.4,1,True
+90,Openness to Experience,5,low,5,2,0.4,1,True
+91,Openness to Experience,5,low,5,0,0.0,0,True
+92,Openness to Experience,5,low,5,4,0.8,1,True
+93,Openness to Experience,5,high,5,4,0.8,1,True
+94,Openness to Experience,5,low,5,3,0.6,1,True
+95,Openness to Experience,5,high,5,3,0.6,1,True
+96,Openness to Experience,5,high,5,0,0.0,0,True
+97,Openness to Experience,5,low,5,2,0.4,1,True
+98,Openness to Experience,5,low,5,2,0.4,1,True
+99,Openness to Experience,5,high,5,3,0.6,1,True
+100,Openness to Experience,5,low,5,2,0.4,1,True
+101,Openness to Experience,5,high,5,5,1.0,1,True
+102,Openness to Experience,5,high,5,4,0.8,1,True
+103,Openness to Experience,5,low,5,4,0.8,1,True
+104,Openness to Experience,5,low,5,2,0.4,1,True
+105,Openness to Experience,5,high,5,1,0.2,1,True
+106,Openness to Experience,5,high,5,2,0.4,1,True
+107,Openness to Experience,5,high,5,2,0.4,1,True
+108,Openness to Experience,5,high,5,4,0.8,1,True
+109,Openness to Experience,5,low,5,2,0.4,1,True
+110,Openness to Experience,5,low,5,1,0.2,1,True
+111,Openness to Experience,5,high,5,0,0.0,0,True
+112,Openness to Experience,5,low,5,2,0.4,1,True
+113,Openness to Experience,5,low,5,3,0.6,1,True
+114,Openness to Experience,5,low,5,0,0.0,0,True
+115,Openness to Experience,5,low,5,3,0.6,1,True
+116,Openness to Experience,5,high,5,3,0.6,1,True
+117,Openness to Experience,5,high,5,4,0.8,1,True
+118,Openness to Experience,5,high,5,5,1.0,1,True
+119,Openness to Experience,5,low,5,5,1.0,1,True
+120,Openness to Experience,5,high,5,1,0.2,1,True
+121,Openness to Experience,5,high,5,3,0.6,1,True
+122,Openness to Experience,5,low,5,0,0.0,0,True
+123,Openness to Experience,5,low,5,4,0.8,1,True
+124,Openness to Experience,5,low,5,1,0.2,1,True
+125,Openness to Experience,5,high,5,2,0.4,1,True
+126,Openness to Experience,5,high,5,2,0.4,1,True
+127,Openness to Experience,5,high,5,1,0.2,1,True
+128,Openness to Experience,5,low,5,3,0.6,1,True
+129,Openness to Experience,5,high,5,3,0.6,1,True
+130,Openness to Experience,5,low,5,4,0.8,1,True
+131,Openness to Experience,5,high,5,4,0.8,1,True
+132,Openness to Experience,5,low,5,3,0.6,1,True
+133,Openness to Experience,5,low,5,3,0.6,1,True
+134,Openness to Experience,5,high,5,3,0.6,1,True
+135,Openness to Experience,5,high,5,2,0.4,1,True
+136,Openness to Experience,5,high,5,1,0.2,1,True
+137,Openness to Experience,5,low,5,4,0.8,1,True
+138,Openness to Experience,5,low,5,2,0.4,1,True
+139,Openness to Experience,5,high,5,4,0.8,1,True
+140,Openness to Experience,5,low,5,0,0.0,0,True
+141,Openness to Experience,5,high,5,3,0.6,1,True
+142,Openness to Experience,5,low,5,3,0.6,1,True
+143,Openness to Experience,5,low,5,0,0.0,0,True
+144,Openness to Experience,5,high,5,4,0.8,1,True
+145,Openness to Experience,5,high,5,5,1.0,1,True
+146,Openness to Experience,5,low,5,2,0.4,1,True
+147,Openness to Experience,5,high,5,2,0.4,1,True
+148,Openness to Experience,5,low,5,2,0.4,1,True
+149,Openness to Experience,5,low,5,0,0.0,0,True
+150,Openness to Experience,5,high,5,2,0.4,1,True
+151,Openness to Experience,5,high,5,3,0.6,1,True
+152,Openness to Experience,5,low,5,4,0.8,1,True
+153,Openness to Experience,5,low,5,3,0.6,1,True
+154,Openness to Experience,5,high,5,3,0.6,1,True
+155,Openness to Experience,5,high,5,3,0.6,1,True
+156,Openness to Experience,5,high,5,4,0.8,1,True
+157,Openness to Experience,5,low,5,5,1.0,1,True
+158,Openness to Experience,5,low,5,3,0.6,1,True
+159,Openness to Experience,5,low,5,5,1.0,1,True
+160,Openness to Experience,5,low,5,3,0.6,1,True
+161,Openness to Experience,5,high,5,3,0.6,1,True
+162,Openness to Experience,5,low,5,1,0.2,1,True
+163,Openness to Experience,5,low,5,1,0.2,1,True
+164,Openness to Experience,5,high,5,3,0.6,1,True
+165,Openness to Experience,5,high,5,2,0.4,1,True
+166,Openness to Experience,5,high,5,1,0.2,1,True
+167,Openness to Experience,5,low,5,4,0.8,1,True
+168,Openness to Experience,5,low,5,1,0.2,1,True
+169,Openness to Experience,5,low,5,4,0.8,1,True
+170,Openness to Experience,5,high,5,4,0.8,1,True
+171,Openness to Experience,5,high,5,4,0.8,1,True
+172,Openness to Experience,5,low,5,2,0.4,1,True
+173,Openness to Experience,5,low,5,3,0.6,1,True
+174,Openness to Experience,5,low,5,2,0.4,1,True
+175,Openness to Experience,5,high,5,2,0.4,1,True
+176,Openness to Experience,5,high,5,4,0.8,1,True
+177,Openness to Experience,5,high,5,5,1.0,1,True
+178,Openness to Experience,5,high,5,2,0.4,1,True
+179,Openness to Experience,5,high,5,3,0.6,1,True
+180,Openness to Experience,5,high,5,4,0.8,1,True
+181,Openness to Experience,5,high,5,3,0.6,1,True
+182,Openness to Experience,5,high,5,5,1.0,1,True
+183,Openness to Experience,5,high,5,2,0.4,1,True
+184,Openness to Experience,5,low,5,0,0.0,0,True
+185,Openness to Experience,5,high,5,2,0.4,1,True
+186,Openness to Experience,5,high,5,3,0.6,1,True
+187,Openness to Experience,5,low,5,2,0.4,1,True
+188,Openness to Experience,5,low,5,1,0.2,1,True
+189,Openness to Experience,5,low,5,2,0.4,1,True
+190,Openness to Experience,5,high,5,3,0.6,1,True
+191,Openness to Experience,5,low,5,3,0.6,1,True
+192,Openness to Experience,5,high,5,1,0.2,1,True
+193,Openness to Experience,5,high,5,3,0.6,1,True
+194,Openness to Experience,5,high,5,4,0.8,1,True
+195,Openness to Experience,5,high,5,4,0.8,1,True
+196,Openness to Experience,5,high,5,2,0.4,1,True
+197,Openness to Experience,5,high,5,3,0.6,1,True
+198,Openness to Experience,5,high,5,4,0.8,1,True
+199,Openness to Experience,5,high,5,0,0.0,0,True
+200,Openness to Experience,5,high,5,3,0.6,1,True
+201,Openness to Experience,5,high,5,3,0.6,1,True
+202,Openness to Experience,5,low,5,1,0.2,1,True
+203,Openness to Experience,5,low,5,2,0.4,1,True
+204,Openness to Experience,5,low,5,1,0.2,1,True
+205,Openness to Experience,5,low,5,1,0.2,1,True
+206,Openness to Experience,5,low,5,4,0.8,1,True
+207,Openness to Experience,5,low,5,4,0.8,1,True
+208,Openness to Experience,5,low,5,1,0.2,1,True
+209,Openness to Experience,5,high,5,4,0.8,1,True
+210,Openness to Experience,5,high,5,5,1.0,1,True
+211,Openness to Experience,5,high,5,3,0.6,1,True
+212,Openness to Experience,5,high,5,1,0.2,1,True
+213,Openness to Experience,5,high,5,1,0.2,1,True
+214,Openness to Experience,5,low,5,4,0.8,1,True
+215,Openness to Experience,5,low,5,3,0.6,1,True
+216,Openness to Experience,5,high,5,4,0.8,1,True
+217,Openness to Experience,5,high,5,4,0.8,1,True
+218,Openness to Experience,5,low,5,2,0.4,1,True
+219,Openness to Experience,5,high,5,4,0.8,1,True
+220,Openness to Experience,5,low,5,0,0.0,0,True
+221,Openness to Experience,5,high,5,3,0.6,1,True
+222,Openness to Experience,5,high,5,4,0.8,1,True
+223,Openness to Experience,5,high,5,3,0.6,1,True
+224,Openness to Experience,5,low,5,2,0.4,1,True
+225,Openness to Experience,5,high,5,3,0.6,1,True
+226,Openness to Experience,5,low,5,0,0.0,0,True
+227,Openness to Experience,5,low,5,1,0.2,1,True
+228,Openness to Experience,5,low,5,2,0.4,1,True
+229,Openness to Experience,5,high,5,2,0.4,1,True
+230,Openness to Experience,5,high,5,2,0.4,1,True
+231,Openness to Experience,5,high,5,4,0.8,1,True
+232,Openness to Experience,5,high,5,2,0.4,1,True
+233,Openness to Experience,5,low,5,5,1.0,1,True
+234,Openness to Experience,5,high,5,3,0.6,1,True
+235,Openness to Experience,5,low,5,4,0.8,1,True
+236,Openness to Experience,5,high,5,3,0.6,1,True
+237,Openness to Experience,5,low,5,2,0.4,1,True
+238,Openness to Experience,5,low,5,2,0.4,1,True
+239,Openness to Experience,5,low,5,2,0.4,1,True
+240,Openness to Experience,5,high,5,2,0.4,1,True
+241,Openness to Experience,5,low,5,1,0.2,1,True
+242,Openness to Experience,5,low,5,2,0.4,1,True
+243,Openness to Experience,5,high,5,5,1.0,1,True
+244,Openness to Experience,5,low,5,1,0.2,1,True
+245,Openness to Experience,5,high,5,3,0.6,1,True
+246,Openness to Experience,5,low,5,4,0.8,1,True
+0,Conscientiousness,5,high,5,2,0.4,1,True
+1,Conscientiousness,5,high,5,4,0.8,1,True
+2,Conscientiousness,5,high,5,5,1.0,1,True
+3,Conscientiousness,5,low,5,3,0.6,1,True
+4,Conscientiousness,5,high,5,3,0.6,1,True
+5,Conscientiousness,5,high,5,3,0.6,1,True
+6,Conscientiousness,5,low,5,2,0.4,1,True
+7,Conscientiousness,5,low,5,0,0.0,0,True
+8,Conscientiousness,5,high,5,5,1.0,1,True
+9,Conscientiousness,5,high,5,2,0.4,1,True
+10,Conscientiousness,5,high,5,4,0.8,1,True
+11,Conscientiousness,5,high,5,4,0.8,1,True
+12,Conscientiousness,5,low,5,3,0.6,1,True
+13,Conscientiousness,5,low,5,2,0.4,1,True
+14,Conscientiousness,5,low,5,1,0.2,1,True
+15,Conscientiousness,5,high,5,4,0.8,1,True
+16,Conscientiousness,5,low,5,4,0.8,1,True
+17,Conscientiousness,5,high,5,0,0.0,0,True
+18,Conscientiousness,5,high,5,0,0.0,0,True
+19,Conscientiousness,5,low,5,2,0.4,1,True
+20,Conscientiousness,5,low,5,4,0.8,1,True
+21,Conscientiousness,5,high,5,1,0.2,1,True
+22,Conscientiousness,5,high,5,1,0.2,1,True
+23,Conscientiousness,5,high,5,5,1.0,1,True
+24,Conscientiousness,5,low,5,1,0.2,1,True
+25,Conscientiousness,5,high,5,2,0.4,1,True
+26,Conscientiousness,5,high,5,2,0.4,1,True
+27,Conscientiousness,5,high,5,3,0.6,1,True
+28,Conscientiousness,5,low,5,2,0.4,1,True
+29,Conscientiousness,5,high,5,2,0.4,1,True
+30,Conscientiousness,5,high,5,4,0.8,1,True
+31,Conscientiousness,5,high,5,1,0.2,1,True
+32,Conscientiousness,5,high,5,3,0.6,1,True
+33,Conscientiousness,5,low,5,1,0.2,1,True
+34,Conscientiousness,5,low,5,1,0.2,1,True
+35,Conscientiousness,5,high,5,4,0.8,1,True
+36,Conscientiousness,5,high,5,4,0.8,1,True
+37,Conscientiousness,5,low,5,3,0.6,1,True
+38,Conscientiousness,5,high,5,1,0.2,1,True
+39,Conscientiousness,5,high,5,3,0.6,1,True
+40,Conscientiousness,5,high,5,2,0.4,1,True
+41,Conscientiousness,5,low,5,2,0.4,1,True
+42,Conscientiousness,5,low,5,2,0.4,1,True
+43,Conscientiousness,5,high,5,3,0.6,1,True
+44,Conscientiousness,5,high,5,2,0.4,1,True
+45,Conscientiousness,5,low,5,2,0.4,1,True
+46,Conscientiousness,5,low,5,2,0.4,1,True
+47,Conscientiousness,5,high,5,1,0.2,1,True
+48,Conscientiousness,5,low,5,2,0.4,1,True
+49,Conscientiousness,5,low,5,3,0.6,1,True
+50,Conscientiousness,5,low,5,4,0.8,1,True
+51,Conscientiousness,5,low,5,3,0.6,1,True
+52,Conscientiousness,5,low,5,3,0.6,1,True
+53,Conscientiousness,5,high,5,2,0.4,1,True
+54,Conscientiousness,5,low,5,3,0.6,1,True
+55,Conscientiousness,5,low,5,0,0.0,0,True
+56,Conscientiousness,5,low,5,3,0.6,1,True
+57,Conscientiousness,5,low,5,2,0.4,1,True
+58,Conscientiousness,5,high,5,4,0.8,1,True
+59,Conscientiousness,5,low,5,4,0.8,1,True
+60,Conscientiousness,5,high,5,0,0.0,0,True
+61,Conscientiousness,5,low,5,1,0.2,1,True
+62,Conscientiousness,5,low,5,4,0.8,1,True
+63,Conscientiousness,5,high,5,5,1.0,1,True
+64,Conscientiousness,5,low,5,1,0.2,1,True
+65,Conscientiousness,5,high,5,4,0.8,1,True
+66,Conscientiousness,5,low,5,4,0.8,1,True
+67,Conscientiousness,5,low,5,0,0.0,0,True
+68,Conscientiousness,5,low,5,2,0.4,1,True
+69,Conscientiousness,5,low,5,3,0.6,1,True
+70,Conscientiousness,5,low,5,4,0.8,1,True
+71,Conscientiousness,5,high,5,3,0.6,1,True
+72,Conscientiousness,5,high,5,2,0.4,1,True
+73,Conscientiousness,5,low,5,2,0.4,1,True
+74,Conscientiousness,5,low,5,4,0.8,1,True
+75,Conscientiousness,5,high,5,4,0.8,1,True
+76,Conscientiousness,5,high,5,2,0.4,1,True
+77,Conscientiousness,5,low,5,3,0.6,1,True
+78,Conscientiousness,5,high,5,3,0.6,1,True
+79,Conscientiousness,5,low,5,1,0.2,1,True
+80,Conscientiousness,5,low,5,2,0.4,1,True
+81,Conscientiousness,5,low,5,2,0.4,1,True
+82,Conscientiousness,5,high,5,1,0.2,1,True
+83,Conscientiousness,5,low,5,4,0.8,1,True
+84,Conscientiousness,5,high,5,2,0.4,1,True
+85,Conscientiousness,5,high,5,3,0.6,1,True
+86,Conscientiousness,5,low,5,3,0.6,1,True
+87,Conscientiousness,5,low,5,4,0.8,1,True
+88,Conscientiousness,5,high,5,2,0.4,1,True
+89,Conscientiousness,5,low,5,2,0.4,1,True
+90,Conscientiousness,5,low,5,2,0.4,1,True
+91,Conscientiousness,5,low,5,4,0.8,1,True
+92,Conscientiousness,5,high,5,3,0.6,1,True
+93,Conscientiousness,5,low,5,1,0.2,1,True
+94,Conscientiousness,5,low,5,2,0.4,1,True
+95,Conscientiousness,5,low,5,3,0.6,1,True
+96,Conscientiousness,5,high,5,5,1.0,1,True
+97,Conscientiousness,5,low,5,0,0.0,0,True
+98,Conscientiousness,5,high,5,3,0.6,1,True
+99,Conscientiousness,5,low,5,2,0.4,1,True
+100,Conscientiousness,5,low,5,0,0.0,0,True
+101,Conscientiousness,5,high,5,2,0.4,1,True
+102,Conscientiousness,5,high,5,1,0.2,1,True
+103,Conscientiousness,5,high,5,4,0.8,1,True
+104,Conscientiousness,5,low,5,2,0.4,1,True
+105,Conscientiousness,5,low,5,3,0.6,1,True
+106,Conscientiousness,5,low,5,3,0.6,1,True
+107,Conscientiousness,5,high,5,3,0.6,1,True
+108,Conscientiousness,5,high,5,1,0.2,1,True
+109,Conscientiousness,5,high,5,3,0.6,1,True
+110,Conscientiousness,5,low,5,2,0.4,1,True
+111,Conscientiousness,5,low,5,4,0.8,1,True
+112,Conscientiousness,5,high,5,2,0.4,1,True
+113,Conscientiousness,5,low,5,2,0.4,1,True
+114,Conscientiousness,5,high,5,3,0.6,1,True
+115,Conscientiousness,5,low,5,0,0.0,0,True
+116,Conscientiousness,5,high,5,5,1.0,1,True
+117,Conscientiousness,5,high,5,4,0.8,1,True
+118,Conscientiousness,5,high,5,3,0.6,1,True
+119,Conscientiousness,5,high,5,2,0.4,1,True
+120,Conscientiousness,5,low,5,3,0.6,1,True
+121,Conscientiousness,5,high,5,2,0.4,1,True
+122,Conscientiousness,5,low,5,3,0.6,1,True
+123,Conscientiousness,5,low,5,2,0.4,1,True
+124,Conscientiousness,5,high,5,2,0.4,1,True
+125,Conscientiousness,5,low,5,5,1.0,1,True
+126,Conscientiousness,5,high,5,4,0.8,1,True
+127,Conscientiousness,5,high,5,1,0.2,1,True
+128,Conscientiousness,5,high,5,3,0.6,1,True
+129,Conscientiousness,5,high,5,0,0.0,0,True
+130,Conscientiousness,5,high,5,3,0.6,1,True
+131,Conscientiousness,5,low,5,1,0.2,1,True
+132,Conscientiousness,5,low,5,4,0.8,1,True
+133,Conscientiousness,5,low,5,1,0.2,1,True
+134,Conscientiousness,5,low,5,1,0.2,1,True
+135,Conscientiousness,5,high,5,4,0.8,1,True
+136,Conscientiousness,5,high,5,5,1.0,1,True
+137,Conscientiousness,5,low,5,3,0.6,1,True
+138,Conscientiousness,5,high,5,4,0.8,1,True
+139,Conscientiousness,5,low,5,2,0.4,1,True
+140,Conscientiousness,5,low,5,2,0.4,1,True
+141,Conscientiousness,5,high,5,4,0.8,1,True
+142,Conscientiousness,5,low,5,2,0.4,1,True
+143,Conscientiousness,5,high,5,4,0.8,1,True
+144,Conscientiousness,5,high,5,2,0.4,1,True
+145,Conscientiousness,5,high,5,3,0.6,1,True
+146,Conscientiousness,5,low,5,2,0.4,1,True
+147,Conscientiousness,5,low,5,2,0.4,1,True
+148,Conscientiousness,5,high,5,0,0.0,0,True
+149,Conscientiousness,5,high,5,3,0.6,1,True
+150,Conscientiousness,5,high,5,2,0.4,1,True
+151,Conscientiousness,5,low,5,4,0.8,1,True
+152,Conscientiousness,5,high,5,2,0.4,1,True
+153,Conscientiousness,5,high,5,3,0.6,1,True
+154,Conscientiousness,5,low,5,2,0.4,1,True
+155,Conscientiousness,5,high,5,3,0.6,1,True
+156,Conscientiousness,5,high,5,2,0.4,1,True
+157,Conscientiousness,5,low,5,0,0.0,0,True
+158,Conscientiousness,5,high,5,3,0.6,1,True
+159,Conscientiousness,5,high,5,3,0.6,1,True
+160,Conscientiousness,5,low,5,2,0.4,1,True
+161,Conscientiousness,5,low,5,0,0.0,0,True
+162,Conscientiousness,5,low,5,1,0.2,1,True
+163,Conscientiousness,5,high,5,2,0.4,1,True
+164,Conscientiousness,5,low,5,4,0.8,1,True
+165,Conscientiousness,5,low,5,3,0.6,1,True
+166,Conscientiousness,5,high,5,5,1.0,1,True
+167,Conscientiousness,5,low,5,2,0.4,1,True
+168,Conscientiousness,5,low,5,2,0.4,1,True
+169,Conscientiousness,5,high,5,2,0.4,1,True
+170,Conscientiousness,5,low,5,3,0.6,1,True
+171,Conscientiousness,5,low,5,3,0.6,1,True
+172,Conscientiousness,5,high,5,4,0.8,1,True
+173,Conscientiousness,5,high,5,4,0.8,1,True
+174,Conscientiousness,5,low,5,2,0.4,1,True
+175,Conscientiousness,5,high,5,1,0.2,1,True
+176,Conscientiousness,5,low,5,3,0.6,1,True
+177,Conscientiousness,5,low,5,2,0.4,1,True
+178,Conscientiousness,5,high,5,4,0.8,1,True
+179,Conscientiousness,5,low,5,2,0.4,1,True
+180,Conscientiousness,5,low,5,1,0.2,1,True
+181,Conscientiousness,5,low,5,1,0.2,1,True
+182,Conscientiousness,5,low,5,0,0.0,0,True
+183,Conscientiousness,5,low,5,4,0.8,1,True
+184,Conscientiousness,5,high,5,2,0.4,1,True
+185,Conscientiousness,5,low,5,1,0.2,1,True
+186,Conscientiousness,5,low,5,4,0.8,1,True
+187,Conscientiousness,5,low,5,1,0.2,1,True
+188,Conscientiousness,5,high,5,5,1.0,1,True
+189,Conscientiousness,5,low,5,3,0.6,1,True
+190,Conscientiousness,5,high,5,5,1.0,1,True
+191,Conscientiousness,5,low,5,2,0.4,1,True
+192,Conscientiousness,5,high,5,1,0.2,1,True
+193,Conscientiousness,5,high,5,3,0.6,1,True
+194,Conscientiousness,5,high,5,1,0.2,1,True
+195,Conscientiousness,5,high,5,1,0.2,1,True
+196,Conscientiousness,5,low,5,0,0.0,0,True
+197,Conscientiousness,5,low,5,2,0.4,1,True
+198,Conscientiousness,5,low,5,1,0.2,1,True
+199,Conscientiousness,5,high,5,5,1.0,1,True
+200,Conscientiousness,5,high,5,3,0.6,1,True
+201,Conscientiousness,5,high,5,4,0.8,1,True
+202,Conscientiousness,5,low,5,0,0.0,0,True
+203,Conscientiousness,5,low,5,2,0.4,1,True
+204,Conscientiousness,5,high,5,2,0.4,1,True
+205,Conscientiousness,5,low,5,0,0.0,0,True
+206,Conscientiousness,5,high,5,4,0.8,1,True
+207,Conscientiousness,5,low,5,3,0.6,1,True
+208,Conscientiousness,5,high,5,5,1.0,1,True
+209,Conscientiousness,5,low,5,1,0.2,1,True
+210,Conscientiousness,5,high,5,3,0.6,1,True
+211,Conscientiousness,5,high,5,2,0.4,1,True
+212,Conscientiousness,5,high,5,5,1.0,1,True
+213,Conscientiousness,5,high,5,0,0.0,0,True
+214,Conscientiousness,5,high,5,4,0.8,1,True
+215,Conscientiousness,5,low,5,4,0.8,1,True
+216,Conscientiousness,5,high,5,3,0.6,1,True
+217,Conscientiousness,5,high,5,4,0.8,1,True
+218,Conscientiousness,5,low,5,2,0.4,1,True
+219,Conscientiousness,5,high,5,1,0.2,1,True
+220,Conscientiousness,5,high,5,3,0.6,1,True
+221,Conscientiousness,5,low,5,2,0.4,1,True
+222,Conscientiousness,5,low,5,2,0.4,1,True
+223,Conscientiousness,5,low,5,3,0.6,1,True
+224,Conscientiousness,5,high,5,2,0.4,1,True
+225,Conscientiousness,5,high,5,2,0.4,1,True
+226,Conscientiousness,5,high,5,3,0.6,1,True
+227,Conscientiousness,5,low,5,3,0.6,1,True
+228,Conscientiousness,5,high,5,4,0.8,1,True
+229,Conscientiousness,5,high,5,3,0.6,1,True
+230,Conscientiousness,5,high,5,1,0.2,1,True
+231,Conscientiousness,5,high,5,5,1.0,1,True
+232,Conscientiousness,5,high,5,4,0.8,1,True
+233,Conscientiousness,5,low,5,4,0.8,1,True
+234,Conscientiousness,5,low,5,4,0.8,1,True
+235,Conscientiousness,5,high,5,3,0.6,1,True
+236,Conscientiousness,5,high,5,4,0.8,1,True
+237,Conscientiousness,5,high,5,4,0.8,1,True
+238,Conscientiousness,5,low,5,4,0.8,1,True
+239,Conscientiousness,5,high,5,2,0.4,1,True
+240,Conscientiousness,5,low,5,2,0.4,1,True
+241,Conscientiousness,5,high,5,2,0.4,1,True
+242,Conscientiousness,5,low,5,1,0.2,1,True
+243,Conscientiousness,5,high,5,2,0.4,1,True
+244,Conscientiousness,5,low,5,1,0.2,1,True
+245,Conscientiousness,5,low,5,1,0.2,1,True
+246,Conscientiousness,5,low,5,0,0.0,0,True
+0,Extraversion,5,low,5,1,0.2,1,True
+1,Extraversion,5,low,5,0,0.0,0,True
+2,Extraversion,5,low,5,0,0.0,0,True
+3,Extraversion,5,high,5,1,0.2,1,True
+4,Extraversion,5,high,5,5,1.0,1,True
+5,Extraversion,5,low,5,3,0.6,1,True
+6,Extraversion,5,low,5,4,0.8,1,True
+7,Extraversion,5,low,5,3,0.6,1,True
+8,Extraversion,5,high,5,4,0.8,1,True
+9,Extraversion,5,low,5,2,0.4,1,True
+10,Extraversion,5,low,5,1,0.2,1,True
+11,Extraversion,5,low,5,2,0.4,1,True
+12,Extraversion,5,low,5,3,0.6,1,True
+13,Extraversion,5,high,5,4,0.8,1,True
+14,Extraversion,5,high,5,3,0.6,1,True
+15,Extraversion,5,low,5,2,0.4,1,True
+16,Extraversion,5,low,5,4,0.8,1,True
+17,Extraversion,5,low,5,4,0.8,1,True
+18,Extraversion,5,low,5,1,0.2,1,True
+19,Extraversion,5,high,5,1,0.2,1,True
+20,Extraversion,5,low,5,4,0.8,1,True
+21,Extraversion,5,low,5,2,0.4,1,True
+22,Extraversion,5,high,5,5,1.0,1,True
+23,Extraversion,5,high,5,4,0.8,1,True
+24,Extraversion,5,high,5,1,0.2,1,True
+25,Extraversion,5,high,5,4,0.8,1,True
+26,Extraversion,5,low,5,2,0.4,1,True
+27,Extraversion,5,low,5,0,0.0,0,True
+28,Extraversion,5,high,5,2,0.4,1,True
+29,Extraversion,5,high,5,2,0.4,1,True
+30,Extraversion,5,high,5,1,0.2,1,True
+31,Extraversion,5,low,5,4,0.8,1,True
+32,Extraversion,5,low,5,0,0.0,0,True
+33,Extraversion,5,high,5,2,0.4,1,True
+34,Extraversion,5,high,5,4,0.8,1,True
+35,Extraversion,5,high,5,2,0.4,1,True
+36,Extraversion,5,high,5,4,0.8,1,True
+37,Extraversion,5,low,5,1,0.2,1,True
+38,Extraversion,5,high,5,1,0.2,1,True
+39,Extraversion,5,low,5,3,0.6,1,True
+40,Extraversion,5,high,5,4,0.8,1,True
+41,Extraversion,5,low,5,2,0.4,1,True
+42,Extraversion,5,high,5,2,0.4,1,True
+43,Extraversion,5,high,5,3,0.6,1,True
+44,Extraversion,5,low,5,1,0.2,1,True
+45,Extraversion,5,low,5,3,0.6,1,True
+46,Extraversion,5,high,5,0,0.0,0,True
+47,Extraversion,5,high,5,3,0.6,1,True
+48,Extraversion,5,low,5,3,0.6,1,True
+49,Extraversion,5,low,5,3,0.6,1,True
+50,Extraversion,5,high,5,4,0.8,1,True
+51,Extraversion,5,low,5,2,0.4,1,True
+52,Extraversion,5,high,5,3,0.6,1,True
+53,Extraversion,5,high,5,0,0.0,0,True
+54,Extraversion,5,high,5,2,0.4,1,True
+55,Extraversion,5,low,5,0,0.0,0,True
+56,Extraversion,5,high,5,4,0.8,1,True
+57,Extraversion,5,high,5,3,0.6,1,True
+58,Extraversion,5,low,5,1,0.2,1,True
+59,Extraversion,5,high,5,3,0.6,1,True
+60,Extraversion,5,low,5,3,0.6,1,True
+61,Extraversion,5,low,5,4,0.8,1,True
+62,Extraversion,5,low,5,3,0.6,1,True
+63,Extraversion,5,low,5,0,0.0,0,True
+64,Extraversion,5,low,5,0,0.0,0,True
+65,Extraversion,5,high,5,2,0.4,1,True
+66,Extraversion,5,low,5,3,0.6,1,True
+67,Extraversion,5,low,5,0,0.0,0,True
+68,Extraversion,5,high,5,5,1.0,1,True
+69,Extraversion,5,high,5,4,0.8,1,True
+70,Extraversion,5,high,5,2,0.4,1,True
+71,Extraversion,5,low,5,1,0.2,1,True
+72,Extraversion,5,high,5,2,0.4,1,True
+73,Extraversion,5,high,5,2,0.4,1,True
+74,Extraversion,5,low,5,2,0.4,1,True
+75,Extraversion,5,high,5,4,0.8,1,True
+76,Extraversion,5,high,5,4,0.8,1,True
+77,Extraversion,5,high,5,3,0.6,1,True
+78,Extraversion,5,high,5,2,0.4,1,True
+79,Extraversion,5,high,5,2,0.4,1,True
+80,Extraversion,5,high,5,2,0.4,1,True
+81,Extraversion,5,low,5,2,0.4,1,True
+82,Extraversion,5,low,5,3,0.6,1,True
+83,Extraversion,5,low,5,5,1.0,1,True
+84,Extraversion,5,high,5,3,0.6,1,True
+85,Extraversion,5,low,5,3,0.6,1,True
+86,Extraversion,5,low,5,3,0.6,1,True
+87,Extraversion,5,high,5,3,0.6,1,True
+88,Extraversion,5,low,5,1,0.2,1,True
+89,Extraversion,5,low,5,2,0.4,1,True
+90,Extraversion,5,low,5,0,0.0,0,True
+91,Extraversion,5,low,5,3,0.6,1,True
+92,Extraversion,5,high,5,4,0.8,1,True
+93,Extraversion,5,high,5,4,0.8,1,True
+94,Extraversion,5,high,5,3,0.6,1,True
+95,Extraversion,5,low,5,4,0.8,1,True
+96,Extraversion,5,high,5,4,0.8,1,True
+97,Extraversion,5,high,5,4,0.8,1,True
+98,Extraversion,5,low,5,5,1.0,1,True
+99,Extraversion,5,low,5,2,0.4,1,True
+100,Extraversion,5,high,5,2,0.4,1,True
+101,Extraversion,5,high,5,5,1.0,1,True
+102,Extraversion,5,low,5,4,0.8,1,True
+103,Extraversion,5,low,5,0,0.0,0,True
+104,Extraversion,5,low,5,5,1.0,1,True
+105,Extraversion,5,low,5,4,0.8,1,True
+106,Extraversion,5,low,5,1,0.2,1,True
+107,Extraversion,5,high,5,4,0.8,1,True
+108,Extraversion,5,high,5,4,0.8,1,True
+109,Extraversion,5,high,5,3,0.6,1,True
+110,Extraversion,5,low,5,3,0.6,1,True
+111,Extraversion,5,high,5,4,0.8,1,True
+112,Extraversion,5,low,5,3,0.6,1,True
+113,Extraversion,5,high,5,3,0.6,1,True
+114,Extraversion,5,low,5,3,0.6,1,True
+115,Extraversion,5,high,5,4,0.8,1,True
+116,Extraversion,5,high,5,5,1.0,1,True
+117,Extraversion,5,low,5,3,0.6,1,True
+118,Extraversion,5,low,5,2,0.4,1,True
+119,Extraversion,5,low,5,2,0.4,1,True
+120,Extraversion,5,high,5,1,0.2,1,True
+121,Extraversion,5,low,5,2,0.4,1,True
+122,Extraversion,5,low,5,1,0.2,1,True
+123,Extraversion,5,low,5,2,0.4,1,True
+124,Extraversion,5,low,5,3,0.6,1,True
+125,Extraversion,5,high,5,1,0.2,1,True
+126,Extraversion,5,high,5,4,0.8,1,True
+127,Extraversion,5,low,5,2,0.4,1,True
+128,Extraversion,5,low,5,2,0.4,1,True
+129,Extraversion,5,high,5,3,0.6,1,True
+130,Extraversion,5,low,5,1,0.2,1,True
+131,Extraversion,5,low,5,1,0.2,1,True
+132,Extraversion,5,low,5,3,0.6,1,True
+133,Extraversion,5,high,5,2,0.4,1,True
+134,Extraversion,5,high,5,4,0.8,1,True
+135,Extraversion,5,low,5,4,0.8,1,True
+136,Extraversion,5,low,5,1,0.2,1,True
+137,Extraversion,5,low,5,4,0.8,1,True
+138,Extraversion,5,high,5,4,0.8,1,True
+139,Extraversion,5,high,5,5,1.0,1,True
+140,Extraversion,5,low,5,3,0.6,1,True
+141,Extraversion,5,high,5,5,1.0,1,True
+142,Extraversion,5,low,5,0,0.0,0,True
+143,Extraversion,5,high,5,3,0.6,1,True
+144,Extraversion,5,low,5,4,0.8,1,True
+145,Extraversion,5,low,5,2,0.4,1,True
+146,Extraversion,5,low,5,3,0.6,1,True
+147,Extraversion,5,low,5,1,0.2,1,True
+148,Extraversion,5,low,5,1,0.2,1,True
+149,Extraversion,5,high,5,4,0.8,1,True
+150,Extraversion,5,high,5,4,0.8,1,True
+151,Extraversion,5,low,5,2,0.4,1,True
+152,Extraversion,5,high,5,3,0.6,1,True
+153,Extraversion,5,high,5,3,0.6,1,True
+154,Extraversion,5,low,5,2,0.4,1,True
+155,Extraversion,5,high,5,3,0.6,1,True
+156,Extraversion,5,high,5,3,0.6,1,True
+157,Extraversion,5,high,5,3,0.6,1,True
+158,Extraversion,5,low,5,3,0.6,1,True
+159,Extraversion,5,high,5,2,0.4,1,True
+160,Extraversion,5,low,5,3,0.6,1,True
+161,Extraversion,5,high,5,3,0.6,1,True
+162,Extraversion,5,low,5,2,0.4,1,True
+163,Extraversion,5,high,5,4,0.8,1,True
+164,Extraversion,5,low,5,3,0.6,1,True
+165,Extraversion,5,low,5,4,0.8,1,True
+166,Extraversion,5,high,5,4,0.8,1,True
+167,Extraversion,5,high,5,2,0.4,1,True
+168,Extraversion,5,high,5,5,1.0,1,True
+169,Extraversion,5,low,5,4,0.8,1,True
+170,Extraversion,5,high,5,4,0.8,1,True
+171,Extraversion,5,high,5,1,0.2,1,True
+172,Extraversion,5,high,5,5,1.0,1,True
+173,Extraversion,5,high,5,4,0.8,1,True
+174,Extraversion,5,low,5,3,0.6,1,True
+175,Extraversion,5,high,5,2,0.4,1,True
+176,Extraversion,5,low,5,2,0.4,1,True
+177,Extraversion,5,high,5,4,0.8,1,True
+178,Extraversion,5,high,5,3,0.6,1,True
+179,Extraversion,5,low,5,2,0.4,1,True
+180,Extraversion,5,high,5,5,1.0,1,True
+181,Extraversion,5,high,5,4,0.8,1,True
+182,Extraversion,5,low,5,2,0.4,1,True
+183,Extraversion,5,high,5,3,0.6,1,True
+184,Extraversion,5,low,5,2,0.4,1,True
+185,Extraversion,5,low,5,2,0.4,1,True
+186,Extraversion,5,high,5,1,0.2,1,True
+187,Extraversion,5,low,5,0,0.0,0,True
+188,Extraversion,5,high,5,3,0.6,1,True
+189,Extraversion,5,low,5,3,0.6,1,True
+190,Extraversion,5,high,5,4,0.8,1,True
+191,Extraversion,5,low,5,3,0.6,1,True
+192,Extraversion,5,high,5,4,0.8,1,True
+193,Extraversion,5,high,5,4,0.8,1,True
+194,Extraversion,5,high,5,2,0.4,1,True
+195,Extraversion,5,low,5,3,0.6,1,True
+196,Extraversion,5,high,5,1,0.2,1,True
+197,Extraversion,5,low,5,4,0.8,1,True
+198,Extraversion,5,high,5,1,0.2,1,True
+199,Extraversion,5,high,5,2,0.4,1,True
+200,Extraversion,5,high,5,3,0.6,1,True
+201,Extraversion,5,high,5,1,0.2,1,True
+202,Extraversion,5,high,5,3,0.6,1,True
+203,Extraversion,5,low,5,2,0.4,1,True
+204,Extraversion,5,high,5,4,0.8,1,True
+205,Extraversion,5,low,5,0,0.0,0,True
+206,Extraversion,5,high,5,1,0.2,1,True
+207,Extraversion,5,high,5,3,0.6,1,True
+208,Extraversion,5,low,5,0,0.0,0,True
+209,Extraversion,5,low,5,3,0.6,1,True
+210,Extraversion,5,high,5,2,0.4,1,True
+211,Extraversion,5,high,5,2,0.4,1,True
+212,Extraversion,5,low,5,2,0.4,1,True
+213,Extraversion,5,high,5,3,0.6,1,True
+214,Extraversion,5,high,5,3,0.6,1,True
+215,Extraversion,5,low,5,3,0.6,1,True
+216,Extraversion,5,high,5,4,0.8,1,True
+217,Extraversion,5,high,5,2,0.4,1,True
+218,Extraversion,5,high,5,5,1.0,1,True
+219,Extraversion,5,low,5,2,0.4,1,True
+220,Extraversion,5,low,5,1,0.2,1,True
+221,Extraversion,5,high,5,4,0.8,1,True
+222,Extraversion,5,low,5,4,0.8,1,True
+223,Extraversion,5,low,5,1,0.2,1,True
+224,Extraversion,5,low,5,3,0.6,1,True
+225,Extraversion,5,high,5,2,0.4,1,True
+226,Extraversion,5,high,5,2,0.4,1,True
+227,Extraversion,5,low,5,1,0.2,1,True
+228,Extraversion,5,high,5,4,0.8,1,True
+229,Extraversion,5,high,5,3,0.6,1,True
+230,Extraversion,5,high,5,5,1.0,1,True
+231,Extraversion,5,high,5,5,1.0,1,True
+232,Extraversion,5,high,5,2,0.4,1,True
+233,Extraversion,5,low,5,4,0.8,1,True
+234,Extraversion,5,high,5,4,0.8,1,True
+235,Extraversion,5,high,5,4,0.8,1,True
+236,Extraversion,5,high,5,2,0.4,1,True
+237,Extraversion,5,low,5,2,0.4,1,True
+238,Extraversion,5,low,5,2,0.4,1,True
+239,Extraversion,5,high,5,4,0.8,1,True
+240,Extraversion,5,high,5,2,0.4,1,True
+241,Extraversion,5,high,5,5,1.0,1,True
+242,Extraversion,5,low,5,1,0.2,1,True
+243,Extraversion,5,low,5,2,0.4,1,True
+244,Extraversion,5,low,5,3,0.6,1,True
+245,Extraversion,5,low,5,3,0.6,1,True
+246,Extraversion,5,high,5,1,0.2,1,True
+0,Agreeableness,5,high,5,4,0.8,1,True
+1,Agreeableness,5,high,5,4,0.8,1,True
+2,Agreeableness,5,low,5,1,0.2,1,True
+3,Agreeableness,5,low,5,5,1.0,1,True
+4,Agreeableness,5,high,5,2,0.4,1,True
+5,Agreeableness,5,low,5,3,0.6,1,True
+6,Agreeableness,5,low,5,4,0.8,1,True
+7,Agreeableness,5,high,5,4,0.8,1,True
+8,Agreeableness,5,high,5,5,1.0,1,True
+9,Agreeableness,5,low,5,2,0.4,1,True
+10,Agreeableness,5,low,5,0,0.0,0,True
+11,Agreeableness,5,low,5,1,0.2,1,True
+12,Agreeableness,5,high,5,4,0.8,1,True
+13,Agreeableness,5,high,5,3,0.6,1,True
+14,Agreeableness,5,high,5,4,0.8,1,True
+15,Agreeableness,5,high,5,3,0.6,1,True
+16,Agreeableness,5,low,5,5,1.0,1,True
+17,Agreeableness,5,high,5,5,1.0,1,True
+18,Agreeableness,5,low,5,3,0.6,1,True
+19,Agreeableness,5,low,5,4,0.8,1,True
+20,Agreeableness,5,low,5,5,1.0,1,True
+21,Agreeableness,5,low,5,1,0.2,1,True
+22,Agreeableness,5,high,5,4,0.8,1,True
+23,Agreeableness,5,high,5,5,1.0,1,True
+24,Agreeableness,5,low,5,2,0.4,1,True
+25,Agreeableness,5,low,5,2,0.4,1,True
+26,Agreeableness,5,low,5,4,0.8,1,True
+27,Agreeableness,5,high,5,3,0.6,1,True
+28,Agreeableness,5,low,5,0,0.0,0,True
+29,Agreeableness,5,low,5,4,0.8,1,True
+30,Agreeableness,5,high,5,3,0.6,1,True
+31,Agreeableness,5,high,5,2,0.4,1,True
+32,Agreeableness,5,high,5,5,1.0,1,True
+33,Agreeableness,5,low,5,2,0.4,1,True
+34,Agreeableness,5,low,5,3,0.6,1,True
+35,Agreeableness,5,high,5,3,0.6,1,True
+36,Agreeableness,5,high,5,3,0.6,1,True
+37,Agreeableness,5,low,5,2,0.4,1,True
+38,Agreeableness,5,high,5,4,0.8,1,True
+39,Agreeableness,5,high,5,4,0.8,1,True
+40,Agreeableness,5,low,5,2,0.4,1,True
+41,Agreeableness,5,high,5,2,0.4,1,True
+42,Agreeableness,5,high,5,2,0.4,1,True
+43,Agreeableness,5,low,5,1,0.2,1,True
+44,Agreeableness,5,high,5,4,0.8,1,True
+45,Agreeableness,5,low,5,1,0.2,1,True
+46,Agreeableness,5,low,5,2,0.4,1,True
+47,Agreeableness,5,low,5,2,0.4,1,True
+48,Agreeableness,5,high,5,2,0.4,1,True
+49,Agreeableness,5,low,5,2,0.4,1,True
+50,Agreeableness,5,high,5,2,0.4,1,True
+51,Agreeableness,5,low,5,5,1.0,1,True
+52,Agreeableness,5,low,5,3,0.6,1,True
+53,Agreeableness,5,low,5,2,0.4,1,True
+54,Agreeableness,5,high,5,3,0.6,1,True
+55,Agreeableness,5,high,5,5,1.0,1,True
+56,Agreeableness,5,high,5,4,0.8,1,True
+57,Agreeableness,5,high,5,4,0.8,1,True
+58,Agreeableness,5,high,5,4,0.8,1,True
+59,Agreeableness,5,low,5,3,0.6,1,True
+60,Agreeableness,5,low,5,3,0.6,1,True
+61,Agreeableness,5,low,5,0,0.0,0,True
+62,Agreeableness,5,low,5,2,0.4,1,True
+63,Agreeableness,5,high,5,4,0.8,1,True
+64,Agreeableness,5,high,5,4,0.8,1,True
+65,Agreeableness,5,low,5,5,1.0,1,True
+66,Agreeableness,5,high,5,2,0.4,1,True
+67,Agreeableness,5,high,5,3,0.6,1,True
+68,Agreeableness,5,high,5,4,0.8,1,True
+69,Agreeableness,5,high,5,3,0.6,1,True
+70,Agreeableness,5,high,5,3,0.6,1,True
+71,Agreeableness,5,high,5,0,0.0,0,True
+72,Agreeableness,5,low,5,2,0.4,1,True
+73,Agreeableness,5,low,5,4,0.8,1,True
+74,Agreeableness,5,high,5,4,0.8,1,True
+75,Agreeableness,5,high,5,5,1.0,1,True
+76,Agreeableness,5,high,5,4,0.8,1,True
+77,Agreeableness,5,high,5,1,0.2,1,True
+78,Agreeableness,5,high,5,4,0.8,1,True
+79,Agreeableness,5,high,5,4,0.8,1,True
+80,Agreeableness,5,low,5,1,0.2,1,True
+81,Agreeableness,5,low,5,1,0.2,1,True
+82,Agreeableness,5,high,5,3,0.6,1,True
+83,Agreeableness,5,high,5,4,0.8,1,True
+84,Agreeableness,5,high,5,5,1.0,1,True
+85,Agreeableness,5,high,5,3,0.6,1,True
+86,Agreeableness,5,low,5,2,0.4,1,True
+87,Agreeableness,5,low,5,4,0.8,1,True
+88,Agreeableness,5,high,5,4,0.8,1,True
+89,Agreeableness,5,high,5,5,1.0,1,True
+90,Agreeableness,5,low,5,3,0.6,1,True
+91,Agreeableness,5,low,5,2,0.4,1,True
+92,Agreeableness,5,high,5,3,0.6,1,True
+93,Agreeableness,5,low,5,0,0.0,0,True
+94,Agreeableness,5,high,5,5,1.0,1,True
+95,Agreeableness,5,low,5,3,0.6,1,True
+96,Agreeableness,5,low,5,1,0.2,1,True
+97,Agreeableness,5,high,5,5,1.0,1,True
+98,Agreeableness,5,high,5,1,0.2,1,True
+99,Agreeableness,5,low,5,3,0.6,1,True
+100,Agreeableness,5,high,5,4,0.8,1,True
+101,Agreeableness,5,high,5,2,0.4,1,True
+102,Agreeableness,5,high,5,4,0.8,1,True
+103,Agreeableness,5,high,5,5,1.0,1,True
+104,Agreeableness,5,low,5,2,0.4,1,True
+105,Agreeableness,5,low,5,4,0.8,1,True
+106,Agreeableness,5,low,5,4,0.8,1,True
+107,Agreeableness,5,low,5,1,0.2,1,True
+108,Agreeableness,5,high,5,2,0.4,1,True
+109,Agreeableness,5,low,5,2,0.4,1,True
+110,Agreeableness,5,high,5,1,0.2,1,True
+111,Agreeableness,5,high,5,3,0.6,1,True
+112,Agreeableness,5,low,5,1,0.2,1,True
+113,Agreeableness,5,low,5,2,0.4,1,True
+114,Agreeableness,5,low,5,1,0.2,1,True
+115,Agreeableness,5,low,5,1,0.2,1,True
+116,Agreeableness,5,high,5,5,1.0,1,True
+117,Agreeableness,5,low,5,1,0.2,1,True
+118,Agreeableness,5,low,5,2,0.4,1,True
+119,Agreeableness,5,low,5,4,0.8,1,True
+120,Agreeableness,5,high,5,1,0.2,1,True
+121,Agreeableness,5,low,5,4,0.8,1,True
+122,Agreeableness,5,high,5,1,0.2,1,True
+123,Agreeableness,5,low,5,3,0.6,1,True
+124,Agreeableness,5,low,5,1,0.2,1,True
+125,Agreeableness,5,low,5,1,0.2,1,True
+126,Agreeableness,5,high,5,3,0.6,1,True
+127,Agreeableness,5,high,5,2,0.4,1,True
+128,Agreeableness,5,high,5,4,0.8,1,True
+129,Agreeableness,5,high,5,3,0.6,1,True
+130,Agreeableness,5,low,5,2,0.4,1,True
+131,Agreeableness,5,low,5,1,0.2,1,True
+132,Agreeableness,5,low,5,3,0.6,1,True
+133,Agreeableness,5,low,5,2,0.4,1,True
+134,Agreeableness,5,low,5,2,0.4,1,True
+135,Agreeableness,5,high,5,3,0.6,1,True
+136,Agreeableness,5,high,5,4,0.8,1,True
+137,Agreeableness,5,low,5,1,0.2,1,True
+138,Agreeableness,5,high,5,4,0.8,1,True
+139,Agreeableness,5,high,5,5,1.0,1,True
+140,Agreeableness,5,high,5,2,0.4,1,True
+141,Agreeableness,5,high,5,5,1.0,1,True
+142,Agreeableness,5,high,5,3,0.6,1,True
+143,Agreeableness,5,high,5,4,0.8,1,True
+144,Agreeableness,5,high,5,3,0.6,1,True
+145,Agreeableness,5,low,5,2,0.4,1,True
+146,Agreeableness,5,low,5,0,0.0,0,True
+147,Agreeableness,5,low,5,1,0.2,1,True
+148,Agreeableness,5,low,5,2,0.4,1,True
+149,Agreeableness,5,high,5,4,0.8,1,True
+150,Agreeableness,5,high,5,4,0.8,1,True
+151,Agreeableness,5,low,5,5,1.0,1,True
+152,Agreeableness,5,high,5,2,0.4,1,True
+153,Agreeableness,5,high,5,3,0.6,1,True
+154,Agreeableness,5,high,5,2,0.4,1,True
+155,Agreeableness,5,high,5,3,0.6,1,True
+156,Agreeableness,5,high,5,1,0.2,1,True
+157,Agreeableness,5,low,5,1,0.2,1,True
+158,Agreeableness,5,high,5,2,0.4,1,True
+159,Agreeableness,5,low,5,1,0.2,1,True
+160,Agreeableness,5,high,5,3,0.6,1,True
+161,Agreeableness,5,low,5,1,0.2,1,True
+162,Agreeableness,5,high,5,3,0.6,1,True
+163,Agreeableness,5,high,5,5,1.0,1,True
+164,Agreeableness,5,high,5,2,0.4,1,True
+165,Agreeableness,5,low,5,3,0.6,1,True
+166,Agreeableness,5,high,5,4,0.8,1,True
+167,Agreeableness,5,high,5,4,0.8,1,True
+168,Agreeableness,5,high,5,5,1.0,1,True
+169,Agreeableness,5,low,5,1,0.2,1,True
+170,Agreeableness,5,high,5,2,0.4,1,True
+171,Agreeableness,5,high,5,2,0.4,1,True
+172,Agreeableness,5,low,5,1,0.2,1,True
+173,Agreeableness,5,low,5,2,0.4,1,True
+174,Agreeableness,5,low,5,3,0.6,1,True
+175,Agreeableness,5,low,5,2,0.4,1,True
+176,Agreeableness,5,high,5,4,0.8,1,True
+177,Agreeableness,5,high,5,3,0.6,1,True
+178,Agreeableness,5,high,5,5,1.0,1,True
+179,Agreeableness,5,low,5,0,0.0,0,True
+180,Agreeableness,5,high,5,5,1.0,1,True
+181,Agreeableness,5,high,5,3,0.6,1,True
+182,Agreeableness,5,low,5,3,0.6,1,True
+183,Agreeableness,5,low,5,4,0.8,1,True
+184,Agreeableness,5,high,5,4,0.8,1,True
+185,Agreeableness,5,high,5,4,0.8,1,True
+186,Agreeableness,5,low,5,2,0.4,1,True
+187,Agreeableness,5,low,5,3,0.6,1,True
+188,Agreeableness,5,low,5,1,0.2,1,True
+189,Agreeableness,5,low,5,1,0.2,1,True
+190,Agreeableness,5,high,5,5,1.0,1,True
+191,Agreeableness,5,low,5,0,0.0,0,True
+192,Agreeableness,5,low,5,1,0.2,1,True
+193,Agreeableness,5,high,5,3,0.6,1,True
+194,Agreeableness,5,high,5,4,0.8,1,True
+195,Agreeableness,5,low,5,4,0.8,1,True
+196,Agreeableness,5,low,5,0,0.0,0,True
+197,Agreeableness,5,low,5,4,0.8,1,True
+198,Agreeableness,5,high,5,3,0.6,1,True
+199,Agreeableness,5,high,5,4,0.8,1,True
+200,Agreeableness,5,low,5,2,0.4,1,True
+201,Agreeableness,5,high,5,0,0.0,0,True
+202,Agreeableness,5,low,5,0,0.0,0,True
+203,Agreeableness,5,low,5,1,0.2,1,True
+204,Agreeableness,5,high,5,2,0.4,1,True
+205,Agreeableness,5,high,5,5,1.0,1,True
+206,Agreeableness,5,high,5,1,0.2,1,True
+207,Agreeableness,5,high,5,0,0.0,0,True
+208,Agreeableness,5,high,5,5,1.0,1,True
+209,Agreeableness,5,high,5,3,0.6,1,True
+210,Agreeableness,5,high,5,4,0.8,1,True
+211,Agreeableness,5,low,5,1,0.2,1,True
+212,Agreeableness,5,low,5,0,0.0,0,True
+213,Agreeableness,5,low,5,3,0.6,1,True
+214,Agreeableness,5,high,5,3,0.6,1,True
+215,Agreeableness,5,high,5,2,0.4,1,True
+216,Agreeableness,5,high,5,5,1.0,1,True
+217,Agreeableness,5,low,5,1,0.2,1,True
+218,Agreeableness,5,low,5,1,0.2,1,True
+219,Agreeableness,5,low,5,3,0.6,1,True
+220,Agreeableness,5,high,5,4,0.8,1,True
+221,Agreeableness,5,high,5,4,0.8,1,True
+222,Agreeableness,5,low,5,3,0.6,1,True
+223,Agreeableness,5,high,5,5,1.0,1,True
+224,Agreeableness,5,low,5,3,0.6,1,True
+225,Agreeableness,5,low,5,5,1.0,1,True
+226,Agreeableness,5,high,5,3,0.6,1,True
+227,Agreeableness,5,low,5,3,0.6,1,True
+228,Agreeableness,5,low,5,1,0.2,1,True
+229,Agreeableness,5,low,5,1,0.2,1,True
+230,Agreeableness,5,low,5,3,0.6,1,True
+231,Agreeableness,5,high,5,4,0.8,1,True
+232,Agreeableness,5,low,5,0,0.0,0,True
+233,Agreeableness,5,low,5,4,0.8,1,True
+234,Agreeableness,5,low,5,2,0.4,1,True
+235,Agreeableness,5,high,5,1,0.2,1,True
+236,Agreeableness,5,high,5,3,0.6,1,True
+237,Agreeableness,5,high,5,3,0.6,1,True
+238,Agreeableness,5,high,5,1,0.2,1,True
+239,Agreeableness,5,high,5,4,0.8,1,True
+240,Agreeableness,5,low,5,2,0.4,1,True
+241,Agreeableness,5,high,5,4,0.8,1,True
+242,Agreeableness,5,high,5,2,0.4,1,True
+243,Agreeableness,5,high,5,2,0.4,1,True
+244,Agreeableness,5,low,5,4,0.8,1,True
+245,Agreeableness,5,low,5,3,0.6,1,True
+246,Agreeableness,5,high,5,3,0.6,1,True
+0,Neuroticism,5,high,5,2,0.4,1,True
+1,Neuroticism,5,high,5,2,0.4,1,True
+2,Neuroticism,5,high,5,3,0.6,1,True
+3,Neuroticism,5,high,5,5,1.0,1,True
+4,Neuroticism,5,low,5,3,0.6,1,True
+5,Neuroticism,5,low,5,4,0.8,1,True
+6,Neuroticism,5,high,5,4,0.8,1,True
+7,Neuroticism,5,low,5,4,0.8,1,True
+8,Neuroticism,5,low,5,2,0.4,1,True
+9,Neuroticism,5,high,5,2,0.4,1,True
+10,Neuroticism,5,high,5,3,0.6,1,True
+11,Neuroticism,5,high,5,1,0.2,1,True
+12,Neuroticism,5,low,5,3,0.6,1,True
+13,Neuroticism,5,high,5,5,1.0,1,True
+14,Neuroticism,5,low,5,3,0.6,1,True
+15,Neuroticism,5,low,5,2,0.4,1,True
+16,Neuroticism,5,high,5,5,1.0,1,True
+17,Neuroticism,5,low,5,2,0.4,1,True
+18,Neuroticism,5,high,5,2,0.4,1,True
+19,Neuroticism,5,low,5,1,0.2,1,True
+20,Neuroticism,5,high,5,5,1.0,1,True
+21,Neuroticism,5,low,5,2,0.4,1,True
+22,Neuroticism,5,low,5,4,0.8,1,True
+23,Neuroticism,5,low,5,3,0.6,1,True
+24,Neuroticism,5,low,5,4,0.8,1,True
+25,Neuroticism,5,low,5,5,1.0,1,True
+26,Neuroticism,5,high,5,4,0.8,1,True
+27,Neuroticism,5,high,5,0,0.0,0,True
+28,Neuroticism,5,low,5,3,0.6,1,True
+29,Neuroticism,5,low,5,0,0.0,0,True
+30,Neuroticism,5,low,5,1,0.2,1,True
+31,Neuroticism,5,high,5,5,1.0,1,True
+32,Neuroticism,5,low,5,4,0.8,1,True
+33,Neuroticism,5,high,5,4,0.8,1,True
+34,Neuroticism,5,low,5,2,0.4,1,True
+35,Neuroticism,5,low,5,1,0.2,1,True
+36,Neuroticism,5,high,5,1,0.2,1,True
+37,Neuroticism,5,low,5,2,0.4,1,True
+38,Neuroticism,5,high,5,5,1.0,1,True
+39,Neuroticism,5,low,5,3,0.6,1,True
+40,Neuroticism,5,low,5,1,0.2,1,True
+41,Neuroticism,5,high,5,5,1.0,1,True
+42,Neuroticism,5,low,5,0,0.0,0,True
+43,Neuroticism,5,low,5,4,0.8,1,True
+44,Neuroticism,5,low,5,2,0.4,1,True
+45,Neuroticism,5,high,5,4,0.8,1,True
+46,Neuroticism,5,high,5,5,1.0,1,True
+47,Neuroticism,5,high,5,3,0.6,1,True
+48,Neuroticism,5,high,5,3,0.6,1,True
+49,Neuroticism,5,low,5,2,0.4,1,True
+50,Neuroticism,5,high,5,4,0.8,1,True
+51,Neuroticism,5,low,5,1,0.2,1,True
+52,Neuroticism,5,high,5,2,0.4,1,True
+53,Neuroticism,5,high,5,4,0.8,1,True
+54,Neuroticism,5,low,5,2,0.4,1,True
+55,Neuroticism,5,low,5,2,0.4,1,True
+56,Neuroticism,5,high,5,2,0.4,1,True
+57,Neuroticism,5,high,5,2,0.4,1,True
+58,Neuroticism,5,high,5,3,0.6,1,True
+59,Neuroticism,5,high,5,5,1.0,1,True
+60,Neuroticism,5,low,5,3,0.6,1,True
+61,Neuroticism,5,low,5,3,0.6,1,True
+62,Neuroticism,5,high,5,2,0.4,1,True
+63,Neuroticism,5,high,5,4,0.8,1,True
+64,Neuroticism,5,high,5,0,0.0,0,True
+65,Neuroticism,5,high,5,4,0.8,1,True
+66,Neuroticism,5,high,5,1,0.2,1,True
+67,Neuroticism,5,low,5,4,0.8,1,True
+68,Neuroticism,5,low,5,0,0.0,0,True
+69,Neuroticism,5,low,5,4,0.8,1,True
+70,Neuroticism,5,low,5,5,1.0,1,True
+71,Neuroticism,5,low,5,4,0.8,1,True
+72,Neuroticism,5,low,5,2,0.4,1,True
+73,Neuroticism,5,high,5,0,0.0,0,True
+74,Neuroticism,5,high,5,3,0.6,1,True
+75,Neuroticism,5,low,5,3,0.6,1,True
+76,Neuroticism,5,low,5,4,0.8,1,True
+77,Neuroticism,5,low,5,1,0.2,1,True
+78,Neuroticism,5,high,5,2,0.4,1,True
+79,Neuroticism,5,high,5,0,0.0,0,True
+80,Neuroticism,5,low,5,2,0.4,1,True
+81,Neuroticism,5,high,5,2,0.4,1,True
+82,Neuroticism,5,low,5,4,0.8,1,True
+83,Neuroticism,5,high,5,3,0.6,1,True
+84,Neuroticism,5,high,5,5,1.0,1,True
+85,Neuroticism,5,high,5,1,0.2,1,True
+86,Neuroticism,5,high,5,5,1.0,1,True
+87,Neuroticism,5,high,5,5,1.0,1,True
+88,Neuroticism,5,low,5,1,0.2,1,True
+89,Neuroticism,5,high,5,2,0.4,1,True
+90,Neuroticism,5,low,5,5,1.0,1,True
+91,Neuroticism,5,high,5,3,0.6,1,True
+92,Neuroticism,5,low,5,2,0.4,1,True
+93,Neuroticism,5,high,5,2,0.4,1,True
+94,Neuroticism,5,low,5,3,0.6,1,True
+95,Neuroticism,5,high,5,2,0.4,1,True
+96,Neuroticism,5,high,5,3,0.6,1,True
+97,Neuroticism,5,high,5,2,0.4,1,True
+98,Neuroticism,5,high,5,5,1.0,1,True
+99,Neuroticism,5,high,5,2,0.4,1,True
+100,Neuroticism,5,high,5,2,0.4,1,True
+101,Neuroticism,5,high,5,4,0.8,1,True
+102,Neuroticism,5,low,5,2,0.4,1,True
+103,Neuroticism,5,high,5,4,0.8,1,True
+104,Neuroticism,5,high,5,3,0.6,1,True
+105,Neuroticism,5,low,5,1,0.2,1,True
+106,Neuroticism,5,high,5,2,0.4,1,True
+107,Neuroticism,5,low,5,2,0.4,1,True
+108,Neuroticism,5,low,5,5,1.0,1,True
+109,Neuroticism,5,high,5,2,0.4,1,True
+110,Neuroticism,5,high,5,5,1.0,1,True
+111,Neuroticism,5,low,5,5,1.0,1,True
+112,Neuroticism,5,high,5,3,0.6,1,True
+113,Neuroticism,5,high,5,3,0.6,1,True
+114,Neuroticism,5,high,5,2,0.4,1,True
+115,Neuroticism,5,low,5,3,0.6,1,True
+116,Neuroticism,5,low,5,2,0.4,1,True
+117,Neuroticism,5,high,5,2,0.4,1,True
+118,Neuroticism,5,low,5,2,0.4,1,True
+119,Neuroticism,5,low,5,0,0.0,0,True
+120,Neuroticism,5,high,5,5,1.0,1,True
+121,Neuroticism,5,high,5,3,0.6,1,True
+122,Neuroticism,5,high,5,5,1.0,1,True
+123,Neuroticism,5,high,5,5,1.0,1,True
+124,Neuroticism,5,low,5,3,0.6,1,True
+125,Neuroticism,5,high,5,4,0.8,1,True
+126,Neuroticism,5,low,5,5,1.0,1,True
+127,Neuroticism,5,high,5,5,1.0,1,True
+128,Neuroticism,5,high,5,1,0.2,1,True
+129,Neuroticism,5,low,5,1,0.2,1,True
+130,Neuroticism,5,low,5,1,0.2,1,True
+131,Neuroticism,5,high,5,3,0.6,1,True
+132,Neuroticism,5,high,5,5,1.0,1,True
+133,Neuroticism,5,high,5,3,0.6,1,True
+134,Neuroticism,5,high,5,2,0.4,1,True
+135,Neuroticism,5,low,5,2,0.4,1,True
+136,Neuroticism,5,low,5,1,0.2,1,True
+137,Neuroticism,5,high,5,3,0.6,1,True
+138,Neuroticism,5,high,5,1,0.2,1,True
+139,Neuroticism,5,low,5,3,0.6,1,True
+140,Neuroticism,5,low,5,3,0.6,1,True
+141,Neuroticism,5,low,5,4,0.8,1,True
+142,Neuroticism,5,low,5,4,0.8,1,True
+143,Neuroticism,5,low,5,4,0.8,1,True
+144,Neuroticism,5,low,5,3,0.6,1,True
+145,Neuroticism,5,high,5,3,0.6,1,True
+146,Neuroticism,5,high,5,1,0.2,1,True
+147,Neuroticism,5,low,5,5,1.0,1,True
+148,Neuroticism,5,high,5,3,0.6,1,True
+149,Neuroticism,5,high,5,4,0.8,1,True
+150,Neuroticism,5,high,5,1,0.2,1,True
+151,Neuroticism,5,high,5,4,0.8,1,True
+152,Neuroticism,5,low,5,1,0.2,1,True
+153,Neuroticism,5,high,5,3,0.6,1,True
+154,Neuroticism,5,low,5,3,0.6,1,True
+155,Neuroticism,5,low,5,4,0.8,1,True
+156,Neuroticism,5,low,5,4,0.8,1,True
+157,Neuroticism,5,low,5,4,0.8,1,True
+158,Neuroticism,5,low,5,4,0.8,1,True
+159,Neuroticism,5,high,5,4,0.8,1,True
+160,Neuroticism,5,low,5,0,0.0,0,True
+161,Neuroticism,5,low,5,3,0.6,1,True
+162,Neuroticism,5,high,5,2,0.4,1,True
+163,Neuroticism,5,low,5,1,0.2,1,True
+164,Neuroticism,5,high,5,4,0.8,1,True
+165,Neuroticism,5,high,5,5,1.0,1,True
+166,Neuroticism,5,low,5,0,0.0,0,True
+167,Neuroticism,5,low,5,1,0.2,1,True
+168,Neuroticism,5,low,5,2,0.4,1,True
+169,Neuroticism,5,high,5,1,0.2,1,True
+170,Neuroticism,5,low,5,0,0.0,0,True
+171,Neuroticism,5,high,5,5,1.0,1,True
+172,Neuroticism,5,low,5,3,0.6,1,True
+173,Neuroticism,5,low,5,1,0.2,1,True
+174,Neuroticism,5,high,5,3,0.6,1,True
+175,Neuroticism,5,high,5,5,1.0,1,True
+176,Neuroticism,5,high,5,2,0.4,1,True
+177,Neuroticism,5,low,5,2,0.4,1,True
+178,Neuroticism,5,low,5,1,0.2,1,True
+179,Neuroticism,5,low,5,5,1.0,1,True
+180,Neuroticism,5,low,5,3,0.6,1,True
+181,Neuroticism,5,high,5,2,0.4,1,True
+182,Neuroticism,5,high,5,4,0.8,1,True
+183,Neuroticism,5,high,5,3,0.6,1,True
+184,Neuroticism,5,low,5,2,0.4,1,True
+185,Neuroticism,5,low,5,3,0.6,1,True
+186,Neuroticism,5,low,5,1,0.2,1,True
+187,Neuroticism,5,low,5,5,1.0,1,True
+188,Neuroticism,5,high,5,1,0.2,1,True
+189,Neuroticism,5,high,5,2,0.4,1,True
+190,Neuroticism,5,low,5,4,0.8,1,True
+191,Neuroticism,5,low,5,3,0.6,1,True
+192,Neuroticism,5,high,5,5,1.0,1,True
+193,Neuroticism,5,high,5,3,0.6,1,True
+194,Neuroticism,5,high,5,4,0.8,1,True
+195,Neuroticism,5,low,5,0,0.0,0,True
+196,Neuroticism,5,high,5,2,0.4,1,True
+197,Neuroticism,5,high,5,4,0.8,1,True
+198,Neuroticism,5,high,5,2,0.4,1,True
+199,Neuroticism,5,high,5,4,0.8,1,True
+200,Neuroticism,5,high,5,2,0.4,1,True
+201,Neuroticism,5,low,5,0,0.0,0,True
+202,Neuroticism,5,low,5,2,0.4,1,True
+203,Neuroticism,5,high,5,2,0.4,1,True
+204,Neuroticism,5,low,5,3,0.6,1,True
+205,Neuroticism,5,low,5,5,1.0,1,True
+206,Neuroticism,5,low,5,4,0.8,1,True
+207,Neuroticism,5,low,5,4,0.8,1,True
+208,Neuroticism,5,low,5,2,0.4,1,True
+209,Neuroticism,5,high,5,3,0.6,1,True
+210,Neuroticism,5,low,5,2,0.4,1,True
+211,Neuroticism,5,high,5,5,1.0,1,True
+212,Neuroticism,5,high,5,3,0.6,1,True
+213,Neuroticism,5,low,5,0,0.0,0,True
+214,Neuroticism,5,low,5,2,0.4,1,True
+215,Neuroticism,5,high,5,5,1.0,1,True
+216,Neuroticism,5,low,5,4,0.8,1,True
+217,Neuroticism,5,high,5,3,0.6,1,True
+218,Neuroticism,5,high,5,3,0.6,1,True
+219,Neuroticism,5,low,5,0,0.0,0,True
+220,Neuroticism,5,low,5,5,1.0,1,True
+221,Neuroticism,5,high,5,0,0.0,0,True
+222,Neuroticism,5,high,5,3,0.6,1,True
+223,Neuroticism,5,low,5,4,0.8,1,True
+224,Neuroticism,5,high,5,4,0.8,1,True
+225,Neuroticism,5,low,5,0,0.0,0,True
+226,Neuroticism,5,low,5,2,0.4,1,True
+227,Neuroticism,5,high,5,5,1.0,1,True
+228,Neuroticism,5,low,5,3,0.6,1,True
+229,Neuroticism,5,low,5,3,0.6,1,True
+230,Neuroticism,5,low,5,4,0.8,1,True
+231,Neuroticism,5,low,5,2,0.4,1,True
+232,Neuroticism,5,low,5,2,0.4,1,True
+233,Neuroticism,5,high,5,4,0.8,1,True
+234,Neuroticism,5,low,5,3,0.6,1,True
+235,Neuroticism,5,high,5,4,0.8,1,True
+236,Neuroticism,5,low,5,3,0.6,1,True
+237,Neuroticism,5,low,5,4,0.8,1,True
+238,Neuroticism,5,high,5,2,0.4,1,True
+239,Neuroticism,5,high,5,4,0.8,1,True
+240,Neuroticism,5,low,5,3,0.6,1,True
+241,Neuroticism,5,low,5,5,1.0,1,True
+242,Neuroticism,5,low,5,5,1.0,1,True
+243,Neuroticism,5,high,5,5,1.0,1,True
+244,Neuroticism,5,low,5,2,0.4,1,True
+245,Neuroticism,5,low,5,2,0.4,1,True
+246,Neuroticism,5,high,5,4,0.8,1,True

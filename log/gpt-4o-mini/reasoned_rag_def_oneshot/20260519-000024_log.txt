@@ -1,0 +1,2344 @@
+[Record number 0-Openness]
+--------------------------------------------------------------------------------
+--- SYSTEM PROMPT ---
+
+You are an expert in personality psychology and psychometrics.
+
+Your task is to infer a single Big Five personality trait from a user's text
+and to expose your reasoning in a strictly structured format so it can be
+audited.
+
+You will be given:
+- The target personality trait (with HIGH and LOW definitions).
+- A small set of similar texts retrieved from a labelled corpus, with
+  their known labels and extracted psychological evidence.
+
+Rules:
+- Use only evidence from the provided text. Do NOT invent details.
+- Quote or paraphrase concrete cues; abstract trait words alone are not
+  evidence.
+ — distinguish transient states from stable traits:
+    * Situational stress, fatigue, homesickness, exam pressure, or adjustment
+      to new environments (e.g. starting university) are normal context-driven
+      reactions that virtually anyone experiences. They are NOT reliable
+      evidence of high Neuroticism on their own.
+    * Trait-level evidence requires recurring, cross-situational patterns of
+      emotional instability that persist independent of an obvious external cause.
+    * Tag every evidence cue as [state] (temporary/situational) or
+      [trait] (recurring/cross-situational). Weight [trait] cues heavily;
+      treat [state] cues as weak or neutral unless they are extreme or
+      accompanied by explicit statements of habitual emotional difficulty.
+    * Expressive writing, enthusiastic tone, humor, excitement about activities,
+      strong opinions, or vivid descriptions are stylistic features only.
+      They do NOT constitute evidence of Extraversion.
+    * A person can write expressively and enthusiastically about solo hobbies,
+      intellectual interests, or activities while being deeply introverted.
+    * True Extraversion evidence requires cues about social energy and orientation:
+      actively seeking out groups or parties, gaining energy from social interaction,
+      discomfort with solitude, preferring large gatherings, or explicit statements
+      about enjoying socialising.
+    * Tag every Extraversion cue as [social-energy] (directly about seeking or
+      enjoying social interaction) or [expressive-style] (enthusiastic tone/humor
+      without social context). Weight [social-energy] cues heavily; treat
+      [expressive-style] cues as weak or neutral for Extraversion scoring.
+- Output MUST follow the XML tag structure below, in this exact order,
+  with no extra text outside the tags.
+
+Output format (replicate verbatim, fill in the contents):
+
+<evidence>
+- [state|trait] one concrete cue from the text
+- [state|trait] another concrete cue
+- ...
+</evidence>
+<facet_check>
+- facet name -> high|low|mixed -> brief reason (dominant evidence type: state|trait)
+- ...
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <i> (label: <label>) because <reason>.
+The test text diverges from Similar Profile <j> on <axis>.
+</example_alignment>
+<verdict>
+1-2 sentence synthesis of why the overall pattern points high or low,
+explicitly noting whether the supporting evidence is trait-level or
+situational/state-level.
+</verdict>
+<label>high</label>
+
+The final <label> tag MUST contain exactly one word: high or low. Nothing else.
+
+
+--- USER PROMPT ---
+
+Trait: Openness
+
+HIGH Openness: People high in Openness are imaginative, curious, creative, intellectually adventurous, and receptive to new ideas and experiences.
+LOW  Openness: People low in Openness are practical, conventional, traditional, and prefer familiarity, routine, and concrete experiences.
+
+---
+
+The following are the 5 most similar texts from the training set,
+with their known labels and extracted psychological evidence. Use them
+as calibration anchors - note how each one's cues map to its label.
+
+[Similar Profile 1] (label: high)
+[FACETS]
+N1 anxiety            | high  | expresses worry about thesis challenges and German bureaucracy frustrations.
+N2 hostility          | low   | uses humor to describe annoyances, indicating a light-hearted approach to frustrations.
+N3 depression         | mod   | mentions sadness about leaving San Jose, but overall tone is upbeat.
+N4 self-conscious     | n/e   | 
+N5 impulsiveness      | n/e   | 
+N6 vulnerability      | mod   | feels overwhelmed by the PhD application process, indicating some stress.
+E1 warmth             | low   | casual mention of others' successes, but lacks deep emotional engagement.
+E2 gregariousness     | low   | expresses a preference for solitary activities like playing music and watching movies.
+E3 assertiveness      | mod   | shows some decisiveness in planning trips and engaging with music.
+E4 activity           | mod   | mentions various activities but lacks a clear energetic pace or busy schedule.
+E5 excitement-seek    | high  | expresses enthusiasm for music and travel, indicating a desire for new experiences.
+E6 positive emotion    | high  | overall tone is joyful and optimistic, especially about music and food.
+O1 fantasy            | high  | vivid imagination evident in dreaming of food and music experiences.
+O2 aesthetics         | high  | appreciation for music and art is clear, especially in references to composers.
+O3 feelings           | mod   | some introspection about personal experiences, but not deeply explored.
+O4 actions/variety    | high  | actively engages in diverse activities like cooking, music, and travel planning.
+O5 ideas              | high  | discusses complex topics like thesis work and model selection, showing intellectual curiosity.
+O6 values             | mod   | hints at re-examining personal values through experiences but lacks depth.
+A1 trust              | n/e   | 
+A2 straightforward    | mod   | expresses thoughts candidly but with some humor, indicating a mix of frankness.
+A3 altruism           | n/e   | 
+A4 compliance         | n/e   | 
+A5 modesty            | n/e   | 
+A6 tender-minded      | n/e   | 
+C1 competence         | mod   | shows some confidence in music skills but expresses doubt about thesis work.
+C2 order              | mod   | mentions planning and organization but lacks strong evidence of structure.
+C3 dutifulness        | mod   | acknowledges obligations like PhD applications but does not emphasize adherence.
+C4 achievement        | high  | demonstrates ambition through music practice and academic pursuits.
+C5 self-discipline    | mod   | recognizes need for focus in music and studies but does not show strong follow-through.
+C6 deliberation       | mod   | reflects on decisions and plans but lacks detailed careful planning.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal engagement.
+emotion:   positive balance with dominant joy and excitement about music and food.
+tense:     present emphasis with some reflections on past experiences.
+cognitive: moderate insight with some causal connections in thoughts about challenges.
+social:    low density of social-process words, focusing more on personal experiences.
+register:  informal and exploratory, with a casual tone throughout.
+length:    approximately 300 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 2] (label: low)
+[FACETS]
+N1 anxiety            | high  | expresses frustration about homework and time constraints, indicating worry about managing tasks
+N2 hostility          | low   | no evidence of anger or resentment towards others; generally positive tone
+N3 depression         | none  | no signs of sadness or hopelessness present in the text
+N4 self-conscious     | none  | no indications of shame or social discomfort; casual tone throughout
+N5 impulsiveness      | mod   | expresses excitement and spontaneity but does not indicate difficulty in delaying urges
+N6 vulnerability       | mod   | shows some feelings of being overwhelmed by homework but maintains a positive outlook
+E1 warmth             | high  | expresses affection and friendliness towards others, wishing them a happy new year
+E2 gregariousness     | mod   | shows enjoyment in social interactions but does not explicitly seek company
+E3 assertiveness      | none  | no evidence of leadership or decisiveness; primarily reflective
+E4 activity           | mod   | mentions a busy schedule with homework but also enjoys leisure time
+E5 excitement-seek    | high  | displays enthusiasm for new experiences and events, like the new year
+E6 positive emotion    | high  | overall tone is joyful and optimistic, celebrating the new year
+O1 fantasy            | none  | no evidence of vivid imagination or daydreaming present
+O2 aesthetics         | none  | no appreciation for art or beauty expressed in the text
+O3 feelings           | mod   | shows some emotional depth with mixed feelings about homework and enjoyment of life
+O4 actions/variety    | none  | no openness to new experiences or change indicated
+O5 ideas              | none  | no intellectual curiosity or abstract thought present in the text
+O6 values             | none  | no evidence of re-examining values or norms in the writing
+A1 trust              | none  | no indications of belief in others' good intentions present
+A2 straightforward     | high  | communicates thoughts candidly and openly without manipulation
+A3 altruism           | none  | no active concern for others' welfare expressed in the text
+A4 compliance         | high  | shows low antagonism by accepting homework responsibilities without complaint
+A5 modesty            | none  | no signs of humility or low self-promotion present
+A6 tender-minded      | none  | no expressions of sympathy or empathy for others' pain
+C1 competence         | low   | expresses frustration with homework, indicating a lack of confidence in managing tasks
+C2 order              | none  | no evidence of tidiness or organization present in the text
+C3 dutifulness        | low   | shows reluctance towards homework, indicating low adherence to obligations
+C4 achievement        | low   | lacks ambition or striving for goals; primarily focused on immediate tasks
+C5 self-discipline    | low   | admits distractions and struggles to focus on homework
+C6 deliberation       | none  | no careful planning or thinking before acting evident in the writing
+
+[LINGUISTIC]
+pronouns:  high density of first-person and plural pronouns
+emotion:   positive emotions dominate, with some negative feelings about homework
+tense:     present tense is primarily used throughout the text
+cognitive: low cognitive insight; mostly straightforward expressions
+social:    moderate social-process word density, reflecting casual interactions
+register:  informal and exploratory, with a casual tone
+length:    approximately 100 words, with a mix of short and long sentences
+
+[Similar Profile 3] (label: high)
+[FACETS]
+N1 anxiety            | low  | expresses relief about no injuries; seems to cope with stress through humor
+N2 hostility          | none | 
+N3 depression         | none | 
+N4 self-conscious     | none | 
+N5 impulsiveness      | mod  | mentions drinking as a response to loss; suggests some difficulty with restraint
+N6 vulnerability       | none | 
+E1 warmth             | none | 
+E2 gregariousness     | none | 
+E3 assertiveness      | none | 
+E4 activity           | mod  | references "cabin fever," indicating restlessness or desire for activity
+E5 excitement-seek    | none | 
+E6 positive emotion    | mod  | expresses gratitude for insurance; uses humor to cope with setbacks
+O1 fantasy            | none | 
+O2 aesthetics         | none | 
+O3 feelings           | mod  | shows some emotional awareness through humor and gratitude
+O4 actions/variety    | none | 
+O5 ideas              | none | 
+O6 values             | none | 
+A1 trust              | none | 
+A2 straightforward    | high | candidly shares personal experiences without pretense
+A3 altruism           | n/e  | 
+A4 compliance         | none | 
+A5 modesty            | none | 
+A6 tender-minded      | none | 
+C1 competence         | high | demonstrates preparedness with insurance; reflects capability in handling situations
+C2 order              | none | 
+C3 dutifulness        | none | 
+C4 achievement        | none | 
+C5 self-discipline    | low  | acknowledges distractions from loss; does not seem to follow through on focus
+C6 deliberation       | none | 
+
+[LINGUISTIC]
+pronouns:  I, my, you density is moderate
+emotion:   mixed; humor and gratitude present
+tense:     present emphasis with some past references
+cognitive: low density of insight or causal reasoning
+social:    low density of social-process words
+register:  informal and exploratory
+length:    approx 50 words, mixed sentence style with low lexical diversity
+
+[Similar Profile 4] (label: low)
+[FACETS]
+N1 anxiety            | high  | expresses significant worry about back pain and academic performance; feels overwhelmed by homework.
+N2 hostility          | none  | 
+N3 depression         | mod   | mentions feeling low about potential repeating classes; expresses frustration but also moments of accomplishment.
+N4 self-conscious     | mod   | shows some embarrassment about academic struggles and social interactions, but also shares achievements.
+N5 impulsiveness      | mod   | expresses a desire to avoid responsibilities and procrastinates on homework, but also completes tasks.
+N6 vulnerability       | high  | feels overwhelmed by stress from school and physical pain; expresses a desire to escape responsibilities.
+E1 warmth             | none  | 
+E2 gregariousness     | low   | prefers solitary activities like running; limited engagement with others in social contexts.
+E3 assertiveness      | mod   | shows some leadership in sharing information with peers but also expresses uncertainty in social situations.
+E4 activity           | mod   | mentions running and practice but also indicates struggles with physical limitations.
+E5 excitement-seek    | none  | 
+E6 positive emotion    | mod   | experiences moments of joy from accomplishments but also expresses frustration and stress.
+O1 fantasy            | n/e   | 
+O2 aesthetics         | n/e   | 
+O3 feelings           | high  | demonstrates emotional depth through reflections on pain, stress, and social interactions.
+O4 actions/variety    | mod   | shows some openness to new experiences like running events but also expresses reluctance.
+O5 ideas              | n/e   | 
+O6 values             | n/e   | 
+A1 trust              | n/e   | 
+A2 straightforward    | mod   | expresses candid thoughts about struggles and frustrations but also seeks help from peers.
+A3 altruism           | n/e   | 
+A4 compliance         | mod   | shows some deference in asking for help with homework and sharing information with classmates.
+A5 modesty            | mod   | shares achievements but also downplays struggles and expresses embarrassment about academic issues.
+A6 tender-minded      | n/e   | 
+C1 competence         | mod   | feels accomplished in running but expresses doubt about academic performance.
+C2 order              | low   | shows disorganization in managing homework and responsibilities; struggles with follow-through.
+C3 dutifulness        | low   | expresses reluctance to complete assignments and a tendency to procrastinate.
+C4 achievement        | mod   | feels a sense of accomplishment in running but struggles with academic goals.
+C5 self-discipline    | low   | admits to distractions and procrastination; struggles to maintain focus on tasks.
+C6 deliberation       | mod   | shows some planning in discussing homework but often reacts impulsively to stress.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal focus.
+emotion:   negative emotions dominate, with expressions of stress and frustration.
+tense:     present tense is emphasized, reflecting immediate concerns and feelings.
+cognitive: moderate insight into personal struggles and academic challenges.
+social:    low social-process word density, indicating limited engagement with others.
+register:  informal and exploratory, with a casual tone throughout.
+length:    approximately 1,000 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 5] (label: high)
+[FACETS]
+N1 anxiety            | low  | expresses humor about bus ride dangers; shows no signs of worry or fear.
+N2 hostility          | none | no evidence of anger or resentment toward others is present.
+N3 depression         | none | no signs of sadness or hopelessness are expressed in the text.
+N4 self-conscious     | none | no indications of shame or social discomfort are evident.
+N5 impulsiveness      | mod  | mentions spontaneous activities like canoeing in a storm; some planning is implied.
+N6 vulnerability       | none | no feelings of being overwhelmed or helpless are expressed.
+E1 warmth             | high | shows affection for the Hawks and excitement about social events.
+E2 gregariousness     | mod  | enjoys social activities like parties and tailgating but also mentions dislike for mornings.
+E3 assertiveness      | none | no clear evidence of leadership or decisiveness is present.
+E4 activity           | high | describes a busy schedule with various activities and events.
+E5 excitement-seek    | high | expresses thrill about new experiences like scuba diving and traveling.
+E6 positive emotion    | high | conveys joy and enthusiasm about achievements and events.
+O1 fantasy            | mod  | some imaginative elements in descriptions but primarily grounded in reality.
+O2 aesthetics         | none | no clear appreciation for art or beauty is expressed.
+O3 feelings           | mod  | shows some emotional depth in reflections but lacks extensive introspection.
+O4 actions/variety    | high | actively seeks new experiences, such as traveling and trying new activities.
+O5 ideas              | mod  | questions the relevance of information sheets; some curiosity about broader topics.
+O6 values             | none | no evidence of re-examining values or norms is present.
+A1 trust              | none | no indications of belief in others' good intentions are evident.
+A2 straightforward     | mod  | expresses candid thoughts but lacks extensive frankness or manipulation.
+A3 altruism           | none | no active concern for others' welfare is expressed.
+A4 compliance         | mod  | shows some deference in social situations but not strongly evident.
+A5 modesty            | none | no signs of humility or low self-promotion are present.
+A6 tender-minded      | none | no evidence of empathy or sympathy for others' pain is expressed.
+C1 competence         | high | demonstrates a sense of capability by completing scuba dives and managing a busy schedule.
+C2 order              | mod  | some organization in planning activities but lacks strong evidence of tidiness.
+C3 dutifulness        | mod  | mentions obligations like proctoring an exam but does not emphasize adherence.
+C4 achievement        | high | expresses pride in completing academic and personal goals.
+C5 self-discipline    | mod  | recognizes need for focus but does not provide strong evidence of follow-through.
+C6 deliberation       | none | no clear evidence of careful planning or thinking before acting is present.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal engagement.
+emotion:   positive balance with dominant excitement and joy throughout the text.
+tense:     present emphasis with reflections on ongoing activities and experiences.
+cognitive: moderate insight with some questioning and curiosity about various topics.
+social:    moderate social-process word density reflecting engagement in social activities.
+register:  informal and exploratory, with a casual tone and varied sentence structure.
+length:    approximately 400 words, with a mix of short and long sentences and moderate lexical diversity.
+
+---
+
+Text to classify:
+A recent online exchange: Other guy: "I have to imagine it's wholly possible that someone could understand humans so well, yet be completely unable to read, write, or do math.  In today's society, people like that would be shunned.  Veritas If you can't r || "And we keep driving into the night.  It's a late goodbye, such a late goodbye.  And we keep driving into the night.  It's a late goodbye-ai-ai-yai." Staying overnight somewhere east of Toledo.  Wonder how bad I-80 will be tomorrow. || 3-hour exam tomorrow, then a day and a half (less if I drop into New York Wednesday) to pack EVERYTHING before driving out Thursday to reach Iowa on Friday.  Someone tell me I'm not insane, please. || Recidivism (n.) - 1. Committing new offenses after being punished for a crime.  2.  Chronic repetition of criminal or other antisocial behavior. Replace "criminal" with "stupid", and I think I've found my problem. || s wireless internet keeps spazzing out every five minutes.  It's really annoying.  Actually, it's more than annoying, but I haven't gotten angry enough to start using foul language. || "40 years ago, Armstrong said 'One Small Step for Man'.  When can one of us go back there and shout, 'Honey, I'm home!' or something?" || Woo-hoo!  On to Indy!  Anyone care to place an over//under on how long it'll take for some sportswriter to mention Namath or Super Bowl III? || Last night pretty much sums up my entire UChicago experience.  I don't regret going.  I regret screwing up the decisions made while there. || is going to go on a 1000 mile trip to Iowa City tomorrow and Friday.  This is going to be a long drive. || Whoa, OK, that was more emo than I had intended.  Sorry to get you guys worried.  Full details upcoming. || wishes he had an actual bed (or even a mattress).  It'd make dealing with these suspiciously-flu-like symptoms easier. || lit his fried chicken on fire and now has more stuff to clean.  Great. || is in Chicago for Uchi-con.  And somehow got stuck watching a game room AGAIN. || has found the U of Iowa anime club.  There goes my GPA. || will have a miracle if he gets an 80 on today's midterm. || has just finished his first night at reffing.  Much to improve on. || hopes the geo-pol forum-based game doesn't get him perma-banned from Japan. || has arrived at Iowa and is settling into his new apartment. || Curse you, UCJAS!!  Now I'm hooked on *PROPNAME*!!  *shakes fist* || Did the President just make a reference to the Matrix?! || "The King of Pop is dead, long live the, uh..." || has no more finals.  But it keeps going uphill. || is trying to change.  Long overdue, I suppose. || is putting the touches on his Halloween costume. || has learned nothing from 20 years of school. || My hat is off for the Colts. || is watching the Little League World Series. || has been accepted into grad school.  Finally. || is in Ottawa.  Illinois, not Canada. || passed his F//M exam.  Huzzah! || "Holy Haruhi, season 2's out?!"
+
+Reason step by step and emit your output in the EXACT XML structure
+specified in the system message:
+
+<evidence> ... </evidence>
+<facet_check> ... </facet_check>
+<example_alignment> ... </example_alignment>
+<verdict> ... </verdict>
+<label>high</label>   (or <label>low</label>)
+
+Do not output any text outside these tags.
+
+
+--- LLM RESPONSE ---
+<evidence>
+- [trait] expresses curiosity about the future with "Wonder how bad I-80 will be tomorrow."
+- [trait] shows imaginative thinking with "When can one of us go back there and shout, 'Honey, I'm home!' or something?"
+- [trait] reflects on personal experiences and decisions with "Last night pretty much sums up my entire UChicago experience."
+- [trait] demonstrates a playful attitude towards language with "Replace 'criminal' with 'stupid', and I think I've found my problem."
+- [trait] engages in creative expression with "is putting the touches on his Halloween costume."
+</evidence>
+<facet_check>
+- fantasy -> high -> imaginative thinking is evident in playful language and hypothetical scenarios.
+- aesthetics -> mixed -> some appreciation for creativity in costume-making, but limited overall aesthetic engagement.
+- feelings -> mixed -> shows emotional depth in reflections but also light-heartedness in humor.
+- actions/variety -> high -> actively engages in diverse activities and experiences, such as moving and attending events.
+- ideas -> high -> demonstrates intellectual curiosity through reflections on society and personal experiences.
+- values -> mixed -> hints at re-examining personal decisions but lacks depth in discussing values.
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <1> (label: <high>) because it contains multiple cues of imaginative and curious thinking, as well as engagement in diverse activities. The test text diverges from Similar Profile <2> on the axis of creativity and intellectual exploration.
+</example_alignment>
+<verdict>
+The overall pattern points to high Openness, supported by multiple trait-level cues indicating imaginative thinking, curiosity, and engagement in diverse experiences.
+</verdict>
+<label>high</label>
+================================================================================
+
+[Record number 0-Conscientiousness]
+--------------------------------------------------------------------------------
+--- SYSTEM PROMPT ---
+
+You are an expert in personality psychology and psychometrics.
+
+Your task is to infer a single Big Five personality trait from a user's text
+and to expose your reasoning in a strictly structured format so it can be
+audited.
+
+You will be given:
+- The target personality trait (with HIGH and LOW definitions).
+- A small set of similar texts retrieved from a labelled corpus, with
+  their known labels and extracted psychological evidence.
+
+Rules:
+- Use only evidence from the provided text. Do NOT invent details.
+- Quote or paraphrase concrete cues; abstract trait words alone are not
+  evidence.
+ — distinguish transient states from stable traits:
+    * Situational stress, fatigue, homesickness, exam pressure, or adjustment
+      to new environments (e.g. starting university) are normal context-driven
+      reactions that virtually anyone experiences. They are NOT reliable
+      evidence of high Neuroticism on their own.
+    * Trait-level evidence requires recurring, cross-situational patterns of
+      emotional instability that persist independent of an obvious external cause.
+    * Tag every evidence cue as [state] (temporary/situational) or
+      [trait] (recurring/cross-situational). Weight [trait] cues heavily;
+      treat [state] cues as weak or neutral unless they are extreme or
+      accompanied by explicit statements of habitual emotional difficulty.
+    * Expressive writing, enthusiastic tone, humor, excitement about activities,
+      strong opinions, or vivid descriptions are stylistic features only.
+      They do NOT constitute evidence of Extraversion.
+    * A person can write expressively and enthusiastically about solo hobbies,
+      intellectual interests, or activities while being deeply introverted.
+    * True Extraversion evidence requires cues about social energy and orientation:
+      actively seeking out groups or parties, gaining energy from social interaction,
+      discomfort with solitude, preferring large gatherings, or explicit statements
+      about enjoying socialising.
+    * Tag every Extraversion cue as [social-energy] (directly about seeking or
+      enjoying social interaction) or [expressive-style] (enthusiastic tone/humor
+      without social context). Weight [social-energy] cues heavily; treat
+      [expressive-style] cues as weak or neutral for Extraversion scoring.
+- Output MUST follow the XML tag structure below, in this exact order,
+  with no extra text outside the tags.
+
+Output format (replicate verbatim, fill in the contents):
+
+<evidence>
+- [state|trait] one concrete cue from the text
+- [state|trait] another concrete cue
+- ...
+</evidence>
+<facet_check>
+- facet name -> high|low|mixed -> brief reason (dominant evidence type: state|trait)
+- ...
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <i> (label: <label>) because <reason>.
+The test text diverges from Similar Profile <j> on <axis>.
+</example_alignment>
+<verdict>
+1-2 sentence synthesis of why the overall pattern points high or low,
+explicitly noting whether the supporting evidence is trait-level or
+situational/state-level.
+</verdict>
+<label>high</label>
+
+The final <label> tag MUST contain exactly one word: high or low. Nothing else.
+
+
+--- USER PROMPT ---
+
+Trait: Conscientiousness
+
+HIGH Conscientiousness: Highly conscientious individuals are organized, disciplined, dependable, hardworking, responsible, and goal-oriented.
+LOW  Conscientiousness: Low Conscientiousness is associated with spontaneity, disorganization, carelessness, impulsiveness, and reduced self-discipline.
+
+---
+
+The following are the 5 most similar texts from the training set,
+with their known labels and extracted psychological evidence. Use them
+as calibration anchors - note how each one's cues map to its label.
+
+[Similar Profile 1] (label: high)
+[FACETS]
+N1 anxiety            | high  | expresses worry about thesis challenges and German bureaucracy frustrations.
+N2 hostility          | low   | uses humor to describe annoyances, indicating a light-hearted approach to frustrations.
+N3 depression         | mod   | mentions sadness about leaving San Jose, but overall tone is upbeat.
+N4 self-conscious     | n/e   | 
+N5 impulsiveness      | n/e   | 
+N6 vulnerability      | mod   | feels overwhelmed by the PhD application process, indicating some stress.
+E1 warmth             | low   | casual mention of others' successes, but lacks deep emotional engagement.
+E2 gregariousness     | low   | expresses a preference for solitary activities like playing music and watching movies.
+E3 assertiveness      | mod   | shows some decisiveness in planning trips and engaging with music.
+E4 activity           | mod   | mentions various activities but lacks a clear energetic pace or busy schedule.
+E5 excitement-seek    | high  | expresses enthusiasm for music and travel, indicating a desire for new experiences.
+E6 positive emotion    | high  | overall tone is joyful and optimistic, especially about music and food.
+O1 fantasy            | high  | vivid imagination evident in dreaming of food and music experiences.
+O2 aesthetics         | high  | appreciation for music and art is clear, especially in references to composers.
+O3 feelings           | mod   | some introspection about personal experiences, but not deeply explored.
+O4 actions/variety    | high  | actively engages in diverse activities like cooking, music, and travel planning.
+O5 ideas              | high  | discusses complex topics like thesis work and model selection, showing intellectual curiosity.
+O6 values             | mod   | hints at re-examining personal values through experiences but lacks depth.
+A1 trust              | n/e   | 
+A2 straightforward    | mod   | expresses thoughts candidly but with some humor, indicating a mix of frankness.
+A3 altruism           | n/e   | 
+A4 compliance         | n/e   | 
+A5 modesty            | n/e   | 
+A6 tender-minded      | n/e   | 
+C1 competence         | mod   | shows some confidence in music skills but expresses doubt about thesis work.
+C2 order              | mod   | mentions planning and organization but lacks strong evidence of structure.
+C3 dutifulness        | mod   | acknowledges obligations like PhD applications but does not emphasize adherence.
+C4 achievement        | high  | demonstrates ambition through music practice and academic pursuits.
+C5 self-discipline    | mod   | recognizes need for focus in music and studies but does not show strong follow-through.
+C6 deliberation       | mod   | reflects on decisions and plans but lacks detailed careful planning.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal engagement.
+emotion:   positive balance with dominant joy and excitement about music and food.
+tense:     present emphasis with some reflections on past experiences.
+cognitive: moderate insight with some causal connections in thoughts about challenges.
+social:    low density of social-process words, focusing more on personal experiences.
+register:  informal and exploratory, with a casual tone throughout.
+length:    approximately 300 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 2] (label: low)
+[FACETS]
+N1 anxiety            | high  | expresses frustration about homework and time constraints, indicating worry about managing tasks
+N2 hostility          | low   | no evidence of anger or resentment towards others; generally positive tone
+N3 depression         | none  | no signs of sadness or hopelessness present in the text
+N4 self-conscious     | none  | no indications of shame or social discomfort; casual tone throughout
+N5 impulsiveness      | mod   | expresses excitement and spontaneity but does not indicate difficulty in delaying urges
+N6 vulnerability       | mod   | shows some feelings of being overwhelmed by homework but maintains a positive outlook
+E1 warmth             | high  | expresses affection and friendliness towards others, wishing them a happy new year
+E2 gregariousness     | mod   | shows enjoyment in social interactions but does not explicitly seek company
+E3 assertiveness      | none  | no evidence of leadership or decisiveness; primarily reflective
+E4 activity           | mod   | mentions a busy schedule with homework but also enjoys leisure time
+E5 excitement-seek    | high  | displays enthusiasm for new experiences and events, like the new year
+E6 positive emotion    | high  | overall tone is joyful and optimistic, celebrating the new year
+O1 fantasy            | none  | no evidence of vivid imagination or daydreaming present
+O2 aesthetics         | none  | no appreciation for art or beauty expressed in the text
+O3 feelings           | mod   | shows some emotional depth with mixed feelings about homework and enjoyment of life
+O4 actions/variety    | none  | no openness to new experiences or change indicated
+O5 ideas              | none  | no intellectual curiosity or abstract thought present in the text
+O6 values             | none  | no evidence of re-examining values or norms in the writing
+A1 trust              | none  | no indications of belief in others' good intentions present
+A2 straightforward     | high  | communicates thoughts candidly and openly without manipulation
+A3 altruism           | none  | no active concern for others' welfare expressed in the text
+A4 compliance         | high  | shows low antagonism by accepting homework responsibilities without complaint
+A5 modesty            | none  | no signs of humility or low self-promotion present
+A6 tender-minded      | none  | no expressions of sympathy or empathy for others' pain
+C1 competence         | low   | expresses frustration with homework, indicating a lack of confidence in managing tasks
+C2 order              | none  | no evidence of tidiness or organization present in the text
+C3 dutifulness        | low   | shows reluctance towards homework, indicating low adherence to obligations
+C4 achievement        | low   | lacks ambition or striving for goals; primarily focused on immediate tasks
+C5 self-discipline    | low   | admits distractions and struggles to focus on homework
+C6 deliberation       | none  | no careful planning or thinking before acting evident in the writing
+
+[LINGUISTIC]
+pronouns:  high density of first-person and plural pronouns
+emotion:   positive emotions dominate, with some negative feelings about homework
+tense:     present tense is primarily used throughout the text
+cognitive: low cognitive insight; mostly straightforward expressions
+social:    moderate social-process word density, reflecting casual interactions
+register:  informal and exploratory, with a casual tone
+length:    approximately 100 words, with a mix of short and long sentences
+
+[Similar Profile 3] (label: high)
+[FACETS]
+N1 anxiety            | low  | expresses relief about no injuries; seems to cope with stress through humor
+N2 hostility          | none | 
+N3 depression         | none | 
+N4 self-conscious     | none | 
+N5 impulsiveness      | mod  | mentions drinking as a response to loss; suggests some difficulty with restraint
+N6 vulnerability       | none | 
+E1 warmth             | none | 
+E2 gregariousness     | none | 
+E3 assertiveness      | none | 
+E4 activity           | mod  | references "cabin fever," indicating restlessness or desire for activity
+E5 excitement-seek    | none | 
+E6 positive emotion    | mod  | expresses gratitude for insurance; uses humor to cope with setbacks
+O1 fantasy            | none | 
+O2 aesthetics         | none | 
+O3 feelings           | mod  | shows some emotional awareness through humor and gratitude
+O4 actions/variety    | none | 
+O5 ideas              | none | 
+O6 values             | none | 
+A1 trust              | none | 
+A2 straightforward    | high | candidly shares personal experiences without pretense
+A3 altruism           | n/e  | 
+A4 compliance         | none | 
+A5 modesty            | none | 
+A6 tender-minded      | none | 
+C1 competence         | high | demonstrates preparedness with insurance; reflects capability in handling situations
+C2 order              | none | 
+C3 dutifulness        | none | 
+C4 achievement        | none | 
+C5 self-discipline    | low  | acknowledges distractions from loss; does not seem to follow through on focus
+C6 deliberation       | none | 
+
+[LINGUISTIC]
+pronouns:  I, my, you density is moderate
+emotion:   mixed; humor and gratitude present
+tense:     present emphasis with some past references
+cognitive: low density of insight or causal reasoning
+social:    low density of social-process words
+register:  informal and exploratory
+length:    approx 50 words, mixed sentence style with low lexical diversity
+
+[Similar Profile 4] (label: low)
+[FACETS]
+N1 anxiety            | high  | expresses significant worry about back pain and academic performance; feels overwhelmed by homework.
+N2 hostility          | none  | 
+N3 depression         | mod   | mentions feeling low about potential repeating classes; expresses frustration but also moments of accomplishment.
+N4 self-conscious     | mod   | shows some embarrassment about academic struggles and social interactions, but also shares achievements.
+N5 impulsiveness      | mod   | expresses a desire to avoid responsibilities and procrastinates on homework, but also completes tasks.
+N6 vulnerability       | high  | feels overwhelmed by stress from school and physical pain; expresses a desire to escape responsibilities.
+E1 warmth             | none  | 
+E2 gregariousness     | low   | prefers solitary activities like running; limited engagement with others in social contexts.
+E3 assertiveness      | mod   | shows some leadership in sharing information with peers but also expresses uncertainty in social situations.
+E4 activity           | mod   | mentions running and practice but also indicates struggles with physical limitations.
+E5 excitement-seek    | none  | 
+E6 positive emotion    | mod   | experiences moments of joy from accomplishments but also expresses frustration and stress.
+O1 fantasy            | n/e   | 
+O2 aesthetics         | n/e   | 
+O3 feelings           | high  | demonstrates emotional depth through reflections on pain, stress, and social interactions.
+O4 actions/variety    | mod   | shows some openness to new experiences like running events but also expresses reluctance.
+O5 ideas              | n/e   | 
+O6 values             | n/e   | 
+A1 trust              | n/e   | 
+A2 straightforward    | mod   | expresses candid thoughts about struggles and frustrations but also seeks help from peers.
+A3 altruism           | n/e   | 
+A4 compliance         | mod   | shows some deference in asking for help with homework and sharing information with classmates.
+A5 modesty            | mod   | shares achievements but also downplays struggles and expresses embarrassment about academic issues.
+A6 tender-minded      | n/e   | 
+C1 competence         | mod   | feels accomplished in running but expresses doubt about academic performance.
+C2 order              | low   | shows disorganization in managing homework and responsibilities; struggles with follow-through.
+C3 dutifulness        | low   | expresses reluctance to complete assignments and a tendency to procrastinate.
+C4 achievement        | mod   | feels a sense of accomplishment in running but struggles with academic goals.
+C5 self-discipline    | low   | admits to distractions and procrastination; struggles to maintain focus on tasks.
+C6 deliberation       | mod   | shows some planning in discussing homework but often reacts impulsively to stress.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal focus.
+emotion:   negative emotions dominate, with expressions of stress and frustration.
+tense:     present tense is emphasized, reflecting immediate concerns and feelings.
+cognitive: moderate insight into personal struggles and academic challenges.
+social:    low social-process word density, indicating limited engagement with others.
+register:  informal and exploratory, with a casual tone throughout.
+length:    approximately 1,000 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 5] (label: high)
+[FACETS]
+N1 anxiety            | low  | expresses humor about bus ride dangers; shows no signs of worry or fear.
+N2 hostility          | none | no evidence of anger or resentment toward others is present.
+N3 depression         | none | no signs of sadness or hopelessness are expressed in the text.
+N4 self-conscious     | none | no indications of shame or social discomfort are evident.
+N5 impulsiveness      | mod  | mentions spontaneous activities like canoeing in a storm; some planning is implied.
+N6 vulnerability       | none | no feelings of being overwhelmed or helpless are expressed.
+E1 warmth             | high | shows affection for the Hawks and excitement about social events.
+E2 gregariousness     | mod  | enjoys social activities like parties and tailgating but also mentions dislike for mornings.
+E3 assertiveness      | none | no clear evidence of leadership or decisiveness is present.
+E4 activity           | high | describes a busy schedule with various activities and events.
+E5 excitement-seek    | high | expresses thrill about new experiences like scuba diving and traveling.
+E6 positive emotion    | high | conveys joy and enthusiasm about achievements and events.
+O1 fantasy            | mod  | some imaginative elements in descriptions but primarily grounded in reality.
+O2 aesthetics         | none | no clear appreciation for art or beauty is expressed.
+O3 feelings           | mod  | shows some emotional depth in reflections but lacks extensive introspection.
+O4 actions/variety    | high | actively seeks new experiences, such as traveling and trying new activities.
+O5 ideas              | mod  | questions the relevance of information sheets; some curiosity about broader topics.
+O6 values             | none | no evidence of re-examining values or norms is present.
+A1 trust              | none | no indications of belief in others' good intentions are evident.
+A2 straightforward     | mod  | expresses candid thoughts but lacks extensive frankness or manipulation.
+A3 altruism           | none | no active concern for others' welfare is expressed.
+A4 compliance         | mod  | shows some deference in social situations but not strongly evident.
+A5 modesty            | none | no signs of humility or low self-promotion are present.
+A6 tender-minded      | none | no evidence of empathy or sympathy for others' pain is expressed.
+C1 competence         | high | demonstrates a sense of capability by completing scuba dives and managing a busy schedule.
+C2 order              | mod  | some organization in planning activities but lacks strong evidence of tidiness.
+C3 dutifulness        | mod  | mentions obligations like proctoring an exam but does not emphasize adherence.
+C4 achievement        | high | expresses pride in completing academic and personal goals.
+C5 self-discipline    | mod  | recognizes need for focus but does not provide strong evidence of follow-through.
+C6 deliberation       | none | no clear evidence of careful planning or thinking before acting is present.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal engagement.
+emotion:   positive balance with dominant excitement and joy throughout the text.
+tense:     present emphasis with reflections on ongoing activities and experiences.
+cognitive: moderate insight with some questioning and curiosity about various topics.
+social:    moderate social-process word density reflecting engagement in social activities.
+register:  informal and exploratory, with a casual tone and varied sentence structure.
+length:    approximately 400 words, with a mix of short and long sentences and moderate lexical diversity.
+
+---
+
+Text to classify:
+A recent online exchange: Other guy: "I have to imagine it's wholly possible that someone could understand humans so well, yet be completely unable to read, write, or do math.  In today's society, people like that would be shunned.  Veritas If you can't r || "And we keep driving into the night.  It's a late goodbye, such a late goodbye.  And we keep driving into the night.  It's a late goodbye-ai-ai-yai." Staying overnight somewhere east of Toledo.  Wonder how bad I-80 will be tomorrow. || 3-hour exam tomorrow, then a day and a half (less if I drop into New York Wednesday) to pack EVERYTHING before driving out Thursday to reach Iowa on Friday.  Someone tell me I'm not insane, please. || Recidivism (n.) - 1. Committing new offenses after being punished for a crime.  2.  Chronic repetition of criminal or other antisocial behavior. Replace "criminal" with "stupid", and I think I've found my problem. || s wireless internet keeps spazzing out every five minutes.  It's really annoying.  Actually, it's more than annoying, but I haven't gotten angry enough to start using foul language. || "40 years ago, Armstrong said 'One Small Step for Man'.  When can one of us go back there and shout, 'Honey, I'm home!' or something?" || Woo-hoo!  On to Indy!  Anyone care to place an over//under on how long it'll take for some sportswriter to mention Namath or Super Bowl III? || Last night pretty much sums up my entire UChicago experience.  I don't regret going.  I regret screwing up the decisions made while there. || is going to go on a 1000 mile trip to Iowa City tomorrow and Friday.  This is going to be a long drive. || Whoa, OK, that was more emo than I had intended.  Sorry to get you guys worried.  Full details upcoming. || wishes he had an actual bed (or even a mattress).  It'd make dealing with these suspiciously-flu-like symptoms easier. || lit his fried chicken on fire and now has more stuff to clean.  Great. || is in Chicago for Uchi-con.  And somehow got stuck watching a game room AGAIN. || has found the U of Iowa anime club.  There goes my GPA. || will have a miracle if he gets an 80 on today's midterm. || has just finished his first night at reffing.  Much to improve on. || hopes the geo-pol forum-based game doesn't get him perma-banned from Japan. || has arrived at Iowa and is settling into his new apartment. || Curse you, UCJAS!!  Now I'm hooked on *PROPNAME*!!  *shakes fist* || Did the President just make a reference to the Matrix?! || "The King of Pop is dead, long live the, uh..." || has no more finals.  But it keeps going uphill. || is trying to change.  Long overdue, I suppose. || is putting the touches on his Halloween costume. || has learned nothing from 20 years of school. || My hat is off for the Colts. || is watching the Little League World Series. || has been accepted into grad school.  Finally. || is in Ottawa.  Illinois, not Canada. || passed his F//M exam.  Huzzah! || "Holy Haruhi, season 2's out?!"
+
+Reason step by step and emit your output in the EXACT XML structure
+specified in the system message:
+
+<evidence> ... </evidence>
+<facet_check> ... </facet_check>
+<example_alignment> ... </example_alignment>
+<verdict> ... </verdict>
+<label>high</label>   (or <label>low</label>)
+
+Do not output any text outside these tags.
+
+
+--- LLM RESPONSE ---
+<evidence>
+- [state] expresses concern about an upcoming "3-hour exam tomorrow," indicating a focus on responsibilities.
+- [state] mentions "a day and a half to pack EVERYTHING," showing a sense of urgency and planning for a significant task.
+- [trait] reflects on past decisions with "I regret screwing up the decisions made while there," indicating self-awareness and responsibility.
+- [state] notes "is trying to change. Long overdue, I suppose," suggesting a desire for improvement and accountability.
+- [state] expresses annoyance with "wireless internet keeps spazzing out," indicating frustration but not a lack of organization.
+</evidence>
+<facet_check>
+- competence -> high -> demonstrates capability by managing multiple tasks like exams and moving (dominant evidence type: state).
+- order -> mixed -> shows some planning (packing) but also expresses frustration with disorganization (dominant evidence type: state).
+- dutifulness -> high -> acknowledges responsibilities and expresses concern about exams and packing (dominant evidence type: state).
+- achievement -> high -> mentions being accepted into grad school, indicating goal-oriented behavior (dominant evidence type: trait).
+- self-discipline -> mixed -> shows some focus on tasks but also expresses feelings of being overwhelmed (dominant evidence type: state).
+- deliberation -> mixed -> reflects on past decisions but lacks detailed planning in the current context (dominant evidence type: state).
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <1> (label: high) because it demonstrates a strong sense of responsibility and planning, particularly in relation to upcoming exams and moving. The test text diverges from Similar Profile <2> on the axis of achievement, as it shows clear goal-oriented behavior and self-reflection.
+</example_alignment>
+<verdict>
+The overall pattern points to high Conscientiousness, as the supporting evidence primarily reflects stable traits of responsibility and goal orientation, despite some situational stress.
+</verdict>
+<label>high</label>
+================================================================================
+
+[Record number 0-Extraversion]
+--------------------------------------------------------------------------------
+--- SYSTEM PROMPT ---
+
+You are an expert in personality psychology and psychometrics.
+
+Your task is to infer a single Big Five personality trait from a user's text
+and to expose your reasoning in a strictly structured format so it can be
+audited.
+
+You will be given:
+- The target personality trait (with HIGH and LOW definitions).
+- A small set of similar texts retrieved from a labelled corpus, with
+  their known labels and extracted psychological evidence.
+
+Rules:
+- Use only evidence from the provided text. Do NOT invent details.
+- Quote or paraphrase concrete cues; abstract trait words alone are not
+  evidence.
+ — distinguish transient states from stable traits:
+    * Situational stress, fatigue, homesickness, exam pressure, or adjustment
+      to new environments (e.g. starting university) are normal context-driven
+      reactions that virtually anyone experiences. They are NOT reliable
+      evidence of high Neuroticism on their own.
+    * Trait-level evidence requires recurring, cross-situational patterns of
+      emotional instability that persist independent of an obvious external cause.
+    * Tag every evidence cue as [state] (temporary/situational) or
+      [trait] (recurring/cross-situational). Weight [trait] cues heavily;
+      treat [state] cues as weak or neutral unless they are extreme or
+      accompanied by explicit statements of habitual emotional difficulty.
+    * Expressive writing, enthusiastic tone, humor, excitement about activities,
+      strong opinions, or vivid descriptions are stylistic features only.
+      They do NOT constitute evidence of Extraversion.
+    * A person can write expressively and enthusiastically about solo hobbies,
+      intellectual interests, or activities while being deeply introverted.
+    * True Extraversion evidence requires cues about social energy and orientation:
+      actively seeking out groups or parties, gaining energy from social interaction,
+      discomfort with solitude, preferring large gatherings, or explicit statements
+      about enjoying socialising.
+    * Tag every Extraversion cue as [social-energy] (directly about seeking or
+      enjoying social interaction) or [expressive-style] (enthusiastic tone/humor
+      without social context). Weight [social-energy] cues heavily; treat
+      [expressive-style] cues as weak or neutral for Extraversion scoring.
+- Output MUST follow the XML tag structure below, in this exact order,
+  with no extra text outside the tags.
+
+Output format (replicate verbatim, fill in the contents):
+
+<evidence>
+- [state|trait] one concrete cue from the text
+- [state|trait] another concrete cue
+- ...
+</evidence>
+<facet_check>
+- facet name -> high|low|mixed -> brief reason (dominant evidence type: state|trait)
+- ...
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <i> (label: <label>) because <reason>.
+The test text diverges from Similar Profile <j> on <axis>.
+</example_alignment>
+<verdict>
+1-2 sentence synthesis of why the overall pattern points high or low,
+explicitly noting whether the supporting evidence is trait-level or
+situational/state-level.
+</verdict>
+<label>high</label>
+
+The final <label> tag MUST contain exactly one word: high or low. Nothing else.
+
+
+--- USER PROMPT ---
+
+Trait: Extraversion
+
+HIGH Extraversion: Extraverts are outgoing, energetic, talkative, assertive, enthusiastic, and gain energy from social interaction.
+LOW  Extraversion: Introverts are reserved, quiet, independent, reflective, and generally prefer solitary or small-group settings.
+
+---
+
+The following are the 5 most similar texts from the training set,
+with their known labels and extracted psychological evidence. Use them
+as calibration anchors - note how each one's cues map to its label.
+
+[Similar Profile 1] (label: low)
+[FACETS]
+N1 anxiety            | high  | expresses worry about thesis challenges and German bureaucracy frustrations.
+N2 hostility          | low   | uses humor to describe annoyances, indicating a light-hearted approach to frustrations.
+N3 depression         | mod   | mentions sadness about leaving San Jose, but overall tone is upbeat.
+N4 self-conscious     | n/e   | 
+N5 impulsiveness      | n/e   | 
+N6 vulnerability      | mod   | feels overwhelmed by the PhD application process, indicating some stress.
+E1 warmth             | low   | casual mention of others' successes, but lacks deep emotional engagement.
+E2 gregariousness     | low   | expresses a preference for solitary activities like playing music and watching movies.
+E3 assertiveness      | mod   | shows some decisiveness in planning trips and engaging with music.
+E4 activity           | mod   | mentions various activities but lacks a clear energetic pace or busy schedule.
+E5 excitement-seek    | high  | expresses enthusiasm for music and travel, indicating a desire for new experiences.
+E6 positive emotion    | high  | overall tone is joyful and optimistic, especially about music and food.
+O1 fantasy            | high  | vivid imagination evident in dreaming of food and music experiences.
+O2 aesthetics         | high  | appreciation for music and art is clear, especially in references to composers.
+O3 feelings           | mod   | some introspection about personal experiences, but not deeply explored.
+O4 actions/variety    | high  | actively engages in diverse activities like cooking, music, and travel planning.
+O5 ideas              | high  | discusses complex topics like thesis work and model selection, showing intellectual curiosity.
+O6 values             | mod   | hints at re-examining personal values through experiences but lacks depth.
+A1 trust              | n/e   | 
+A2 straightforward    | mod   | expresses thoughts candidly but with some humor, indicating a mix of frankness.
+A3 altruism           | n/e   | 
+A4 compliance         | n/e   | 
+A5 modesty            | n/e   | 
+A6 tender-minded      | n/e   | 
+C1 competence         | mod   | shows some confidence in music skills but expresses doubt about thesis work.
+C2 order              | mod   | mentions planning and organization but lacks strong evidence of structure.
+C3 dutifulness        | mod   | acknowledges obligations like PhD applications but does not emphasize adherence.
+C4 achievement        | high  | demonstrates ambition through music practice and academic pursuits.
+C5 self-discipline    | mod   | recognizes need for focus in music and studies but does not show strong follow-through.
+C6 deliberation       | mod   | reflects on decisions and plans but lacks detailed careful planning.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal engagement.
+emotion:   positive balance with dominant joy and excitement about music and food.
+tense:     present emphasis with some reflections on past experiences.
+cognitive: moderate insight with some causal connections in thoughts about challenges.
+social:    low density of social-process words, focusing more on personal experiences.
+register:  informal and exploratory, with a casual tone throughout.
+length:    approximately 300 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 2] (label: low)
+[FACETS]
+N1 anxiety            | high  | expresses frustration about homework and time constraints, indicating worry about managing tasks
+N2 hostility          | low   | no evidence of anger or resentment towards others; generally positive tone
+N3 depression         | none  | no signs of sadness or hopelessness present in the text
+N4 self-conscious     | none  | no indications of shame or social discomfort; casual tone throughout
+N5 impulsiveness      | mod   | expresses excitement and spontaneity but does not indicate difficulty in delaying urges
+N6 vulnerability       | mod   | shows some feelings of being overwhelmed by homework but maintains a positive outlook
+E1 warmth             | high  | expresses affection and friendliness towards others, wishing them a happy new year
+E2 gregariousness     | mod   | shows enjoyment in social interactions but does not explicitly seek company
+E3 assertiveness      | none  | no evidence of leadership or decisiveness; primarily reflective
+E4 activity           | mod   | mentions a busy schedule with homework but also enjoys leisure time
+E5 excitement-seek    | high  | displays enthusiasm for new experiences and events, like the new year
+E6 positive emotion    | high  | overall tone is joyful and optimistic, celebrating the new year
+O1 fantasy            | none  | no evidence of vivid imagination or daydreaming present
+O2 aesthetics         | none  | no appreciation for art or beauty expressed in the text
+O3 feelings           | mod   | shows some emotional depth with mixed feelings about homework and enjoyment of life
+O4 actions/variety    | none  | no openness to new experiences or change indicated
+O5 ideas              | none  | no intellectual curiosity or abstract thought present in the text
+O6 values             | none  | no evidence of re-examining values or norms in the writing
+A1 trust              | none  | no indications of belief in others' good intentions present
+A2 straightforward     | high  | communicates thoughts candidly and openly without manipulation
+A3 altruism           | none  | no active concern for others' welfare expressed in the text
+A4 compliance         | high  | shows low antagonism by accepting homework responsibilities without complaint
+A5 modesty            | none  | no signs of humility or low self-promotion present
+A6 tender-minded      | none  | no expressions of sympathy or empathy for others' pain
+C1 competence         | low   | expresses frustration with homework, indicating a lack of confidence in managing tasks
+C2 order              | none  | no evidence of tidiness or organization present in the text
+C3 dutifulness        | low   | shows reluctance towards homework, indicating low adherence to obligations
+C4 achievement        | low   | lacks ambition or striving for goals; primarily focused on immediate tasks
+C5 self-discipline    | low   | admits distractions and struggles to focus on homework
+C6 deliberation       | none  | no careful planning or thinking before acting evident in the writing
+
+[LINGUISTIC]
+pronouns:  high density of first-person and plural pronouns
+emotion:   positive emotions dominate, with some negative feelings about homework
+tense:     present tense is primarily used throughout the text
+cognitive: low cognitive insight; mostly straightforward expressions
+social:    moderate social-process word density, reflecting casual interactions
+register:  informal and exploratory, with a casual tone
+length:    approximately 100 words, with a mix of short and long sentences
+
+[Similar Profile 3] (label: low)
+[FACETS]
+N1 anxiety            | low  | expresses relief about no injuries; seems to cope with stress through humor
+N2 hostility          | none | 
+N3 depression         | none | 
+N4 self-conscious     | none | 
+N5 impulsiveness      | mod  | mentions drinking as a response to loss; suggests some difficulty with restraint
+N6 vulnerability       | none | 
+E1 warmth             | none | 
+E2 gregariousness     | none | 
+E3 assertiveness      | none | 
+E4 activity           | mod  | references "cabin fever," indicating restlessness or desire for activity
+E5 excitement-seek    | none | 
+E6 positive emotion    | mod  | expresses gratitude for insurance; uses humor to cope with setbacks
+O1 fantasy            | none | 
+O2 aesthetics         | none | 
+O3 feelings           | mod  | shows some emotional awareness through humor and gratitude
+O4 actions/variety    | none | 
+O5 ideas              | none | 
+O6 values             | none | 
+A1 trust              | none | 
+A2 straightforward    | high | candidly shares personal experiences without pretense
+A3 altruism           | n/e  | 
+A4 compliance         | none | 
+A5 modesty            | none | 
+A6 tender-minded      | none | 
+C1 competence         | high | demonstrates preparedness with insurance; reflects capability in handling situations
+C2 order              | none | 
+C3 dutifulness        | none | 
+C4 achievement        | none | 
+C5 self-discipline    | low  | acknowledges distractions from loss; does not seem to follow through on focus
+C6 deliberation       | none | 
+
+[LINGUISTIC]
+pronouns:  I, my, you density is moderate
+emotion:   mixed; humor and gratitude present
+tense:     present emphasis with some past references
+cognitive: low density of insight or causal reasoning
+social:    low density of social-process words
+register:  informal and exploratory
+length:    approx 50 words, mixed sentence style with low lexical diversity
+
+[Similar Profile 4] (label: low)
+[FACETS]
+N1 anxiety            | high  | expresses significant worry about back pain and academic performance; feels overwhelmed by homework.
+N2 hostility          | none  | 
+N3 depression         | mod   | mentions feeling low about potential repeating classes; expresses frustration but also moments of accomplishment.
+N4 self-conscious     | mod   | shows some embarrassment about academic struggles and social interactions, but also shares achievements.
+N5 impulsiveness      | mod   | expresses a desire to avoid responsibilities and procrastinates on homework, but also completes tasks.
+N6 vulnerability       | high  | feels overwhelmed by stress from school and physical pain; expresses a desire to escape responsibilities.
+E1 warmth             | none  | 
+E2 gregariousness     | low   | prefers solitary activities like running; limited engagement with others in social contexts.
+E3 assertiveness      | mod   | shows some leadership in sharing information with peers but also expresses uncertainty in social situations.
+E4 activity           | mod   | mentions running and practice but also indicates struggles with physical limitations.
+E5 excitement-seek    | none  | 
+E6 positive emotion    | mod   | experiences moments of joy from accomplishments but also expresses frustration and stress.
+O1 fantasy            | n/e   | 
+O2 aesthetics         | n/e   | 
+O3 feelings           | high  | demonstrates emotional depth through reflections on pain, stress, and social interactions.
+O4 actions/variety    | mod   | shows some openness to new experiences like running events but also expresses reluctance.
+O5 ideas              | n/e   | 
+O6 values             | n/e   | 
+A1 trust              | n/e   | 
+A2 straightforward    | mod   | expresses candid thoughts about struggles and frustrations but also seeks help from peers.
+A3 altruism           | n/e   | 
+A4 compliance         | mod   | shows some deference in asking for help with homework and sharing information with classmates.
+A5 modesty            | mod   | shares achievements but also downplays struggles and expresses embarrassment about academic issues.
+A6 tender-minded      | n/e   | 
+C1 competence         | mod   | feels accomplished in running but expresses doubt about academic performance.
+C2 order              | low   | shows disorganization in managing homework and responsibilities; struggles with follow-through.
+C3 dutifulness        | low   | expresses reluctance to complete assignments and a tendency to procrastinate.
+C4 achievement        | mod   | feels a sense of accomplishment in running but struggles with academic goals.
+C5 self-discipline    | low   | admits to distractions and procrastination; struggles to maintain focus on tasks.
+C6 deliberation       | mod   | shows some planning in discussing homework but often reacts impulsively to stress.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal focus.
+emotion:   negative emotions dominate, with expressions of stress and frustration.
+tense:     present tense is emphasized, reflecting immediate concerns and feelings.
+cognitive: moderate insight into personal struggles and academic challenges.
+social:    low social-process word density, indicating limited engagement with others.
+register:  informal and exploratory, with a casual tone throughout.
+length:    approximately 1,000 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 5] (label: low)
+[FACETS]
+N1 anxiety            | low  | expresses humor about bus ride dangers; shows no signs of worry or fear.
+N2 hostility          | none | no evidence of anger or resentment toward others is present.
+N3 depression         | none | no signs of sadness or hopelessness are expressed in the text.
+N4 self-conscious     | none | no indications of shame or social discomfort are evident.
+N5 impulsiveness      | mod  | mentions spontaneous activities like canoeing in a storm; some planning is implied.
+N6 vulnerability       | none | no feelings of being overwhelmed or helpless are expressed.
+E1 warmth             | high | shows affection for the Hawks and excitement about social events.
+E2 gregariousness     | mod  | enjoys social activities like parties and tailgating but also mentions dislike for mornings.
+E3 assertiveness      | none | no clear evidence of leadership or decisiveness is present.
+E4 activity           | high | describes a busy schedule with various activities and events.
+E5 excitement-seek    | high | expresses thrill about new experiences like scuba diving and traveling.
+E6 positive emotion    | high | conveys joy and enthusiasm about achievements and events.
+O1 fantasy            | mod  | some imaginative elements in descriptions but primarily grounded in reality.
+O2 aesthetics         | none | no clear appreciation for art or beauty is expressed.
+O3 feelings           | mod  | shows some emotional depth in reflections but lacks extensive introspection.
+O4 actions/variety    | high | actively seeks new experiences, such as traveling and trying new activities.
+O5 ideas              | mod  | questions the relevance of information sheets; some curiosity about broader topics.
+O6 values             | none | no evidence of re-examining values or norms is present.
+A1 trust              | none | no indications of belief in others' good intentions are evident.
+A2 straightforward     | mod  | expresses candid thoughts but lacks extensive frankness or manipulation.
+A3 altruism           | none | no active concern for others' welfare is expressed.
+A4 compliance         | mod  | shows some deference in social situations but not strongly evident.
+A5 modesty            | none | no signs of humility or low self-promotion are present.
+A6 tender-minded      | none | no evidence of empathy or sympathy for others' pain is expressed.
+C1 competence         | high | demonstrates a sense of capability by completing scuba dives and managing a busy schedule.
+C2 order              | mod  | some organization in planning activities but lacks strong evidence of tidiness.
+C3 dutifulness        | mod  | mentions obligations like proctoring an exam but does not emphasize adherence.
+C4 achievement        | high | expresses pride in completing academic and personal goals.
+C5 self-discipline    | mod  | recognizes need for focus but does not provide strong evidence of follow-through.
+C6 deliberation       | none | no clear evidence of careful planning or thinking before acting is present.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal engagement.
+emotion:   positive balance with dominant excitement and joy throughout the text.
+tense:     present emphasis with reflections on ongoing activities and experiences.
+cognitive: moderate insight with some questioning and curiosity about various topics.
+social:    moderate social-process word density reflecting engagement in social activities.
+register:  informal and exploratory, with a casual tone and varied sentence structure.
+length:    approximately 400 words, with a mix of short and long sentences and moderate lexical diversity.
+
+---
+
+Text to classify:
+A recent online exchange: Other guy: "I have to imagine it's wholly possible that someone could understand humans so well, yet be completely unable to read, write, or do math.  In today's society, people like that would be shunned.  Veritas If you can't r || "And we keep driving into the night.  It's a late goodbye, such a late goodbye.  And we keep driving into the night.  It's a late goodbye-ai-ai-yai." Staying overnight somewhere east of Toledo.  Wonder how bad I-80 will be tomorrow. || 3-hour exam tomorrow, then a day and a half (less if I drop into New York Wednesday) to pack EVERYTHING before driving out Thursday to reach Iowa on Friday.  Someone tell me I'm not insane, please. || Recidivism (n.) - 1. Committing new offenses after being punished for a crime.  2.  Chronic repetition of criminal or other antisocial behavior. Replace "criminal" with "stupid", and I think I've found my problem. || s wireless internet keeps spazzing out every five minutes.  It's really annoying.  Actually, it's more than annoying, but I haven't gotten angry enough to start using foul language. || "40 years ago, Armstrong said 'One Small Step for Man'.  When can one of us go back there and shout, 'Honey, I'm home!' or something?" || Woo-hoo!  On to Indy!  Anyone care to place an over//under on how long it'll take for some sportswriter to mention Namath or Super Bowl III? || Last night pretty much sums up my entire UChicago experience.  I don't regret going.  I regret screwing up the decisions made while there. || is going to go on a 1000 mile trip to Iowa City tomorrow and Friday.  This is going to be a long drive. || Whoa, OK, that was more emo than I had intended.  Sorry to get you guys worried.  Full details upcoming. || wishes he had an actual bed (or even a mattress).  It'd make dealing with these suspiciously-flu-like symptoms easier. || lit his fried chicken on fire and now has more stuff to clean.  Great. || is in Chicago for Uchi-con.  And somehow got stuck watching a game room AGAIN. || has found the U of Iowa anime club.  There goes my GPA. || will have a miracle if he gets an 80 on today's midterm. || has just finished his first night at reffing.  Much to improve on. || hopes the geo-pol forum-based game doesn't get him perma-banned from Japan. || has arrived at Iowa and is settling into his new apartment. || Curse you, UCJAS!!  Now I'm hooked on *PROPNAME*!!  *shakes fist* || Did the President just make a reference to the Matrix?! || "The King of Pop is dead, long live the, uh..." || has no more finals.  But it keeps going uphill. || is trying to change.  Long overdue, I suppose. || is putting the touches on his Halloween costume. || has learned nothing from 20 years of school. || My hat is off for the Colts. || is watching the Little League World Series. || has been accepted into grad school.  Finally. || is in Ottawa.  Illinois, not Canada. || passed his F//M exam.  Huzzah! || "Holy Haruhi, season 2's out?!"
+
+Reason step by step and emit your output in the EXACT XML structure
+specified in the system message:
+
+<evidence> ... </evidence>
+<facet_check> ... </facet_check>
+<example_alignment> ... </example_alignment>
+<verdict> ... </verdict>
+<label>high</label>   (or <label>low</label>)
+
+Do not output any text outside these tags.
+
+
+--- LLM RESPONSE ---
+<evidence>
+- [state] expresses a desire for reassurance about sanity regarding upcoming tasks ("Someone tell me I'm not insane, please.")
+- [state] mentions feeling overwhelmed by the amount of packing and travel ("3-hour exam tomorrow, then a day and a half... to pack EVERYTHING before driving out Thursday.")
+- [state] shows annoyance with technology ("s wireless internet keeps spazzing out every five minutes. It's really annoying.")
+- [state] reflects on past experiences with a hint of regret ("Last night pretty much sums up my entire UChicago experience. I don't regret going. I regret screwing up the decisions made while there.")
+- [state] expresses excitement about a trip ("Woo-hoo! On to Indy!")
+- [state] shares a humorous anecdote about cooking ("lit his fried chicken on fire and now has more stuff to clean.")
+</evidence>
+<facet_check>
+- E1 warmth -> low -> lacks expressions of affection or friendliness towards others.
+- E2 gregariousness -> low -> does not show enjoyment in social interactions or actively seek company.
+- E3 assertiveness -> low -> no evidence of leadership or decisiveness in social contexts.
+- E4 activity -> mod -> mentions various activities but lacks a clear energetic pace or busy schedule.
+- E5 excitement-seek -> high -> expresses enthusiasm for travel and experiences ("Woo-hoo! On to Indy!")
+- E6 positive emotion -> mod -> overall tone includes both positive and negative emotions, with some humor.
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <1> (label: <low>) because it shows a lack of social engagement and warmth, with a focus on personal experiences and tasks. The test text diverges from Similar Profile <5> on the axis of social energy, as it does not actively seek out social interactions or express enjoyment in them.
+</example_alignment>
+<verdict>
+The overall pattern points low for Extraversion, as the evidence primarily reflects situational states of stress and personal reflection rather than consistent social engagement or enjoyment of social interactions.
+</verdict>
+<label>low</label>
+================================================================================
+
+[Record number 0-Agreeableness]
+--------------------------------------------------------------------------------
+--- SYSTEM PROMPT ---
+
+You are an expert in personality psychology and psychometrics.
+
+Your task is to infer a single Big Five personality trait from a user's text
+and to expose your reasoning in a strictly structured format so it can be
+audited.
+
+You will be given:
+- The target personality trait (with HIGH and LOW definitions).
+- A small set of similar texts retrieved from a labelled corpus, with
+  their known labels and extracted psychological evidence.
+
+Rules:
+- Use only evidence from the provided text. Do NOT invent details.
+- Quote or paraphrase concrete cues; abstract trait words alone are not
+  evidence.
+ — distinguish transient states from stable traits:
+    * Situational stress, fatigue, homesickness, exam pressure, or adjustment
+      to new environments (e.g. starting university) are normal context-driven
+      reactions that virtually anyone experiences. They are NOT reliable
+      evidence of high Neuroticism on their own.
+    * Trait-level evidence requires recurring, cross-situational patterns of
+      emotional instability that persist independent of an obvious external cause.
+    * Tag every evidence cue as [state] (temporary/situational) or
+      [trait] (recurring/cross-situational). Weight [trait] cues heavily;
+      treat [state] cues as weak or neutral unless they are extreme or
+      accompanied by explicit statements of habitual emotional difficulty.
+    * Expressive writing, enthusiastic tone, humor, excitement about activities,
+      strong opinions, or vivid descriptions are stylistic features only.
+      They do NOT constitute evidence of Extraversion.
+    * A person can write expressively and enthusiastically about solo hobbies,
+      intellectual interests, or activities while being deeply introverted.
+    * True Extraversion evidence requires cues about social energy and orientation:
+      actively seeking out groups or parties, gaining energy from social interaction,
+      discomfort with solitude, preferring large gatherings, or explicit statements
+      about enjoying socialising.
+    * Tag every Extraversion cue as [social-energy] (directly about seeking or
+      enjoying social interaction) or [expressive-style] (enthusiastic tone/humor
+      without social context). Weight [social-energy] cues heavily; treat
+      [expressive-style] cues as weak or neutral for Extraversion scoring.
+- Output MUST follow the XML tag structure below, in this exact order,
+  with no extra text outside the tags.
+
+Output format (replicate verbatim, fill in the contents):
+
+<evidence>
+- [state|trait] one concrete cue from the text
+- [state|trait] another concrete cue
+- ...
+</evidence>
+<facet_check>
+- facet name -> high|low|mixed -> brief reason (dominant evidence type: state|trait)
+- ...
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <i> (label: <label>) because <reason>.
+The test text diverges from Similar Profile <j> on <axis>.
+</example_alignment>
+<verdict>
+1-2 sentence synthesis of why the overall pattern points high or low,
+explicitly noting whether the supporting evidence is trait-level or
+situational/state-level.
+</verdict>
+<label>high</label>
+
+The final <label> tag MUST contain exactly one word: high or low. Nothing else.
+
+
+--- USER PROMPT ---
+
+Trait: Agreeableness
+
+HIGH Agreeableness: Highly agreeable individuals are compassionate, cooperative, trusting, altruistic, sympathetic, and eager to help others.
+LOW  Agreeableness: Low Agreeableness is characterized by skepticism, competitiveness, bluntness, self-interest, and reduced concern for interpersonal harmony.
+
+---
+
+The following are the 5 most similar texts from the training set,
+with their known labels and extracted psychological evidence. Use them
+as calibration anchors - note how each one's cues map to its label.
+
+[Similar Profile 1] (label: low)
+[FACETS]
+N1 anxiety            | high  | expresses worry about thesis challenges and German bureaucracy frustrations.
+N2 hostility          | low   | uses humor to describe annoyances, indicating a light-hearted approach to frustrations.
+N3 depression         | mod   | mentions sadness about leaving San Jose, but overall tone is upbeat.
+N4 self-conscious     | n/e   | 
+N5 impulsiveness      | n/e   | 
+N6 vulnerability      | mod   | feels overwhelmed by the PhD application process, indicating some stress.
+E1 warmth             | low   | casual mention of others' successes, but lacks deep emotional engagement.
+E2 gregariousness     | low   | expresses a preference for solitary activities like playing music and watching movies.
+E3 assertiveness      | mod   | shows some decisiveness in planning trips and engaging with music.
+E4 activity           | mod   | mentions various activities but lacks a clear energetic pace or busy schedule.
+E5 excitement-seek    | high  | expresses enthusiasm for music and travel, indicating a desire for new experiences.
+E6 positive emotion    | high  | overall tone is joyful and optimistic, especially about music and food.
+O1 fantasy            | high  | vivid imagination evident in dreaming of food and music experiences.
+O2 aesthetics         | high  | appreciation for music and art is clear, especially in references to composers.
+O3 feelings           | mod   | some introspection about personal experiences, but not deeply explored.
+O4 actions/variety    | high  | actively engages in diverse activities like cooking, music, and travel planning.
+O5 ideas              | high  | discusses complex topics like thesis work and model selection, showing intellectual curiosity.
+O6 values             | mod   | hints at re-examining personal values through experiences but lacks depth.
+A1 trust              | n/e   | 
+A2 straightforward    | mod   | expresses thoughts candidly but with some humor, indicating a mix of frankness.
+A3 altruism           | n/e   | 
+A4 compliance         | n/e   | 
+A5 modesty            | n/e   | 
+A6 tender-minded      | n/e   | 
+C1 competence         | mod   | shows some confidence in music skills but expresses doubt about thesis work.
+C2 order              | mod   | mentions planning and organization but lacks strong evidence of structure.
+C3 dutifulness        | mod   | acknowledges obligations like PhD applications but does not emphasize adherence.
+C4 achievement        | high  | demonstrates ambition through music practice and academic pursuits.
+C5 self-discipline    | mod   | recognizes need for focus in music and studies but does not show strong follow-through.
+C6 deliberation       | mod   | reflects on decisions and plans but lacks detailed careful planning.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal engagement.
+emotion:   positive balance with dominant joy and excitement about music and food.
+tense:     present emphasis with some reflections on past experiences.
+cognitive: moderate insight with some causal connections in thoughts about challenges.
+social:    low density of social-process words, focusing more on personal experiences.
+register:  informal and exploratory, with a casual tone throughout.
+length:    approximately 300 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 2] (label: high)
+[FACETS]
+N1 anxiety            | high  | expresses frustration about homework and time constraints, indicating worry about managing tasks
+N2 hostility          | low   | no evidence of anger or resentment towards others; generally positive tone
+N3 depression         | none  | no signs of sadness or hopelessness present in the text
+N4 self-conscious     | none  | no indications of shame or social discomfort; casual tone throughout
+N5 impulsiveness      | mod   | expresses excitement and spontaneity but does not indicate difficulty in delaying urges
+N6 vulnerability       | mod   | shows some feelings of being overwhelmed by homework but maintains a positive outlook
+E1 warmth             | high  | expresses affection and friendliness towards others, wishing them a happy new year
+E2 gregariousness     | mod   | shows enjoyment in social interactions but does not explicitly seek company
+E3 assertiveness      | none  | no evidence of leadership or decisiveness; primarily reflective
+E4 activity           | mod   | mentions a busy schedule with homework but also enjoys leisure time
+E5 excitement-seek    | high  | displays enthusiasm for new experiences and events, like the new year
+E6 positive emotion    | high  | overall tone is joyful and optimistic, celebrating the new year
+O1 fantasy            | none  | no evidence of vivid imagination or daydreaming present
+O2 aesthetics         | none  | no appreciation for art or beauty expressed in the text
+O3 feelings           | mod   | shows some emotional depth with mixed feelings about homework and enjoyment of life
+O4 actions/variety    | none  | no openness to new experiences or change indicated
+O5 ideas              | none  | no intellectual curiosity or abstract thought present in the text
+O6 values             | none  | no evidence of re-examining values or norms in the writing
+A1 trust              | none  | no indications of belief in others' good intentions present
+A2 straightforward     | high  | communicates thoughts candidly and openly without manipulation
+A3 altruism           | none  | no active concern for others' welfare expressed in the text
+A4 compliance         | high  | shows low antagonism by accepting homework responsibilities without complaint
+A5 modesty            | none  | no signs of humility or low self-promotion present
+A6 tender-minded      | none  | no expressions of sympathy or empathy for others' pain
+C1 competence         | low   | expresses frustration with homework, indicating a lack of confidence in managing tasks
+C2 order              | none  | no evidence of tidiness or organization present in the text
+C3 dutifulness        | low   | shows reluctance towards homework, indicating low adherence to obligations
+C4 achievement        | low   | lacks ambition or striving for goals; primarily focused on immediate tasks
+C5 self-discipline    | low   | admits distractions and struggles to focus on homework
+C6 deliberation       | none  | no careful planning or thinking before acting evident in the writing
+
+[LINGUISTIC]
+pronouns:  high density of first-person and plural pronouns
+emotion:   positive emotions dominate, with some negative feelings about homework
+tense:     present tense is primarily used throughout the text
+cognitive: low cognitive insight; mostly straightforward expressions
+social:    moderate social-process word density, reflecting casual interactions
+register:  informal and exploratory, with a casual tone
+length:    approximately 100 words, with a mix of short and long sentences
+
+[Similar Profile 3] (label: low)
+[FACETS]
+N1 anxiety            | low  | expresses relief about no injuries; seems to cope with stress through humor
+N2 hostility          | none | 
+N3 depression         | none | 
+N4 self-conscious     | none | 
+N5 impulsiveness      | mod  | mentions drinking as a response to loss; suggests some difficulty with restraint
+N6 vulnerability       | none | 
+E1 warmth             | none | 
+E2 gregariousness     | none | 
+E3 assertiveness      | none | 
+E4 activity           | mod  | references "cabin fever," indicating restlessness or desire for activity
+E5 excitement-seek    | none | 
+E6 positive emotion    | mod  | expresses gratitude for insurance; uses humor to cope with setbacks
+O1 fantasy            | none | 
+O2 aesthetics         | none | 
+O3 feelings           | mod  | shows some emotional awareness through humor and gratitude
+O4 actions/variety    | none | 
+O5 ideas              | none | 
+O6 values             | none | 
+A1 trust              | none | 
+A2 straightforward    | high | candidly shares personal experiences without pretense
+A3 altruism           | n/e  | 
+A4 compliance         | none | 
+A5 modesty            | none | 
+A6 tender-minded      | none | 
+C1 competence         | high | demonstrates preparedness with insurance; reflects capability in handling situations
+C2 order              | none | 
+C3 dutifulness        | none | 
+C4 achievement        | none | 
+C5 self-discipline    | low  | acknowledges distractions from loss; does not seem to follow through on focus
+C6 deliberation       | none | 
+
+[LINGUISTIC]
+pronouns:  I, my, you density is moderate
+emotion:   mixed; humor and gratitude present
+tense:     present emphasis with some past references
+cognitive: low density of insight or causal reasoning
+social:    low density of social-process words
+register:  informal and exploratory
+length:    approx 50 words, mixed sentence style with low lexical diversity
+
+[Similar Profile 4] (label: low)
+[FACETS]
+N1 anxiety            | high  | expresses significant worry about back pain and academic performance; feels overwhelmed by homework.
+N2 hostility          | none  | 
+N3 depression         | mod   | mentions feeling low about potential repeating classes; expresses frustration but also moments of accomplishment.
+N4 self-conscious     | mod   | shows some embarrassment about academic struggles and social interactions, but also shares achievements.
+N5 impulsiveness      | mod   | expresses a desire to avoid responsibilities and procrastinates on homework, but also completes tasks.
+N6 vulnerability       | high  | feels overwhelmed by stress from school and physical pain; expresses a desire to escape responsibilities.
+E1 warmth             | none  | 
+E2 gregariousness     | low   | prefers solitary activities like running; limited engagement with others in social contexts.
+E3 assertiveness      | mod   | shows some leadership in sharing information with peers but also expresses uncertainty in social situations.
+E4 activity           | mod   | mentions running and practice but also indicates struggles with physical limitations.
+E5 excitement-seek    | none  | 
+E6 positive emotion    | mod   | experiences moments of joy from accomplishments but also expresses frustration and stress.
+O1 fantasy            | n/e   | 
+O2 aesthetics         | n/e   | 
+O3 feelings           | high  | demonstrates emotional depth through reflections on pain, stress, and social interactions.
+O4 actions/variety    | mod   | shows some openness to new experiences like running events but also expresses reluctance.
+O5 ideas              | n/e   | 
+O6 values             | n/e   | 
+A1 trust              | n/e   | 
+A2 straightforward    | mod   | expresses candid thoughts about struggles and frustrations but also seeks help from peers.
+A3 altruism           | n/e   | 
+A4 compliance         | mod   | shows some deference in asking for help with homework and sharing information with classmates.
+A5 modesty            | mod   | shares achievements but also downplays struggles and expresses embarrassment about academic issues.
+A6 tender-minded      | n/e   | 
+C1 competence         | mod   | feels accomplished in running but expresses doubt about academic performance.
+C2 order              | low   | shows disorganization in managing homework and responsibilities; struggles with follow-through.
+C3 dutifulness        | low   | expresses reluctance to complete assignments and a tendency to procrastinate.
+C4 achievement        | mod   | feels a sense of accomplishment in running but struggles with academic goals.
+C5 self-discipline    | low   | admits to distractions and procrastination; struggles to maintain focus on tasks.
+C6 deliberation       | mod   | shows some planning in discussing homework but often reacts impulsively to stress.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal focus.
+emotion:   negative emotions dominate, with expressions of stress and frustration.
+tense:     present tense is emphasized, reflecting immediate concerns and feelings.
+cognitive: moderate insight into personal struggles and academic challenges.
+social:    low social-process word density, indicating limited engagement with others.
+register:  informal and exploratory, with a casual tone throughout.
+length:    approximately 1,000 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 5] (label: high)
+[FACETS]
+N1 anxiety            | low  | expresses humor about bus ride dangers; shows no signs of worry or fear.
+N2 hostility          | none | no evidence of anger or resentment toward others is present.
+N3 depression         | none | no signs of sadness or hopelessness are expressed in the text.
+N4 self-conscious     | none | no indications of shame or social discomfort are evident.
+N5 impulsiveness      | mod  | mentions spontaneous activities like canoeing in a storm; some planning is implied.
+N6 vulnerability       | none | no feelings of being overwhelmed or helpless are expressed.
+E1 warmth             | high | shows affection for the Hawks and excitement about social events.
+E2 gregariousness     | mod  | enjoys social activities like parties and tailgating but also mentions dislike for mornings.
+E3 assertiveness      | none | no clear evidence of leadership or decisiveness is present.
+E4 activity           | high | describes a busy schedule with various activities and events.
+E5 excitement-seek    | high | expresses thrill about new experiences like scuba diving and traveling.
+E6 positive emotion    | high | conveys joy and enthusiasm about achievements and events.
+O1 fantasy            | mod  | some imaginative elements in descriptions but primarily grounded in reality.
+O2 aesthetics         | none | no clear appreciation for art or beauty is expressed.
+O3 feelings           | mod  | shows some emotional depth in reflections but lacks extensive introspection.
+O4 actions/variety    | high | actively seeks new experiences, such as traveling and trying new activities.
+O5 ideas              | mod  | questions the relevance of information sheets; some curiosity about broader topics.
+O6 values             | none | no evidence of re-examining values or norms is present.
+A1 trust              | none | no indications of belief in others' good intentions are evident.
+A2 straightforward     | mod  | expresses candid thoughts but lacks extensive frankness or manipulation.
+A3 altruism           | none | no active concern for others' welfare is expressed.
+A4 compliance         | mod  | shows some deference in social situations but not strongly evident.
+A5 modesty            | none | no signs of humility or low self-promotion are present.
+A6 tender-minded      | none | no evidence of empathy or sympathy for others' pain is expressed.
+C1 competence         | high | demonstrates a sense of capability by completing scuba dives and managing a busy schedule.
+C2 order              | mod  | some organization in planning activities but lacks strong evidence of tidiness.
+C3 dutifulness        | mod  | mentions obligations like proctoring an exam but does not emphasize adherence.
+C4 achievement        | high | expresses pride in completing academic and personal goals.
+C5 self-discipline    | mod  | recognizes need for focus but does not provide strong evidence of follow-through.
+C6 deliberation       | none | no clear evidence of careful planning or thinking before acting is present.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal engagement.
+emotion:   positive balance with dominant excitement and joy throughout the text.
+tense:     present emphasis with reflections on ongoing activities and experiences.
+cognitive: moderate insight with some questioning and curiosity about various topics.
+social:    moderate social-process word density reflecting engagement in social activities.
+register:  informal and exploratory, with a casual tone and varied sentence structure.
+length:    approximately 400 words, with a mix of short and long sentences and moderate lexical diversity.
+
+---
+
+Text to classify:
+A recent online exchange: Other guy: "I have to imagine it's wholly possible that someone could understand humans so well, yet be completely unable to read, write, or do math.  In today's society, people like that would be shunned.  Veritas If you can't r || "And we keep driving into the night.  It's a late goodbye, such a late goodbye.  And we keep driving into the night.  It's a late goodbye-ai-ai-yai." Staying overnight somewhere east of Toledo.  Wonder how bad I-80 will be tomorrow. || 3-hour exam tomorrow, then a day and a half (less if I drop into New York Wednesday) to pack EVERYTHING before driving out Thursday to reach Iowa on Friday.  Someone tell me I'm not insane, please. || Recidivism (n.) - 1. Committing new offenses after being punished for a crime.  2.  Chronic repetition of criminal or other antisocial behavior. Replace "criminal" with "stupid", and I think I've found my problem. || s wireless internet keeps spazzing out every five minutes.  It's really annoying.  Actually, it's more than annoying, but I haven't gotten angry enough to start using foul language. || "40 years ago, Armstrong said 'One Small Step for Man'.  When can one of us go back there and shout, 'Honey, I'm home!' or something?" || Woo-hoo!  On to Indy!  Anyone care to place an over//under on how long it'll take for some sportswriter to mention Namath or Super Bowl III? || Last night pretty much sums up my entire UChicago experience.  I don't regret going.  I regret screwing up the decisions made while there. || is going to go on a 1000 mile trip to Iowa City tomorrow and Friday.  This is going to be a long drive. || Whoa, OK, that was more emo than I had intended.  Sorry to get you guys worried.  Full details upcoming. || wishes he had an actual bed (or even a mattress).  It'd make dealing with these suspiciously-flu-like symptoms easier. || lit his fried chicken on fire and now has more stuff to clean.  Great. || is in Chicago for Uchi-con.  And somehow got stuck watching a game room AGAIN. || has found the U of Iowa anime club.  There goes my GPA. || will have a miracle if he gets an 80 on today's midterm. || has just finished his first night at reffing.  Much to improve on. || hopes the geo-pol forum-based game doesn't get him perma-banned from Japan. || has arrived at Iowa and is settling into his new apartment. || Curse you, UCJAS!!  Now I'm hooked on *PROPNAME*!!  *shakes fist* || Did the President just make a reference to the Matrix?! || "The King of Pop is dead, long live the, uh..." || has no more finals.  But it keeps going uphill. || is trying to change.  Long overdue, I suppose. || is putting the touches on his Halloween costume. || has learned nothing from 20 years of school. || My hat is off for the Colts. || is watching the Little League World Series. || has been accepted into grad school.  Finally. || is in Ottawa.  Illinois, not Canada. || passed his F//M exam.  Huzzah! || "Holy Haruhi, season 2's out?!"
+
+Reason step by step and emit your output in the EXACT XML structure
+specified in the system message:
+
+<evidence> ... </evidence>
+<facet_check> ... </facet_check>
+<example_alignment> ... </example_alignment>
+<verdict> ... </verdict>
+<label>high</label>   (or <label>low</label>)
+
+Do not output any text outside these tags.
+
+
+--- LLM RESPONSE ---
+<evidence>
+- [state] expresses concern about being perceived as "insane" due to upcoming responsibilities, indicating a desire for reassurance from others.
+- [state] mentions feeling "emo" and apologizes for worrying others, showing awareness of others' feelings and a desire to maintain harmony.
+- [trait] reflects on past decisions with regret, indicating a level of introspection and concern for interpersonal relationships.
+- [state] expresses annoyance with internet issues but does not resort to anger, suggesting a level of patience and consideration for others' experiences.
+- [state] shares excitement about a trip and engages with others in a light-hearted manner, indicating a willingness to connect.
+</evidence>
+<facet_check>
+- trust -> high -> expresses a desire for reassurance and connection with others (dominant evidence type: state)
+- straightforward -> high -> candidly shares personal experiences and feelings without pretense (dominant evidence type: trait)
+- altruism -> high -> shows concern for how his emotional state affects others, indicating a caring nature (dominant evidence type: trait)
+- compliance -> high -> expresses a willingness to adapt and engage with others' expectations (dominant evidence type: trait)
+- tender-minded -> high -> demonstrates empathy by acknowledging the emotional impact of his words on others (dominant evidence type: trait)
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <2> (label: <high>) because it shows a strong inclination towards empathy, concern for others, and a willingness to connect emotionally. The test text diverges from Similar Profile <1> on the axis of interpersonal warmth and altruism.
+</example_alignment>
+<verdict>
+The overall pattern points to high Agreeableness, as the supporting evidence primarily reflects stable traits of empathy, concern for others, and a desire for interpersonal harmony.
+</verdict>
+<label>high</label>
+================================================================================
+
+[Record number 0-Neuroticism]
+--------------------------------------------------------------------------------
+--- SYSTEM PROMPT ---
+
+You are an expert in personality psychology and psychometrics.
+
+Your task is to infer a single Big Five personality trait from a user's text
+and to expose your reasoning in a strictly structured format so it can be
+audited.
+
+You will be given:
+- The target personality trait (with HIGH and LOW definitions).
+- A small set of similar texts retrieved from a labelled corpus, with
+  their known labels and extracted psychological evidence.
+
+Rules:
+- Use only evidence from the provided text. Do NOT invent details.
+- Quote or paraphrase concrete cues; abstract trait words alone are not
+  evidence.
+ — distinguish transient states from stable traits:
+    * Situational stress, fatigue, homesickness, exam pressure, or adjustment
+      to new environments (e.g. starting university) are normal context-driven
+      reactions that virtually anyone experiences. They are NOT reliable
+      evidence of high Neuroticism on their own.
+    * Trait-level evidence requires recurring, cross-situational patterns of
+      emotional instability that persist independent of an obvious external cause.
+    * Tag every evidence cue as [state] (temporary/situational) or
+      [trait] (recurring/cross-situational). Weight [trait] cues heavily;
+      treat [state] cues as weak or neutral unless they are extreme or
+      accompanied by explicit statements of habitual emotional difficulty.
+    * Expressive writing, enthusiastic tone, humor, excitement about activities,
+      strong opinions, or vivid descriptions are stylistic features only.
+      They do NOT constitute evidence of Extraversion.
+    * A person can write expressively and enthusiastically about solo hobbies,
+      intellectual interests, or activities while being deeply introverted.
+    * True Extraversion evidence requires cues about social energy and orientation:
+      actively seeking out groups or parties, gaining energy from social interaction,
+      discomfort with solitude, preferring large gatherings, or explicit statements
+      about enjoying socialising.
+    * Tag every Extraversion cue as [social-energy] (directly about seeking or
+      enjoying social interaction) or [expressive-style] (enthusiastic tone/humor
+      without social context). Weight [social-energy] cues heavily; treat
+      [expressive-style] cues as weak or neutral for Extraversion scoring.
+- Output MUST follow the XML tag structure below, in this exact order,
+  with no extra text outside the tags.
+
+Output format (replicate verbatim, fill in the contents):
+
+<evidence>
+- [state|trait] one concrete cue from the text
+- [state|trait] another concrete cue
+- ...
+</evidence>
+<facet_check>
+- facet name -> high|low|mixed -> brief reason (dominant evidence type: state|trait)
+- ...
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <i> (label: <label>) because <reason>.
+The test text diverges from Similar Profile <j> on <axis>.
+</example_alignment>
+<verdict>
+1-2 sentence synthesis of why the overall pattern points high or low,
+explicitly noting whether the supporting evidence is trait-level or
+situational/state-level.
+</verdict>
+<label>high</label>
+
+The final <label> tag MUST contain exactly one word: high or low. Nothing else.
+
+
+--- USER PROMPT ---
+
+Trait: Neuroticism
+
+HIGH Neuroticism: High Neuroticism scorers are prone to anxiety, emotional instability, stress, and negative emotions. They may struggle with impulse control and coping under pressure.
+LOW  Neuroticism: Low Neuroticism scorers are emotionally stable, calm, resilient, relaxed, and able to handle stressful situations effectively.
+
+---
+
+The following are the 5 most similar texts from the training set,
+with their known labels and extracted psychological evidence. Use them
+as calibration anchors - note how each one's cues map to its label.
+
+[Similar Profile 1] (label: high)
+[FACETS]
+N1 anxiety            | high  | expresses worry about thesis challenges and German bureaucracy frustrations.
+N2 hostility          | low   | uses humor to describe annoyances, indicating a light-hearted approach to frustrations.
+N3 depression         | mod   | mentions sadness about leaving San Jose, but overall tone is upbeat.
+N4 self-conscious     | n/e   | 
+N5 impulsiveness      | n/e   | 
+N6 vulnerability      | mod   | feels overwhelmed by the PhD application process, indicating some stress.
+E1 warmth             | low   | casual mention of others' successes, but lacks deep emotional engagement.
+E2 gregariousness     | low   | expresses a preference for solitary activities like playing music and watching movies.
+E3 assertiveness      | mod   | shows some decisiveness in planning trips and engaging with music.
+E4 activity           | mod   | mentions various activities but lacks a clear energetic pace or busy schedule.
+E5 excitement-seek    | high  | expresses enthusiasm for music and travel, indicating a desire for new experiences.
+E6 positive emotion    | high  | overall tone is joyful and optimistic, especially about music and food.
+O1 fantasy            | high  | vivid imagination evident in dreaming of food and music experiences.
+O2 aesthetics         | high  | appreciation for music and art is clear, especially in references to composers.
+O3 feelings           | mod   | some introspection about personal experiences, but not deeply explored.
+O4 actions/variety    | high  | actively engages in diverse activities like cooking, music, and travel planning.
+O5 ideas              | high  | discusses complex topics like thesis work and model selection, showing intellectual curiosity.
+O6 values             | mod   | hints at re-examining personal values through experiences but lacks depth.
+A1 trust              | n/e   | 
+A2 straightforward    | mod   | expresses thoughts candidly but with some humor, indicating a mix of frankness.
+A3 altruism           | n/e   | 
+A4 compliance         | n/e   | 
+A5 modesty            | n/e   | 
+A6 tender-minded      | n/e   | 
+C1 competence         | mod   | shows some confidence in music skills but expresses doubt about thesis work.
+C2 order              | mod   | mentions planning and organization but lacks strong evidence of structure.
+C3 dutifulness        | mod   | acknowledges obligations like PhD applications but does not emphasize adherence.
+C4 achievement        | high  | demonstrates ambition through music practice and academic pursuits.
+C5 self-discipline    | mod   | recognizes need for focus in music and studies but does not show strong follow-through.
+C6 deliberation       | mod   | reflects on decisions and plans but lacks detailed careful planning.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal engagement.
+emotion:   positive balance with dominant joy and excitement about music and food.
+tense:     present emphasis with some reflections on past experiences.
+cognitive: moderate insight with some causal connections in thoughts about challenges.
+social:    low density of social-process words, focusing more on personal experiences.
+register:  informal and exploratory, with a casual tone throughout.
+length:    approximately 300 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 2] (label: high)
+[FACETS]
+N1 anxiety            | high  | expresses frustration about homework and time constraints, indicating worry about managing tasks
+N2 hostility          | low   | no evidence of anger or resentment towards others; generally positive tone
+N3 depression         | none  | no signs of sadness or hopelessness present in the text
+N4 self-conscious     | none  | no indications of shame or social discomfort; casual tone throughout
+N5 impulsiveness      | mod   | expresses excitement and spontaneity but does not indicate difficulty in delaying urges
+N6 vulnerability       | mod   | shows some feelings of being overwhelmed by homework but maintains a positive outlook
+E1 warmth             | high  | expresses affection and friendliness towards others, wishing them a happy new year
+E2 gregariousness     | mod   | shows enjoyment in social interactions but does not explicitly seek company
+E3 assertiveness      | none  | no evidence of leadership or decisiveness; primarily reflective
+E4 activity           | mod   | mentions a busy schedule with homework but also enjoys leisure time
+E5 excitement-seek    | high  | displays enthusiasm for new experiences and events, like the new year
+E6 positive emotion    | high  | overall tone is joyful and optimistic, celebrating the new year
+O1 fantasy            | none  | no evidence of vivid imagination or daydreaming present
+O2 aesthetics         | none  | no appreciation for art or beauty expressed in the text
+O3 feelings           | mod   | shows some emotional depth with mixed feelings about homework and enjoyment of life
+O4 actions/variety    | none  | no openness to new experiences or change indicated
+O5 ideas              | none  | no intellectual curiosity or abstract thought present in the text
+O6 values             | none  | no evidence of re-examining values or norms in the writing
+A1 trust              | none  | no indications of belief in others' good intentions present
+A2 straightforward     | high  | communicates thoughts candidly and openly without manipulation
+A3 altruism           | none  | no active concern for others' welfare expressed in the text
+A4 compliance         | high  | shows low antagonism by accepting homework responsibilities without complaint
+A5 modesty            | none  | no signs of humility or low self-promotion present
+A6 tender-minded      | none  | no expressions of sympathy or empathy for others' pain
+C1 competence         | low   | expresses frustration with homework, indicating a lack of confidence in managing tasks
+C2 order              | none  | no evidence of tidiness or organization present in the text
+C3 dutifulness        | low   | shows reluctance towards homework, indicating low adherence to obligations
+C4 achievement        | low   | lacks ambition or striving for goals; primarily focused on immediate tasks
+C5 self-discipline    | low   | admits distractions and struggles to focus on homework
+C6 deliberation       | none  | no careful planning or thinking before acting evident in the writing
+
+[LINGUISTIC]
+pronouns:  high density of first-person and plural pronouns
+emotion:   positive emotions dominate, with some negative feelings about homework
+tense:     present tense is primarily used throughout the text
+cognitive: low cognitive insight; mostly straightforward expressions
+social:    moderate social-process word density, reflecting casual interactions
+register:  informal and exploratory, with a casual tone
+length:    approximately 100 words, with a mix of short and long sentences
+
+[Similar Profile 3] (label: low)
+[FACETS]
+N1 anxiety            | low  | expresses relief about no injuries; seems to cope with stress through humor
+N2 hostility          | none | 
+N3 depression         | none | 
+N4 self-conscious     | none | 
+N5 impulsiveness      | mod  | mentions drinking as a response to loss; suggests some difficulty with restraint
+N6 vulnerability       | none | 
+E1 warmth             | none | 
+E2 gregariousness     | none | 
+E3 assertiveness      | none | 
+E4 activity           | mod  | references "cabin fever," indicating restlessness or desire for activity
+E5 excitement-seek    | none | 
+E6 positive emotion    | mod  | expresses gratitude for insurance; uses humor to cope with setbacks
+O1 fantasy            | none | 
+O2 aesthetics         | none | 
+O3 feelings           | mod  | shows some emotional awareness through humor and gratitude
+O4 actions/variety    | none | 
+O5 ideas              | none | 
+O6 values             | none | 
+A1 trust              | none | 
+A2 straightforward    | high | candidly shares personal experiences without pretense
+A3 altruism           | n/e  | 
+A4 compliance         | none | 
+A5 modesty            | none | 
+A6 tender-minded      | none | 
+C1 competence         | high | demonstrates preparedness with insurance; reflects capability in handling situations
+C2 order              | none | 
+C3 dutifulness        | none | 
+C4 achievement        | none | 
+C5 self-discipline    | low  | acknowledges distractions from loss; does not seem to follow through on focus
+C6 deliberation       | none | 
+
+[LINGUISTIC]
+pronouns:  I, my, you density is moderate
+emotion:   mixed; humor and gratitude present
+tense:     present emphasis with some past references
+cognitive: low density of insight or causal reasoning
+social:    low density of social-process words
+register:  informal and exploratory
+length:    approx 50 words, mixed sentence style with low lexical diversity
+
+[Similar Profile 4] (label: high)
+[FACETS]
+N1 anxiety            | high  | expresses significant worry about back pain and academic performance; feels overwhelmed by homework.
+N2 hostility          | none  | 
+N3 depression         | mod   | mentions feeling low about potential repeating classes; expresses frustration but also moments of accomplishment.
+N4 self-conscious     | mod   | shows some embarrassment about academic struggles and social interactions, but also shares achievements.
+N5 impulsiveness      | mod   | expresses a desire to avoid responsibilities and procrastinates on homework, but also completes tasks.
+N6 vulnerability       | high  | feels overwhelmed by stress from school and physical pain; expresses a desire to escape responsibilities.
+E1 warmth             | none  | 
+E2 gregariousness     | low   | prefers solitary activities like running; limited engagement with others in social contexts.
+E3 assertiveness      | mod   | shows some leadership in sharing information with peers but also expresses uncertainty in social situations.
+E4 activity           | mod   | mentions running and practice but also indicates struggles with physical limitations.
+E5 excitement-seek    | none  | 
+E6 positive emotion    | mod   | experiences moments of joy from accomplishments but also expresses frustration and stress.
+O1 fantasy            | n/e   | 
+O2 aesthetics         | n/e   | 
+O3 feelings           | high  | demonstrates emotional depth through reflections on pain, stress, and social interactions.
+O4 actions/variety    | mod   | shows some openness to new experiences like running events but also expresses reluctance.
+O5 ideas              | n/e   | 
+O6 values             | n/e   | 
+A1 trust              | n/e   | 
+A2 straightforward    | mod   | expresses candid thoughts about struggles and frustrations but also seeks help from peers.
+A3 altruism           | n/e   | 
+A4 compliance         | mod   | shows some deference in asking for help with homework and sharing information with classmates.
+A5 modesty            | mod   | shares achievements but also downplays struggles and expresses embarrassment about academic issues.
+A6 tender-minded      | n/e   | 
+C1 competence         | mod   | feels accomplished in running but expresses doubt about academic performance.
+C2 order              | low   | shows disorganization in managing homework and responsibilities; struggles with follow-through.
+C3 dutifulness        | low   | expresses reluctance to complete assignments and a tendency to procrastinate.
+C4 achievement        | mod   | feels a sense of accomplishment in running but struggles with academic goals.
+C5 self-discipline    | low   | admits to distractions and procrastination; struggles to maintain focus on tasks.
+C6 deliberation       | mod   | shows some planning in discussing homework but often reacts impulsively to stress.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal focus.
+emotion:   negative emotions dominate, with expressions of stress and frustration.
+tense:     present tense is emphasized, reflecting immediate concerns and feelings.
+cognitive: moderate insight into personal struggles and academic challenges.
+social:    low social-process word density, indicating limited engagement with others.
+register:  informal and exploratory, with a casual tone throughout.
+length:    approximately 1,000 words, with varied sentence styles and moderate lexical diversity.
+
+[Similar Profile 5] (label: low)
+[FACETS]
+N1 anxiety            | low  | expresses humor about bus ride dangers; shows no signs of worry or fear.
+N2 hostility          | none | no evidence of anger or resentment toward others is present.
+N3 depression         | none | no signs of sadness or hopelessness are expressed in the text.
+N4 self-conscious     | none | no indications of shame or social discomfort are evident.
+N5 impulsiveness      | mod  | mentions spontaneous activities like canoeing in a storm; some planning is implied.
+N6 vulnerability       | none | no feelings of being overwhelmed or helpless are expressed.
+E1 warmth             | high | shows affection for the Hawks and excitement about social events.
+E2 gregariousness     | mod  | enjoys social activities like parties and tailgating but also mentions dislike for mornings.
+E3 assertiveness      | none | no clear evidence of leadership or decisiveness is present.
+E4 activity           | high | describes a busy schedule with various activities and events.
+E5 excitement-seek    | high | expresses thrill about new experiences like scuba diving and traveling.
+E6 positive emotion    | high | conveys joy and enthusiasm about achievements and events.
+O1 fantasy            | mod  | some imaginative elements in descriptions but primarily grounded in reality.
+O2 aesthetics         | none | no clear appreciation for art or beauty is expressed.
+O3 feelings           | mod  | shows some emotional depth in reflections but lacks extensive introspection.
+O4 actions/variety    | high | actively seeks new experiences, such as traveling and trying new activities.
+O5 ideas              | mod  | questions the relevance of information sheets; some curiosity about broader topics.
+O6 values             | none | no evidence of re-examining values or norms is present.
+A1 trust              | none | no indications of belief in others' good intentions are evident.
+A2 straightforward     | mod  | expresses candid thoughts but lacks extensive frankness or manipulation.
+A3 altruism           | none | no active concern for others' welfare is expressed.
+A4 compliance         | mod  | shows some deference in social situations but not strongly evident.
+A5 modesty            | none | no signs of humility or low self-promotion are present.
+A6 tender-minded      | none | no evidence of empathy or sympathy for others' pain is expressed.
+C1 competence         | high | demonstrates a sense of capability by completing scuba dives and managing a busy schedule.
+C2 order              | mod  | some organization in planning activities but lacks strong evidence of tidiness.
+C3 dutifulness        | mod  | mentions obligations like proctoring an exam but does not emphasize adherence.
+C4 achievement        | high | expresses pride in completing academic and personal goals.
+C5 self-discipline    | mod  | recognizes need for focus but does not provide strong evidence of follow-through.
+C6 deliberation       | none | no clear evidence of careful planning or thinking before acting is present.
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal engagement.
+emotion:   positive balance with dominant excitement and joy throughout the text.
+tense:     present emphasis with reflections on ongoing activities and experiences.
+cognitive: moderate insight with some questioning and curiosity about various topics.
+social:    moderate social-process word density reflecting engagement in social activities.
+register:  informal and exploratory, with a casual tone and varied sentence structure.
+length:    approximately 400 words, with a mix of short and long sentences and moderate lexical diversity.
+
+---
+
+Text to classify:
+A recent online exchange: Other guy: "I have to imagine it's wholly possible that someone could understand humans so well, yet be completely unable to read, write, or do math.  In today's society, people like that would be shunned.  Veritas If you can't r || "And we keep driving into the night.  It's a late goodbye, such a late goodbye.  And we keep driving into the night.  It's a late goodbye-ai-ai-yai." Staying overnight somewhere east of Toledo.  Wonder how bad I-80 will be tomorrow. || 3-hour exam tomorrow, then a day and a half (less if I drop into New York Wednesday) to pack EVERYTHING before driving out Thursday to reach Iowa on Friday.  Someone tell me I'm not insane, please. || Recidivism (n.) - 1. Committing new offenses after being punished for a crime.  2.  Chronic repetition of criminal or other antisocial behavior. Replace "criminal" with "stupid", and I think I've found my problem. || s wireless internet keeps spazzing out every five minutes.  It's really annoying.  Actually, it's more than annoying, but I haven't gotten angry enough to start using foul language. || "40 years ago, Armstrong said 'One Small Step for Man'.  When can one of us go back there and shout, 'Honey, I'm home!' or something?" || Woo-hoo!  On to Indy!  Anyone care to place an over//under on how long it'll take for some sportswriter to mention Namath or Super Bowl III? || Last night pretty much sums up my entire UChicago experience.  I don't regret going.  I regret screwing up the decisions made while there. || is going to go on a 1000 mile trip to Iowa City tomorrow and Friday.  This is going to be a long drive. || Whoa, OK, that was more emo than I had intended.  Sorry to get you guys worried.  Full details upcoming. || wishes he had an actual bed (or even a mattress).  It'd make dealing with these suspiciously-flu-like symptoms easier. || lit his fried chicken on fire and now has more stuff to clean.  Great. || is in Chicago for Uchi-con.  And somehow got stuck watching a game room AGAIN. || has found the U of Iowa anime club.  There goes my GPA. || will have a miracle if he gets an 80 on today's midterm. || has just finished his first night at reffing.  Much to improve on. || hopes the geo-pol forum-based game doesn't get him perma-banned from Japan. || has arrived at Iowa and is settling into his new apartment. || Curse you, UCJAS!!  Now I'm hooked on *PROPNAME*!!  *shakes fist* || Did the President just make a reference to the Matrix?! || "The King of Pop is dead, long live the, uh..." || has no more finals.  But it keeps going uphill. || is trying to change.  Long overdue, I suppose. || is putting the touches on his Halloween costume. || has learned nothing from 20 years of school. || My hat is off for the Colts. || is watching the Little League World Series. || has been accepted into grad school.  Finally. || is in Ottawa.  Illinois, not Canada. || passed his F//M exam.  Huzzah! || "Holy Haruhi, season 2's out?!"
+
+Reason step by step and emit your output in the EXACT XML structure
+specified in the system message:
+
+<evidence> ... </evidence>
+<facet_check> ... </facet_check>
+<example_alignment> ... </example_alignment>
+<verdict> ... </verdict>
+<label>high</label>   (or <label>low</label>)
+
+Do not output any text outside these tags.
+
+
+--- LLM RESPONSE ---
+<evidence>
+- [state] expresses worry about an upcoming exam, indicating anxiety about performance.
+- [state] mentions feeling overwhelmed by packing and travel logistics, suggesting stress.
+- [state] reflects on past decisions with regret, indicating emotional instability.
+- [state] describes symptoms that make dealing with stress more difficult, showing vulnerability.
+- [state] uses humor to cope with frustrations about internet issues, indicating a mix of annoyance and emotional management.
+</evidence>
+<facet_check>
+- N1 anxiety            -> high  -> expresses worry about exam and packing, indicating anxiety (dominant evidence type: state)
+- N2 hostility          -> low   -> no evidence of anger or resentment present.
+- N3 depression         -> mod   -> reflects on regrets but maintains a generally light tone.
+- N4 self-conscious     -> mod   -> shows some awareness of emotional state but not deeply explored.
+- N5 impulsiveness      -> n/e   -> no clear evidence of impulsive behavior.
+- N6 vulnerability       -> high  -> expresses feelings of being overwhelmed and dealing with symptoms (dominant evidence type: state)
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <1> (label: <high>) because it contains multiple cues of anxiety and emotional instability, particularly regarding exams and personal reflections. The test text diverges from Similar Profile <3> on the axis of emotional expression, as it shows more signs of stress and vulnerability.
+</example_alignment>
+<verdict>
+The overall pattern points to high Neuroticism due to multiple cues indicating anxiety and emotional instability, primarily at a situational level.
+</verdict>
+<label>high</label>
+================================================================================
+
+[Record number 1-Openness]
+--------------------------------------------------------------------------------
+--- SYSTEM PROMPT ---
+
+You are an expert in personality psychology and psychometrics.
+
+Your task is to infer a single Big Five personality trait from a user's text
+and to expose your reasoning in a strictly structured format so it can be
+audited.
+
+You will be given:
+- The target personality trait (with HIGH and LOW definitions).
+- A small set of similar texts retrieved from a labelled corpus, with
+  their known labels and extracted psychological evidence.
+
+Rules:
+- Use only evidence from the provided text. Do NOT invent details.
+- Quote or paraphrase concrete cues; abstract trait words alone are not
+  evidence.
+ — distinguish transient states from stable traits:
+    * Situational stress, fatigue, homesickness, exam pressure, or adjustment
+      to new environments (e.g. starting university) are normal context-driven
+      reactions that virtually anyone experiences. They are NOT reliable
+      evidence of high Neuroticism on their own.
+    * Trait-level evidence requires recurring, cross-situational patterns of
+      emotional instability that persist independent of an obvious external cause.
+    * Tag every evidence cue as [state] (temporary/situational) or
+      [trait] (recurring/cross-situational). Weight [trait] cues heavily;
+      treat [state] cues as weak or neutral unless they are extreme or
+      accompanied by explicit statements of habitual emotional difficulty.
+    * Expressive writing, enthusiastic tone, humor, excitement about activities,
+      strong opinions, or vivid descriptions are stylistic features only.
+      They do NOT constitute evidence of Extraversion.
+    * A person can write expressively and enthusiastically about solo hobbies,
+      intellectual interests, or activities while being deeply introverted.
+    * True Extraversion evidence requires cues about social energy and orientation:
+      actively seeking out groups or parties, gaining energy from social interaction,
+      discomfort with solitude, preferring large gatherings, or explicit statements
+      about enjoying socialising.
+    * Tag every Extraversion cue as [social-energy] (directly about seeking or
+      enjoying social interaction) or [expressive-style] (enthusiastic tone/humor
+      without social context). Weight [social-energy] cues heavily; treat
+      [expressive-style] cues as weak or neutral for Extraversion scoring.
+- Output MUST follow the XML tag structure below, in this exact order,
+  with no extra text outside the tags.
+
+Output format (replicate verbatim, fill in the contents):
+
+<evidence>
+- [state|trait] one concrete cue from the text
+- [state|trait] another concrete cue
+- ...
+</evidence>
+<facet_check>
+- facet name -> high|low|mixed -> brief reason (dominant evidence type: state|trait)
+- ...
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <i> (label: <label>) because <reason>.
+The test text diverges from Similar Profile <j> on <axis>.
+</example_alignment>
+<verdict>
+1-2 sentence synthesis of why the overall pattern points high or low,
+explicitly noting whether the supporting evidence is trait-level or
+situational/state-level.
+</verdict>
+<label>high</label>
+
+The final <label> tag MUST contain exactly one word: high or low. Nothing else.
+
+
+--- USER PROMPT ---
+
+Trait: Openness
+
+HIGH Openness: People high in Openness are imaginative, curious, creative, intellectually adventurous, and receptive to new ideas and experiences.
+LOW  Openness: People low in Openness are practical, conventional, traditional, and prefer familiarity, routine, and concrete experiences.
+
+---
+
+The following are the 5 most similar texts from the training set,
+with their known labels and extracted psychological evidence. Use them
+as calibration anchors - note how each one's cues map to its label.
+
+[Similar Profile 1] (label: low)
+[FACETS]
+N1 anxiety            | none | 
+N2 hostility          | none | 
+N3 depression         | none | 
+N4 self-conscious     | none | 
+N5 impulsiveness      | none | 
+N6 vulnerability       | none | 
+E1 warmth             | high | expresses warmth and affection in holiday greetings and well-wishes.
+E2 gregariousness     | none | 
+E3 assertiveness      | none | 
+E4 activity           | none | 
+E5 excitement-seek    | none | 
+E6 positive emotion    | high | conveys joy and positivity through festive greetings and well-wishes.
+O1 fantasy            | n/e  | 
+O2 aesthetics         | n/e  | 
+O3 feelings           | n/e  | 
+O4 actions/variety    | n/e  | 
+O5 ideas              | n/e  | 
+O6 values             | n/e  | 
+A1 trust              | n/e  | 
+A2 straightforward     | n/e  | 
+A3 altruism           | n/e  | 
+A4 compliance         | n/e  | 
+A5 modesty            | n/e  | 
+A6 tender-minded      | n/e  | 
+C1 competence         | n/e  | 
+C2 order              | n/e  | 
+C3 dutifulness        | n/e  | 
+C4 achievement        | n/e  | 
+C5 self-discipline    | n/e  | 
+C6 deliberation       | n/e  | 
+
+[LINGUISTIC]
+pronouns:  low density of personal pronouns, mostly general expressions
+emotion:   positive balance with dominant joyful affect
+tense:     present emphasis in festive greetings
+cognitive: low insight and causal density, mainly expressions of goodwill
+social:    high density of social-process words related to celebrations
+register:  informal and focused on festive greetings
+length:    approx 40 words, simple sentence style, low lexical diversity
+
+[Similar Profile 2] (label: high)
+[FACETS]
+N1 anxiety            | n/e | 
+N2 hostility          | n/e | 
+N3 depression         | n/e | 
+N4 self-conscious     | n/e | 
+N5 impulsiveness      | n/e | 
+N6 vulnerability      | n/e | 
+E1 warmth             | high | expresses gratitude for birthday wishes, indicating friendly engagement
+E2 gregariousness     | high | shows appreciation for social interaction through birthday messages
+E3 assertiveness      | n/e | 
+E4 activity           | n/e | 
+E5 excitement-seek    | high | conveys enthusiasm and joy in response to birthday greetings
+E6 positive emotion   | high | overall tone is positive and celebratory in thanking others
+O1 fantasy            | n/e | 
+O2 aesthetics         | n/e | 
+O3 feelings           | n/e | 
+O4 actions/variety    | n/e | 
+O5 ideas              | n/e | 
+O6 values             | n/e | 
+A1 trust              | n/e | 
+A2 straightforward    | high | openly thanks everyone, indicating frankness and sincerity
+A3 altruism           | n/e | 
+A4 compliance         | n/e | 
+A5 modesty            | n/e | 
+A6 tender-minded      | n/e | 
+C1 competence         | n/e | 
+C2 order              | n/e | 
+C3 dutifulness        | n/e | 
+C4 achievement        | n/e | 
+C5 self-discipline    | n/e | 
+C6 deliberation       | n/e | 
+
+[LINGUISTIC]
+pronouns:  high density of "I" and "everyone"
+emotion:   positive balance with dominant joy
+tense:     present emphasis
+cognitive: low insight, straightforward expression
+social:    high density of social-process words
+register:  informal + exploratory
+length:    approx 7 words, simple sentence structure, low lexical diversity
+
+[Similar Profile 3] (label: low)
+[FACETS]
+N1 anxiety            | none  | 
+N2 hostility          | none  | 
+N3 depression         | none  | 
+N4 self-conscious     | none  | 
+N5 impulsiveness      | none  | 
+N6 vulnerability       | none  | 
+E1 warmth             | high  | expresses joy and friendliness in greeting for Lunar New Year
+E2 gregariousness     | none  | 
+E3 assertiveness      | none  | 
+E4 activity           | none  | 
+E5 excitement-seek    | high  | shows enthusiasm for Ai's visit with an exclamation
+E6 positive emotion   | high  | conveys happiness and positivity in the greeting
+O1 fantasy            | n/e   | 
+O2 aesthetics         | n/e   | 
+O3 feelings           | n/e   | 
+O4 actions/variety    | n/e   | 
+O5 ideas              | n/e   | 
+O6 values             | n/e   | 
+A1 trust              | n/e   | 
+A2 straightforward    | n/e   | 
+A3 altruism           | n/e   | 
+A4 compliance         | n/e   | 
+A5 modesty            | n/e   | 
+A6 tender-minded      | n/e   | 
+C1 competence         | n/e   | 
+C2 order              | n/e   | 
+C3 dutifulness        | n/e   | 
+C4 achievement        | n/e   | 
+C5 self-discipline    | n/e   | 
+C6 deliberation       | n/e   | 
+
+[LINGUISTIC]
+pronouns:  I, you, they density is low
+emotion:   positive emotion dominates with a joyful tone
+tense:     present emphasis in greetings and announcements
+cognitive: low insight and causal density, mostly celebratory
+social:    social-process word density is high due to greetings
+register:  informal and focused on celebration
+length:    approx 24 words, simple sentence style, low lexical diversity
+
+[Similar Profile 4] (label: high)
+[FACETS]
+N1 anxiety            | n/e | 
+N2 hostility          | n/e | 
+N3 depression         | n/e | 
+N4 self-conscious     | n/e | 
+N5 impulsiveness      | n/e | 
+N6 vulnerability       | n/e | 
+E1 warmth             | high | expresses gratitude for birthday and Christmas wishes, indicating warmth towards others
+E2 gregariousness     | n/e | 
+E3 assertiveness      | n/e | 
+E4 activity           | n/e | 
+E5 excitement-seek    | n/e | 
+E6 positive emotion    | high | shows appreciation and positivity in response to well-wishes
+O1 fantasy            | n/e | 
+O2 aesthetics         | n/e | 
+O3 feelings           | n/e | 
+O4 actions/variety    | n/e | 
+O5 ideas              | n/e | 
+O6 values             | n/e | 
+A1 trust              | n/e | 
+A2 straightforward     | high | expresses appreciation directly, indicating straightforwardness
+A3 altruism           | n/e | 
+A4 compliance         | n/e | 
+A5 modesty            | n/e | 
+A6 tender-minded      | n/e | 
+C1 competence         | n/e | 
+C2 order              | n/e | 
+C3 dutifulness        | n/e | 
+C4 achievement        | n/e | 
+C5 self-discipline    | n/e | 
+C6 deliberation       | n/e | 
+
+[LINGUISTIC]
+pronouns:  I, you, we density is low, with "I" being dominant
+emotion:   positive balance with dominant positive affect
+tense:     present emphasis
+cognitive: low density of insight or causal language
+social:    low density of social-process words
+register:  informal + focused
+length:    approx 15 words, simple sentence style, low lexical diversity
+
+[Similar Profile 5] (label: high)
+[FACETS]
+N1 anxiety            | low  | expresses minimal concern about surgery; seems relaxed and focused on recovery
+N2 hostility          | low  | uses strong language about others but does not express ongoing anger or resentment
+N3 depression         | none | 
+N4 self-conscious     | none | 
+N5 impulsiveness      | none | 
+N6 vulnerability      | none | 
+E1 warmth             | high | thanks others for birthday wishes, indicating appreciation and connection
+E2 gregariousness     | high | shares excitement about social events and gatherings with friends
+E3 assertiveness      | mod  | expresses strong opinions about others but lacks clear leadership or decisiveness
+E4 activity           | high | describes a busy weekend in Vegas, indicating an energetic lifestyle
+E5 excitement-seek    | high | shows enthusiasm for birthday and social events, indicating a desire for novelty
+E6 positive emotion    | high | expresses joy and excitement about birthday and recovery from surgery
+O1 fantasy            | none | 
+O2 aesthetics         | none | 
+O3 feelings           | mod  | shows some emotional depth through excitement and gratitude but lacks introspection
+O4 actions/variety    | high | embraces new experiences like surgery and social events, indicating openness to change
+O5 ideas              | none | 
+O6 values             | none | 
+A1 trust              | none | 
+A2 straightforward    | high | communicates feelings and opinions directly without ambiguity
+A3 altruism           | none | 
+A4 compliance         | none | 
+A5 modesty            | none | 
+A6 tender-minded      | none | 
+C1 competence         | mod  | mentions recovery from surgery, suggesting a sense of capability but lacks detailed planning
+C2 order              | none | 
+C3 dutifulness        | none | 
+C4 achievement        | mod  | expresses excitement about personal milestones but lacks clear goals
+C5 self-discipline    | none | 
+C6 deliberation       | none | 
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal focus
+emotion:   positive balance with dominant excitement and joy
+tense:     present emphasis with some past references
+cognitive: low density of insight or causal reasoning
+social:    high density of social-process words reflecting engagement with others
+register:  informal and exploratory with casual language
+length:    approx 90 words, varied sentence style with some exclamations
+
+---
+
+Text to classify:
+Dear Santa, next year I just want a smaller ass.
+
+Reason step by step and emit your output in the EXACT XML structure
+specified in the system message:
+
+<evidence> ... </evidence>
+<facet_check> ... </facet_check>
+<example_alignment> ... </example_alignment>
+<verdict> ... </verdict>
+<label>high</label>   (or <label>low</label>)
+
+Do not output any text outside these tags.
+
+
+--- LLM RESPONSE ---
+<evidence>
+- [state] "next year I just want a smaller ass" suggests a desire for change or improvement, indicating a level of self-reflection and openness to new experiences.
+</evidence>
+<facet_check>
+- fantasy -> low -> no imaginative or creative ideas presented (dominant evidence type: state)
+- aesthetics -> low -> no appreciation for beauty or artistic expression (dominant evidence type: state)
+- feelings -> low -> lacks depth in emotional exploration (dominant evidence type: state)
+- actions/variety -> low -> no indication of seeking diverse experiences (dominant evidence type: state)
+- ideas -> low -> no intellectual curiosity or exploration of new concepts (dominant evidence type: state)
+- values -> low -> no expression of personal values or beliefs (dominant evidence type: state)
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <1> (label: <low>) because it lacks imaginative or creative expressions and shows a desire for change without deeper exploration. The test text diverges from Similar Profile <2> on the axis of creativity and openness to new ideas.
+</example_alignment>
+<verdict>
+The overall pattern points low in Openness, as the evidence primarily reflects a situational desire for change rather than a stable trait of curiosity or receptiveness to new experiences.
+</verdict>
+<label>low</label>
+================================================================================
+
+[Record number 1-Conscientiousness]
+--------------------------------------------------------------------------------
+--- SYSTEM PROMPT ---
+
+You are an expert in personality psychology and psychometrics.
+
+Your task is to infer a single Big Five personality trait from a user's text
+and to expose your reasoning in a strictly structured format so it can be
+audited.
+
+You will be given:
+- The target personality trait (with HIGH and LOW definitions).
+- A small set of similar texts retrieved from a labelled corpus, with
+  their known labels and extracted psychological evidence.
+
+Rules:
+- Use only evidence from the provided text. Do NOT invent details.
+- Quote or paraphrase concrete cues; abstract trait words alone are not
+  evidence.
+ — distinguish transient states from stable traits:
+    * Situational stress, fatigue, homesickness, exam pressure, or adjustment
+      to new environments (e.g. starting university) are normal context-driven
+      reactions that virtually anyone experiences. They are NOT reliable
+      evidence of high Neuroticism on their own.
+    * Trait-level evidence requires recurring, cross-situational patterns of
+      emotional instability that persist independent of an obvious external cause.
+    * Tag every evidence cue as [state] (temporary/situational) or
+      [trait] (recurring/cross-situational). Weight [trait] cues heavily;
+      treat [state] cues as weak or neutral unless they are extreme or
+      accompanied by explicit statements of habitual emotional difficulty.
+    * Expressive writing, enthusiastic tone, humor, excitement about activities,
+      strong opinions, or vivid descriptions are stylistic features only.
+      They do NOT constitute evidence of Extraversion.
+    * A person can write expressively and enthusiastically about solo hobbies,
+      intellectual interests, or activities while being deeply introverted.
+    * True Extraversion evidence requires cues about social energy and orientation:
+      actively seeking out groups or parties, gaining energy from social interaction,
+      discomfort with solitude, preferring large gatherings, or explicit statements
+      about enjoying socialising.
+    * Tag every Extraversion cue as [social-energy] (directly about seeking or
+      enjoying social interaction) or [expressive-style] (enthusiastic tone/humor
+      without social context). Weight [social-energy] cues heavily; treat
+      [expressive-style] cues as weak or neutral for Extraversion scoring.
+- Output MUST follow the XML tag structure below, in this exact order,
+  with no extra text outside the tags.
+
+Output format (replicate verbatim, fill in the contents):
+
+<evidence>
+- [state|trait] one concrete cue from the text
+- [state|trait] another concrete cue
+- ...
+</evidence>
+<facet_check>
+- facet name -> high|low|mixed -> brief reason (dominant evidence type: state|trait)
+- ...
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <i> (label: <label>) because <reason>.
+The test text diverges from Similar Profile <j> on <axis>.
+</example_alignment>
+<verdict>
+1-2 sentence synthesis of why the overall pattern points high or low,
+explicitly noting whether the supporting evidence is trait-level or
+situational/state-level.
+</verdict>
+<label>high</label>
+
+The final <label> tag MUST contain exactly one word: high or low. Nothing else.
+
+
+--- USER PROMPT ---
+
+Trait: Conscientiousness
+
+HIGH Conscientiousness: Highly conscientious individuals are organized, disciplined, dependable, hardworking, responsible, and goal-oriented.
+LOW  Conscientiousness: Low Conscientiousness is associated with spontaneity, disorganization, carelessness, impulsiveness, and reduced self-discipline.
+
+---
+
+The following are the 5 most similar texts from the training set,
+with their known labels and extracted psychological evidence. Use them
+as calibration anchors - note how each one's cues map to its label.
+
+[Similar Profile 1] (label: low)
+[FACETS]
+N1 anxiety            | none | 
+N2 hostility          | none | 
+N3 depression         | none | 
+N4 self-conscious     | none | 
+N5 impulsiveness      | none | 
+N6 vulnerability       | none | 
+E1 warmth             | high | expresses warmth and affection in holiday greetings and well-wishes.
+E2 gregariousness     | none | 
+E3 assertiveness      | none | 
+E4 activity           | none | 
+E5 excitement-seek    | none | 
+E6 positive emotion    | high | conveys joy and positivity through festive greetings and well-wishes.
+O1 fantasy            | n/e  | 
+O2 aesthetics         | n/e  | 
+O3 feelings           | n/e  | 
+O4 actions/variety    | n/e  | 
+O5 ideas              | n/e  | 
+O6 values             | n/e  | 
+A1 trust              | n/e  | 
+A2 straightforward     | n/e  | 
+A3 altruism           | n/e  | 
+A4 compliance         | n/e  | 
+A5 modesty            | n/e  | 
+A6 tender-minded      | n/e  | 
+C1 competence         | n/e  | 
+C2 order              | n/e  | 
+C3 dutifulness        | n/e  | 
+C4 achievement        | n/e  | 
+C5 self-discipline    | n/e  | 
+C6 deliberation       | n/e  | 
+
+[LINGUISTIC]
+pronouns:  low density of personal pronouns, mostly general expressions
+emotion:   positive balance with dominant joyful affect
+tense:     present emphasis in festive greetings
+cognitive: low insight and causal density, mainly expressions of goodwill
+social:    high density of social-process words related to celebrations
+register:  informal and focused on festive greetings
+length:    approx 40 words, simple sentence style, low lexical diversity
+
+[Similar Profile 2] (label: low)
+[FACETS]
+N1 anxiety            | n/e | 
+N2 hostility          | n/e | 
+N3 depression         | n/e | 
+N4 self-conscious     | n/e | 
+N5 impulsiveness      | n/e | 
+N6 vulnerability      | n/e | 
+E1 warmth             | high | expresses gratitude for birthday wishes, indicating friendly engagement
+E2 gregariousness     | high | shows appreciation for social interaction through birthday messages
+E3 assertiveness      | n/e | 
+E4 activity           | n/e | 
+E5 excitement-seek    | high | conveys enthusiasm and joy in response to birthday greetings
+E6 positive emotion   | high | overall tone is positive and celebratory in thanking others
+O1 fantasy            | n/e | 
+O2 aesthetics         | n/e | 
+O3 feelings           | n/e | 
+O4 actions/variety    | n/e | 
+O5 ideas              | n/e | 
+O6 values             | n/e | 
+A1 trust              | n/e | 
+A2 straightforward    | high | openly thanks everyone, indicating frankness and sincerity
+A3 altruism           | n/e | 
+A4 compliance         | n/e | 
+A5 modesty            | n/e | 
+A6 tender-minded      | n/e | 
+C1 competence         | n/e | 
+C2 order              | n/e | 
+C3 dutifulness        | n/e | 
+C4 achievement        | n/e | 
+C5 self-discipline    | n/e | 
+C6 deliberation       | n/e | 
+
+[LINGUISTIC]
+pronouns:  high density of "I" and "everyone"
+emotion:   positive balance with dominant joy
+tense:     present emphasis
+cognitive: low insight, straightforward expression
+social:    high density of social-process words
+register:  informal + exploratory
+length:    approx 7 words, simple sentence structure, low lexical diversity
+
+[Similar Profile 3] (label: high)
+[FACETS]
+N1 anxiety            | none  | 
+N2 hostility          | none  | 
+N3 depression         | none  | 
+N4 self-conscious     | none  | 
+N5 impulsiveness      | none  | 
+N6 vulnerability       | none  | 
+E1 warmth             | high  | expresses joy and friendliness in greeting for Lunar New Year
+E2 gregariousness     | none  | 
+E3 assertiveness      | none  | 
+E4 activity           | none  | 
+E5 excitement-seek    | high  | shows enthusiasm for Ai's visit with an exclamation
+E6 positive emotion   | high  | conveys happiness and positivity in the greeting
+O1 fantasy            | n/e   | 
+O2 aesthetics         | n/e   | 
+O3 feelings           | n/e   | 
+O4 actions/variety    | n/e   | 
+O5 ideas              | n/e   | 
+O6 values             | n/e   | 
+A1 trust              | n/e   | 
+A2 straightforward    | n/e   | 
+A3 altruism           | n/e   | 
+A4 compliance         | n/e   | 
+A5 modesty            | n/e   | 
+A6 tender-minded      | n/e   | 
+C1 competence         | n/e   | 
+C2 order              | n/e   | 
+C3 dutifulness        | n/e   | 
+C4 achievement        | n/e   | 
+C5 self-discipline    | n/e   | 
+C6 deliberation       | n/e   | 
+
+[LINGUISTIC]
+pronouns:  I, you, they density is low
+emotion:   positive emotion dominates with a joyful tone
+tense:     present emphasis in greetings and announcements
+cognitive: low insight and causal density, mostly celebratory
+social:    social-process word density is high due to greetings
+register:  informal and focused on celebration
+length:    approx 24 words, simple sentence style, low lexical diversity
+
+[Similar Profile 4] (label: low)
+[FACETS]
+N1 anxiety            | n/e | 
+N2 hostility          | n/e | 
+N3 depression         | n/e | 
+N4 self-conscious     | n/e | 
+N5 impulsiveness      | n/e | 
+N6 vulnerability       | n/e | 
+E1 warmth             | high | expresses gratitude for birthday and Christmas wishes, indicating warmth towards others
+E2 gregariousness     | n/e | 
+E3 assertiveness      | n/e | 
+E4 activity           | n/e | 
+E5 excitement-seek    | n/e | 
+E6 positive emotion    | high | shows appreciation and positivity in response to well-wishes
+O1 fantasy            | n/e | 
+O2 aesthetics         | n/e | 
+O3 feelings           | n/e | 
+O4 actions/variety    | n/e | 
+O5 ideas              | n/e | 
+O6 values             | n/e | 
+A1 trust              | n/e | 
+A2 straightforward     | high | expresses appreciation directly, indicating straightforwardness
+A3 altruism           | n/e | 
+A4 compliance         | n/e | 
+A5 modesty            | n/e | 
+A6 tender-minded      | n/e | 
+C1 competence         | n/e | 
+C2 order              | n/e | 
+C3 dutifulness        | n/e | 
+C4 achievement        | n/e | 
+C5 self-discipline    | n/e | 
+C6 deliberation       | n/e | 
+
+[LINGUISTIC]
+pronouns:  I, you, we density is low, with "I" being dominant
+emotion:   positive balance with dominant positive affect
+tense:     present emphasis
+cognitive: low density of insight or causal language
+social:    low density of social-process words
+register:  informal + focused
+length:    approx 15 words, simple sentence style, low lexical diversity
+
+[Similar Profile 5] (label: high)
+[FACETS]
+N1 anxiety            | low  | expresses minimal concern about surgery; seems relaxed and focused on recovery
+N2 hostility          | low  | uses strong language about others but does not express ongoing anger or resentment
+N3 depression         | none | 
+N4 self-conscious     | none | 
+N5 impulsiveness      | none | 
+N6 vulnerability      | none | 
+E1 warmth             | high | thanks others for birthday wishes, indicating appreciation and connection
+E2 gregariousness     | high | shares excitement about social events and gatherings with friends
+E3 assertiveness      | mod  | expresses strong opinions about others but lacks clear leadership or decisiveness
+E4 activity           | high | describes a busy weekend in Vegas, indicating an energetic lifestyle
+E5 excitement-seek    | high | shows enthusiasm for birthday and social events, indicating a desire for novelty
+E6 positive emotion    | high | expresses joy and excitement about birthday and recovery from surgery
+O1 fantasy            | none | 
+O2 aesthetics         | none | 
+O3 feelings           | mod  | shows some emotional depth through excitement and gratitude but lacks introspection
+O4 actions/variety    | high | embraces new experiences like surgery and social events, indicating openness to change
+O5 ideas              | none | 
+O6 values             | none | 
+A1 trust              | none | 
+A2 straightforward    | high | communicates feelings and opinions directly without ambiguity
+A3 altruism           | none | 
+A4 compliance         | none | 
+A5 modesty            | none | 
+A6 tender-minded      | none | 
+C1 competence         | mod  | mentions recovery from surgery, suggesting a sense of capability but lacks detailed planning
+C2 order              | none | 
+C3 dutifulness        | none | 
+C4 achievement        | mod  | expresses excitement about personal milestones but lacks clear goals
+C5 self-discipline    | none | 
+C6 deliberation       | none | 
+
+[LINGUISTIC]
+pronouns:  high density of first-person pronouns indicating personal focus
+emotion:   positive balance with dominant excitement and joy
+tense:     present emphasis with some past references
+cognitive: low density of insight or causal reasoning
+social:    high density of social-process words reflecting engagement with others
+register:  informal and exploratory with casual language
+length:    approx 90 words, varied sentence style with some exclamations
+
+---
+
+Text to classify:
+Dear Santa, next year I just want a smaller ass.
+
+Reason step by step and emit your output in the EXACT XML structure
+specified in the system message:
+
+<evidence> ... </evidence>
+<facet_check> ... </facet_check>
+<example_alignment> ... </example_alignment>
+<verdict> ... </verdict>
+<label>high</label>   (or <label>low</label>)
+
+Do not output any text outside these tags.
+
+
+--- LLM RESPONSE ---
+<evidence>
+- [state] "next year I just want a smaller ass" indicates a desire for change but lacks a structured plan or goal-oriented approach.
+</evidence>
+<facet_check>
+- competence -> low -> the text does not demonstrate a sense of capability or achievement.
+- order -> low -> there is no indication of organization or planning in the expressed desire.
+- dutifulness -> low -> the text does not reflect a sense of responsibility or commitment to goals.
+- achievement -> low -> the desire expressed is vague and lacks specificity regarding personal goals.
+- self-discipline -> low -> the statement does not convey a sense of discipline or control over one's actions.
+- deliberation -> low -> the text lacks thoughtful consideration or planning.
+</facet_check>
+<example_alignment>
+The test text most closely matches Similar Profile <1> (label: <low>) because it reflects a lack of structured goals and organization. The test text diverges from Similar Profile <3> on the axis of goal orientation and planning.
+</example_alignment>
+<verdict>
+The overall pattern points low in Conscientiousness, as the evidence primarily reflects situational desires without a stable, goal-oriented approach.
+</verdict>
+<label>low</label>
+================================================================================
+

@@ -1,0 +1,11 @@
+rag_mode,trait,k,n_queries,mean_match_rate,std_match_rate,hit_rate
+hybrid_facet,Openness to Experience,3,247,0.5331,0.3039,0.8785
+hybrid_facet,Conscientiousness,3,247,0.5385,0.2912,0.9028
+hybrid_facet,Extraversion,3,247,0.5358,0.2976,0.8947
+hybrid_facet,Agreeableness,3,247,0.4872,0.3127,0.83
+hybrid_facet,Neuroticism,3,247,0.5277,0.3059,0.8826
+hybrid_facet,Openness to Experience,5,247,0.536,0.2339,0.9676
+hybrid_facet,Conscientiousness,5,247,0.5239,0.2183,0.9757
+hybrid_facet,Extraversion,5,247,0.5368,0.226,0.9879
+hybrid_facet,Agreeableness,5,247,0.4931,0.2498,0.9433
+hybrid_facet,Neuroticism,5,247,0.5401,0.238,0.9798
