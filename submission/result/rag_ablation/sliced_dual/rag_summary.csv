@@ -1,0 +1,11 @@
+rag_mode,trait,k,n_queries,mean_match_rate,std_match_rate,hit_rate
+sliced_dual,Openness to Experience,3,247,0.5263,0.3176,0.8543
+sliced_dual,Conscientiousness,3,247,0.529,0.3145,0.8543
+sliced_dual,Extraversion,3,247,0.5493,0.3091,0.8745
+sliced_dual,Agreeableness,3,247,0.525,0.3247,0.8381
+sliced_dual,Neuroticism,3,247,0.5466,0.34,0.8421
+sliced_dual,Openness to Experience,5,247,0.5377,0.2714,0.9514
+sliced_dual,Conscientiousness,5,247,0.532,0.2606,0.9514
+sliced_dual,Extraversion,5,247,0.5457,0.2648,0.9474
+sliced_dual,Agreeableness,5,247,0.5117,0.2767,0.9393
+sliced_dual,Neuroticism,5,247,0.5522,0.2791,0.9393

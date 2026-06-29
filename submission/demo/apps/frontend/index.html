@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OCEAN Pipeline — Live Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body class="is-initializing">
+  <div class="aurora" aria-hidden="true"></div>
+  <div id="app-loader" class="app-loader" role="status" aria-live="polite">
+    <div class="loader-panel">
+      <div class="loader-mark">O</div>
+      <div>
+        <div class="loader-title">Preparing OCEAN demo</div>
+        <div id="loader-message" class="loader-message">Loading labelled essays and warming up the interface.</div>
+      </div>
+      <div class="loader-bar" aria-hidden="true"><span></span></div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo">O</div>
+      <div>
+        <h1>OCEAN Prediction Pipeline</h1>
+        <p class="subtitle">Profile&nbsp;→&nbsp;Retrieval&nbsp;→&nbsp;Reasoned Prediction&nbsp;→&nbsp;Verdict</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <span class="pill pill-live"><span class="dot"></span> always-live · gpt-4o-mini</span>
+    </div>
+  </header>
+
+  <!-- Progress timeline -->
+  <div class="timeline" id="timeline">
+    <div class="timeline-track"><div class="timeline-fill" id="timeline-fill"></div></div>
+    <ol class="timeline-steps">
+      <li class="tl-step" data-step="profile"><span class="tl-dot">1</span><span class="tl-label">Profile</span></li>
+      <li class="tl-step" data-step="retrieval"><span class="tl-dot">2</span><span class="tl-label">Retrieval</span></li>
+      <li class="tl-step" data-step="predict"><span class="tl-dot">3</span><span class="tl-label">Prediction</span></li>
+      <li class="tl-step" data-step="verdict"><span class="tl-dot">4</span><span class="tl-label">Verdict</span></li>
+    </ol>
+  </div>
+
+  <main>
+    <!-- ---------------- Input ---------------- -->
+    <section id="input-panel" class="card input-card">
+      <div class="input-grid">
+        <div class="input-row">
+          <label for="essay-select">Labelled test essay</label>
+          <div class="select-wrap">
+            <select id="essay-select">
+              <option value="">— pick a test essay —</option>
+            </select>
+          </div>
+          <div id="essay-labels" class="essay-labels hidden"></div>
+          <div id="essay-preview" class="essay-preview hidden">
+            <div class="essay-preview-header">
+              <span class="essay-preview-title">Full essay text</span>
+              <button type="button" id="essay-preview-toggle" class="preview-toggle" aria-expanded="false">Show</button>
+            </div>
+            <div id="essay-preview-body" class="essay-preview-body hidden"></div>
+          </div>
+        </div>
+
+        <div class="or-divider"><span>or</span></div>
+
+        <div class="input-row">
+          <label for="essay-text">Paste any text</label>
+          <textarea id="essay-text" rows="6"
+            placeholder="Paste an essay / piece of writing here (≥ 200 characters)…"></textarea>
+          <div class="meta-row">
+            <span id="char-count" class="char-count">0 chars</span>
+            <span id="gt-badge" class="badge hidden"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="run-btn" disabled>
+          <span class="btn-label">Run pipeline</span>
+          <span class="btn-spinner" aria-hidden="true"></span>
+        </button>
+        <span id="status-line" class="status-line">Pick the ★ default essay and hit Run.</span>
+      </div>
+    </section>
+
+    <!-- ---------------- Stage 1: Profile ---------------- -->
+    <section id="stage-profile" class="card stage">
+      <h2><span class="stage-num">1</span> Profile <span class="stage-state" data-stage="profile"></span></h2>
+      <div id="profile-note" class="note hidden"></div>
+      <div id="profile-body" class="stage-body">
+        <div class="placeholder">The 30-facet NEO-PI-R profile will appear here.</div>
+      </div>
+    </section>
+
+    <!-- ---------------- Stage 2: Retrieval ---------------- -->
+    <section id="stage-retrieval" class="card stage">
+      <h2><span class="stage-num">2</span> Retrieval <span class="stage-state" data-stage="retrieval"></span></h2>
+      <div id="retrieval-body" class="stage-body">
+        <div class="placeholder">Top-k similar labelled essays per trait will appear here.</div>
+      </div>
+    </section>
+
+    <!-- ---------------- Stage 3: Reasoned prediction ---------------- -->
+    <section id="stage-predict" class="card stage">
+      <h2><span class="stage-num">3</span> Reasoned prediction <span class="stage-state" data-stage="predict"></span></h2>
+      <div id="predict-body" class="stage-body">
+        <div class="placeholder">Per-trait evidence, facet-check and verdict will appear here.</div>
+      </div>
+    </section>
+
+    <!-- ---------------- Stage 4: Verdict ---------------- -->
+    <section id="stage-verdict" class="card stage verdict-card">
+      <h2><span class="stage-num">4</span> Verdict <span class="stage-state" data-stage="verdict"></span></h2>
+      <div id="verdict-body" class="stage-body">
+        <div class="placeholder">The 5 Big-Five predictions (vs. ground truth) will appear here.</div>
+      </div>
+      <div id="verdict-essay-preview" class="essay-preview hidden">
+        <div class="essay-preview-header">
+          <span class="essay-preview-title">Essay text used for prediction</span>
+          <button type="button" id="verdict-preview-toggle" class="preview-toggle" aria-expanded="false">Show</button>
+        </div>
+        <div id="verdict-preview-body" class="essay-preview-body hidden"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    Bachelor thesis demo · runs locally · every run hits the OpenAI API in real time
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

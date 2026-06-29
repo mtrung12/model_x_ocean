@@ -1,0 +1,11 @@
+rag_mode,trait,k,n_queries,mean_match_rate,std_match_rate,hit_rate
+facet_embed,Openness to Experience,3,247,0.5331,0.3039,0.8785
+facet_embed,Conscientiousness,3,247,0.5385,0.2912,0.9028
+facet_embed,Extraversion,3,247,0.5358,0.2976,0.8947
+facet_embed,Agreeableness,3,247,0.4872,0.3127,0.83
+facet_embed,Neuroticism,3,247,0.5277,0.3059,0.8826
+facet_embed,Openness to Experience,5,247,0.536,0.2339,0.9676
+facet_embed,Conscientiousness,5,247,0.5239,0.2183,0.9757
+facet_embed,Extraversion,5,247,0.5368,0.226,0.9879
+facet_embed,Agreeableness,5,247,0.4931,0.2498,0.9433
+facet_embed,Neuroticism,5,247,0.5401,0.238,0.9798

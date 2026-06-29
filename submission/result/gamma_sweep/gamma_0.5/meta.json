@@ -1,0 +1,14 @@
+{
+  "gamma": 0.5,
+  "beta": 0.5,
+  "model_name": "gpt-4o-mini",
+  "prompt_mode": "reasoned_rag_def_oneshot_30f",
+  "top_k": 5,
+  "k_values": [
+    5
+  ],
+  "run_id": "20260614-125756",
+  "predict_seconds": 3212.3,
+  "total_seconds": 3825.1,
+  "source_prediction_csv": "F:\\std\\GR\\code\\model_x_ocean\\result\\gpt-4o-mini\\reasoned_rag_def_oneshot_30f\\20260614-125756\\predictions.csv"
+}

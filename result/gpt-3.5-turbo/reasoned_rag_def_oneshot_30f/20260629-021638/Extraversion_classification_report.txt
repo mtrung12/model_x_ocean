@@ -1,0 +1,23 @@
+======================================================================
+Personality Trait Detection - Classification Report
+======================================================================
+
+Model            : gpt-3.5-turbo
+Test file        : E:\std\GR\model_x_ocean\result\gpt-3.5-turbo\reasoned_rag_def_oneshot_30f\20260629-021638\predictions.csv
+Dataset          : N/A
+# Records        : 247
+# Failed         : 11
+Prompt mode      : reasoned_rag_def_oneshot_30f
+Vector DB        : N/A
+Prediction Time (sec) : 8877.19
+----------------------------------------------------------------------
+
+             precision  recall f1-score support
+high            0.5630  0.5276   0.5447     127
+low             0.5238  0.5593   0.5410     118
+accuracy        0.5429  0.5429   0.5429       1
+macro avg       0.5434  0.5434   0.5428     245
+weighted avg    0.5441  0.5429   0.5429     245
+
+======================================================================
+End of Report

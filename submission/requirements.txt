@@ -1,0 +1,22 @@
+# Core
+numpy>=1.24
+pandas>=2.0
+scikit-learn>=1.3
+
+# LLM clients
+openai>=1.30
+python-dotenv>=1.0
+requests>=2.31
+
+# Embeddings / retrieval
+sentence-transformers>=2.2
+faiss-cpu>=1.7          # use faiss-gpu instead if a CUDA GPU is available
+transformers>=4.40
+torch>=2.1
+
+# Notebooks (for the experiment notebooks under notebook/)
+jupyter>=1.0
+openpyxl>=3.1           # reading/writing the .xlsx trackers in stats/
+
+# Note: versions are minimum floors, not exact pins. The project was developed
+# with recent releases of each package; newer minor versions are expected to work.

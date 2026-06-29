@@ -1,638 +1,470 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="Claude" version="21.0.0" type="device">
-
-  <!-- ============================================================
-       DIAGRAM 1 – END-TO-END PIPELINE (A4 landscape, 190 mm wide)
-       Three-panel view: Offline Phase | Online Phase
-       ============================================================ -->
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17" pages="3">
   <diagram id="pipeline-overview" name="Fig 3.1 – End-to-End Pipeline">
-    <mxGraphModel dx="1200" dy="800" grid="0" gridSize="10" guides="1"
-                  tooltips="1" connect="0" arrows="0" fold="0"
-                  page="1" pageScale="1" pageWidth="1169" pageHeight="827"
-                  math="0" shadow="0">
+    <mxGraphModel dx="1358" dy="654" grid="0" gridSize="10" guides="1" tooltips="1" connect="0" arrows="0" fold="0" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
-        <mxCell id="0"/>
-        <mxCell id="1" parent="0"/>
-
-        <!-- ══════════════════════════════════════════════════════
-             BACKGROUND BANDS
-             ══════════════════════════════════════════════════════ -->
-
-        <!-- Offline Phase band -->
-        <mxCell id="band_offline" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f4ff;strokeColor=#b0c0e0;strokeWidth=1.5;dashed=1;arcSize=4;" vertex="1" parent="1">
-          <mxGeometry x="30" y="60" width="360" height="700" as="geometry"/>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="band_offline" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f4ff;strokeColor=#b0c0e0;strokeWidth=2;dashed=1;arcSize=4;" parent="1" vertex="1">
+          <mxGeometry x="20" y="50" width="330" height="750" as="geometry" />
         </mxCell>
-        <mxCell id="lbl_offline" value="&lt;b&gt;OFFLINE PHASE&lt;/b&gt;&lt;br/&gt;&lt;font color=&#39;#555&#39;&gt;(run once on training corpus)&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=top;fontSize=11;fontColor=#2a4080;" vertex="1" parent="1">
-          <mxGeometry x="30" y="65" width="360" height="36" as="geometry"/>
+        <mxCell id="lbl_offline" value="&lt;b&gt;INDEX-BUILDING PHASE&lt;/b&gt;&lt;br/&gt;&lt;font color=&#39;#555&#39; style=&#39;font-size:13px&#39;&gt;(run once on training corpus)&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=top;fontSize=16;fontColor=#2a4080;" parent="1" vertex="1">
+          <mxGeometry x="20" y="56" width="330" height="48" as="geometry" />
         </mxCell>
-
-        <!-- Online Phase band -->
-        <mxCell id="band_online" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5fff5;strokeColor=#90c090;strokeWidth=1.5;dashed=1;arcSize=4;" vertex="1" parent="1">
-          <mxGeometry x="430" y="60" width="710" height="700" as="geometry"/>
+        <mxCell id="train_corpus" value="&lt;b&gt;Training Corpus&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:13px&#39;&gt;N essays + OCEAN labels&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#4472C4;strokeWidth=2.5;arcSize=30;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="75" y="120" width="200" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="lbl_online" value="&lt;b&gt;ONLINE PHASE&lt;/b&gt;&lt;br/&gt;&lt;font color=&#39;#555&#39;&gt;(run once per test essay)&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=top;fontSize=11;fontColor=#1a6020;" vertex="1" parent="1">
-          <mxGeometry x="430" y="65" width="710" height="36" as="geometry"/>
+        <mxCell id="profiler_box" value="&lt;b&gt;Psychological Profiler&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:13px&#39;&gt;LLM-prompted, NEO-PI-R&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4472C4;fontColor=#ffffff;strokeColor=#2a4a8a;strokeWidth=2.5;arcSize=10;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="55" y="238" width="240" height="64" as="geometry" />
         </mxCell>
-
-
-        <!-- ══════════════════════════════════════════════════════
-             COMPONENT LABELS (coloured side-bars)
-             ══════════════════════════════════════════════════════ -->
-
-        <!-- Component 1 label -->
-        <mxCell id="comp1_label" value="① PROFILER" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=1;fontColor=#ffffff;fillColor=#4472C4;strokeColor=none;rotation=-90;" vertex="1" parent="1">
-          <mxGeometry x="30" y="270" width="22" height="120" as="geometry"/>
+        <mxCell id="profile_box" value="&lt;b&gt;Structured Profile&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:13px&#39;&gt;30-facet vector + evidence&lt;/font&gt;" style="shape=parallelogram;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;strokeWidth=2.5;arcSize=5;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="60" y="356" width="230" height="64" as="geometry" />
         </mxCell>
-
-        <!-- Component 2 label -->
-        <mxCell id="comp2_label" value="② RAG INDEX" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=1;fontColor=#ffffff;fillColor=#ED7D31;strokeColor=none;rotation=-90;" vertex="1" parent="1">
-          <mxGeometry x="30" y="450" width="22" height="120" as="geometry"/>
+        <mxCell id="embed_box" value="&lt;b&gt;Profile Embedding&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:13px&#39;&gt;Sentence encoder → φ(p) ∈ ℝ³⁰&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#fff;strokeColor=#b85a00;strokeWidth=2.5;arcSize=10;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="55" y="478" width="240" height="64" as="geometry" />
         </mxCell>
-
-        <!-- Component 3 label (online) -->
-        <mxCell id="comp3_label" value="③ REASONED INFERENCE" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=1;fontColor=#ffffff;fillColor=#70AD47;strokeColor=none;rotation=-90;" vertex="1" parent="1">
-          <mxGeometry x="430" y="330" width="22" height="200" as="geometry"/>
+        <mxCell id="faiss_box" value="&lt;b&gt;FAISS ANN Index&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:13px&#39;&gt;dense embeddings&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#c0392b;strokeWidth=2.5;fontSize=15;arcSize=10;size=10;" parent="1" vertex="1">
+          <mxGeometry x="36" y="610" width="140" height="86" as="geometry" />
         </mxCell>
-
-
-        <!-- ══════════════════════════════════════════════════════
-             OFFLINE: Training Corpus
-             ══════════════════════════════════════════════════════ -->
-        <mxCell id="train_corpus" value="&lt;b&gt;Training Corpus&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:10px&#39;&gt;N essays + OCEAN labels&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#4472C4;strokeWidth=2;arcSize=30;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="120" y="120" width="180" height="55" as="geometry"/>
+        <mxCell id="facet_store" value="&lt;b&gt;Facet Matrix Store&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:13px&#39;&gt;φ vectors + labels&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#c0392b;strokeWidth=2.5;fontSize=15;arcSize=10;size=10;" parent="1" vertex="1">
+          <mxGeometry x="194" y="610" width="140" height="86" as="geometry" />
         </mxCell>
-
-        <!-- Arrow: corpus → profiler (offline) -->
-        <mxCell id="arr_corpus_prof" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#4472C4;strokeWidth=2;" edge="1" source="train_corpus" target="profiler_box" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+        <mxCell id="a1" value="" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#4472C4;strokeWidth=2.5;" parent="1" source="train_corpus" target="profiler_box" edge="1">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- ══════════════════════════════════════════════════════
-             PROFILER BOX (offline)
-             ══════════════════════════════════════════════════════ -->
-        <mxCell id="profiler_box" value="&lt;b&gt;Psychological Profiler&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4472C4;fontColor=#ffffff;strokeColor=#2a4a8a;strokeWidth=2;arcSize=10;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="100" y="225" width="220" height="42" as="geometry"/>
+        <mxCell id="a2" value="" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#4472C4;strokeWidth=2.5;" parent="1" source="profiler_box" target="profile_box" edge="1">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Profiler internals group -->
-        <mxCell id="profiler_internals" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8eef8;strokeColor=#4472C4;strokeWidth=1;arcSize=6;" vertex="1" parent="1">
-          <mxGeometry x="80" y="282" width="260" height="100" as="geometry"/>
+        <mxCell id="a3" value="" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#ED7D31;strokeWidth=2.5;" parent="1" source="profile_box" target="embed_box" edge="1">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="pi_1" value="NEO-PI-R Schema&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;5 traits × 6 facets = 30 facets&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bdd7ee;strokeColor=#4472C4;fontSize=10;arcSize=20;" vertex="1" parent="1">
-          <mxGeometry x="90" y="294" width="110" height="36" as="geometry"/>
+        <mxCell id="a4" value="" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#c0392b;strokeWidth=2;" parent="1" source="embed_box" target="faiss_box" edge="1">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="pi_2" value="Signal Vocab&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;high / mod / low / none / n/e&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bdd7ee;strokeColor=#4472C4;fontSize=10;arcSize=20;" vertex="1" parent="1">
-          <mxGeometry x="218" y="294" width="110" height="36" as="geometry"/>
+        <mxCell id="a5" value="" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#c0392b;strokeWidth=2;" parent="1" source="embed_box" target="facet_store" edge="1">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="pi_lbl" value="LLM-Prompted Facet Extraction (GPT-4o)" style="text;html=1;align=center;fontSize=9;fontColor=#444;fontStyle=2;" vertex="1" parent="1">
-          <mxGeometry x="80" y="344" width="260" height="30" as="geometry"/>
+        <mxCell id="band_online" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5fff5;strokeColor=#90c090;strokeWidth=2;dashed=1;arcSize=4;" parent="1" vertex="1">
+          <mxGeometry x="368" y="50" width="734" height="750" as="geometry" />
         </mxCell>
-
-        <!-- Arrow: profiler → profile -->
-        <mxCell id="arr_prof_profile" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4472C4;strokeWidth=2;" edge="1" source="profiler_internals" target="profile_box" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+        <mxCell id="lbl_online" value="&lt;b&gt;INFERENCE PHASE&lt;/b&gt;&lt;br/&gt;&lt;font color=&#39;#555&#39; style=&#39;font-size:13px&#39;&gt;(run once per test essay)&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=top;fontSize=16;fontColor=#1a6020;" parent="1" vertex="1">
+          <mxGeometry x="405" y="56" width="679" height="48" as="geometry" />
         </mxCell>
-
-        <!-- Structured Profile output -->
-        <mxCell id="profile_box" value="&lt;b&gt;Structured Profile&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:10px&#39;&gt;30-facet vector + evidence strings&lt;/font&gt;" style="shape=parallelogram;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;strokeWidth=2;arcSize=5;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="100" y="420" width="220" height="50" as="geometry"/>
+        <mxCell id="test_essay" value="&lt;b&gt;Test Essay&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:13px&#39;&gt;(unlabelled)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2efda;strokeColor=#70AD47;strokeWidth=2.5;arcSize=30;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="430" y="120" width="200" height="64" as="geometry" />
         </mxCell>
-
-        <!-- ══════════════════════════════════════════════════════
-             OFFLINE: Embedding + Index
-             ══════════════════════════════════════════════════════ -->
-        <mxCell id="arr_profile_embed" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7D31;strokeWidth=2;" edge="1" source="profile_box" target="embed_box" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+        <mxCell id="online_profiler" value="&lt;b&gt;Psychological Profiler&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:13px&#39;&gt;(same model, label-blind)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4472C4;fontColor=#ffffff;strokeColor=#2a4a8a;strokeWidth=2.5;arcSize=10;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="410" y="238" width="240" height="64" as="geometry" />
         </mxCell>
-
-        <mxCell id="embed_box" value="&lt;b&gt;Profile Embedding&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Sentence encoder → dense vector&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#fff;strokeColor=#b85a00;strokeWidth=2;arcSize=10;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="100" y="510" width="220" height="44" as="geometry"/>
+        <mxCell id="test_profile" value="&lt;b&gt;Test Profile&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:13px&#39;&gt;30-facet + φ vector&lt;/font&gt;" style="shape=parallelogram;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;strokeWidth=2.5;arcSize=5;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="415" y="356" width="230" height="64" as="geometry" />
         </mxCell>
-
-        <!-- Facet vector box (parallel) -->
-        <mxCell id="facet_vec_box" value="&lt;b&gt;Facet Vector Encoding&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;φ(p) ∈ ℝ³⁰, L2-normalised&lt;br/&gt;high→+1, mod→+0.5, low→-1, none/n/e→0&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5cd;strokeColor=#ED7D31;strokeWidth=1.5;arcSize=10;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="80" y="574" width="260" height="56" as="geometry"/>
+        <mxCell id="hybrid_box" value="&lt;b&gt;Hybrid Retrieval&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:13px&#39;&gt;FAISS ANN (dense) + φ[S_τ] cosine re-rank&lt;/font&gt;&lt;br/&gt;&lt;font style=&#39;font-size:12px;font-style:italic&#39;&gt;score = β·sim_dense + γ·sim_facet  (γ &gt; β)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#fff;strokeColor=#b85a00;strokeWidth=2.5;arcSize=10;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="398" y="478" width="276" height="84" as="geometry" />
         </mxCell>
-
-        <!-- Arrow embed → facet -->
-        <mxCell id="arr_embed_facet" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7D31;strokeWidth=1.5;" edge="1" source="embed_box" target="facet_vec_box" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+        <mxCell id="topk_box" value="&lt;b&gt;Top-k Examples&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:13px&quot;&gt;full 30-facet profile + evidence + label&lt;/font&gt;" style="shape=parallelogram;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;strokeWidth=2.5;arcSize=5;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="482" y="616" width="276" height="64" as="geometry" />
         </mxCell>
-
-        <!-- FAISS Index -->
-        <mxCell id="faiss_box" value="&lt;b&gt;FAISS ANN Index&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Profile embeddings&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#c0392b;strokeWidth=2;fontSize=11;arcSize=10;size=8;" vertex="1" parent="1">
-          <mxGeometry x="80" y="650" width="120" height="68" as="geometry"/>
+        <mxCell id="inf_box" value="&lt;b&gt;Reasoned Inference (LLM)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#fff;strokeColor=#3a6e1a;strokeWidth=2.5;arcSize=10;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="730" y="356" width="360" height="89" as="geometry" />
         </mxCell>
-
-        <!-- Facet Matrix Store -->
-        <mxCell id="facet_store" value="&lt;b&gt;Facet Matrix Store&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:10px&#39;&gt;φ vectors + labels&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#c0392b;strokeWidth=2;fontSize=11;arcSize=10;size=8;" vertex="1" parent="1">
-          <mxGeometry x="220" y="650" width="120" height="68" as="geometry"/>
+        <mxCell id="output_label" value="&lt;b&gt;Predicted Label&lt;/b&gt;&lt;br/&gt;&lt;font color=&#39;#fff&#39; style=&#39;font-size:18px&#39;&gt;high / low&lt;/font&gt;&lt;br/&gt;&lt;font style=&#39;font-size:13px&#39;&gt;per trait (5 total)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a6020;fontColor=#fff;strokeColor=#0a3010;strokeWidth=3;arcSize=30;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="800" y="661" width="220" height="84" as="geometry" />
         </mxCell>
-
-        <!-- Arrows facet vec → stores -->
-        <mxCell id="arr_fv_faiss" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#c0392b;strokeWidth=1.5;" edge="1" source="facet_vec_box" target="faiss_box" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+        <mxCell id="b1" value="" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#4472C4;strokeWidth=2.5;" parent="1" source="test_essay" target="online_profiler" edge="1">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="arr_fv_store" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#c0392b;strokeWidth=1.5;" edge="1" source="facet_vec_box" target="facet_store" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+        <mxCell id="b2" value="" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#4472C4;strokeWidth=2.5;" parent="1" source="online_profiler" target="test_profile" edge="1">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-
-        <!-- ══════════════════════════════════════════════════════
-             ONLINE: Test Essay Input
-             ══════════════════════════════════════════════════════ -->
-        <mxCell id="test_essay" value="&lt;b&gt;Test Essay&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:10px&#39;&gt;(unlabelled)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2efda;strokeColor=#70AD47;strokeWidth=2;arcSize=30;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="530" y="120" width="160" height="52" as="geometry"/>
-        </mxCell>
-
-        <!-- Arrow: test essay → online profiler -->
-        <mxCell id="arr_test_onprof" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4472C4;strokeWidth=2;" edge="1" source="test_essay" target="online_profiler" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-
-        <!-- Online Profiler (same component, applied to test essay) -->
-        <mxCell id="online_profiler" value="&lt;b&gt;Psychological Profiler&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:10px&#39;&gt;(same model, label-blind)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4472C4;fontColor=#ffffff;strokeColor=#2a4a8a;strokeWidth=2;arcSize=10;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="510" y="222" width="200" height="46" as="geometry"/>
-        </mxCell>
-
-        <!-- Test Profile output -->
-        <mxCell id="test_profile" value="&lt;b&gt;Test Profile&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:10px&#39;&gt;30-facet + embedding + φ vector&lt;/font&gt;" style="shape=parallelogram;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;strokeWidth=2;arcSize=5;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="510" y="310" width="200" height="50" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="arr_onprof_tprof" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4472C4;strokeWidth=2;" edge="1" source="online_profiler" target="test_profile" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-
-        <!-- ══════════════════════════════════════════════════════
-             ONLINE: Hybrid Retrieval (per trait)
-             ══════════════════════════════════════════════════════ -->
-        <mxCell id="hybrid_box" value="&lt;b&gt;Hybrid Retrieval (per trait τ)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#fff;strokeColor=#b85a00;strokeWidth=2;arcSize=10;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="490" y="410" width="240" height="42" as="geometry"/>
-        </mxCell>
-
-        <!-- Hybrid internals -->
-        <mxCell id="hybrid_inner" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5cd;strokeColor=#ED7D31;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="470" y="462" width="280" height="106" as="geometry"/>
-        </mxCell>
-        <mxCell id="hi_dense" value="Dense sim&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;FAISS ANN&lt;br/&gt;→ candidate pool&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5cd;strokeColor=#ED7D31;fontSize=10;arcSize=20;" vertex="1" parent="1">
-          <mxGeometry x="480" y="474" width="110" height="44" as="geometry"/>
-        </mxCell>
-        <mxCell id="hi_facet" value="Trait-masked facet sim&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;φ[S_τ] cosine&lt;br/&gt;re-rank&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5cd;strokeColor=#ED7D31;fontSize=10;arcSize=20;" vertex="1" parent="1">
-          <mxGeometry x="620" y="474" width="118" height="44" as="geometry"/>
-        </mxCell>
-        <mxCell id="hi_score" value="score_τ(q,d) = β_τ · sim_dense + γ_τ · sim_facet    (γ_τ &gt; β_τ)" style="text;html=1;align=center;fontSize=9;fontColor=#333;fontStyle=2;" vertex="1" parent="1">
-          <mxGeometry x="470" y="524" width="280" height="36" as="geometry"/>
-        </mxCell>
-
-        <!-- Arrows to hybrid -->
-        <mxCell id="arr_tprof_hybrid" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7D31;strokeWidth=2;" edge="1" source="test_profile" target="hybrid_box" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-
-        <!-- Cross-phase arrows: stores → hybrid -->
-        <mxCell id="arr_faiss_hybrid" value="query" style="edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;strokeColor=#c0392b;strokeWidth=1.5;dashed=1;fontStyle=2;fontSize=9;" edge="1" source="faiss_box" target="hi_dense" parent="1">
+        <mxCell id="b3" value="" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#ED7D31;strokeWidth=2.5;" parent="1" target="hybrid_box" edge="1">
           <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="420" as="sourcePoint" />
             <Array as="points">
-              <mxPoint x="140" y="718"/>
-              <mxPoint x="140" y="760"/>
-              <mxPoint x="535" y="760"/>
-              <mxPoint x="535" y="496"/>
+              <mxPoint x="535" y="420" />
+              <mxPoint x="535" y="450" />
+              <mxPoint x="536" y="450" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="arr_store_hybrid" value="rerank" style="edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;strokeColor=#c0392b;strokeWidth=1.5;dashed=1;fontStyle=2;fontSize=9;" edge="1" source="facet_store" target="hi_facet" parent="1">
+        <mxCell id="b4" value="" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#ED7D31;strokeWidth=2.5;" parent="1" source="hybrid_box" target="topk_box" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="280" y="718"/>
-              <mxPoint x="280" y="770"/>
-              <mxPoint x="679" y="770"/>
-              <mxPoint x="679" y="496"/>
+              <mxPoint x="616" y="587" />
+              <mxPoint x="616" y="587" />
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- Top-k exemplars (trait-sliced) -->
-        <mxCell id="topk_box" value="&lt;b&gt;Top-k Exemplars (trait-sliced)&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:10px&#39;&gt;6 facets of τ + evidence + label (k=3 default)&lt;/font&gt;" style="shape=parallelogram;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;strokeWidth=2;arcSize=5;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="480" y="590" width="260" height="52" as="geometry"/>
+        <mxCell id="b5" value="Examples" style="edgeStyle=elbowEdgeStyle;elbow=vertical;strokeColor=#70AD47;strokeWidth=2.5;fontSize=14;fontStyle=1;fontColor=#3a6e1a;labelBackgroundColor=#f5fff5;exitX=0.958;exitY=0.238;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="topk_box" target="inf_box" edge="1">
+          <mxGeometry x="0.0006" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="863" y="630" />
+              <mxPoint x="700" y="404" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
         </mxCell>
-
-        <mxCell id="arr_hybrid_topk" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7D31;strokeWidth=2;" edge="1" source="hybrid_inner" target="topk_box" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+        <mxCell id="b6" value="" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#70AD47;strokeWidth=2.5;" parent="1" source="test_profile" target="inf_box" edge="1">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-
-        <!-- ══════════════════════════════════════════════════════
-             ONLINE: Reasoned Inference
-             ══════════════════════════════════════════════════════ -->
-        <mxCell id="inf_box" value="&lt;b&gt;Reasoned Inference (LLM)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#fff;strokeColor=#3a6e1a;strokeWidth=2;arcSize=10;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="760" y="270" width="240" height="42" as="geometry"/>
-        </mxCell>
-
-        <!-- Prompt structure internals -->
-        <mxCell id="prompt_inner" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2efda;strokeColor=#70AD47;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="750" y="322" width="260" height="168" as="geometry"/>
-        </mxCell>
-        <mxCell id="pinner_trait" value="Trait definition&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;HIGH / LOW descriptors&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c6efce;strokeColor=#70AD47;fontSize=10;arcSize=20;" vertex="1" parent="1">
-          <mxGeometry x="760" y="332" width="114" height="36" as="geometry"/>
-        </mxCell>
-        <mxCell id="pinner_ex" value="Retrieved exemplars&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;calibration anchors&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c6efce;strokeColor=#70AD47;fontSize=10;arcSize=20;" vertex="1" parent="1">
-          <mxGeometry x="886" y="332" width="114" height="36" as="geometry"/>
-        </mxCell>
-        <mxCell id="pinner_essay" value="Test essay text" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c6efce;strokeColor=#70AD47;fontSize=10;arcSize=20;" vertex="1" parent="1">
-          <mxGeometry x="760" y="380" width="114" height="36" as="geometry"/>
-        </mxCell>
-        <mxCell id="pinner_xml" value="XML output schema&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;system prompt&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c6efce;strokeColor=#70AD47;fontSize=10;arcSize=20;" vertex="1" parent="1">
-          <mxGeometry x="886" y="380" width="114" height="36" as="geometry"/>
-        </mxCell>
-        <mxCell id="pinner_chain" value="Structured reasoning chain:&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;&lt;evidence&gt; → &lt;facet_check&gt; → &lt;cue_tally&gt;&lt;br/&gt;→ &lt;example_alignment&gt; → &lt;verdict&gt; → &lt;label&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9d18e;strokeColor=#70AD47;fontSize=10;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="760" y="428" width="240" height="52" as="geometry"/>
-        </mxCell>
-
-        <!-- Arrows into inference -->
-        <mxCell id="arr_topk_inf" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;strokeColor=#70AD47;strokeWidth=2;" edge="1" source="topk_box" target="inf_box" parent="1">
+        <mxCell id="b7" value="essay text" style="edgeStyle=elbowEdgeStyle;elbow=vertical;strokeColor=#70AD47;strokeWidth=2;dashed=1;fontSize=13;fontStyle=3;fontColor=#3a6e1a;labelBackgroundColor=#f5fff5;" parent="1" source="test_essay" target="inf_box" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="740" y="616"/>
-              <mxPoint x="740" y="291"/>
-              <mxPoint x="880" y="291"/>
+              <mxPoint x="910" y="152" />
+              <mxPoint x="910" y="356" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="arr_essay_inf" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;strokeColor=#70AD47;strokeWidth=2;dashed=1;" edge="1" source="test_essay" target="inf_box" parent="1">
+        <mxCell id="b8" value="" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#1a6020;strokeWidth=3;" parent="1" source="inf_box" target="output_label" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x1" value="query" style="edgeStyle=elbowEdgeStyle;elbow=vertical;strokeColor=#c0392b;strokeWidth=2;dashed=1;fontSize=14;fontStyle=1;fontColor=#c0392b;labelBackgroundColor=#f5fff5;entryX=0.281;entryY=0.995;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="faiss_box" target="hybrid_box" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="880" y="146"/>
-              <mxPoint x="880" y="291"/>
+              <mxPoint x="285" y="742" />
+              <mxPoint x="360" y="730" />
+              <mxPoint x="360" y="520" />
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- Output Label -->
-        <mxCell id="output_label" value="&lt;b&gt;Predicted Label&lt;/b&gt;&lt;br/&gt;&lt;font color=&#39;#1a6020&#39; style=&#39;font-size:12px&#39;&gt;high / low&lt;/font&gt;&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;per trait (5 labels total)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#fff;strokeColor=#3a6e1a;strokeWidth=2.5;arcSize=30;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="806" y="530" width="148" height="64" as="geometry"/>
+        <mxCell id="x2" value="re-rank" style="edgeStyle=elbowEdgeStyle;elbow=vertical;strokeColor=#c0392b;strokeWidth=2;dashed=1;fontSize=14;fontStyle=1;fontColor=#c0392b;labelBackgroundColor=#f5fff5;entryX=0.145;entryY=1.014;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="facet_store" target="hybrid_box" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="264" y="720" />
+              <mxPoint x="380" y="720" />
+              <mxPoint x="380" y="520" />
+            </Array>
+          </mxGeometry>
         </mxCell>
-
-        <mxCell id="arr_inf_label" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3a6e1a;strokeWidth=2.5;" edge="1" source="prompt_inner" target="output_label" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-
-
-        <!-- ══════════════════════════════════════════════════════
-             TITLE
-             ══════════════════════════════════════════════════════ -->
-        <mxCell id="title" value="&lt;b&gt;&lt;font style=&#39;font-size:14px&#39;&gt;Figure 3.1 — Three-Component OCEAN Personality Recognition Pipeline&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="30" y="18" width="1110" height="32" as="geometry"/>
-        </mxCell>
-
       </root>
     </mxGraphModel>
   </diagram>
-
-
-  <!-- ============================================================
-       DIAGRAM 2 – PROFILER DETAIL
-       ============================================================ -->
   <diagram id="profiler-detail" name="Fig 3.2 – Profiler Detail">
-    <mxGraphModel dx="1100" dy="780" grid="0" gridSize="10" guides="1"
-                  tooltips="1" connect="0" arrows="0" fold="0"
-                  page="1" pageScale="1" pageWidth="1169" pageHeight="827"
-                  math="0" shadow="0">
+    <mxGraphModel dx="1100" dy="780" grid="0" gridSize="10" guides="1" tooltips="1" connect="0" arrows="0" fold="0" page="1" pageScale="1" pageWidth="1169" pageHeight="700" math="0" shadow="0">
       <root>
-        <mxCell id="0"/>
-        <mxCell id="1" parent="0"/>
-
-        <!-- Title -->
-        <mxCell id="title2" value="&lt;b&gt;&lt;font style=&#39;font-size:13px&#39;&gt;Figure 3.2 — Psychological Profiler: NEO-PI-R Facet Extraction&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="30" y="18" width="1100" height="30" as="geometry"/>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title2" value="&lt;b&gt;&lt;font style=&#39;font-size:15px&#39;&gt;Figure 3.2 — Psychological Profiler: NEO-PI-R Facet Extraction&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="30" y="18" width="1100" height="34" as="geometry" />
         </mxCell>
-
-        <!-- Essay input -->
-        <mxCell id="p_essay" value="&lt;b&gt;Raw Essay&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#4472C4;strokeWidth=2;arcSize=30;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="50" y="70" width="140" height="48" as="geometry"/>
+        <mxCell id="p_essay" value="&lt;b&gt;Raw Essay&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#4472C4;strokeWidth=2;arcSize=30;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="160" height="56" as="geometry" />
         </mxCell>
-
-        <!-- LLM Profiler -->
-        <mxCell id="p_llm" value="&lt;b&gt;LLM Profiler&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:10px&#39;&gt;GPT-4o (prompted)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4472C4;fontColor=#fff;strokeColor=#2a4a8a;strokeWidth=2;arcSize=10;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="230" y="70" width="180" height="48" as="geometry"/>
+        <mxCell id="p_llm" value="&lt;b&gt;LLM Profiler&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:12px&#39;&gt;GPT-4o (prompted)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4472C4;fontColor=#fff;strokeColor=#2a4a8a;strokeWidth=2;arcSize=10;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="250" y="80" width="200" height="56" as="geometry" />
         </mxCell>
-
         <mxCell id="arr_pe_llm" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4472C4;strokeWidth=2;" edge="1" source="p_essay" target="p_llm" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- System Prompt box -->
-        <mxCell id="p_sysprompt" value="&lt;b&gt;System Prompt&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;NEO-PI-R definitions&lt;br/&gt;signal vocabulary rules&lt;br/&gt;n/e constraint&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#888;strokeWidth=1.5;fontSize=10;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="230" y="152" width="180" height="62" as="geometry"/>
+        <mxCell id="p_sysprompt" value="&lt;b&gt;System Prompt&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:11px&#39;&gt;NEO-PI-R definitions&lt;br/&gt;signal vocabulary rules&lt;br/&gt;n/e constraint&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#888;strokeWidth=1.5;fontSize=12;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="250" y="168" width="200" height="72" as="geometry" />
         </mxCell>
         <mxCell id="arr_sys_llm" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#aaa;strokeWidth=1.5;dashed=1;" edge="1" source="p_sysprompt" target="p_llm" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- 30-facet output -->
-        <mxCell id="p_30facet" value="&lt;b&gt;30-Facet Profile&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;strokeWidth=2;arcSize=10;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="460" y="70" width="160" height="48" as="geometry"/>
+        <mxCell id="p_30facet" value="&lt;b&gt;30-Facet Profile&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;strokeWidth=2;arcSize=10;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="490" y="80" width="180" height="56" as="geometry" />
         </mxCell>
-
         <mxCell id="arr_llm_prof" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4472C4;strokeWidth=2;" edge="1" source="p_llm" target="p_30facet" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Trait columns -->
-        <!-- N column -->
-        <mxCell id="col_N" value="&lt;b&gt;N – Neuroticism&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#c0392b;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="50" y="200" width="160" height="32" as="geometry"/>
+        <mxCell id="col_N" value="&lt;b&gt;N – Neuroticism&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#c0392b;strokeWidth=1.5;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="50" y="230" width="160" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="n1" value="N1 anxiety" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5e5;strokeColor=#c0392b;fontSize=9;" vertex="1" parent="1"><mxGeometry x="50" y="242" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="n2" value="N2 hostility" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5e5;strokeColor=#c0392b;fontSize=9;" vertex="1" parent="1"><mxGeometry x="50" y="268" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="n3" value="N3 depression" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5e5;strokeColor=#c0392b;fontSize=9;" vertex="1" parent="1"><mxGeometry x="50" y="294" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="n4" value="N4 self-conscious" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5e5;strokeColor=#c0392b;fontSize=9;" vertex="1" parent="1"><mxGeometry x="50" y="320" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="n5" value="N5 impulsiveness" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5e5;strokeColor=#c0392b;fontSize=9;" vertex="1" parent="1"><mxGeometry x="50" y="346" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="n6" value="N6 vulnerability" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5e5;strokeColor=#c0392b;fontSize=9;" vertex="1" parent="1"><mxGeometry x="50" y="372" width="160" height="22" as="geometry"/></mxCell>
-
-        <!-- E column -->
-        <mxCell id="col_E" value="&lt;b&gt;E – Extraversion&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d6a800;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="230" y="200" width="160" height="32" as="geometry"/>
+        <mxCell id="n1" value="N1 anxiety" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5e5;strokeColor=#c0392b;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="272" width="160" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="e1" value="E1 warmth" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;fontSize=9;" vertex="1" parent="1"><mxGeometry x="230" y="242" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="e2" value="E2 gregariousness" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;fontSize=9;" vertex="1" parent="1"><mxGeometry x="230" y="268" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="e3" value="E3 assertiveness" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;fontSize=9;" vertex="1" parent="1"><mxGeometry x="230" y="294" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="e4" value="E4 activity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;fontSize=9;" vertex="1" parent="1"><mxGeometry x="230" y="320" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="e5" value="E5 excitement-seek" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;fontSize=9;" vertex="1" parent="1"><mxGeometry x="230" y="346" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="e6" value="E6 positive emotion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;fontSize=9;" vertex="1" parent="1"><mxGeometry x="230" y="372" width="160" height="22" as="geometry"/></mxCell>
-
-        <!-- O column -->
-        <mxCell id="col_O" value="&lt;b&gt;O – Openness&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cfe2f3;strokeColor=#4472C4;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="410" y="200" width="160" height="32" as="geometry"/>
+        <mxCell id="n2" value="N2 hostility" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5e5;strokeColor=#c0392b;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="302" width="160" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="o1" value="O1 fantasy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#4472C4;fontSize:9px;fontSize=9;" vertex="1" parent="1"><mxGeometry x="410" y="242" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="o2" value="O2 aesthetics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#4472C4;fontSize=9;" vertex="1" parent="1"><mxGeometry x="410" y="268" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="o3" value="O3 feelings" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#4472C4;fontSize=9;" vertex="1" parent="1"><mxGeometry x="410" y="294" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="o4" value="O4 actions/variety" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#4472C4;fontSize=9;" vertex="1" parent="1"><mxGeometry x="410" y="320" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="o5" value="O5 ideas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#4472C4;fontSize=9;" vertex="1" parent="1"><mxGeometry x="410" y="346" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="o6" value="O6 values" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#4472C4;fontSize=9;" vertex="1" parent="1"><mxGeometry x="410" y="372" width="160" height="22" as="geometry"/></mxCell>
-
-        <!-- A column -->
-        <mxCell id="col_A" value="&lt;b&gt;A – Agreeableness&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d9ead3;strokeColor=#70AD47;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="590" y="200" width="160" height="32" as="geometry"/>
+        <mxCell id="n3" value="N3 depression" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5e5;strokeColor=#c0392b;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="332" width="160" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="a1" value="A1 trust" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2efda;strokeColor=#70AD47;fontSize=9;" vertex="1" parent="1"><mxGeometry x="590" y="242" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="a2" value="A2 straightforward" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2efda;strokeColor=#70AD47;fontSize=9;" vertex="1" parent="1"><mxGeometry x="590" y="268" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="a3" value="A3 altruism" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2efda;strokeColor=#70AD47;fontSize=9;" vertex="1" parent="1"><mxGeometry x="590" y="294" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="a4" value="A4 compliance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2efda;strokeColor=#70AD47;fontSize=9;" vertex="1" parent="1"><mxGeometry x="590" y="320" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="a5" value="A5 modesty" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2efda;strokeColor=#70AD47;fontSize=9;" vertex="1" parent="1"><mxGeometry x="590" y="346" width="160" height="22" as="geometry"/></mxCell>
-        <mxCell id="a6" value="A6 tender-minded" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2efda;strokeColor=#70AD47;fontSize=9;" vertex="1" parent="1"><mxGeometry x="590" y="372" width="160" height="22" as="geometry"/></mxCell>
-
-        <!-- C column -->
-        <mxCell id="col_C" value="&lt;b&gt;C – Conscientiousness&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ead1dc;strokeColor=#8e3a7c;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="770" y="200" width="180" height="32" as="geometry"/>
+        <mxCell id="n4" value="N4 self-conscious" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5e5;strokeColor=#c0392b;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="362" width="160" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="c1" value="C1 competence" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4e0ec;strokeColor=#8e3a7c;fontSize=9;" vertex="1" parent="1"><mxGeometry x="770" y="242" width="180" height="22" as="geometry"/></mxCell>
-        <mxCell id="c2" value="C2 order" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4e0ec;strokeColor=#8e3a7c;fontSize=9;" vertex="1" parent="1"><mxGeometry x="770" y="268" width="180" height="22" as="geometry"/></mxCell>
-        <mxCell id="c3" value="C3 dutifulness" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4e0ec;strokeColor=#8e3a7c;fontSize=9;" vertex="1" parent="1"><mxGeometry x="770" y="294" width="180" height="22" as="geometry"/></mxCell>
-        <mxCell id="c4" value="C4 achievement" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4e0ec;strokeColor=#8e3a7c;fontSize=9;" vertex="1" parent="1"><mxGeometry x="770" y="320" width="180" height="22" as="geometry"/></mxCell>
-        <mxCell id="c5" value="C5 self-discipline" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4e0ec;strokeColor=#8e3a7c;fontSize=9;" vertex="1" parent="1"><mxGeometry x="770" y="346" width="180" height="22" as="geometry"/></mxCell>
-        <mxCell id="c6" value="C6 deliberation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4e0ec;strokeColor=#8e3a7c;fontSize=9;" vertex="1" parent="1"><mxGeometry x="770" y="372" width="180" height="22" as="geometry"/></mxCell>
-
-        <!-- Arrows from 30-facet to columns (fan out) -->
+        <mxCell id="n5" value="N5 impulsiveness" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5e5;strokeColor=#c0392b;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="392" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="n6" value="N6 vulnerability" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5e5;strokeColor=#c0392b;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="422" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="col_E" value="&lt;b&gt;E – Extraversion&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d6a800;strokeWidth=1.5;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="230" y="230" width="160" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="E1 warmth" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="230" y="272" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="E2 gregariousness" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="230" y="302" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="E3 assertiveness" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="230" y="332" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="E4 activity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="230" y="362" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="E5 excitement-seek" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="230" y="392" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="E6 positive emotion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="230" y="422" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="col_O" value="&lt;b&gt;O – Openness&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cfe2f3;strokeColor=#4472C4;strokeWidth=1.5;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="410" y="230" width="160" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="o1" value="O1 fantasy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#4472C4;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="410" y="272" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="o2" value="O2 aesthetics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#4472C4;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="410" y="302" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="o3" value="O3 feelings" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#4472C4;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="410" y="332" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="o4" value="O4 actions/variety" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#4472C4;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="410" y="362" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="o5" value="O5 ideas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#4472C4;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="410" y="392" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="o6" value="O6 values" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#4472C4;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="410" y="422" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="col_A" value="&lt;b&gt;A – Agreeableness&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d9ead3;strokeColor=#70AD47;strokeWidth=1.5;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="590" y="230" width="160" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" value="A1 trust" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2efda;strokeColor=#70AD47;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="590" y="272" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" value="A2 straightforward" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2efda;strokeColor=#70AD47;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="590" y="302" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" value="A3 altruism" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2efda;strokeColor=#70AD47;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="590" y="332" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" value="A4 compliance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2efda;strokeColor=#70AD47;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="590" y="362" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" value="A5 modesty" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2efda;strokeColor=#70AD47;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="590" y="392" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" value="A6 tender-minded" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2efda;strokeColor=#70AD47;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="590" y="422" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="col_C" value="&lt;b&gt;C – Conscientiousness&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ead1dc;strokeColor=#8e3a7c;strokeWidth=1.5;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="770" y="230" width="190" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" value="C1 competence" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4e0ec;strokeColor=#8e3a7c;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="770" y="272" width="190" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" value="C2 order" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4e0ec;strokeColor=#8e3a7c;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="770" y="302" width="190" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" value="C3 dutifulness" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4e0ec;strokeColor=#8e3a7c;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="770" y="332" width="190" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" value="C4 achievement" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4e0ec;strokeColor=#8e3a7c;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="770" y="362" width="190" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" value="C5 self-discipline" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4e0ec;strokeColor=#8e3a7c;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="770" y="392" width="190" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c6" value="C6 deliberation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4e0ec;strokeColor=#8e3a7c;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="770" y="422" width="190" height="26" as="geometry" />
+        </mxCell>
         <mxCell id="arr_pf_N" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#c0392b;strokeWidth=1.5;" edge="1" source="p_30facet" target="col_N" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="arr_pf_E" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#d6a800;strokeWidth=1.5;" edge="1" source="p_30facet" target="col_E" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="arr_pf_O" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4472C4;strokeWidth=1.5;" edge="1" source="p_30facet" target="col_O" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="arr_pf_A" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#70AD47;strokeWidth=1.5;" edge="1" source="p_30facet" target="col_A" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="arr_pf_C" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#8e3a7c;strokeWidth=1.5;" edge="1" source="p_30facet" target="col_C" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Signal vocab legend -->
         <mxCell id="legend_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#888;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="50" y="430" width="900" height="52" as="geometry"/>
+          <mxGeometry x="50" y="474" width="910" height="58" as="geometry" />
         </mxCell>
-        <mxCell id="legend_title" value="&lt;b&gt;Signal Vocabulary:&lt;/b&gt;" style="text;html=1;align=left;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="60" y="436" width="120" height="20" as="geometry"/>
+        <mxCell id="legend_title" value="&lt;b&gt;Signal Vocabulary:&lt;/b&gt;" style="text;html=1;align=left;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="480" width="130" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="leg_high" value="high" style="rounded=1;fillColor=#4472C4;fontColor=#fff;strokeColor=none;fontSize=10;" vertex="1" parent="1"><mxGeometry x="180" y="436" width="70" height="20" as="geometry"/></mxCell>
-        <mxCell id="leg_mod"  value="mod"  style="rounded=1;fillColor=#9dc3e6;fontColor=#222;strokeColor=none;fontSize=10;" vertex="1" parent="1"><mxGeometry x="262" y="436" width="70" height="20" as="geometry"/></mxCell>
-        <mxCell id="leg_low"  value="low"  style="rounded=1;fillColor=#f4cccc;fontColor=#c0392b;strokeColor=none;fontSize=10;" vertex="1" parent="1"><mxGeometry x="344" y="436" width="70" height="20" as="geometry"/></mxCell>
-        <mxCell id="leg_none" value="none" style="rounded=1;fillColor=#f3f3f3;fontColor=#555;strokeColor=#bbb;fontSize=10;" vertex="1" parent="1"><mxGeometry x="426" y="436" width="70" height="20" as="geometry"/></mxCell>
-        <mxCell id="leg_ne"   value="n/e"  style="rounded=1;fillColor=#eeeeee;fontColor=#888;strokeColor=#bbb;fontSize=10;fontStyle=2;" vertex="1" parent="1"><mxGeometry x="508" y="436" width="70" height="20" as="geometry"/></mxCell>
-        <mxCell id="leg_ne_note" value="n/e = not evidenced (interpersonal facets unobservable in solo writing)" style="text;html=1;align=left;fontSize=9;fontColor=#666;fontStyle=2;" vertex="1" parent="1">
-          <mxGeometry x="590" y="436" width="350" height="20" as="geometry"/></mxCell>
-
-        <mxCell id="leg_map" value="Ordinal map:  high → +1.0   mod → +0.5   none/n/e → 0.0   low → −1.0     (L2-normalised → φ(p) ∈ ℝ³⁰)" style="text;html=1;align=center;fontSize=9;fontColor=#444;fontStyle=2;" vertex="1" parent="1">
-          <mxGeometry x="60" y="460" width="870" height="16" as="geometry"/>
+        <mxCell id="leg_high" value="high" style="rounded=1;fillColor=#4472C4;fontColor=#fff;strokeColor=none;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="196" y="480" width="76" height="24" as="geometry" />
         </mxCell>
-
+        <mxCell id="leg_mod" value="mod" style="rounded=1;fillColor=#9dc3e6;fontColor=#222;strokeColor=none;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="282" y="480" width="76" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_low" value="low" style="rounded=1;fillColor=#f4cccc;fontColor=#c0392b;strokeColor=none;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="368" y="480" width="76" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_none" value="none" style="rounded=1;fillColor=#f3f3f3;fontColor=#555;strokeColor=#bbb;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="454" y="480" width="76" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_ne" value="n/e" style="rounded=1;fillColor=#eeeeee;fontColor=#888;strokeColor=#bbb;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="540" y="480" width="76" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_ne_note" value="n/e = not evidenced (interpersonal facets unobservable in solo writing)" style="text;html=1;align=left;fontSize=11;fontColor=#666;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="626" y="480" width="324" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_map" value="Ordinal map:  high → +1.0   mod → +0.5   none/n/e → 0.0   low → −1.0     (L2-normalised → φ(p) ∈ ℝ³⁰)" style="text;html=1;align=center;fontSize=11;fontColor=#444;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="60" y="508" width="880" height="18" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
-
-
-  <!-- ============================================================
-       DIAGRAM 3 – HYBRID RETRIEVAL + REASONED INFERENCE DETAIL
-       ============================================================ -->
   <diagram id="retrieval-inference" name="Fig 3.3 – Retrieval &amp; Inference Detail">
-    <mxGraphModel dx="1100" dy="780" grid="0" gridSize="10" guides="1"
-                  tooltips="1" connect="0" arrows="0" fold="0"
-                  page="1" pageScale="1" pageWidth="1169" pageHeight="827"
-                  math="0" shadow="0">
+    <mxGraphModel dx="1100" dy="780" grid="0" gridSize="10" guides="1" tooltips="1" connect="0" arrows="0" fold="0" page="1" pageScale="1" pageWidth="1169" pageHeight="920" math="0" shadow="0">
       <root>
-        <mxCell id="0"/>
-        <mxCell id="1" parent="0"/>
-
-        <!-- Title -->
-        <mxCell id="t3" value="&lt;b&gt;&lt;font style=&#39;font-size:13px&#39;&gt;Figure 3.3 — Hybrid Retrieval and Structured Reasoned Inference (per trait τ)&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="30" y="14" width="1100" height="30" as="geometry"/>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t3" value="&lt;b&gt;&lt;font style=&#39;font-size:15px&#39;&gt;Figure 3.3 — Hybrid Retrieval and Structured Reasoned Inference (per trait τ)&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="30" y="14" width="1100" height="34" as="geometry" />
         </mxCell>
-
-        <!-- ── LEFT: Retrieval ── -->
         <mxCell id="ret_band" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#ED7D31;strokeWidth=1.5;dashed=1;" vertex="1" parent="1">
-          <mxGeometry x="30" y="60" width="520" height="680" as="geometry"/>
+          <mxGeometry x="30" y="60" width="520" height="830" as="geometry" />
         </mxCell>
-        <mxCell id="ret_lbl" value="&lt;b&gt;HYBRID RETRIEVAL&lt;/b&gt;" style="text;html=1;align=center;fontSize=11;fontColor=#b85a00;" vertex="1" parent="1">
-          <mxGeometry x="30" y="64" width="520" height="22" as="geometry"/>
+        <mxCell id="ret_lbl" value="&lt;b&gt;HYBRID RETRIEVAL&lt;/b&gt;" style="text;html=1;align=center;fontSize=14;fontColor=#b85a00;" vertex="1" parent="1">
+          <mxGeometry x="30" y="64" width="520" height="26" as="geometry" />
         </mxCell>
-
-        <!-- Test profile input -->
-        <mxCell id="r_tprof" value="&lt;b&gt;Test Profile&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:10px&#39;&gt;30-facet + φ(p) ∈ ℝ³⁰&lt;/font&gt;" style="shape=parallelogram;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;strokeWidth=2;arcSize=5;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="165" y="100" width="210" height="48" as="geometry"/>
+        <mxCell id="r_tprof" value="&lt;b&gt;Test Profile&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:12px&#39;&gt;30-facet + φ(p) ∈ ℝ³⁰&lt;/font&gt;" style="shape=parallelogram;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;strokeWidth=2;arcSize=5;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="155" y="106" width="230" height="56" as="geometry" />
         </mxCell>
-
-        <!-- FAISS ANN search -->
-        <mxCell id="r_faiss" value="&lt;b&gt;FAISS ANN Search&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:10px&#39;&gt;dense profile embedding sim&lt;br/&gt;→ candidate pool (top-M)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#c0392b;strokeWidth=2;arcSize=10;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="60" y="198" width="200" height="60" as="geometry"/>
+        <mxCell id="r_faiss" value="&lt;b&gt;FAISS ANN Search&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:12px&#39;&gt;dense profile embedding sim&lt;br/&gt;→ candidate pool (top-M)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#c0392b;strokeWidth=2;arcSize=10;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="50" y="220" width="210" height="72" as="geometry" />
         </mxCell>
-
-        <!-- Trait mask operation -->
-        <mxCell id="r_mask" value="&lt;b&gt;Trait Mask S_τ&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:10px&#39;&gt;select 6 facet dims of τ&lt;br/&gt;from φ vector, re-normalise&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5cd;strokeColor=#ED7D31;strokeWidth=2;arcSize=10;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="280" y="198" width="210" height="60" as="geometry"/>
+        <mxCell id="r_mask" value="&lt;b&gt;Trait Mask S_τ&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:12px&#39;&gt;select 6 facet dims of τ&lt;br/&gt;from φ vector, re-normalise&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5cd;strokeColor=#ED7D31;strokeWidth=2;arcSize=10;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="280" y="220" width="230" height="72" as="geometry" />
         </mxCell>
-
         <mxCell id="arr_rtp_faiss" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#c0392b;strokeWidth=1.5;" edge="1" source="r_tprof" target="r_faiss" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="arr_rtp_mask" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7D31;strokeWidth=1.5;" edge="1" source="r_tprof" target="r_mask" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Candidate pool -->
-        <mxCell id="r_pool" value="&lt;b&gt;Candidate Pool&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5cd;strokeColor=#ED7D31;strokeWidth=1.5;arcSize=20;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="115" y="310" width="160" height="40" as="geometry"/>
+        <mxCell id="r_pool" value="&lt;b&gt;Candidate Pool&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5cd;strokeColor=#ED7D31;strokeWidth=1.5;arcSize=20;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="105" y="352" width="180" height="46" as="geometry" />
         </mxCell>
         <mxCell id="arr_faiss_pool" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#c0392b;strokeWidth=1.5;" edge="1" source="r_faiss" target="r_pool" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Re-rank -->
-        <mxCell id="r_rerank" value="&lt;b&gt;Re-rank by Hybrid Score&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:10px&#39;&gt;score_τ(q,d) = β_τ·sim_dense + γ_τ·sim_facet&lt;br/&gt;γ_τ &gt; β_τ for all traits&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#fff;strokeColor=#b85a00;strokeWidth=2;arcSize=10;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="100" y="396" width="340" height="62" as="geometry"/>
+        <mxCell id="r_rerank" value="&lt;b&gt;Re-rank by Hybrid Score&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:12px&#39;&gt;score_τ(q,d) = β_τ·sim_dense + γ_τ·sim_facet&lt;br/&gt;γ_τ &gt; β_τ for all traits&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#fff;strokeColor=#b85a00;strokeWidth=2;arcSize=10;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="88" y="452" width="360" height="72" as="geometry" />
         </mxCell>
         <mxCell id="arr_pool_rr" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7D31;strokeWidth=1.5;" edge="1" source="r_pool" target="r_rerank" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="arr_mask_rr" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7D31;strokeWidth=1.5;" edge="1" source="r_mask" target="r_rerank" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Weight note -->
-        <mxCell id="r_weights" value="&lt;i&gt;Weight gap largest for&lt;br/&gt;Conscientiousness &amp; Neuroticism&lt;br/&gt;(most susceptible to genre confound)&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#ccc;strokeWidth=1;fontSize=9;fontColor=#555;" vertex="1" parent="1">
-          <mxGeometry x="100" y="470" width="340" height="52" as="geometry"/>
+        <mxCell id="r_weights" value="&lt;i&gt;Weight gap largest for&lt;br/&gt;Conscientiousness &amp; Neuroticism&lt;br/&gt;(most susceptible to genre confound)&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#ccc;strokeWidth=1;fontSize=12;fontColor=#555;" vertex="1" parent="1">
+          <mxGeometry x="88" y="538" width="360" height="62" as="geometry" />
         </mxCell>
-
-        <!-- Top-k -->
-        <mxCell id="r_topk" value="&lt;b&gt;Top-k Exemplars&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:10px&#39;&gt;k = 3 (default)&lt;br/&gt;each: 6 facets of τ + evidence + label&lt;/font&gt;" style="shape=parallelogram;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;strokeWidth=2;arcSize=5;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="130" y="554" width="280" height="58" as="geometry"/>
+        <mxCell id="r_topk" value="&lt;b&gt;Top-k Exemplars&lt;/b&gt;&lt;br/&gt;&lt;font style=&#39;font-size:12px&#39;&gt;k = 3 (default)&lt;br/&gt;each: full 30-facet profile + evidence + label&lt;/font&gt;" style="shape=parallelogram;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;strokeWidth=2;arcSize=5;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="118" y="620" width="300" height="68" as="geometry" />
         </mxCell>
         <mxCell id="arr_rr_topk" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7D31;strokeWidth=2;" edge="1" source="r_rerank" target="r_topk" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Exemplar rendering note -->
-        <mxCell id="r_render" value="Trait-sliced exemplar rendering:&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;Filter 30-facet profile → 6 facets of τ + evidence strings only&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;strokeWidth=1;arcSize=10;fontSize=10;fontStyle=2;" vertex="1" parent="1">
-          <mxGeometry x="100" y="628" width="340" height="46" as="geometry"/>
+        <mxCell id="r_render" value="Full-profile exemplar rendering (slice_profile_full_30):&lt;br/&gt;&lt;font style=&#39;font-size:11px&#39;&gt;All 30 facets grouped by trait [N/E/O/A/C] + evidence + linguistic block&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6a800;strokeWidth=1;arcSize=10;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="88" y="710" width="360" height="56" as="geometry" />
         </mxCell>
         <mxCell id="arr_topk_render" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#d6a800;strokeWidth=1.5;" edge="1" source="r_topk" target="r_render" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-
-        <!-- ── RIGHT: Inference ── -->
         <mxCell id="inf_band" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0fff0;strokeColor=#70AD47;strokeWidth=1.5;dashed=1;" vertex="1" parent="1">
-          <mxGeometry x="580" y="60" width="550" height="680" as="geometry"/>
+          <mxGeometry x="580" y="60" width="560" height="830" as="geometry" />
         </mxCell>
-        <mxCell id="inf_lbl" value="&lt;b&gt;STRUCTURED REASONED INFERENCE&lt;/b&gt;" style="text;html=1;align=center;fontSize=11;fontColor=#1a6020;" vertex="1" parent="1">
-          <mxGeometry x="580" y="64" width="550" height="22" as="geometry"/>
+        <mxCell id="inf_lbl" value="&lt;b&gt;STRUCTURED REASONED INFERENCE&lt;/b&gt;" style="text;html=1;align=center;fontSize=14;fontColor=#1a6020;" vertex="1" parent="1">
+          <mxGeometry x="580" y="64" width="560" height="26" as="geometry" />
         </mxCell>
-
-        <!-- LLM box -->
-        <mxCell id="i_llm" value="&lt;b&gt;Language Model (LLM)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#fff;strokeColor=#3a6e1a;strokeWidth=2.5;arcSize=10;fontSize=13;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="660" y="100" width="260" height="48" as="geometry"/>
+        <mxCell id="i_llm" value="&lt;b&gt;Language Model (LLM)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#fff;strokeColor=#3a6e1a;strokeWidth=2.5;arcSize=10;fontSize=15;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="664" y="106" width="280" height="56" as="geometry" />
         </mxCell>
-
-        <!-- Prompt inputs -->
-        <mxCell id="i_trtname" value="Trait name τ&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;+ HIGH / LOW definitions&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c6efce;strokeColor=#70AD47;fontSize=10;arcSize=20;" vertex="1" parent="1">
-          <mxGeometry x="595" y="190" width="145" height="40" as="geometry"/>
+        <mxCell id="i_trtname" value="Trait name τ&lt;br/&gt;&lt;font style=&#39;font-size:11px&#39;&gt;+ HIGH / LOW definitions&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c6efce;strokeColor=#70AD47;fontSize=12;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="594" y="218" width="158" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="i_exmpl" value="Retrieved exemplars&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;calibration anchors&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c6efce;strokeColor=#70AD47;fontSize=10;arcSize=20;" vertex="1" parent="1">
-          <mxGeometry x="752" y="190" width="145" height="40" as="geometry"/>
+        <mxCell id="i_exmpl" value="Retrieved exemplars&lt;br/&gt;&lt;font style=&#39;font-size:11px&#39;&gt;calibration anchors&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c6efce;strokeColor=#70AD47;fontSize=12;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="780" y="218" width="158" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="i_essay2" value="Test essay text" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c6efce;strokeColor=#70AD47;fontSize=10;arcSize=20;" vertex="1" parent="1">
-          <mxGeometry x="595" y="244" width="145" height="32" as="geometry"/>
+        <mxCell id="i_essay2" value="Test essay text" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c6efce;strokeColor=#70AD47;fontSize=12;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="594" y="280" width="158" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="i_schema" value="XML output schema&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;(system prompt)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c6efce;strokeColor=#70AD47;fontSize=10;arcSize=20;" vertex="1" parent="1">
-          <mxGeometry x="752" y="244" width="145" height="32" as="geometry"/>
+        <mxCell id="i_schema" value="XML output schema&lt;br/&gt;&lt;font style=&#39;font-size:11px&#39;&gt;(system prompt)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c6efce;strokeColor=#70AD47;fontSize=12;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="780" y="280" width="158" height="38" as="geometry" />
         </mxCell>
-
-        <mxCell id="arr_inputs_llm" value="prompt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#70AD47;strokeWidth=1.5;fontStyle=2;fontSize=9;" edge="1" source="i_trtname" target="i_llm" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+        <mxCell id="arr_inputs_llm" value="prompt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#70AD47;strokeWidth=1.5;fontStyle=2;fontSize=11;" edge="1" source="i_trtname" target="i_llm" parent="1">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="arr_ex_llm" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#70AD47;strokeWidth=1.5;" edge="1" source="i_exmpl" target="i_llm" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Reasoning chain -->
         <mxCell id="i_chain_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2efda;strokeColor=#70AD47;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="596" y="302" width="464" height="294" as="geometry"/>
+          <mxGeometry x="594" y="338" width="512" height="342" as="geometry" />
         </mxCell>
-        <mxCell id="i_chain_lbl" value="&lt;b&gt;Structured Reasoning Chain (XML)&lt;/b&gt;" style="text;html=1;align=center;fontSize=11;fontColor=#1a6020;" vertex="1" parent="1">
-          <mxGeometry x="596" y="308" width="464" height="22" as="geometry"/>
+        <mxCell id="i_chain_lbl" value="&lt;b&gt;Structured Reasoning Chain (XML)&lt;/b&gt;" style="text;html=1;align=center;fontSize=13;fontColor=#1a6020;" vertex="1" parent="1">
+          <mxGeometry x="594" y="346" width="512" height="26" as="geometry" />
         </mxCell>
-
-        <!-- Chain steps -->
-        <mxCell id="step1" value="&lt;tt&gt;&lt;evidence&gt;&lt;/tt&gt;&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;Trait-relevant cues from essay&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9d18e;strokeColor=#70AD47;fontSize=10;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="614" y="338" width="180" height="44" as="geometry"/>
+        <mxCell id="step1" value="&lt;tt&gt;&lt;evidence&gt;&lt;/tt&gt;&lt;br/&gt;&lt;font style=&#39;font-size:11px&#39;&gt;Trait-relevant cues from essay&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9d18e;strokeColor=#70AD47;fontSize=12;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="612" y="382" width="200" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="step2" value="&lt;tt&gt;&lt;facet_check&gt;&lt;/tt&gt;&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;Map cues to facets of τ&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9d18e;strokeColor=#70AD47;fontSize=10;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="810" y="338" width="236" height="44" as="geometry"/>
+        <mxCell id="step2" value="&lt;tt&gt;&lt;facet_check&gt;&lt;/tt&gt;&lt;br/&gt;&lt;font style=&#39;font-size:11px&#39;&gt;Map cues to facets of τ&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9d18e;strokeColor=#70AD47;fontSize=12;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="830" y="382" width="262" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="step3" value="&lt;tt&gt;&lt;cue_tally&gt;&lt;/tt&gt;&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;Count HIGH vs LOW cues&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9d18e;strokeColor=#70AD47;fontSize=10;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="614" y="396" width="180" height="44" as="geometry"/>
+        <mxCell id="step3" value="&lt;tt&gt;&lt;cue_tally&gt;&lt;/tt&gt;&lt;br/&gt;&lt;font style=&#39;font-size:11px&#39;&gt;Count HIGH vs LOW cues&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9d18e;strokeColor=#70AD47;fontSize=12;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="612" y="450" width="200" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="step4" value="&lt;tt&gt;&lt;example_alignment&gt;&lt;/tt&gt;&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;Align with retrieved exemplars&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9d18e;strokeColor=#70AD47;fontSize=10;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="810" y="396" width="236" height="44" as="geometry"/>
+        <mxCell id="step4" value="&lt;tt&gt;&lt;example_alignment&gt;&lt;/tt&gt;&lt;br/&gt;&lt;font style=&#39;font-size:11px&#39;&gt;Align with retrieved exemplars&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9d18e;strokeColor=#70AD47;fontSize=12;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="830" y="450" width="262" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="step5" value="&lt;tt&gt;&lt;verdict&gt;&lt;/tt&gt;&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;Consistent with cue_tally&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#fff;strokeColor=#3a6e1a;fontSize=10;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="614" y="454" width="180" height="44" as="geometry"/>
+        <mxCell id="step5" value="&lt;tt&gt;&lt;verdict&gt;&lt;/tt&gt;&lt;br/&gt;&lt;font style=&#39;font-size:11px&#39;&gt;Consistent with cue_tally&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#fff;strokeColor=#3a6e1a;fontSize=12;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="612" y="520" width="200" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="step6" value="&lt;tt&gt;&lt;label&gt;&lt;/tt&gt;&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;&lt;b&gt;high&lt;/b&gt; or &lt;b&gt;low&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#fff;strokeColor=#3a6e1a;fontSize=10;arcSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="810" y="454" width="236" height="44" as="geometry"/>
+        <mxCell id="step6" value="&lt;tt&gt;&lt;label&gt;&lt;/tt&gt;&lt;br/&gt;&lt;font style=&#39;font-size:11px&#39;&gt;&lt;b&gt;high&lt;/b&gt; or &lt;b&gt;low&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#fff;strokeColor=#3a6e1a;fontSize=12;arcSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="830" y="520" width="262" height="52" as="geometry" />
         </mxCell>
-
-        <!-- Sequential arrows -->
         <mxCell id="arr_s1s2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3a6e1a;strokeWidth=1.5;" edge="1" source="step1" target="step2" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="arr_s2s3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3a6e1a;strokeWidth=1.5;" edge="1" source="step2" target="step3" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="arr_s3s4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3a6e1a;strokeWidth=1.5;" edge="1" source="step3" target="step4" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="arr_s4s5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3a6e1a;strokeWidth=1.5;" edge="1" source="step4" target="step5" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="arr_s5s6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3a6e1a;strokeWidth=2;" edge="1" source="step5" target="step6" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <mxCell id="consistency_note" value="verdict must be consistent with cue_tally" style="text;html=1;align=center;fontSize=9;fontColor=#555;fontStyle=2;" vertex="1" parent="1">
-          <mxGeometry x="596" y="504" width="464" height="18" as="geometry"/>
+        <mxCell id="consistency_note" value="verdict must be consistent with cue_tally" style="text;html=1;align=center;fontSize=11;fontColor=#555;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="594" y="580" width="512" height="22" as="geometry" />
         </mxCell>
-
-        <!-- Final output -->
-        <mxCell id="i_out" value="&lt;b&gt;Predicted Label&lt;/b&gt;&lt;br/&gt;&lt;font color=&#39;#fff&#39; style=&#39;font-size:13px&#39;&gt;high / low&lt;/font&gt;&lt;br/&gt;&lt;font style=&#39;font-size:9px&#39;&gt;(one per trait, 5 total)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a6020;fontColor=#fff;strokeColor=#0a3010;strokeWidth=2.5;arcSize=30;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="706" y="630" width="170" height="66" as="geometry"/>
+        <mxCell id="i_out" value="&lt;b&gt;Predicted Label&lt;/b&gt;&lt;br/&gt;&lt;font color=&#39;#fff&#39; style=&#39;font-size:15px&#39;&gt;high / low&lt;/font&gt;&lt;br/&gt;&lt;font style=&#39;font-size:11px&#39;&gt;(one per trait, 5 total)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a6020;fontColor=#fff;strokeColor=#0a3010;strokeWidth=2.5;arcSize=30;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="710" y="718" width="190" height="78" as="geometry" />
         </mxCell>
         <mxCell id="arr_chain_out" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#1a6020;strokeWidth=2.5;" edge="1" source="i_chain_bg" target="i_out" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Cross-diagram arrow: retrieval → inference -->
-        <mxCell id="arr_ret_inf" value="trait-sliced&lt;br/&gt;exemplars" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#d6a800;strokeWidth=2;fontStyle=1;fontSize=10;" edge="1" source="r_render" target="i_exmpl" parent="1">
+        <mxCell id="arr_ret_inf" value="full-profile&lt;br/&gt;exemplars" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#d6a800;strokeWidth=2;fontStyle=1;fontSize=12;" edge="1" source="r_render" target="i_exmpl" parent="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="270" y="710"/>
-              <mxPoint x="900" y="710"/>
-              <mxPoint x="900" y="250"/>
-              <mxPoint x="824" y="250"/>
+              <mxPoint x="268" y="830" />
+              <mxPoint x="920" y="830" />
+              <mxPoint x="920" y="266" />
+              <mxPoint x="859" y="266" />
             </Array>
           </mxGeometry>
         </mxCell>
-
-        <!-- LLM arrow down to chain -->
         <mxCell id="arr_llm_chain" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#70AD47;strokeWidth=2;" edge="1" source="i_llm" target="i_chain_bg" parent="1">
-          <mxGeometry relative="1" as="geometry"/>
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
       </root>
     </mxGraphModel>
   </diagram>
-
 </mxfile>

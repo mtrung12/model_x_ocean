@@ -1,0 +1,23 @@
+======================================================================
+Personality Trait Detection - Classification Report
+======================================================================
+
+Model            : meta-llama/Meta-Llama-3-8B-Instruct
+Test file        : F:\std\GR\code\model_x_ocean\result\meta-llama\Meta-Llama-3-8B-Instruct\reasoned_rag_def_oneshot\run1\combined_247\predictions.csv
+Dataset          : N/A
+# Records        : 247
+# Failed         : 116
+Prompt mode      : reasoned_rag_def_oneshot/run1
+Vector DB        : N/A
+Prediction Time (sec) : 0.00
+----------------------------------------------------------------------
+
+             precision  recall f1-score support
+high            0.5263  0.7143   0.6061      98
+low             0.5692  0.3700   0.4485     100
+accuracy        0.5404  0.5404   0.5404       1
+macro avg       0.5478  0.5421   0.5273     198
+weighted avg    0.5480  0.5404   0.5265     198
+
+======================================================================
+End of Report
