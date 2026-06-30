@@ -55,7 +55,7 @@ if [ -d "$DEMO_SRC" ]; then
   mkdir -p "$OUT"/demo
   cp -r "$DEMO_SRC"/apps "$DEMO_SRC"/packages "$OUT"/demo/
   cp "$DEMO_SRC"/pyproject.toml "$DEMO_SRC"/uv.lock "$DEMO_SRC"/Makefile \
-     "$DEMO_SRC"/demo_webapp_requirements.md "$OUT"/demo/ 2>/dev/null || true
+     "$DEMO_SRC"/demo_webapp_requirements.md "$DEMO_SRC"/README.md "$OUT"/demo/ 2>/dev/null || true
   # runtime data only (prebuilt index + dropdown essays); raw/processed/profile_db not needed
   mkdir -p "$OUT"/demo/data/split/essays "$OUT"/demo/data/vector_db
   cp "$DEMO_SRC"/data/split/essays/test50.csv "$OUT"/demo/data/split/essays/
